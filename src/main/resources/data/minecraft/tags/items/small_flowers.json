@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "missingwilds:blue_forget_me_not",
+    "missingwilds:purple_forget_me_not",
+    "missingwilds:pink_forget_me_not",
+    "missingwilds:white_forget_me_not"
+  ]
+}

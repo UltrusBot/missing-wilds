@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "missingwilds:block/white_forget_me_not"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "missingwilds:fallen_birch_log",
+    "missingwilds:fallen_oak_log",
+    "missingwilds:fallen_spruce_log",
+    "missingwilds:fallen_jungle_log",
+    "missingwilds:fallen_dark_oak_log",
+    "missingwilds:fallen_acacia_log",
+    "missingwilds:fallen_mushroom_stem",
+    "missingwilds:fallen_crimson_stem",
+    "missingwilds:fallen_warped_stem"
+  ]
+}

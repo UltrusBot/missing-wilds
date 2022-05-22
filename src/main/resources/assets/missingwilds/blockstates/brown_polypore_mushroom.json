@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,amount=1": {
+      "model": "missingwilds:block/brown_polypore_mushroom",
+      "y": 270
+    },
+    "facing=east,amount=2": {
+      "model": "missingwilds:block/brown_polypore_mushroom_double",
+      "y": 270
+    },
+    "facing=north,amount=1": {
+      "model": "missingwilds:block/brown_polypore_mushroom",
+      "y": 180
+    },
+    "facing=north,amount=2": {
+      "model": "missingwilds:block/brown_polypore_mushroom_double",
+      "y": 180
+    },
+    "facing=south,amount=1": {
+      "model": "missingwilds:block/brown_polypore_mushroom"
+    },
+    "facing=south,amount=2": {
+      "model": "missingwilds:block/brown_polypore_mushroom_double"
+    },
+    "facing=west,amount=1": {
+      "model": "missingwilds:block/brown_polypore_mushroom",
+      "y": 90
+    },
+    "facing=west,amount=2": {
+      "model": "missingwilds:block/brown_polypore_mushroom_double",
+      "y": 90
+    }
+  }
+}

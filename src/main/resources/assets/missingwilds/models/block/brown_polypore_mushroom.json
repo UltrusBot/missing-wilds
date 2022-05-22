@@ -1,0 +1,6 @@
+{
+  "parent": "missingwilds:block/template/polypore_mushroom_single",
+  "textures": {
+    "mushroom": "minecraft:block/brown_mushroom_block"
+  }
+}

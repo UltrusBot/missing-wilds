@@ -1,0 +1,86 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"overlay": "missingwilds:block/moss_overlay",
+		"moss_top": "block/moss_block",
+		"particle": "#log"
+	},
+	"elements": [
+		{
+			"name": "bottom",
+			"from": [0, 0, 0],
+			"to": [16, 2, 16],
+			"faces": {
+				"north": {"uv": [0, 14, 16, 16], "texture": "#log"},
+				"east": {"uv": [14, 0, 16, 16], "rotation": 90, "texture": "#log"},
+				"south": {"uv": [0, 14, 16, 16], "texture": "#log"},
+				"west": {"uv": [14, 0, 16, 16], "rotation": 90, "texture": "#log"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#log_inner"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#log"}
+			}
+		},
+		{
+			"name": "top",
+			"from": [0, 14, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 2], "texture": "#log"},
+				"east": {"uv": [0, 0, 2, 16], "rotation": 90, "texture": "#log"},
+				"south": {"uv": [0, 0, 16, 2], "texture": "#log"},
+				"west": {"uv": [0, 0, 2, 16], "rotation": 90, "texture": "#log"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#moss_top"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#log_inner"}
+			}
+		},
+		{
+			"name": "left",
+			"from": [0, 2, 0],
+			"to": [2, 14, 16],
+			"faces": {
+				"north": {"uv": [14, 1, 16, 15], "texture": "#log"},
+				"east": {"uv": [2, 0, 14, 16], "rotation": 90, "texture": "#log_inner"},
+				"south": {"uv": [0, 1, 2, 15], "texture": "#log"},
+				"west": {"uv": [2, 0, 14, 16], "rotation": 90, "texture": "#log"}
+			}
+		},
+		{
+			"name": "right",
+			"from": [14, 2, 0],
+			"to": [16, 14, 16],
+			"faces": {
+				"north": {"uv": [0, 1, 2, 15], "texture": "#log"},
+				"east": {"uv": [2, 0, 14, 16], "rotation": 90, "texture": "#log"},
+				"south": {"uv": [14, 1, 16, 15], "texture": "#log"},
+				"west": {"uv": [2, 0, 14, 16], "rotation": 90, "texture": "#log_inner"}
+			}
+		},
+		{
+			"name": "left_overlay",
+			"from": [0, 2, 0],
+			"to": [2, 14, 16],
+			"faces": {
+				"west": {"uv": [0, 2, 16, 15], "texture": "#overlay"}
+			}
+		},
+		{
+			"name": "right_overlay",
+			"from": [14, 2, 0],
+			"to": [16, 14, 16],
+			"faces": {
+				"east": {"uv": [0, 2, 16, 15], "texture": "#overlay"}
+			}
+		},
+		{
+			"name": "top_overlay",
+			"from": [0, 14, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 2], "texture": "#log"},
+				"east": {"uv": [0, 0, 16, 2], "texture": "#overlay"},
+				"south": {"uv": [0, 0, 16, 2], "texture": "#log"},
+				"west": {"uv": [0, 0, 16, 2], "texture": "#overlay"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#log_inner"}
+			}
+		}
+	]
+}

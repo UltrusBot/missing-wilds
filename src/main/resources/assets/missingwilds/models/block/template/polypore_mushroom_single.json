@@ -1,0 +1,74 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"2": "minecraft:block/mushroom_block_inside",
+		"particle": "#mushroom"
+	},
+	"elements": [
+		{
+			"from": [1, 9, 0],
+			"to": [2, 10, 6],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "texture": "#mushroom"},
+				"east": {"uv": [0, 0, 6, 1], "texture": "#mushroom"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#mushroom"},
+				"west": {"uv": [0, 0, 6, 1], "texture": "#mushroom"},
+				"up": {"uv": [0, 0, 1, 6], "texture": "#mushroom"},
+				"down": {"uv": [0, 0, 1, 6], "texture": "#mushroom"}
+			}
+		},
+		{
+			"from": [14, 9, 0],
+			"to": [15, 10, 6],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "texture": "#mushroom"},
+				"east": {"uv": [5, 9, 11, 10], "texture": "#mushroom"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#mushroom"},
+				"west": {"uv": [5, 1, 11, 2], "texture": "#mushroom"},
+				"up": {"uv": [14, 2, 15, 8], "texture": "#mushroom"},
+				"down": {"uv": [0, 2, 1, 8], "texture": "#mushroom"}
+			}
+		},
+		{
+			"from": [2, 9, 0],
+			"to": [14, 10, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 16]},
+			"faces": {
+				"north": {"uv": [12, 0, 0, 1], "texture": "#2"},
+				"east": {"uv": [6, 0, 0, 1], "texture": "#mushroom"},
+				"south": {"uv": [14, 7, 2, 8], "texture": "#mushroom"},
+				"west": {"uv": [16, 0, 10, 1], "texture": "#mushroom"},
+				"up": {"uv": [2, 7, 14, 1], "texture": "#mushroom"},
+				"down": {"uv": [0, 6, 12, 0], "texture": "#2"}
+			}
+		},
+		{
+			"from": [2, 9, 6],
+			"to": [14, 10, 7],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 16]},
+			"faces": {
+				"north": {"uv": [12, 0, 0, 1], "texture": "#mushroom"},
+				"east": {"uv": [1, 0, 0, 1], "texture": "#mushroom"},
+				"south": {"uv": [12, 0, 0, 1], "texture": "#mushroom"},
+				"west": {"uv": [1, 0, 0, 1], "texture": "#mushroom"},
+				"up": {"uv": [2, 8, 14, 7], "texture": "#mushroom"},
+				"down": {"uv": [0, 1, 12, 0], "texture": "#mushroom"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "attempt2",
+			"origin": [0, 0, 16],
+			"color": 0,
+			"children": [
+				{
+					"name": "bottom",
+					"origin": [0, 0, 16],
+					"color": 0,
+					"children": [0, 1, 2, 3]
+				}
+			]
+		}
+	]
+}

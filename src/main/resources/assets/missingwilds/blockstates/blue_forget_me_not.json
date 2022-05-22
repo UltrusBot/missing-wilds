@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "flowers=1": {
+      "model": "missingwilds:block/blue_forget_me_not_single"
+    },
+    "flowers=2": [
+      {
+        "model": "missingwilds:block/blue_forget_me_not_double",
+        "weight": 1
+      },
+      {
+        "model": "missingwilds:block/blue_forget_me_not_double",
+        "y": 90,
+        "weight": 1
+      },
+      {
+        "model": "missingwilds:block/blue_forget_me_not_double",
+        "y": 180,
+        "weight": 1
+      },
+      {
+        "model": "missingwilds:block/blue_forget_me_not_double",
+        "y": 270,
+        "weight": 1
+      }
+    ],
+    "flowers=3": [
+      {
+        "model": "missingwilds:block/blue_forget_me_not_triple",
+        "weight": 1
+      },
+      {
+        "model": "missingwilds:block/blue_forget_me_not_triple",
+        "y": 90,
+        "weight": 1
+      },
+      {
+        "model": "missingwilds:block/blue_forget_me_not_triple",
+        "y": 180,
+        "weight": 1
+      },
+      {
+        "model": "missingwilds:block/blue_forget_me_not_triple",
+        "y": 270,
+        "weight": 1
+      }
+    ]
+  }
+}

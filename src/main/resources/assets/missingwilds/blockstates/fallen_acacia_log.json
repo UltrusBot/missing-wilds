@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,mossy=false": {
+      "model": "missingwilds:block/fallen_acacia_log",
+      "y": 270
+    },
+    "facing=east,mossy=true": {
+      "model": "missingwilds:block/fallen_acacia_log_mossy",
+      "y": 270
+    },
+    "facing=north,mossy=false": {
+      "model": "missingwilds:block/fallen_acacia_log",
+      "y": 180
+    },
+    "facing=north,mossy=true": {
+      "model": "missingwilds:block/fallen_acacia_log_mossy",
+      "y": 180
+    },
+    "facing=south,mossy=false": {
+      "model": "missingwilds:block/fallen_acacia_log"
+    },
+    "facing=south,mossy=true": {
+      "model": "missingwilds:block/fallen_acacia_log_mossy"
+    },
+    "facing=west,mossy=false": {
+      "model": "missingwilds:block/fallen_acacia_log",
+      "y": 90
+    },
+    "facing=west,mossy=true": {
+      "model": "missingwilds:block/fallen_acacia_log_mossy",
+      "y": 90
+    }
+  }
+}
