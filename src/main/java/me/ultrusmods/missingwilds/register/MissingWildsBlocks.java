@@ -5,10 +5,7 @@ import me.ultrusmods.missingwilds.block.FallenLogBlock;
 import me.ultrusmods.missingwilds.block.PolyporeMushroomBlock;
 import me.ultrusmods.missingwilds.block.StackingFlowerBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.MapColor;
-import net.minecraft.block.Material;
-import net.minecraft.block.TallFlowerBlock;
+import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -33,6 +30,11 @@ public class MissingWildsBlocks {
 	public static final Block BROWN_POLYPORE_MUSHROOM = registerPolypore("brown_polypore_mushroom");
 
 	public static final Block SWEETSPIRE = register(MissingWildsMod.id("sweetspire"), new TallFlowerBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS)));
+	public static final Block POTTED_SWEETSPIRE = register(MissingWildsMod.id("potted_sweetspire"), new FlowerPotBlock(SWEETSPIRE, FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS)));
+	public static final Block POTTED_BLUE_FORGET_ME_NOT = register(MissingWildsMod.id("potted_blue_forget_me_not"), new FlowerPotBlock(BLUE_FORGET_ME_NOT, FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS)));
+	public static final Block POTTED_PURPLE_FORGET_ME_NOT = register(MissingWildsMod.id("potted_purple_forget_me_not"), new FlowerPotBlock(PURPLE_FORGET_ME_NOT, FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS)));
+	public static final Block POTTED_PINK_FORGET_ME_NOT = register(MissingWildsMod.id("potted_pink_forget_me_not"), new FlowerPotBlock(PINK_FORGET_ME_NOT, FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS)));
+	public static final Block POTTED_WHITE_FORGET_ME_NOT = register(MissingWildsMod.id("potted_white_forget_me_not"), new FlowerPotBlock(WHITE_FORGET_ME_NOT, FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS)));
 
 	public static void init() {
 

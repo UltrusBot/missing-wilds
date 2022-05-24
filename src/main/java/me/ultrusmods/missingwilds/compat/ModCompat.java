@@ -1,5 +1,6 @@
 package me.ultrusmods.missingwilds.compat;
 
+import me.ultrusmods.missingwilds.MissingWildsMod;
 import me.ultrusmods.missingwilds.resource.MissingWildsResources;
 import net.fabricmc.loader.api.FabricLoader;
 
@@ -19,6 +20,10 @@ public abstract class ModCompat {
 				});
 			}
 		});
+		MissingWildsResources.RESOURCE_PACK.addTag(
+				MissingWildsMod.id("blocks/fallen_logs"),
+				MissingWildsResources.FALLEN_LOGS
+		);
 	}
 
 	public abstract void addLogs();

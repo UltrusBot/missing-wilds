@@ -51,11 +51,13 @@ public class MissingWildsMod implements ModInitializer {
 		MissingWildsConfiguredFeatures.init();
 		MissingWildsPlacedFeatures.init();
 		ModCompat.checkModCompat();
+
 		BiomeModifications.addFeature(BIOMES, GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.PLACED_FALLEN_BIRCH_LOG.value()));
 		BiomeModifications.addFeature(BIOMES, GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.BLUE_FORGET_ME_NOT.value()));
 		BiomeModifications.addFeature(BIOMES, GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.PURPLE_FORGET_ME_NOT.value()));
 		BiomeModifications.addFeature(BIOMES, GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.PINK_FORGET_ME_NOT.value()));
 		BiomeModifications.addFeature(BIOMES, GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.WHITE_FORGET_ME_NOT.value()));
+		BiomeModifications.addFeature(BIOMES, GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.SWEETSPIRE.value()));
 
 		FlammableBlockRegistry.getDefaultInstance().add(MissingWildsBlocks.FALLEN_BIRCH_LOG, 5, 5);
 		FlammableBlockRegistry.getDefaultInstance().add(MissingWildsBlocks.FALLEN_OAK_LOG, 5, 5);

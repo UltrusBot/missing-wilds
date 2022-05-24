@@ -29,6 +29,7 @@ public class MissingWildsPlacedFeatures {
 	public static final RegistryEntry<PlacedFeature> PURPLE_FORGET_ME_NOT = createForgetMeNot("purple_forget_me_not", MissingWildsConfiguredFeatures.PURPLE_FORGET_ME_NOT, 4);
 	public static final RegistryEntry<PlacedFeature> PINK_FORGET_ME_NOT = createForgetMeNot("pink_forget_me_not", MissingWildsConfiguredFeatures.PINK_FORGET_ME_NOT, 4);
 	public static final RegistryEntry<PlacedFeature> WHITE_FORGET_ME_NOT = createForgetMeNot("white_forget_me_not", MissingWildsConfiguredFeatures.WHITE_FORGET_ME_NOT, 8);
+	public static final RegistryEntry<PlacedFeature> SWEETSPIRE = createForgetMeNot("sweetspire", MissingWildsConfiguredFeatures.SWEETSPIRE, 12);
 
 	public static final RegistryEntry<PlacedFeature> TREES_BIRCH = registerPlacedFeature(
 			"trees_birch", MissingWildsConfiguredFeatures.BIRCH_BEES_0002,

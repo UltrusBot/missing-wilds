@@ -13,7 +13,11 @@
   "block.missingwilds.pink_forget_me_not": "Pink Forget Me Not",
   "block.missingwilds.white_forget_me_not": "White Forget Me Not",
   "block.missingwilds.brown_polypore_mushroom": "Brown Polypore Mushroom",
-  "block.missingwilds.roasted_polypore_mushroom": "Roasted Polypore Mushroom",
-  "block.missingwilds.sweetspire": "Sweetspire"
-
+  "item.missingwilds.roasted_polypore_mushroom": "Roasted Polypore Mushroom",
+  "block.missingwilds.sweetspire": "Sweetspire",
+  "block.missingwilds.potted_sweetspire": "Potted Sweetspire",
+  "block.missingwilds.potted_blue_forget_me_not": "Potted Blue Forget Me Not",
+  "block.missingwilds.potted_pink_forget_me_not": "Potted Pink Forget Me Not",
+  "block.missingwilds.potted_purple_forget_me_not": "Potted Purple Forget Me Not",
+  "block.missingwilds.potted_white_forget_me_not": "Potted White Forget Me Not"
 }

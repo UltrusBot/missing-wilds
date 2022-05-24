@@ -17,6 +17,7 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
@@ -38,6 +39,7 @@ public class MissingWildsConfiguredFeatures {
 	public static final RegistryEntry<ConfiguredFeature<?, ?>> PURPLE_FORGET_ME_NOT = createForgetMeNot("purple_forget_me_not", MissingWildsBlocks.PURPLE_FORGET_ME_NOT);
 	public static final RegistryEntry<ConfiguredFeature<?, ?>> PINK_FORGET_ME_NOT = createForgetMeNot("pink_forget_me_not", MissingWildsBlocks.PINK_FORGET_ME_NOT);
 	public static final RegistryEntry<ConfiguredFeature<?, ?>> WHITE_FORGET_ME_NOT = createForgetMeNot("white_forget_me_not", MissingWildsBlocks.WHITE_FORGET_ME_NOT);
+	public static final RegistryEntry<ConfiguredFeature<?, ?>> SWEETSPIRE = registerConfiguredFeature("sweetspire", Feature.FLOWER, createRandomPatchFeatureConfig(BlockStateProvider.of(MissingWildsBlocks.SWEETSPIRE), 64));
 
 	public static void init() {
 
@@ -48,11 +50,11 @@ public class MissingWildsConfiguredFeatures {
 	}
 
 	private static TreeFeatureConfig.Builder birch() {
-		return builder(Blocks.BIRCH_LOG, Blocks.BIRCH_LEAVES, 5, 2, 4, 2).ignoreVines();
+		return builder(Blocks.BIRCH_LOG, Blocks.BIRCH_LEAVES, 7, 1, 2, 2).ignoreVines();
 	}
 
 	private static TreeFeatureConfig.Builder superBirch() {
-		return builder(Blocks.BIRCH_LOG, Blocks.BIRCH_LEAVES, 8, 2, 6, 2).ignoreVines();
+		return builder(Blocks.BIRCH_LOG, Blocks.BIRCH_LEAVES, 9, 2, 6, 2).ignoreVines();
 	}
 
 	public static <FC extends FeatureConfig, F extends Feature<FC>> RegistryEntry<ConfiguredFeature<?, ?>> registerConfiguredFeature(String id, F feature, FC featureConfig) {

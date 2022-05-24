@@ -21,7 +21,7 @@ import static net.devtech.arrp.json.loot.JLootTable.*;
 // TODO: Rewrite when have gotten more sleep
 public class MissingWildsResources {
 	public static final RuntimeResourcePack RESOURCE_PACK = RuntimeResourcePack.create(MissingWildsMod.id("resources"));
-
+	public static final JTag FALLEN_LOGS = JTag.tag();
 	public static void init() {
 		RRPCallback.AFTER_VANILLA.register(a -> a.add(RESOURCE_PACK));
 
@@ -64,10 +64,7 @@ public class MissingWildsResources {
 				JModel.model(fallenLogLocation),
 				MissingWildsMod.id("item/" + modid + "_" + logData.name())
 		);
-		RESOURCE_PACK.addTag(
-				MissingWildsMod.id("blocks/fallen_logs"),
-				JTag.tag().add(id)
-		);
+		FALLEN_LOGS.add(id);
 		RESOURCE_PACK.addRecipe(
 				MissingWildsMod.id(logData.name()), JRecipe.shaped(
 						JPattern.pattern("xxx", "x x", "xxx"),

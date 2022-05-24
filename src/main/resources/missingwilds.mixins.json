@@ -4,6 +4,7 @@
   "package": "me.ultrusmods.missingwilds.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "OverworldBiomeCreatorMixin"
   ],
   "client": [
   ],

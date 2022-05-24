@@ -1,0 +1,6 @@
+{
+  "parent": "missingwilds:block/template/potted_forget_me_not",
+  "textures": {
+    "flower": "missingwilds:block/white_forget_me_not"
+  }
+}
