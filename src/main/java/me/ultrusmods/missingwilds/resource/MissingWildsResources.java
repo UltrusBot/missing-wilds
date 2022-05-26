@@ -74,7 +74,7 @@ public class MissingWildsResources {
 
 				).group("missingwilds:fallen_logs")
 		);
-		RESOURCE_PACK.addLootTable(MissingWildsMod.id(logData.name()),
+		RESOURCE_PACK.addLootTable(MissingWildsMod.id(modid + "_" + logData.name()),
 				loot("minecraft:block")
 				.pool(pool()
 						.rolls(1)
