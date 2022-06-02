@@ -55,5 +55,12 @@
   "block.missingwilds.biomemakeover_fallen_ancient_oak_log": "Fallen Ancient Oak Log",
   "block.missingwilds.biomemakeover_fallen_blighted_balsa_log": "Fallen Blighted Balsa Log",
   "block.missingwilds.biomemakeover_fallen_swamp_cypress_log": "Fallen Swamp Cypress Log",
-  "block.missingwilds.biomemakeover_fallen_willow_log": "Fallen Willow Log"
+  "block.missingwilds.biomemakeover_fallen_willow_log": "Fallen Willow Log",
+  "block.missingwilds.ecologics_fallen_azalea_log": "Fallen Azalea Log",
+  "block.missingwilds.ecologics_fallen_flowering_azalea_log": "Fallen Flowering Azalea Log",
+  "block.missingwilds.ecologics_fallen_coconut_log": "Fallen Coconut Log",
+  "block.missingwilds.ecologics_fallen_walnut_log": "Fallen Walnut Log"
+
+
+
 }

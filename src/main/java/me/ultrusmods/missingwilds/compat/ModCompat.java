@@ -49,5 +49,6 @@ public abstract class ModCompat {
 		modCompats.put("promenade", new PromenadeCompat());
 		modCompats.put("charm", new CharmCompat());
 		modCompats.put("biomemakeover", new BiomeMakeoverCompat());
+		modCompats.put("ecologics", new EcologicsCompat());
 	}
 }
