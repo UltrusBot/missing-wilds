@@ -21,6 +21,7 @@ Missing Wilds has some built in mod support for fallen logs for logs from other 
 - Promenade
 - Charm
 - Biome Makeover
+- Ecologics
 - You can suggest more mods to support on github, or the discord.
 
 <div style="text-align: center"><p><a href="https://discord.gg/zUFbbVVjbB"><img src="https://github.com/UltrusBot/Images/blob/main/discord.png?raw=true" alt="discord.gg/zUFbbVVjbB" width="229" height="80" /></a><a href="https://www.youtube.com/c/UltrusBot"><img src="https://github.com/UltrusBot/Images/blob/main/youtube.png?raw=true" alt="https://www.youtube.com/c/UltrusBot" width="229" height="80" /></a></p></div>
