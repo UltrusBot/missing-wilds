@@ -4,12 +4,9 @@ import me.ultrusmods.missingwilds.compat.ModCompat;
 import me.ultrusmods.missingwilds.register.*;
 import me.ultrusmods.missingwilds.resource.MissingWildsResources;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.biome.v1.*;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.impl.biome.modification.BuiltInRegistryKeys;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -18,6 +15,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,12 +50,15 @@ public class MissingWildsMod implements ModInitializer {
 		MissingWildsPlacedFeatures.init();
 		ModCompat.checkModCompat();
 
-		BiomeModifications.addFeature(BIOMES, GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.PLACED_FALLEN_BIRCH_LOG.value()));
-		BiomeModifications.addFeature(BIOMES, GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.BLUE_FORGET_ME_NOT.value()));
-		BiomeModifications.addFeature(BIOMES, GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.PURPLE_FORGET_ME_NOT.value()));
-		BiomeModifications.addFeature(BIOMES, GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.PINK_FORGET_ME_NOT.value()));
-		BiomeModifications.addFeature(BIOMES, GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.WHITE_FORGET_ME_NOT.value()));
-		BiomeModifications.addFeature(BIOMES, GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.SWEETSPIRE.value()));
+		BiomeModification biomeModifications = BiomeModifications.create(new Identifier(MOD_ID, "world_features"));
+		biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, MissingWildsPlacedFeatures.PLACED_FALLEN_BIRCH_LOG.value()));
+		biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, MissingWildsPlacedFeatures.BLUE_FORGET_ME_NOT.value()));
+		biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, MissingWildsPlacedFeatures.PURPLE_FORGET_ME_NOT.value()));
+		biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, MissingWildsPlacedFeatures.PINK_FORGET_ME_NOT.value()));
+		biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, MissingWildsPlacedFeatures.WHITE_FORGET_ME_NOT.value()));
+		biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, MissingWildsPlacedFeatures.SWEETSPIRE.value()));
+		biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, MissingWildsPlacedFeatures.TALL_GRASS.value()));
+		biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, MissingWildsPlacedFeatures.GRASS.value()));
 
 		FlammableBlockRegistry.getDefaultInstance().add(MissingWildsBlocks.FALLEN_BIRCH_LOG, 5, 5);
 		FlammableBlockRegistry.getDefaultInstance().add(MissingWildsBlocks.FALLEN_OAK_LOG, 5, 5);
