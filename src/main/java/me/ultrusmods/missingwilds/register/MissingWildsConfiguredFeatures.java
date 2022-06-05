@@ -30,7 +30,7 @@ public class MissingWildsConfiguredFeatures {
 	);
 
 	private static final BranchTreeDecorator BIRCH_BRANCH_BEES_0002 = new BranchTreeDecorator(BlockStateProvider.of(Blocks.BIRCH_LOG), 0.01f, 0.2f);
-	private static final PolyporeMushroomTreeDecorator POLYPORES = new PolyporeMushroomTreeDecorator(BlockStateProvider.of(MissingWildsBlocks.BROWN_POLYPORE_MUSHROOM), 0.1f);
+	private static final PolyporeMushroomTreeDecorator POLYPORES = new PolyporeMushroomTreeDecorator(BlockStateProvider.of(MissingWildsBlocks.BROWN_POLYPORE_MUSHROOM), 0.3f);
 
 	public static final RegistryEntry<ConfiguredFeature<?, ?>> BIRCH_BEES_0002 = registerConfiguredFeature("birch_bees_0002", Feature.TREE, birch().decorators(List.of(BIRCH_BRANCH_BEES_0002, POLYPORES)).build());
 	public static final RegistryEntry<ConfiguredFeature<?, ?>> SUPER_BIRCH_BEES_0002 = registerConfiguredFeature("super_birch_bees_0002", Feature.TREE, superBirch().decorators(ImmutableList.of(BIRCH_BRANCH_BEES_0002, POLYPORES)).build());
@@ -39,8 +39,9 @@ public class MissingWildsConfiguredFeatures {
 	public static final RegistryEntry<ConfiguredFeature<?, ?>> PURPLE_FORGET_ME_NOT = createForgetMeNot("purple_forget_me_not", MissingWildsBlocks.PURPLE_FORGET_ME_NOT);
 	public static final RegistryEntry<ConfiguredFeature<?, ?>> PINK_FORGET_ME_NOT = createForgetMeNot("pink_forget_me_not", MissingWildsBlocks.PINK_FORGET_ME_NOT);
 	public static final RegistryEntry<ConfiguredFeature<?, ?>> WHITE_FORGET_ME_NOT = createForgetMeNot("white_forget_me_not", MissingWildsBlocks.WHITE_FORGET_ME_NOT);
-	public static final RegistryEntry<ConfiguredFeature<?, ?>> SWEETSPIRE = registerConfiguredFeature("sweetspire", Feature.FLOWER, createRandomPatchFeatureConfig(BlockStateProvider.of(MissingWildsBlocks.SWEETSPIRE), 64));
-
+	public static final RegistryEntry<ConfiguredFeature<?, ?>> SWEETSPIRE = registerConfiguredFeature("sweetspire", Feature.FLOWER, createRandomPatchFeatureConfig(BlockStateProvider.of(MissingWildsBlocks.SWEETSPIRE), 32));
+	public static final RegistryEntry<ConfiguredFeature<?, ?>> GRASS = registerConfiguredFeature("grass", Feature.FLOWER, createRandomPatchFeatureConfig(BlockStateProvider.of(Blocks.GRASS), 32));
+	public static final RegistryEntry<ConfiguredFeature<?, ?>> TALL_GRASS = registerConfiguredFeature("tall_grass", Feature.FLOWER, createRandomPatchFeatureConfig(BlockStateProvider.of(Blocks.TALL_GRASS), 32));
 	public static void init() {
 
 	}

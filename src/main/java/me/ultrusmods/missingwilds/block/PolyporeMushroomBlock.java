@@ -26,13 +26,13 @@ public class PolyporeMushroomBlock extends Block {
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 	public static final IntProperty AMOUNT = IntProperty.of("amount", 1, 2);
 
-	private static final VoxelShape SOUTH_ONE = Block.createCuboidShape(0, 9.0, 0, 16.0, 10.0, 7.0);
+	private static final VoxelShape SOUTH_ONE = Block.createCuboidShape(2, 9.0, 0, 14.0, 12.0, 6.0);
 	private static final VoxelShape SOUTH_TWO = Block.createCuboidShape(0, 7.0, 0, 16.0, 12.0, 7.0);
-	private static final VoxelShape EAST_ONE = Block.createCuboidShape(0, 9.0, 0, 7.0, 10.0, 16.0);
+	private static final VoxelShape EAST_ONE = Block.createCuboidShape(0, 9.0, 2, 6.0, 12.0, 14.0);
 	private static final VoxelShape EAST_TWO = Block.createCuboidShape(0, 7.0, 0, 7.0, 12.0, 16.0);
-	private static final VoxelShape NORTH_ONE = Block.createCuboidShape(0, 9.0, 9, 16.0, 10.0, 16);
+	private static final VoxelShape NORTH_ONE = Block.createCuboidShape(2, 9.0, 10, 14.0, 12.0, 16);
 	private static final VoxelShape NORTH_TWO = Block.createCuboidShape(0, 7.0, 9, 16.0, 12.0, 16);
-	private static final VoxelShape WEST_ONE = Block.createCuboidShape(9, 9.0, 0, 16, 10.0, 16.0);
+	private static final VoxelShape WEST_ONE = Block.createCuboidShape(10, 9.0, 2, 16, 12.0, 14.0);
 	private static final VoxelShape WEST_TWO = Block.createCuboidShape(9, 7.0, 0, 16, 12.0, 16.0);
 
 	public PolyporeMushroomBlock(Settings settings) {

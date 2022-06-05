@@ -8,10 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.feature.PlacedFeatures;
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
 
 import java.util.List;
@@ -25,11 +22,13 @@ public class MissingWildsPlacedFeatures {
 			PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
 			BiomePlacementModifier.of()
 	);
-	public static final RegistryEntry<PlacedFeature> BLUE_FORGET_ME_NOT = createForgetMeNot("blue_forget_me_not", MissingWildsConfiguredFeatures.BLUE_FORGET_ME_NOT, 4);
-	public static final RegistryEntry<PlacedFeature> PURPLE_FORGET_ME_NOT = createForgetMeNot("purple_forget_me_not", MissingWildsConfiguredFeatures.PURPLE_FORGET_ME_NOT, 4);
-	public static final RegistryEntry<PlacedFeature> PINK_FORGET_ME_NOT = createForgetMeNot("pink_forget_me_not", MissingWildsConfiguredFeatures.PINK_FORGET_ME_NOT, 4);
-	public static final RegistryEntry<PlacedFeature> WHITE_FORGET_ME_NOT = createForgetMeNot("white_forget_me_not", MissingWildsConfiguredFeatures.WHITE_FORGET_ME_NOT, 8);
-	public static final RegistryEntry<PlacedFeature> SWEETSPIRE = createForgetMeNot("sweetspire", MissingWildsConfiguredFeatures.SWEETSPIRE, 12);
+	public static final RegistryEntry<PlacedFeature> BLUE_FORGET_ME_NOT = createForgetMeNot("blue_forget_me_not", MissingWildsConfiguredFeatures.BLUE_FORGET_ME_NOT, 20);
+	public static final RegistryEntry<PlacedFeature> PURPLE_FORGET_ME_NOT = createForgetMeNot("purple_forget_me_not", MissingWildsConfiguredFeatures.PURPLE_FORGET_ME_NOT, 20);
+	public static final RegistryEntry<PlacedFeature> PINK_FORGET_ME_NOT = createForgetMeNot("pink_forget_me_not", MissingWildsConfiguredFeatures.PINK_FORGET_ME_NOT, 20);
+	public static final RegistryEntry<PlacedFeature> WHITE_FORGET_ME_NOT = createForgetMeNot("white_forget_me_not", MissingWildsConfiguredFeatures.WHITE_FORGET_ME_NOT, 32);
+	public static final RegistryEntry<PlacedFeature> SWEETSPIRE = createRares("sweetspire", MissingWildsConfiguredFeatures.SWEETSPIRE, 10);
+	public static final RegistryEntry<PlacedFeature> TALL_GRASS = createRares("tall_grass", MissingWildsConfiguredFeatures.TALL_GRASS, 10);
+	public static final RegistryEntry<PlacedFeature> GRASS = createGrass("grass", MissingWildsConfiguredFeatures.GRASS, 5, 10);
 
 	public static final RegistryEntry<PlacedFeature> TREES_BIRCH = registerPlacedFeature(
 			"trees_birch", MissingWildsConfiguredFeatures.BIRCH_BEES_0002,
@@ -48,10 +47,10 @@ public class MissingWildsPlacedFeatures {
 						MissingWildsMod.BIOMES,
 						(context) -> {
 							if (context.getGenerationSettings().removeBuiltInFeature(VegetationPlacedFeatures.TREES_BIRCH.value())) {
-								context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(TREES_BIRCH.value()));
+								context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_BIRCH.getKey().get());
 							}
 							if (context.getGenerationSettings().removeBuiltInFeature(VegetationPlacedFeatures.BIRCH_TALL.value())) {
-								context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, BuiltInRegistryKeys.get(TALL_TREES_BIRCH.value()));
+								context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TALL_TREES_BIRCH.getKey().get());
 							}
 						});
 	}
@@ -67,9 +66,29 @@ public class MissingWildsPlacedFeatures {
 		return registerPlacedFeature(
 				name,
 				configuredFeatureRegistryEntry,
+				NoiseThresholdCountPlacementModifier.of(-0.8, 0, 1),
+				SquarePlacementModifier.of(),
+				PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+				BiomePlacementModifier.of()
+		);
+	}
+	public static RegistryEntry<PlacedFeature> createRares(String name, RegistryEntry<ConfiguredFeature<?, ?>> configuredFeatureRegistryEntry, int chance) {
+		return registerPlacedFeature(
+				name,
+				configuredFeatureRegistryEntry,
 				RarityFilterPlacementModifier.of(chance),
 				SquarePlacementModifier.of(),
 				PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+				BiomePlacementModifier.of()
+		);
+	}
+	public static RegistryEntry<PlacedFeature> createGrass(String name, RegistryEntry<ConfiguredFeature<?, ?>> configuredFeatureRegistryEntry, int chanceBelow, int chanceAbove) {
+		return registerPlacedFeature(
+				name,
+				configuredFeatureRegistryEntry,
+				NoiseThresholdCountPlacementModifier.of(-0.8, chanceBelow, chanceAbove),
+				SquarePlacementModifier.of(),
+				PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
 				BiomePlacementModifier.of()
 		);
 	}
