@@ -7,7 +7,6 @@ issueTrackerURL="https://github.com/UltrusBot/missing-wilds/issues"
 modId="missingwilds"
 version="${file.jarVersion}"
 displayName="Missing Wilds"
-#updateJSONURL="raw.githubusercontent.com/UltrusBot/missing-wilds/master/update.json" TODO: Add this
 logoFile="icon.png"
 credits="Everyone that worked on the MultiLoader template!"
 authors="UltrusBot"
@@ -29,6 +28,6 @@ Adds the features scrapped in the Wild Update.
 [[dependencies.missingwilds]]
     modId="fabric_biome_api"
     mandatory=true
-    versionRange="[2.0.0,)"
+    versionRange="[2.0.2,)"
     ordering="AFTER"
     side="BOTH"
