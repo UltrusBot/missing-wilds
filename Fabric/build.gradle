@@ -19,8 +19,6 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
-
-    annotationProcessor implementation(include("com.github.LlamaLad7:MixinExtras:0.0.10"))
     modImplementation include("net.devtech:arrp:0.5.7")
 }
 
