@@ -32,6 +32,5 @@ public class MissingWildsModCommon {
         ((FireBlockAccessor) Blocks.FIRE).registerFlameable$MissingWilds(MissingWildsBlocks.FALLEN_SPRUCE_LOG.get(), 5, 5);
         ((FireBlockAccessor) Blocks.FIRE).registerFlameable$MissingWilds(MissingWildsBlocks.FALLEN_DARK_OAK_LOG.get(), 5, 5);
         ((FireBlockAccessor) Blocks.FIRE).registerFlameable$MissingWilds(MissingWildsBlocks.FALLEN_ACACIA_LOG.get(), 5, 5);
-
     }
 }
