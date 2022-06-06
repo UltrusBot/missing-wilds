@@ -32,6 +32,7 @@ body:
     attributes:
       label: Mod Version
     validations:
+        required: true
   - type: input
     id: mcversion
     attributes:
@@ -44,4 +45,8 @@ body:
     attributes:
       label: Logs
       description: If you feel the logs are relevant, please put a link to your logs, using something like [pastebin](https://pastebin.com/).
-      
+  - type: textarea
+    id: other
+    attributes:
+      label: Other Info
+      description: Other info that could assist in fixing the bug, like other mods.
