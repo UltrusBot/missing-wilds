@@ -1,0 +1,33 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="MIT"
+issueTrackerURL="https://github.com/UltrusBot/missing-wilds/issues"
+
+[[mods]]
+modId="missingwilds"
+version="${file.jarVersion}"
+displayName="Missing Wilds"
+logoFile="icon.png"
+credits="Everyone that worked on the MultiLoader template!"
+authors="UltrusBot"
+description='''
+Adds the features scrapped in the Wild Update.
+'''
+[[dependencies.missingwilds]]
+    modId="forge"
+    mandatory=true
+    versionRange="[38,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.missingwilds]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18,1.19)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.missingwilds]]
+    modId="fabric_biome_api"
+    mandatory=true
+    versionRange="[2.0.2,)"
+    ordering="AFTER"
+    side="BOTH"

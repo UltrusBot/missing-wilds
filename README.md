@@ -1,5 +1,8 @@
 <p style="text-align: center"><img src="https://raw.githubusercontent.com/UltrusBot/missing-wilds/master/images/missing-wilds.png" alt="Missing Wilds" width="853" height="361" /></p>
-This mod runs on Quilt & Fabric, a forge port may come out in the future.
+This mod runs on Quilt & Fabric. There is also a forge version.
+
+The forge version depends on [Fabric's Biome Api Reforged](https://www.curseforge.com/minecraft/mc-mods/fabrics-biome-api-reforged)
+
 
 Missing Wilds adds the features scrapped / removed from the wild update. These features include:
 - Updated Birch Forest Biomes (Birch Forest & Old Growth Birch Forest)
@@ -14,6 +17,7 @@ Missing Wilds adds the features scrapped / removed from the wild update. These f
 - Birch Village
 
 ## Mod Support
+Mod Support is currently fabric only. 
 Missing Wilds has some built in mod support for fallen logs for logs from other mods. The supported mods are:
 - Traverse
 - Oh The Biomes You'll Go Refabricated
