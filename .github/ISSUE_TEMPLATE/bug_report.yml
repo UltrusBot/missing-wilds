@@ -32,16 +32,16 @@ body:
     attributes:
       label: Mod Version
     validations:
-      required: true
   - type: input
     id: mcversion
     attributes:
       label: Minecraft Version
+      placeholder: ex. 1.18.2
     validations:
       required: true
-      placeholder: Ex: 1.18.2
   - type: input
     id: logs
     attributes:
       label: Logs
       description: If you feel the logs are relevant, please put a link to your logs, using something like [pastebin](https://pastebin.com/).
+      
