@@ -2,7 +2,6 @@ package me.ultrusmods.missingwilds.worldgen;
 
 import me.ultrusmods.missingwilds.register.MissingWildsPlacedFeatures;
 import net.fabricmc.fabric.api.biome.v1.*;
-import net.fabricmc.fabric.impl.biome.modification.BuiltInRegistryKeys;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biomes;
@@ -29,10 +28,10 @@ public class MissingWildsWorldGen {
                         BIOMES,
                         (context) -> {
                             if (context.getGenerationSettings().removeBuiltInFeature(VegetationPlacements.TREES_BIRCH.value())) {
-                                context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.TREES_BIRCH.value()));
+                                context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.TREES_BIRCH.unwrapKey().get());
                             }
                             if (context.getGenerationSettings().removeBuiltInFeature(VegetationPlacements.BIRCH_TALL.value())) {
-                                context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BuiltInRegistryKeys.get(MissingWildsPlacedFeatures.TALL_TREES_BIRCH.value()));
+                                context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.TALL_TREES_BIRCH.unwrapKey().get());
                             }
                         });
     }
