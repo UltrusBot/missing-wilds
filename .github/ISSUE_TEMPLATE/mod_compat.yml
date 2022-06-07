@@ -1,0 +1,23 @@
+name: Mod Compat   
+description: Request mod compatibility.
+title: "[Mod Compat]: "
+labels: ["mod compat"]
+assignees:
+  - UltrusBot
+body:
+  - type: dropdown
+    id: modloader
+    attributes:
+      label: Modloader
+      options:
+        - Fabric
+        - Quilt
+        - Forge
+        - Multiple Modloaders
+    validations:
+      required: true
+  - type: textarea
+    id: mods
+    attributes:
+      label: Mods
+      description: What are the mods you want compatibility for, and what type of compatibility do you want? Eg. Fallen Log Variants?

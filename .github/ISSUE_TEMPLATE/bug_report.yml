@@ -1,0 +1,52 @@
+name: Bug Report
+description: File a bug report with the mod.
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - UltrusBot
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug.
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: dropdown
+    id: modloader
+    attributes:
+      label: Modloader
+      options:
+        - Fabric
+        - Quilt
+        - Forge
+        - All Modloaders
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Mod Version
+    validations:
+        required: true
+  - type: input
+    id: mcversion
+    attributes:
+      label: Minecraft Version
+      placeholder: ex. 1.18.2
+    validations:
+      required: true
+  - type: input
+    id: logs
+    attributes:
+      label: Logs
+      description: If you feel the logs are relevant, please put a link to your logs, using something like [pastebin](https://pastebin.com/).
+  - type: textarea
+    id: other
+    attributes:
+      label: Other Info
+      description: Other info that could assist in fixing the bug, like other mods.
