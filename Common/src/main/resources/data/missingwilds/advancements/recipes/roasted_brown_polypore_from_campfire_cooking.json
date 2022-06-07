@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "missingwilds:roasted_brown_polypore_campfire"
+    ]
+  },
+  "criteria": {
+    "has_brown_polypore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "missingwilds:brown_polypore_mushroom"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "missingwilds:roasted_brown_polypore_campfire"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_brown_polypore",
+      "has_the_recipe"
+    ]
+  ]
+}
