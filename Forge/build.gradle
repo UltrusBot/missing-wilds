@@ -91,7 +91,6 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly project(":Common")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    implementation fg.deobf("com.github.Reforged-Mods:FabricBiomeApiReforged:4caa37dda7")
 }
 
 tasks.withType(JavaCompile) {

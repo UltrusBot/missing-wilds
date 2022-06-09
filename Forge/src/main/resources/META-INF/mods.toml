@@ -25,9 +25,3 @@ Adds the features scrapped in the Wild Update.
     versionRange="[1.18,1.19)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.missingwilds]]
-    modId="fabric_biome_api"
-    mandatory=true
-    versionRange="[2.0.2,)"
-    ordering="AFTER"
-    side="BOTH"
