@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.Block;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MissingWildsMod implements ModInitializer {
+public class MissingWildsFabric implements ModInitializer {
     public static final List<Block> COMPAT_LOGS = new ArrayList<>();
     public static final CreativeModeTab MISSING_WILD_ITEMS = FabricItemGroupBuilder.create(
                     new ResourceLocation(Constants.MOD_ID, "items"))

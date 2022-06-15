@@ -1,7 +1,5 @@
 package me.ultrusmods.missingwilds;
 
-import me.ultrusmods.missingwilds.register.MissingWildsConfiguredFeatures;
-import me.ultrusmods.missingwilds.register.MissingWildsPlacedFeatures;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -14,11 +12,7 @@ public class MissingWildsForge {
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
-        MissingWildsModCommon.postInit();
-        event.enqueueWork(() -> {
-            MissingWildsConfiguredFeatures.init();
-            MissingWildsPlacedFeatures.init();
-        });
+        event.enqueueWork(MissingWildsModCommon::postInit);
     }
 
 

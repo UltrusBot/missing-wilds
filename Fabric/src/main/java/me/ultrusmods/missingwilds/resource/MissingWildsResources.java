@@ -1,7 +1,7 @@
 package me.ultrusmods.missingwilds.resource;
 
 import me.ultrusmods.missingwilds.Constants;
-import me.ultrusmods.missingwilds.MissingWildsMod;
+import me.ultrusmods.missingwilds.MissingWildsFabric;
 import me.ultrusmods.missingwilds.compat.ModCompat;
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
@@ -33,7 +33,7 @@ public class MissingWildsResources {
 		var fallenLogLocation = Constants.id("block/" + modid + "_" + logData.name());
 		var fallenLogLocationMossy = Constants.id("block/" + modid + "_" + logData.name() + "_mossy");
 		RegistryObject<Block> block = MissingWildsBlocks.registerFallenLog(modid + "_" + logData.name());
-		MissingWildsMod.COMPAT_LOGS.add(block.get());
+		MissingWildsFabric.COMPAT_LOGS.add(block.get());
 		Item item = MissingWildsItems.register(modid + "_" + logData.name(), block).get();
 		ResourceLocation id = Constants.id(modid + "_" + logData.name());
 		var model = new JBlockModel(fallenLogLocation);

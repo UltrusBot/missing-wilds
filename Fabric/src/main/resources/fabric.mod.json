@@ -8,13 +8,15 @@
     "UltrusBot"
   ],
   "contact": {
+    "issues": "https://github.com/UltrusBot/missing-wilds/issues",
+    "sources": "https://github.com/UltrusBot/missing-wilds"
   },
   "license": "MIT",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "me.ultrusmods.missingwilds.MissingWildsMod"
+      "me.ultrusmods.missingwilds.MissingWildsFabric"
     ],
     "client": [
       "me.ultrusmods.missingwilds.client.MissingWildsClientFabric"
@@ -28,6 +30,6 @@
   "depends": {
     "fabricloader": ">=0.10.7",
     "fabric": ">=0.37.2",
-    "minecraft": "1.18.x"
+    "minecraft": "1.18.2"
   }
 }

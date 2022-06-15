@@ -3,6 +3,7 @@ package me.ultrusmods.missingwilds;
 import me.ultrusmods.missingwilds.mixin.FireBlockAccessor;
 import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.*;
+import me.ultrusmods.missingwilds.stat.MissingWildsStats;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -17,16 +18,16 @@ public class MissingWildsModCommon {
         MissingWildsBlocks.init();
         MissingWildsItems.init();
         MissingWildsFeatures.init();
-
         if (!Services.PLATFORM.getPlatformName().equals("Forge")) {
-            MissingWildsConfiguredFeatures.init();
-            MissingWildsPlacedFeatures.init();
             postInit();
         }
         Constants.LOG.info("Missing Wilds for {} is loading!", Services.PLATFORM.getPlatformName());
 
     }
     public static void postInit() {
+        MissingWildsStats.init();
+        MissingWildsConfiguredFeatures.init();
+        MissingWildsPlacedFeatures.init();
         ((FireBlockAccessor) Blocks.FIRE).registerFlameable$MissingWilds(MissingWildsBlocks.FALLEN_BIRCH_LOG.get(), 5, 5);
         ((FireBlockAccessor) Blocks.FIRE).registerFlameable$MissingWilds(MissingWildsBlocks.FALLEN_OAK_LOG.get(), 5, 5);
         ((FireBlockAccessor) Blocks.FIRE).registerFlameable$MissingWilds(MissingWildsBlocks.FALLEN_JUNGLE_LOG.get(), 5, 5);

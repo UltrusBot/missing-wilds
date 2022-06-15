@@ -7,8 +7,10 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
@@ -87,15 +89,22 @@ public class PolyporeMushroomBlock extends Block {
 		return !context.isSecondaryUseActive() && context.getItemInHand().getItem() == this.asItem() && state.getValue(AMOUNT) < 2 || super.canBeReplaced(state, context);
 	}
 
-	private boolean canPlaceOn(BlockGetter world, BlockPos pos, Direction side) {
+	private boolean isValidBlock(BlockGetter world, BlockPos pos) {
 		BlockState blockState = world.getBlockState(pos);
-		return blockState.isFaceSturdy(world, pos, side) && blockState.is(BlockTags.LOGS) || blockState.is(MissingWildsModCommon.FALLEN_LOGS);
+		return blockState.is(BlockTags.LOGS) || blockState.is(MissingWildsModCommon.FALLEN_LOGS);
 	}
 
 	@Override
 	public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
 		Direction direction = state.getValue(FACING);
-		return this.canPlaceOn(world, pos.relative(direction.getOpposite()), direction);
+		BlockPos placedOnPos = pos.relative(direction.getOpposite());
+		BlockState placedOnState = world.getBlockState(placedOnPos);
+		return placedOnState.isFaceSturdy(world, pos, direction) && isValidBlock(world, pos.relative(direction.getOpposite()));
+	}
+
+	@Override
+	public BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState1, LevelAccessor world, BlockPos blockPos, BlockPos blockPos1) {
+		return direction.getOpposite() == blockState.getValue(FACING) && !blockState.canSurvive(world, blockPos) ? Blocks.AIR.defaultBlockState() : blockState;
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package me.ultrusmods.missingwilds.compat;
 
 import me.ultrusmods.missingwilds.Constants;
-import me.ultrusmods.missingwilds.MissingWildsMod;
 import me.ultrusmods.missingwilds.resource.MissingWildsResources;
 import net.fabricmc.loader.api.FabricLoader;
 
