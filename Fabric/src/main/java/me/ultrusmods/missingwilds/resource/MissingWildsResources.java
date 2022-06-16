@@ -41,14 +41,12 @@ public class MissingWildsResources {
 		RESOURCE_PACK.addBlockState(
 				JState.state(
 						JState.variant()
-								.put("facing=east,mossy=false", model.clone().y(270))
-								.put("facing=east,mossy=true", modelMossy.clone().y(270))
-								.put("facing=north,mossy=false", model.clone().y(180))
-								.put("facing=north,mossy=true", modelMossy.clone().y(180))
-								.put("facing=south,mossy=false", model.clone())
-								.put("facing=south,mossy=true", modelMossy)
-								.put("facing=west,mossy=false", model.clone().y(90))
-								.put("facing=west,mossy=true", modelMossy.clone().y(90))
+								.put("axis=x,mossy=false", model.clone().y(90))
+								.put("axis=y,mossy=false", model.clone().x(90))
+								.put("axis=z,mossy=false", model.clone())
+								.put("axis=x,mossy=true", modelMossy.clone().y(90))
+								.put("axis=y,mossy=true", model.clone().x(90))
+								.put("axis=z,mossy=true", modelMossy.clone())
 				),
 				id
 		);

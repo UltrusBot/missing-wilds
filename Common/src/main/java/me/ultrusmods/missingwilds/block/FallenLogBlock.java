@@ -5,42 +5,37 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class FallenLogBlock extends Block implements SimpleWaterloggedBlock {
-	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
 	public static final BooleanProperty MOSSY = BooleanProperty.create("mossy");
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-	private static final VoxelShape TOP = Block.box(0, 0.0, 0, 16.0, 2.0, 16.0);
-	private static final VoxelShape BOTTOM = Block.box(0, 14.0, 0, 16.0, 16.0, 16.0);
+	private static final VoxelShape INSIDE_Z = box(2.0D, 2.0D, 0.0D, 14.0D, 14.0D, 16.0D);
+	private static final VoxelShape SHAPE_Z = Shapes.join(Shapes.block(), INSIDE_Z, BooleanOp.ONLY_FIRST);
 
-	private static final VoxelShape LEFT_Z = Block.box(0, 2, 0, 2, 14, 16);
-	private static final VoxelShape RIGHT_Z = Block.box(14, 2, 0, 16, 14, 16);
+	private static final VoxelShape INSIDE_X = box(0.0D, 2.0D, 2.0D, 16.0D, 14.0D, 14.0D);
+	private static final VoxelShape SHAPE_X = Shapes.join(Shapes.block(), INSIDE_X, BooleanOp.ONLY_FIRST);
 
-	private static final VoxelShape LEFT_X = Block.box(0, 2, 0, 16, 14, 2);
-	private static final VoxelShape RIGHT_X = Block.box(0, 2, 14, 16, 14, 16);
+	private static final VoxelShape INSIDE_Y = box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+	private static final VoxelShape SHAPE_Y = Shapes.join(Shapes.block(), INSIDE_Y, BooleanOp.ONLY_FIRST);
 
-	private static final VoxelShape SHAPE_X = Shapes.or(TOP, BOTTOM, RIGHT_X, LEFT_X);
-	private static final VoxelShape SHAPE_Z = Shapes.or(TOP, BOTTOM, RIGHT_Z, LEFT_Z);
 
 	public FallenLogBlock(Properties settings)  {
 		super(settings);
-		this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(MOSSY, false).setValue(WATERLOGGED, false));
+		this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.Y).setValue(MOSSY, false).setValue(WATERLOGGED, false));
 
 	}
 
@@ -56,22 +51,28 @@ public class FallenLogBlock extends Block implements SimpleWaterloggedBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		Direction direction = state.getValue(FACING);
-		return direction.getAxis() == Direction.Axis.X ? SHAPE_X : SHAPE_Z;
+		Direction.Axis axis = state.getValue(AXIS);
+		switch (axis) {
+			case X -> {
+				return SHAPE_X;
+			}
+			case Y -> {
+				return SHAPE_Y;
+			}
+			case Z -> {
+				return SHAPE_Z;
+			}
+		}
+		return SHAPE_Y;
 	}
 
 	@Override
 	public BlockState rotate(BlockState state, Rotation rotation) {
-		return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-	}
-
-	@Override
-	public BlockState mirror(BlockState state, Mirror mirror) {
-		return state.rotate(mirror.getRotation(state.getValue(FACING)));
+		return RotatedPillarBlock.rotatePillar(state, rotation);
 	}
 
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(FACING, MOSSY, WATERLOGGED);
+		builder.add(AXIS, MOSSY, WATERLOGGED);
 	}
 
 	@Override
@@ -82,7 +83,7 @@ public class FallenLogBlock extends Block implements SimpleWaterloggedBlock {
 	public BlockState getStateForPlacement(BlockPlaceContext ctx) {
 		BlockState blockstate = ctx.getLevel().getBlockState(ctx.getClickedPos().above());
 		FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
-		return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection()).setValue(MOSSY, isMossBlock(blockstate)).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
+		return this.defaultBlockState().setValue(AXIS, ctx.getClickedFace().getAxis()).setValue(MOSSY, isMossBlock(blockstate)).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
 	}
 
 	private static boolean isMossBlock(BlockState state) {

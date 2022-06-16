@@ -29,18 +29,18 @@ public class FallenLogFeature extends Feature<FallenLogFeatureConfig> {
 		BlockState blockState = fallenLogFeatureConfig.stateProvider.getState(random, blockPos);
 
 		int size = random.nextInt(3, 7);
-		Direction direction = Direction.from3DDataValue(random.nextInt(2, 6));
-		if (blockState.hasProperty(BlockStateProperties.HORIZONTAL_FACING)) {
-			blockState = blockState.setValue(FallenLogBlock.FACING, direction);
+		Direction.Axis axis = Direction.Axis.getRandom(random);
+		if (blockState.hasProperty(BlockStateProperties.AXIS)) {
+			blockState = blockState.setValue(FallenLogBlock.AXIS, axis);
 		}
 		boolean validSpot = true;
 		for (int i = 0; i < size; i++) {
-			BlockPos cur = blockPos.relative(direction, i);
+			BlockPos cur = blockPos.relative(axis, i);
 			validSpot = validSpot && structureWorldAccess.isEmptyBlock(cur) && structureWorldAccess.getBlockState(cur.below()).is(BlockTags.DIRT);
 		}
 		if (validSpot) {
 			for (int i = 0; i < size; i++) {
-				BlockPos cur = blockPos.relative(direction, i);
+				BlockPos cur = blockPos.relative(axis, i);
 				BlockPos above = cur.above();
 				boolean mossy = random.nextFloat() > .33 && structureWorldAccess.isEmptyBlock(above);
 				structureWorldAccess.setBlock(cur, blockState.setValue(FallenLogBlock.MOSSY, mossy), 4);
