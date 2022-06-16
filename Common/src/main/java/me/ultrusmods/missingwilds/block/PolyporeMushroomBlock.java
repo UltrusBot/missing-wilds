@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
@@ -62,7 +63,7 @@ public class PolyporeMushroomBlock extends Block {
 	}
 
 	@Override
-	public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+	public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
 		if (random.nextInt(50) == 0 && state.getValue(AMOUNT) == 1) {
 			world.setBlock(pos, state.setValue(AMOUNT, 2), Block.UPDATE_CLIENTS);
 		}

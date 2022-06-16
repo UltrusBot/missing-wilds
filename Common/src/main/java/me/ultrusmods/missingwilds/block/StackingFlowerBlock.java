@@ -47,11 +47,6 @@ public class StackingFlowerBlock extends FlowerBlock {
 	}
 
 	@Override
-	public OffsetType getOffsetType() {
-		return OffsetType.NONE;
-	}
-
-	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(FLOWERS);
 	}

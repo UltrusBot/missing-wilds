@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.BeehiveBlock;
@@ -47,8 +48,13 @@ public class BranchTreeDecorator extends TreeDecorator {
         return MissingWildsFeatures.BRANCH_TREE.get();
     }
 
+
     @Override
-    public void place(LevelSimulatedReader world, BiConsumer<BlockPos, BlockState> replacer, Random random, List<BlockPos> logPositions, List<BlockPos> leavesPositions) {
+    public void place(Context context) {
+        RandomSource random = context.random();
+        var world = context.level();
+        var logPositions = context.logs();
+
         if (random.nextFloat() >= this.branchProbability) return;
         int maxY = logPositions.get(logPositions.size() - 1).getY();
         int minY = logPositions.get(0).getY();
@@ -58,17 +64,17 @@ public class BranchTreeDecorator extends TreeDecorator {
             if (blockPos.getY() < (maxY + minY)/2) continue;
             Direction direction = Direction.from2DDataValue(random.nextInt());
             BlockPos checkPos = blockPos.relative(direction);
-            if (Feature.isAir(world, checkPos)) {
+            if (context.isAir(checkPos)) {
                 BlockState state = branchProvider.getState(random, checkPos);
                 if (state.hasProperty(BlockStateProperties.AXIS)) {
                     state = state.setValue(BlockStateProperties.AXIS, direction.getAxis());
                 }
                 generatedBranch = true;
-                replacer.accept(checkPos, state);
+                context.setBlock(checkPos, state);
             }
             BlockPos downPos = checkPos.below();
-            if (Feature.isAir(world, downPos) && random.nextFloat() < this.beeProbability) {
-                replacer.accept(downPos, Blocks.BEE_NEST.defaultBlockState().setValue(BeehiveBlock.FACING, direction));
+            if (context.isAir(downPos) && random.nextFloat() < this.beeProbability) {
+                context.setBlock(downPos, Blocks.BEE_NEST.defaultBlockState().setValue(BeehiveBlock.FACING, direction));
                 world.getBlockEntity(downPos, BlockEntityType.BEEHIVE).ifPresent(blockEntity -> {
                     int i = 2 + random.nextInt(2);
                     for (int j = 0; j < i; ++j) {

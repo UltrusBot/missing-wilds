@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:old_growth_birch_forest",
+  "features": "missingwilds:tall_trees_birch",
+  "step": "vegetal_decoration"
+}

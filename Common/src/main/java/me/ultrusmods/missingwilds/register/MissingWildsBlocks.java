@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.TallFlowerBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
@@ -55,7 +56,7 @@ public class MissingWildsBlocks {
 	}
 
 	private static RegistryObject<Block> registerForgetMeNot(String id) {
-		return register(id, () -> new StackingFlowerBlock(MobEffects.LUCK, 10, Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
+		return register(id, () -> new StackingFlowerBlock(MobEffects.LUCK, 10, Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.NONE)));
 	}
 
 	private static RegistryObject<Block> registerPolypore(String id) {

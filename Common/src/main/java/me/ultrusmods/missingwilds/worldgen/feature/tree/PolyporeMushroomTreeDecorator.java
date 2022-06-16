@@ -6,6 +6,7 @@ import me.ultrusmods.missingwilds.block.PolyporeMushroomBlock;
 import me.ultrusmods.missingwilds.register.MissingWildsFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -39,12 +40,14 @@ public class PolyporeMushroomTreeDecorator extends TreeDecorator {
     }
 
     @Override
-    public void place(LevelSimulatedReader world, BiConsumer<BlockPos, BlockState> replacer, Random random, List<BlockPos> logPositions, List<BlockPos> leavesPositions) {
+    public void place(Context context) {
+        RandomSource random = context.random();
+        var logPositions = context.logs();
         for (BlockPos blockPos : logPositions) {
             if (random.nextFloat() < probability) {
                 Direction direction = Direction.from2DDataValue(random.nextInt());
                 BlockPos polyporePos = blockPos.relative(direction);
-                if (Feature.isAir(world, polyporePos)) {
+                if (context.isAir(polyporePos)) {
                     BlockState polypore = blockStateProvider.getState(random, polyporePos);
                     if (polypore.hasProperty(BlockStateProperties.HORIZONTAL_FACING)) {
                         polypore = polypore.setValue(BlockStateProperties.HORIZONTAL_FACING, direction);
@@ -52,7 +55,7 @@ public class PolyporeMushroomTreeDecorator extends TreeDecorator {
                     if (polypore.hasProperty(PolyporeMushroomBlock.AMOUNT)) {
                         polypore = polypore.setValue(PolyporeMushroomBlock.AMOUNT, random.nextInt(2) + 1);
                     }
-                    replacer.accept(polyporePos, polypore);
+                    context.setBlock(polyporePos, polypore);
                 }
 
             }

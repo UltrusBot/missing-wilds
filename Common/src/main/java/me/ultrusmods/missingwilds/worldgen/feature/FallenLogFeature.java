@@ -5,13 +5,13 @@ import me.ultrusmods.missingwilds.block.FallenLogBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import java.util.Random;
 
 public class FallenLogFeature extends Feature<FallenLogFeatureConfig> {
 	public static BlockState MOSS = Blocks.MOSS_CARPET.defaultBlockState();
@@ -24,7 +24,7 @@ public class FallenLogFeature extends Feature<FallenLogFeatureConfig> {
 	public boolean place(FeaturePlaceContext<FallenLogFeatureConfig> context) {
 		BlockPos blockPos = context.origin();
 		WorldGenLevel structureWorldAccess = context.level();
-		Random random = context.random();
+		RandomSource random = context.random();
 		FallenLogFeatureConfig fallenLogFeatureConfig = context.config();
 		BlockState blockState = fallenLogFeatureConfig.stateProvider.getState(random, blockPos);
 

@@ -1,0 +1,18 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest"
+  ],
+  "features": [
+    "missingwilds:blue_forget_me_not",
+    "missingwilds:purple_forget_me_not",
+    "missingwilds:pink_forget_me_not",
+    "missingwilds:white_forget_me_not",
+    "missingwilds:sweetspire",
+    "missingwilds:tall_grass",
+    "missingwilds:grass",
+    "missingwilds:fallen_birch"
+  ],
+  "step": "vegetal_decoration"
+}
