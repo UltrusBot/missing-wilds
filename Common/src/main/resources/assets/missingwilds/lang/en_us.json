@@ -60,7 +60,6 @@
   "block.missingwilds.ecologics_fallen_flowering_azalea_log": "Fallen Flowering Azalea Log",
   "block.missingwilds.ecologics_fallen_coconut_log": "Fallen Coconut Log",
   "block.missingwilds.ecologics_fallen_walnut_log": "Fallen Walnut Log",
-  "stat.missingwilds.log_crawl_one_cm": "Distance Crawled in Log"
-
-
+  "stat.missingwilds.log_crawl_one_cm": "Distance Crawled in Log",
+  "block.missingwilds.fallen_mangrove_log": "Fallen Mangrove Log"
 }

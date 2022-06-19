@@ -27,6 +27,7 @@ public class MissingWildsBlocks {
 	public static final RegistryObject<Block> FALLEN_JUNGLE_LOG = registerFallenLog("fallen_jungle_log");
 	public static final RegistryObject<Block> FALLEN_DARK_OAK_LOG = registerFallenLog("fallen_dark_oak_log");
 	public static final RegistryObject<Block> FALLEN_ACACIA_LOG = registerFallenLog("fallen_acacia_log");
+	public static final RegistryObject<Block> FALLEN_MANGROVE_LOG = registerFallenLog("fallen_mangrove_log");
 	public static final RegistryObject<Block> FALLEN_CRIMSON_STEM = registerFallenLog("fallen_crimson_stem");
 	public static final RegistryObject<Block> FALLEN_WARPED_STEM = registerFallenLog("fallen_warped_stem");
 	public static final RegistryObject<Block> FALLEN_MUSHROOM_STEM = registerFallenLog("fallen_mushroom_stem");

@@ -23,6 +23,7 @@ public class MissingWildsClientForge {
         ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_SPRUCE_LOG.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_DARK_OAK_LOG.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_JUNGLE_LOG.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_MANGROVE_LOG.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_CRIMSON_STEM.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_WARPED_STEM.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_MUSHROOM_STEM.get(), RenderType.cutoutMipped());
