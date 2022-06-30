@@ -1,0 +1,10 @@
+{
+    "loader": "both",
+    "id": "biomemakeover",
+    "logs": [
+        "ancient_oak_log",
+        "blighted_balsa_log",
+        "swamp_cypress_log",
+        "willow_log"
+    ]
+}

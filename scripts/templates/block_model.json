@@ -1,0 +1,8 @@
+
+{
+    "parent": "missingwilds:block/template/fallen_log_template",
+    "textures": {
+      "log": "LOG_PATH",
+      "log_inner": "STRIPPED_PATH"
+    }
+  }

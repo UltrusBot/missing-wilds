@@ -1,0 +1,31 @@
+{
+    "loader": "both",
+    "id": "byg",
+    "logs": [
+        "aspen_log",
+        "baobab_log",
+        "blue_enchanted_log",
+        "cherry_log",
+        "cika_log",
+        "cypress_log",
+        "ebony_log",
+        "ether_log",
+        "fir_log",
+        "green_enchanted_log",
+        "holly_log",
+        "jacaranda_log",
+        "lament_log",
+        "mahogany_log",
+        "mangrove_log",
+        "maple_log",
+        "nightshade_log",
+        "palm_log",
+        "palo_verde_log",
+        "pine_log",
+        "rainbow_eucalyptus_log",
+        "redwood_log",
+        "skyris_log",
+        "bulbis_stem",
+        "sythian_stem"
+    ]
+}

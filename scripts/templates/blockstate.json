@@ -1,0 +1,26 @@
+{
+    "variants": {
+      "axis=x,mossy=false": {
+        "model": "missingwilds:block/MOD_fallen_LOG",
+        "y": 90
+      },
+      "axis=y,mossy=false": {
+        "model": "missingwilds:block/MOD_fallen_LOG",
+        "x": 90
+      },
+      "axis=z,mossy=false": {
+        "model": "missingwilds:block/MOD_fallen_LOG"
+      },
+      "axis=x,mossy=true": {
+        "model": "missingwilds:block/MOD_fallen_LOG_mossy",
+        "y": 90
+      },
+      "axis=y,mossy=true": {
+        "model": "missingwilds:block/MOD_fallen_LOG",
+        "x": 90
+      },
+      "axis=z,mossy=true": {
+        "model": "missingwilds:block/MOD_fallen_LOG_mossy"
+      }
+    }
+  }

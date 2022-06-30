@@ -1,0 +1,9 @@
+{
+    "loader": "both",
+    "id": "ecologics",
+    "logs": [
+        "azalea_log",
+        "coconut_log",
+        "walnut_log"
+    ]
+}

@@ -1,0 +1,9 @@
+{
+    "loader": "both",
+    "id": "promenade",
+    "logs": [
+        "cherry_oak_log",
+        "palm_log",
+        "dark_amaranth_stem"
+    ]
+}
