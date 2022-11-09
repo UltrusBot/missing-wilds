@@ -4,8 +4,10 @@
   "package": "me.ultrusmods.missingwilds.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BirchTreeGrowerMixin",
     "CustomStatAccessor",
     "FireBlockAccessor",
+    "GrassMixin",
     "PlayerMixin"
   ],
   "client": [

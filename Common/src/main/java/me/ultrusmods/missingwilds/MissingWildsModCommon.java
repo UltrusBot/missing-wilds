@@ -4,16 +4,10 @@ import me.ultrusmods.missingwilds.mixin.FireBlockAccessor;
 import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.*;
 import me.ultrusmods.missingwilds.stat.MissingWildsStats;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 public class MissingWildsModCommon {
 
-    public static final TagKey<Block> FALLEN_LOGS = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(Constants.MOD_ID, "fallen_logs"));
     public static void init() {
         MissingWildsBlocks.init();
         MissingWildsItems.init();
