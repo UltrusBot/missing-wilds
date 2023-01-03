@@ -7,16 +7,11 @@ import me.ultrusmods.missingwilds.register.MissingWildsFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
-import java.util.List;
-import java.util.Random;
-import java.util.function.BiConsumer;
 
 public class PolyporeMushroomTreeDecorator extends TreeDecorator {
     public static final Codec<PolyporeMushroomTreeDecorator> CODEC = RecordCodecBuilder.create(
