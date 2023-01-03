@@ -1,5 +1,6 @@
 package me.ultrusmods.missingwilds.platform.services;
 
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.item.CreativeModeTab;
 
 public interface IPlatformHelper {
@@ -25,6 +26,8 @@ public interface IPlatformHelper {
      * @return True if in a development environment, false otherwise.
      */
     boolean isDevelopmentEnvironment();
+
+    SimpleParticleType getParticleType();
 
     CreativeModeTab getCreativeTab();
 }

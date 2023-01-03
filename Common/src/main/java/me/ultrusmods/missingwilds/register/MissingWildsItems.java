@@ -1,18 +1,18 @@
 package me.ultrusmods.missingwilds.register;
 
 import me.ultrusmods.missingwilds.Constants;
+import me.ultrusmods.missingwilds.item.FireflyJarItem;
 import me.ultrusmods.missingwilds.item.MissingWildsFoodComponents;
 import me.ultrusmods.missingwilds.platform.Services;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DoubleHighBlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 import java.util.function.Supplier;
 
-import static net.minecraft.world.item.Item.*;
+import static net.minecraft.world.item.Item.Properties;
 
 public class MissingWildsItems {
 	public static final RegistrationProvider<Item> ITEMS = RegistrationProvider.get(Registry.ITEM_REGISTRY, Constants.MOD_ID);
@@ -35,6 +35,8 @@ public class MissingWildsItems {
 	public static final RegistryObject<Item> BROWN_POLYPORE_MUSHROOM = register("brown_polypore_mushroom", MissingWildsBlocks.BROWN_POLYPORE_MUSHROOM);
 	public static final RegistryObject<Item> SWEETSPIRE = register("sweetspire", () -> new DoubleHighBlockItem(MissingWildsBlocks.SWEETSPIRE.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	public static final RegistryObject<Item> ROASTED_POLYPORE_MUSHROOM = register("roasted_polypore_mushroom", () -> new Item(new Properties().tab(Services.PLATFORM.getCreativeTab()).food(MissingWildsFoodComponents.ROASTED_POLYPORE)));
+	public static final RegistryObject<Item> JAR = register("jar", () -> new BlockItem(MissingWildsBlocks.JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
+	public static final RegistryObject<Item> FIREFLY_JAR = register("firefly_jar", () -> new FireflyJarItem(MissingWildsBlocks.FIREFLY_JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	public static void init() {
 
 	}

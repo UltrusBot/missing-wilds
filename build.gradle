@@ -39,6 +39,10 @@ subprojects {
             name = 'BlameJared Maven (CrT / Bookshelf)'
             url = 'https://maven.blamejared.com'
         }
+        maven {
+            name = 'Modrinth'
+            url = "https://api.modrinth.com/maven"
+        }
     }
     
 

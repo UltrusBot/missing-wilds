@@ -1,0 +1,15 @@
+{
+  "close_jar": {
+    "subtitle": "subtitles.missingwilds.close_jar",
+    "sounds": [
+      "missingwilds:close_jar"
+    ]
+  },
+  "open_jar": {
+    "subtitle": "subtitles.missingwilds.open_jar",
+    "sounds": [
+      "missingwilds:open_jar"
+    ]
+  }
+}
+

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "covered=true": {
+      "model": "missingwilds:block/jar"
+    },
+    "covered=false": {
+      "model": "missingwilds:block/open_jar"
+    }
+  }
+}

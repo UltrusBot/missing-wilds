@@ -2,7 +2,9 @@ package me.ultrusmods.missingwilds.platform;
 
 import me.ultrusmods.missingwilds.MissingWildsFabric;
 import me.ultrusmods.missingwilds.platform.services.IPlatformHelper;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.item.CreativeModeTab;
 
 public class FabricPlatformHelper implements IPlatformHelper {
@@ -22,6 +24,11 @@ public class FabricPlatformHelper implements IPlatformHelper {
     public boolean isDevelopmentEnvironment() {
 
         return FabricLoader.getInstance().isDevelopmentEnvironment();
+    }
+
+    @Override
+    public SimpleParticleType getParticleType() {
+        return FabricParticleTypes.simple();
     }
 
     @Override

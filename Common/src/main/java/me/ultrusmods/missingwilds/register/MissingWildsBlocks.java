@@ -1,12 +1,9 @@
 package me.ultrusmods.missingwilds.register;
 
 import me.ultrusmods.missingwilds.Constants;
-import me.ultrusmods.missingwilds.block.FallenLogBlock;
-import me.ultrusmods.missingwilds.block.PolyporeMushroomBlock;
-import me.ultrusmods.missingwilds.block.StackingFlowerBlock;
+import me.ultrusmods.missingwilds.block.*;
 import net.minecraft.core.Registry;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -46,6 +43,8 @@ public class MissingWildsBlocks {
 	public static final RegistryObject<Block> POTTED_PINK_FORGET_ME_NOT = register("potted_pink_forget_me_not", () -> new FlowerPotBlock(PINK_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
 	public static final RegistryObject<Block> POTTED_WHITE_FORGET_ME_NOT = register("potted_white_forget_me_not", () ->new FlowerPotBlock(WHITE_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
 
+	public static final RegistryObject<Block> JAR_BLOCK = register("jar", () -> new JarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion()));
+	public static final RegistryObject<Block> FIREFLY_JAR_BLOCK = register("firefly_jar", () -> new FireflyJarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion().lightLevel((state) -> state.getValue(FireflyJarBlock.LIGHT_LEVEL))));
 	public static void init() {
 	}
 
