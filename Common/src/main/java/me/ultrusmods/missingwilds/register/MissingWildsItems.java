@@ -37,6 +37,8 @@ public class MissingWildsItems {
 	public static final RegistryObject<Item> ROASTED_POLYPORE_MUSHROOM = register("roasted_polypore_mushroom", () -> new Item(new Properties().tab(Services.PLATFORM.getCreativeTab()).food(MissingWildsFoodComponents.ROASTED_POLYPORE)));
 	public static final RegistryObject<Item> JAR = register("jar", () -> new BlockItem(MissingWildsBlocks.JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	public static final RegistryObject<Item> FIREFLY_JAR = register("firefly_jar", () -> new FireflyJarItem(MissingWildsBlocks.FIREFLY_JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
+	public static final RegistryObject<Item> TINTED_JAR = register("tinted_jar", () -> new BlockItem(MissingWildsBlocks.TINTED_JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
+	public static final RegistryObject<Item> TINTED_FIREFLY_JAR = register("tinted_firefly_jar", () -> new FireflyJarItem(MissingWildsBlocks.TINTED_FIREFLY_JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	public static void init() {
 
 	}

@@ -45,6 +45,9 @@ public class MissingWildsBlocks {
 
 	public static final RegistryObject<Block> JAR_BLOCK = register("jar", () -> new JarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion()));
 	public static final RegistryObject<Block> FIREFLY_JAR_BLOCK = register("firefly_jar", () -> new FireflyJarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion().lightLevel((state) -> state.getValue(FireflyJarBlock.LIGHT_LEVEL))));
+
+	public static final RegistryObject<Block> TINTED_JAR_BLOCK = register("tinted_jar", () -> new JarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion()));
+	public static final RegistryObject<Block> TINTED_FIREFLY_JAR_BLOCK = register("tinted_firefly_jar", () -> new FireflyJarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion()));
 	public static void init() {
 	}
 

@@ -32,5 +32,8 @@ public class MissingWildsClientCommon {
                 MissingWildsBlocks.POTTED_WHITE_FORGET_ME_NOT.get(),
                 MissingWildsBlocks.POTTED_PINK_FORGET_ME_NOT.get(),
                 MissingWildsBlocks.POTTED_PURPLE_FORGET_ME_NOT.get());
+        Services.PLATFORM.setBlockRenderType(RenderType.translucent(),
+                MissingWildsBlocks.TINTED_JAR_BLOCK.get(),
+                MissingWildsBlocks.TINTED_FIREFLY_JAR_BLOCK.get());
     }
 }
