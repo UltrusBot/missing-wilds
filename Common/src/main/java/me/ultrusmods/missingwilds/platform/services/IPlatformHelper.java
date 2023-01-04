@@ -1,7 +1,9 @@
 package me.ultrusmods.missingwilds.platform.services;
 
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.level.block.Block;
 
 public interface IPlatformHelper {
 
@@ -30,4 +32,6 @@ public interface IPlatformHelper {
     SimpleParticleType getParticleType();
 
     CreativeModeTab getCreativeTab();
+
+    void setBlockRenderType(RenderType layer, Block... blocks);
 }

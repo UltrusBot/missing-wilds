@@ -10,8 +10,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -22,18 +20,20 @@ public class FireflyJarItem extends BlockItem {
         super(block, properties);
     }
 
-    @Nullable
     @Override
-    protected BlockState getPlacementState(@NotNull BlockPlaceContext context) {
+    protected BlockState getPlacementState(BlockPlaceContext context) {
         BlockState state = super.getPlacementState(context);
         if (state != null) {
-            return state.setValue(FireflyJarBlock.LIGHT_LEVEL, context.getItemInHand().getOrCreateTag().getInt("light_level"));
+            var lightLevel = context.getItemInHand().getOrCreateTag().getInt("light_level");
+            lightLevel = Math.max(1, Math.min(15, lightLevel));
+
+            return state.setValue(FireflyJarBlock.LIGHT_LEVEL, lightLevel);
         }
         return null;
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
         tooltip.add(Component.nullToEmpty("Light Level: " + stack.getOrCreateTag().getInt("light_level")));
     }
@@ -44,7 +44,7 @@ public class FireflyJarItem extends BlockItem {
     }
 
     @Override
-    public int getBarColor(@NotNull ItemStack stack) {
+    public int getBarColor(ItemStack stack) {
         return BAR_COLOR;
     }
 

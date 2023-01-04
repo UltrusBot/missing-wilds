@@ -30,7 +30,7 @@ public class FireflyJarBlock extends JarBlock {
 
     public FireflyJarBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT_LEVEL, 0).setValue(COVERED, true).setValue(COLOR, DyeColor.LIME));
+        this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT_LEVEL, 1).setValue(COVERED, true).setValue(COLOR, DyeColor.LIME));
     }
 
     @Override
