@@ -36,6 +36,14 @@ loom {
             ideConfigGenerated(true)
             runDir("run")
         }
+        datagenCommon {
+            inherit client
+            vmArg "-Dmw.common=true"
+            vmArg "-Dfabric-api.datagen"
+            vmArg "-Dfabric-api.datagen.output-dir=${file("../common/src/generated/resources")}"
+            vmArg "-Dfabric-api.datagen.modid=${mod_id}"
+            runDir "build/datagen"
+        }
     }
     mixin {
         defaultRefmapName = "${mod_id}.refmap.json"
@@ -49,6 +57,16 @@ processResources {
 
     filesMatching("fabric.mod.json") {
         expand "version": project.version
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs += [
+                    'src/main/generated'
+            ]
+        }
     }
 }
 
