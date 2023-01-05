@@ -4,11 +4,16 @@ import me.ultrusmods.missingwilds.item.MissingWildsItemGroup;
 import me.ultrusmods.missingwilds.platform.services.IPlatformHelper;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
+
+import java.util.function.BiFunction;
 
 public class ForgePlatformHelper implements IPlatformHelper {
 
@@ -31,11 +36,6 @@ public class ForgePlatformHelper implements IPlatformHelper {
     }
 
     @Override
-    public SimpleParticleType getParticleType() {
-        return new SimpleParticleType(false);
-    }
-
-    @Override
     public CreativeModeTab getCreativeTab() {
         return MissingWildsItemGroup.MISSING_WILDS;
     }
@@ -46,5 +46,10 @@ public class ForgePlatformHelper implements IPlatformHelper {
             //TODO: Look into alternative for this with multiloader.
             ItemBlockRenderTypes.setRenderLayer(block, layer);
         }
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityType<T> buildBlockEntity(BiFunction<BlockPos, BlockState, T> supplier, Block... blocks) {
+        return BlockEntityType.Builder.of(supplier::apply, blocks).build(null);
     }
 }

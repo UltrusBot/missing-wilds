@@ -1,6 +1,6 @@
 package me.ultrusmods.missingwilds.entity;
 
-import me.ultrusmods.missingwilds.register.MissingWildsParticles;
+import me.ultrusmods.missingwilds.particle.FireflyParticleOptions;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -36,7 +36,7 @@ public class FireflySwarm extends AmbientCreature {
 
         if (this.level.isClientSide() && this.random.nextInt(25) == 0) {
             for (int i = 0; i < this.getSize(); i++) {
-                this.level.addParticle(MissingWildsParticles.FIREFLY.get(), this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+                this.level.addParticle(new FireflyParticleOptions(.60f, .92f, .2f), this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
             }
         }
         super.aiStep();

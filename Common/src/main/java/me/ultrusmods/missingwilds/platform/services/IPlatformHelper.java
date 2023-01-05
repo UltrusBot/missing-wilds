@@ -1,9 +1,14 @@
 package me.ultrusmods.missingwilds.platform.services;
 
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.function.BiFunction;
 
 public interface IPlatformHelper {
 
@@ -29,9 +34,10 @@ public interface IPlatformHelper {
      */
     boolean isDevelopmentEnvironment();
 
-    SimpleParticleType getParticleType();
 
     CreativeModeTab getCreativeTab();
 
     void setBlockRenderType(RenderType layer, Block... blocks);
+
+    <T extends BlockEntity> BlockEntityType<T> buildBlockEntity(BiFunction<BlockPos, BlockState, T> supplier, Block... blocks);
 }

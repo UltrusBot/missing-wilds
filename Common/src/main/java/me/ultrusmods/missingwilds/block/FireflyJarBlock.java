@@ -1,6 +1,6 @@
 package me.ultrusmods.missingwilds.block;
 
-import me.ultrusmods.missingwilds.register.MissingWildsParticles;
+import me.ultrusmods.missingwilds.block.entity.FireflyJarBlockEntity;
 import me.ultrusmods.missingwilds.register.MissingWildsSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -9,6 +9,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
@@ -16,36 +17,44 @@ import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.Nullable;
 
-public class FireflyJarBlock extends JarBlock {
-     public static final IntegerProperty LIGHT_LEVEL = IntegerProperty.create("light_level", 1, 15);
-     public static final BooleanProperty COVERED = BooleanProperty.create("covered");
-     public static final EnumProperty<DyeColor> COLOR = EnumProperty.create("color", DyeColor.class);
+public class FireflyJarBlock extends JarBlock implements EntityBlock {
+    public static final IntegerProperty LIGHT_LEVEL = IntegerProperty.create("light_level", 1, 15);
+    public static final BooleanProperty COVERED = BooleanProperty.create("covered");
 
     public FireflyJarBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT_LEVEL, 1).setValue(COVERED, true).setValue(COLOR, DyeColor.LIME));
+        this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT_LEVEL, 1).setValue(COVERED, true));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LIGHT_LEVEL, COVERED, COLOR);
+        builder.add(LIGHT_LEVEL, COVERED);
     }
 
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if (!state.is(newState.getBlock())) {
             ItemStack stack = new ItemStack(this.asItem());
-            CompoundTag tag = new CompoundTag();
-            tag.putInt("light_level", state.getValue(LIGHT_LEVEL));
-            stack.setTag(tag);
+            CompoundTag subTag = new CompoundTag();
+            subTag.putString(LIGHT_LEVEL.getName(), String.valueOf(state.getValue(LIGHT_LEVEL)));
+            stack.addTagElement("BlockStateTag", subTag);
+
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof FireflyJarBlockEntity fireflyJarBlockEntity) {
+                fireflyJarBlockEntity.saveToItem(stack);
+                stack.setHoverName(fireflyJarBlockEntity.getName());
+            }
             level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), stack));
+            super.onRemove(state, level, pos, newState, isMoving);
         }
     }
 
@@ -67,15 +76,16 @@ public class FireflyJarBlock extends JarBlock {
         }
         if (player.getItemInHand(hand).getItem() instanceof DyeItem) {
             DyeColor color = ((DyeItem) player.getItemInHand(hand).getItem()).getDyeColor();
-            if (state.getValue(COLOR) != color) {
-                level.setBlockAndUpdate(pos, state.setValue(COLOR, color));
-                if (!level.isClientSide) {
-                    level.playSound(null, pos, SoundEvents.DYE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
+            // Get the block entity
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof FireflyJarBlockEntity) {
+                ((FireflyJarBlockEntity) blockEntity).mixColor(color.getFireworkColor());
+                if (!player.isCreative()) {
+                    player.getItemInHand(hand).shrink(1);
                 }
-                player.getItemInHand(hand).shrink(1);
+                level.sendBlockUpdated(pos, state, state, Block.UPDATE_CLIENTS);
+                level.playSound(null, pos, SoundEvents.DYE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.SUCCESS;
-            } else {
-                return InteractionResult.PASS;
             }
         }
         return InteractionResult.PASS;
@@ -101,14 +111,27 @@ public class FireflyJarBlock extends JarBlock {
 
         // Firefly Spawn Strategy #2: Spawn a single particle in a small area above the jar, with a interval depending on the light level.
         int lightLevel = blockState.getValue(LIGHT_LEVEL);
-        if (!blockState.getValue(COVERED) && lightLevel > 0 && random.nextInt(40 - lightLevel) == 0) {
-            for (int i = 0; i < lightLevel / 2; i++) {
-                double x = pos.getX() + 0.5 + (2 * random.nextDouble() - 1);
-                double y = pos.getY() + 0.5 + (random.nextInt(3) + 1);
-                double z = pos.getZ() + 0.5 + (2 * random.nextDouble() - 1);
-                var color = blockState.getValue(COLOR).getTextureDiffuseColors();
-                level.addParticle(MissingWildsParticles.FIREFLY.get(), x, y, z, color[0], color[1], color[2]);
+        if (!blockState.getValue(COVERED) && lightLevel > 0 && random.nextInt(30 - lightLevel) == 0) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof FireflyJarBlockEntity fireflyJarBlockEntity) {
+                fireflyJarBlockEntity.createParticles(level, lightLevel, pos, random);
             }
         }
+    }
+
+    public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack stack) {
+        if (stack.hasCustomHoverName()) {
+            BlockEntity blockEntity = level.getBlockEntity(blockPos);
+            if (blockEntity instanceof FireflyJarBlockEntity fireflyJarBlockEntity) {
+                fireflyJarBlockEntity.setCustomName(stack.getHoverName());
+            }
+        }
+
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new FireflyJarBlockEntity(pos, state);
     }
 }

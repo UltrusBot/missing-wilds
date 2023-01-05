@@ -2,8 +2,8 @@ package me.ultrusmods.missingwilds.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
+import org.jetbrains.annotations.Nullable;
 
 // TODO, make this an advanced particle, with a color field.
 public class FireflyParticle extends TextureSheetParticle {
@@ -13,32 +13,23 @@ public class FireflyParticle extends TextureSheetParticle {
     private double zDir;
     private boolean lit;
 
-    protected FireflyParticle(ClientLevel level, double x, double y, double z) {
+    protected FireflyParticle(ClientLevel level, double x, double y, double z, float r, float g, float b) {
         super(level, x, y, z);
         this.lifetime = (int)(Math.random() * 120) + 180;
-        this.xDir = (Math.random() * 2.0 - 1.0) * 0.1;
-        this.yDir = (Math.random() * 2.0 - 1.0) * 0.1;
-        this.zDir = (Math.random() * 2.0 - 1.0) * 0.1;
+        this.xDir = (Math.random() * 2.0 - 1.0) * 0.02;
+        this.yDir = (Math.random() * 2.0 - 1.0) * 0.02;
+        this.zDir = (Math.random() * 2.0 - 1.0) * 0.02;
         this.xd = this.xDir;
         this.yd = this.yDir;
         this.zd = this.zDir;
-        this.rCol = .196f;
-        this.gCol = .804f;
-        this.bCol = .196f;
+        this.rCol = r;
+        this.gCol = g;
+        this.bCol = b;
         this.quadSize = 0.25f;
         this.lit = true;
         this.alpha = 0;
     }
 
-    public FireflyParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-        this(level, x, y, z);
-        // Cursed, but it works so I don't have to make an advanced particle type. TODO: Make advanced particle type.
-        if (xSpeed != 0 && ySpeed != 0 && zSpeed != 0) {
-            this.rCol = (float) xSpeed;
-            this.gCol = (float) ySpeed;
-            this.bCol = (float) zSpeed;
-        }
-    }
 
     @Override
     public ParticleRenderType getRenderType() {
@@ -56,9 +47,10 @@ public class FireflyParticle extends TextureSheetParticle {
             this.alpha = Mth.clamp(this.alpha, 0, 1);
         }
         // Storing another direction isn't great, but it creates nice smooth movement. I should come back to this later.
-        this.xDir += (Math.random() - Math.random()) * 0.02D;
-        this.yDir += (Math.random() - Math.random()) * 0.02D;
-        this.zDir += (Math.random() - Math.random()) * 0.02D;
+        // TODO: Make a better particle movement algorithm.
+        this.xDir += (Math.random() * 2.0 - 1.0)  * 0.0075;
+        this.yDir += (Math.random() * 2.0 - 1.0)  * 0.0075;
+        this.zDir += (Math.random() * 2.0 - 1.0)  * 0.0075;
         this.xd = Mth.lerp(0.2F, this.xd, this.xDir);
         this.yd = Mth.lerp(0.2F, this.yd, this.yDir);
         this.zd = Mth.lerp(0.2F, this.zd, this.zDir);
@@ -73,16 +65,17 @@ public class FireflyParticle extends TextureSheetParticle {
     }
 
 
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
+    public static class Provider implements ParticleProvider<FireflyParticleOptions> {
         private final SpriteSet sprite;
 
         public Provider(SpriteSet spriteSet) {
             this.sprite = spriteSet;
         }
 
+        @Nullable
         @Override
-        public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            var particle = new FireflyParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
+        public Particle createParticle(FireflyParticleOptions type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+            var particle = new FireflyParticle(level, x, y, z, type.getRed(), type.getGreen(), type.getBlue());
             particle.pickSprite(this.sprite);
             return particle;
         }

@@ -14,6 +14,7 @@ public class MissingWildsModCommon {
         MissingWildsFeatures.init();
         MissingWildsSounds.init();
         MissingWildsParticles.init();
+        MissingWildsBlockEntities.init();
         if (!Services.PLATFORM.getPlatformName().equals("Forge")) {
             postInit();
         }

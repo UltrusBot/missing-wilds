@@ -24,5 +24,6 @@ public class MissingWildsClientFabric implements ClientModInitializer {
             registry.register(Constants.id("particle/firefly"));
         }));
         ParticleFactoryRegistry.getInstance().register(MissingWildsParticles.FIREFLY.get(), FireflyParticle.Provider::new);
+
     }
 }
