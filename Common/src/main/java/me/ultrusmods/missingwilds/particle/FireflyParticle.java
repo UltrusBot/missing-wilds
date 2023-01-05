@@ -3,9 +3,7 @@ package me.ultrusmods.missingwilds.particle;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.util.Mth;
-import org.jetbrains.annotations.Nullable;
 
-// TODO, make this an advanced particle, with a color field.
 public class FireflyParticle extends TextureSheetParticle {
 
     private double xDir;
@@ -72,7 +70,6 @@ public class FireflyParticle extends TextureSheetParticle {
             this.sprite = spriteSet;
         }
 
-        @Nullable
         @Override
         public Particle createParticle(FireflyParticleOptions type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
             var particle = new FireflyParticle(level, x, y, z, type.getRed(), type.getGreen(), type.getBlue());

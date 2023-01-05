@@ -24,7 +24,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import org.jetbrains.annotations.Nullable;
 
 public class FireflyJarBlock extends JarBlock implements EntityBlock {
     public static final IntegerProperty LIGHT_LEVEL = IntegerProperty.create("light_level", 1, 15);
@@ -129,7 +128,6 @@ public class FireflyJarBlock extends JarBlock implements EntityBlock {
 
     }
 
-    @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new FireflyJarBlockEntity(pos, state);

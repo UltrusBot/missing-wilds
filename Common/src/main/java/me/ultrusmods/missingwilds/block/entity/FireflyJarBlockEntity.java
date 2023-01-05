@@ -15,7 +15,6 @@ import net.minecraft.world.Nameable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 
@@ -64,7 +63,6 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
         this.name = name;
     }
 
-    @Nullable
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
