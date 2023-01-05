@@ -43,7 +43,7 @@ public class FallenLogFeature extends Feature<FallenLogFeatureConfig> {
 				BlockPos cur = blockPos.relative(axis, i);
 				BlockPos above = cur.above();
 				boolean mossy = random.nextFloat() > .33 && structureWorldAccess.isEmptyBlock(above);
-				structureWorldAccess.setBlock(cur, blockState.setValue(FallenLogBlock.MOSSY, mossy), 4);
+				structureWorldAccess.setBlock(cur, blockState.setValue(FallenLogBlock.COVER, FallenLogBlock.Cover.MOSSY), 4);
 				if (mossy) {
 					structureWorldAccess.setBlock(above, MOSS, 4);
 				}

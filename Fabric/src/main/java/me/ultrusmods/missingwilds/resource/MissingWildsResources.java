@@ -32,21 +32,27 @@ public class MissingWildsResources {
 	public static void addLog(ModCompat.LogData logData, String modid) {
 		var fallenLogLocation = Constants.id("block/" + modid + "_" + logData.name());
 		var fallenLogLocationMossy = Constants.id("block/" + modid + "_" + logData.name() + "_mossy");
+		var fallenLogLocationSnowy = Constants.id("block/" + modid + "_" + logData.name() + "_snowy");
 		RegistryObject<Block> block = MissingWildsBlocks.registerFallenLog(modid + "_" + logData.name());
 		MissingWildsFabric.COMPAT_LOGS.add(block.get());
 		Item item = MissingWildsItems.register(modid + "_" + logData.name(), block).get();
 		ResourceLocation id = Constants.id(modid + "_" + logData.name());
 		var model = new JBlockModel(fallenLogLocation);
 		var modelMossy = new JBlockModel(fallenLogLocationMossy);
+		var modelSnowy = new JBlockModel(fallenLogLocationSnowy);
 		RESOURCE_PACK.addBlockState(
 				JState.state(
 						JState.variant()
-								.put("axis=x,mossy=false", model.clone().y(90))
-								.put("axis=y,mossy=false", model.clone().x(90))
-								.put("axis=z,mossy=false", model.clone())
-								.put("axis=x,mossy=true", modelMossy.clone().y(90))
-								.put("axis=y,mossy=true", model.clone().x(90))
-								.put("axis=z,mossy=true", modelMossy.clone())
+								.put("axis=x,cover=none", model.clone().y(90))
+								.put("axis=y,cover=none", model.clone().x(90))
+								.put("axis=z,cover=none", model.clone())
+								.put("axis=x,cover=moss", modelMossy.clone().y(90))
+								.put("axis=y,cover=moss", model.clone().x(90))
+								.put("axis=z,cover=moss", modelMossy.clone())
+								.put("axis=x,cover=snow", modelSnowy.clone().y(90))
+								.put("axis=y,cover=snow", model.clone().x(90))
+								.put("axis=z,cover=snow", modelSnowy.clone())
+
 				),
 				id
 		);
@@ -59,6 +65,11 @@ public class MissingWildsResources {
 				JModel.model("missingwilds:block/template/fallen_log_template_mossy")
 						.textures(new JTextures().var("log", logData.logTexture()).var("log_inner", logData.strippedLogTexture())),
 				fallenLogLocationMossy
+		);
+		RESOURCE_PACK.addModel(
+				JModel.model("missingwilds:block/template/fallen_log_template_snowy")
+						.textures(new JTextures().var("log", logData.logTexture()).var("log_inner", logData.strippedLogTexture())),
+				fallenLogLocationSnowy
 		);
 		RESOURCE_PACK.addModel(
 				JModel.model(fallenLogLocation),

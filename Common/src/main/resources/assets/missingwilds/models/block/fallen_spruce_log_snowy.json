@@ -1,0 +1,7 @@
+{
+  "parent": "missingwilds:block/template/fallen_log_template_mossy",
+  "textures": {
+    "log": "minecraft:block/spruce_log",
+    "log_inner": "minecraft:block/stripped_spruce_log"
+  }
+}

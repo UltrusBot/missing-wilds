@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 public class MissingWildsTags {
     public static final TagKey<Block> FALLEN_LOGS = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(Constants.MOD_ID, "fallen_logs"));
     public static final TagKey<Block> MOSS = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(Constants.MOD_ID, "moss"));
+    public static final TagKey<Block> SNOW = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(Constants.MOD_ID, "snow"));
     public static final TagKey<Biome> BIRCH = TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Constants.MOD_ID, "birch"));
     public static final TagKey<Biome> OAK = TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Constants.MOD_ID, "oak"));
     public static final TagKey<Biome> SPRUCE = TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Constants.MOD_ID, "spruce"));
