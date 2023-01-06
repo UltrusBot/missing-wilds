@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "minecraft:old_growth_birch_forest",
-    "minecraft:birch_forest"
+    "minecraft:birch_forest",
+    {
+      "required": false,
+      "id": "terralith:birch_taiga"
+    }
   ]
 }

@@ -1,6 +1,7 @@
 package me.ultrusmods.missingwilds.worldgen;
 
 import me.ultrusmods.missingwilds.register.MissingWildsPlacedFeatures;
+import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import net.fabricmc.fabric.api.biome.v1.*;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceLocation;
@@ -12,7 +13,8 @@ import java.util.function.Predicate;
 import static me.ultrusmods.missingwilds.Constants.MOD_ID;
 
 public class MissingWildsWorldGen {
-    public static final Predicate<BiomeSelectionContext> BIOMES = BiomeSelectors.includeByKey(Biomes.BIRCH_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST);
+//    public static final Predicate<BiomeSelectionContext> BIOMES = BiomeSelectors.includeByKey(Biomes.BIRCH_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST);
+    public static final Predicate<BiomeSelectionContext> BIOMES = BiomeSelectors.tag(MissingWildsTags.BIRCH);
     public static void init() {
         BiomeModification biomeModifications = BiomeModifications.create(new ResourceLocation(MOD_ID, "world_features"));
         biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.PLACED_FALLEN_BIRCH_LOG.value()));
