@@ -39,5 +39,9 @@ public interface IPlatformHelper {
 
     void setBlockRenderType(RenderType layer, Block... blocks);
 
+    void duringItemRegistering();
+
+    void duringBlockRegistering();
+
     <T extends BlockEntity> BlockEntityType<T> buildBlockEntity(BiFunction<BlockPos, BlockState, T> supplier, Block... blocks);
 }

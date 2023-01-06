@@ -14,6 +14,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
+jarJar.enable()
 
 archivesBaseName = "${mod_name}-forge-${minecraft_version}"
 
@@ -27,6 +28,9 @@ repositories {
     maven {
         name = 'jitpack'
         url = "https://jitpack.io"
+    }
+    maven {
+        url = "https://api.modrinth.com/maven"
     }
 }
 
@@ -90,8 +94,18 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly project(":Common")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    implementation fg.deobf( "maven.modrinth:brrp:0.8.2-mc1.19.2-forge")
+    implementation fg.deobf("maven.modrinth:midnightlib:1.0.0-forge")
 }
-
+tasks.build.dependsOn tasks.jarJar
+tasks.jarJar.archiveClassifier.set("");
+reobf {
+    jarJar {}
+}
+tasks.jarJar.finalizedBy("reobfJarJar")
+tasks.withType(JavaCompile) {
+    source(project(":Common").sourceSets.main.allSource)
+}
 tasks.withType(JavaCompile) {
     source(project(":Common").sourceSets.main.allSource)
 }

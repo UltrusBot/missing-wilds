@@ -1,5 +1,6 @@
 package me.ultrusmods.missingwilds.platform;
 
+import me.ultrusmods.missingwilds.compat.ModCompatForge;
 import me.ultrusmods.missingwilds.item.MissingWildsItemGroup;
 import me.ultrusmods.missingwilds.platform.services.IPlatformHelper;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -46,6 +47,17 @@ public class ForgePlatformHelper implements IPlatformHelper {
             //TODO: Look into alternative for this with multiloader.
             ItemBlockRenderTypes.setRenderLayer(block, layer);
         }
+    }
+
+    @Override
+    public void duringItemRegistering() {
+        ModCompatForge.registerModCompatItems();
+
+    }
+
+    @Override
+    public void duringBlockRegistering() {
+        ModCompatForge.registerModComatBlocks();
     }
 
     @Override

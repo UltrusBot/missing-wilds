@@ -47,6 +47,16 @@ public class FabricPlatformHelper implements IPlatformHelper {
     }
 
     @Override
+    public void duringItemRegistering() {
+
+    }
+
+    @Override
+    public void duringBlockRegistering() {
+
+    }
+
+    @Override
     public <T extends BlockEntity> BlockEntityType<T> buildBlockEntity(BiFunction<BlockPos, BlockState, T> supplier, Block... blocks) {
         return FabricBlockEntityTypeBuilder.create(supplier::apply, blocks).build(null);
     }

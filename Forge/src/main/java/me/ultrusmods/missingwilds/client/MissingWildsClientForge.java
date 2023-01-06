@@ -2,10 +2,10 @@ package me.ultrusmods.missingwilds.client;
 
 
 import me.ultrusmods.missingwilds.Constants;
+import me.ultrusmods.missingwilds.MissingWildsForge;
 import me.ultrusmods.missingwilds.particle.FireflyParticle;
-import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
+import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsParticles;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -21,7 +21,9 @@ public class MissingWildsClientForge {
     @SubscribeEvent
     public static void onInitializeClient(FMLClientSetupEvent event) {
         MissingWildsClientCommon.init();
-
+        MissingWildsForge.COMPAT_LOGS.forEach(block -> {
+            Services.PLATFORM.setBlockRenderType(RenderType.cutoutMipped(), block.get());
+        });
     }
 
     @SubscribeEvent

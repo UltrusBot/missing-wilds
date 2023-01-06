@@ -10,7 +10,9 @@ public class MissingWildsModCommon {
 
     public static void init() {
         MissingWildsBlocks.init();
+        Services.PLATFORM.duringBlockRegistering();
         MissingWildsItems.init();
+        Services.PLATFORM.duringItemRegistering();
         MissingWildsFeatures.init();
         MissingWildsSounds.init();
         MissingWildsParticles.init();
