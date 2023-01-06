@@ -61,5 +61,17 @@
   "block.missingwilds.ecologics_fallen_coconut_log": "Fallen Coconut Log",
   "block.missingwilds.ecologics_fallen_walnut_log": "Fallen Walnut Log",
   "stat.missingwilds.log_crawl_one_cm": "Distance Crawled in Log",
-  "block.missingwilds.fallen_mangrove_log": "Fallen Mangrove Log"
+  "block.missingwilds.fallen_mangrove_log": "Fallen Mangrove Log",
+  "block.missingwildls.terrestria_fallen_hemlock_log": "Fallen Hemlock Log",
+  "block.missingwilds.terrestria_fallen_japanese_maple_log": "Fallen Japanese Maple Log",
+  "block.missingwilds.terrestria_fallen_rainbow_eucalyptus_log": "Fallen Rainbow Eucalyptus Log",
+  "block.missingwilds.terrestria_fallen_redwood_log": "Fallen Redwood Log",
+  "block.missingwilds.terrestria_fallen_rubber_log": "Fallen Rubber Log",
+  "block.missingwilds.cinderscapes_fallen_scorched_stem": "Fallen Scorched Stem",
+  "block.missingwilds.cinderscapes_fallen_umbral_stem": "Fallen Umbral Stem",
+  "block.missingwilds.goodending_fallen_cypress_log": "Fallen Cypress Log",
+  "block.missingwilds.goodending_fallen_muddy_oak_log": "Fallen Muddy Oak Log",
+  "block.missingwilds.aurorasdeco_fallen_azalea_log": "Fallen Azalea Log",
+  "block.missingwilds.aurorasdeco_fallen_flowering_azalea_log": "Fallen Flowering Azalea Log",
+  "block.missingwilds.aurorasdeco_fallen_jacaranda_log": "Fallen Jacaranda Log"
 }
