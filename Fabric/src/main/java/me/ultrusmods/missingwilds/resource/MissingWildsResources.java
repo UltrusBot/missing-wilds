@@ -77,7 +77,7 @@ public class MissingWildsResources {
 		);
 		FALLEN_LOGS.add(id);
 		RESOURCE_PACK.addRecipe(
-				Constants.id(logData.name()), JRecipe.shaped(
+				Constants.id(modid + "_" + logData.name()), JRecipe.shaped(
 						JPattern.pattern("xxx", "x x", "xxx"),
 						JKeys.keys()
 								.key("x", JIngredient.ingredient().item(modid + ":" + logData.name().substring(7))),

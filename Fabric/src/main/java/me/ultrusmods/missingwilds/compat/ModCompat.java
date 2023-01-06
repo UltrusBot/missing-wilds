@@ -50,5 +50,9 @@ public abstract class ModCompat {
 		modCompats.put("charm", new CharmCompat());
 		modCompats.put("biomemakeover", new BiomeMakeoverCompat());
 		modCompats.put("ecologics", new EcologicsCompat());
+		modCompats.put("terrestria", new TerrestriaCompat());
+		modCompats.put("cinderscapes", new CinderscapesCompat());
+		modCompats.put("goodending", new GoodEndingCompat());
+		modCompats.put("aurorasdeco", new AurorasDecorationsCompat());
 	}
 }
