@@ -1,0 +1,7 @@
+{
+  "parent": "missingwilds:block/template/fallen_log_template_snowy",
+  "textures": {
+    "log": "minecraft:block/mangrove_log",
+    "log_inner": "minecraft:block/stripped_mangrove_log"
+  }
+}

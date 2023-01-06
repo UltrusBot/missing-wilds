@@ -9,6 +9,8 @@ public class MissingWildsDatagenFabric implements DataGeneratorEntrypoint {
         if (System.getProperty("mw.common") != null) {
             // Commmon data.
             fabricDataGenerator.addProvider(MissingWildsModelProvider::new);
+            fabricDataGenerator.addProvider(MissingWildsLootTableProvider::new);
+            fabricDataGenerator.addProvider(MissingWildsRecipeProvider::new);
         } else {
             // Fabric only data gen here, when I add some.
         }

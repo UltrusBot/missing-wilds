@@ -10,6 +10,10 @@ repositories {
     maven {
         url = uri("https://storage.googleapis.com/devan-maven/")
     }
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
 }
 
 dependencies {
@@ -19,6 +23,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     implementation project(":Common")
     modImplementation include("net.devtech:arrp:0.6.2")
+    modImplementation "dev.emi:emi:0.5.3+1.19.2"
 }
 
 loom {
@@ -40,7 +45,7 @@ loom {
             inherit client
             vmArg "-Dmw.common=true"
             vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${file("../common/src/generated/resources")}"
+            vmArg "-Dfabric-api.datagen.output-dir=${file("../Common/src/generated/resources")}"
             vmArg "-Dfabric-api.datagen.modid=${mod_id}"
             runDir "build/datagen"
         }

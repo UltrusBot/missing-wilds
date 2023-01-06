@@ -1,7 +1,0 @@
-{
-  "parent": "missingwilds:block/template/fallen_log_template_mossy",
-  "textures": {
-    "log": "minecraft:block/crimson_stem",
-    "log_inner": "minecraft:block/stripped_crimson_stem"
-  }
-}

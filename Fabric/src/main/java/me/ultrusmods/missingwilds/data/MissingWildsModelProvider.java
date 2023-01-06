@@ -25,7 +25,14 @@ public class MissingWildsModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
         createFallenLog(MissingWildsBlocks.FALLEN_OAK_LOG.get(), Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG, blockModelGenerators);
-
+        createFallenLog(MissingWildsBlocks.FALLEN_BIRCH_LOG.get(), Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG, blockModelGenerators);
+        createFallenLog(MissingWildsBlocks.FALLEN_SPRUCE_LOG.get(), Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG, blockModelGenerators);
+        createFallenLog(MissingWildsBlocks.FALLEN_JUNGLE_LOG.get(), Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG, blockModelGenerators);
+        createFallenLog(MissingWildsBlocks.FALLEN_ACACIA_LOG.get(), Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG, blockModelGenerators);
+        createFallenLog(MissingWildsBlocks.FALLEN_DARK_OAK_LOG.get(), Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG, blockModelGenerators);
+        createFallenLog(MissingWildsBlocks.FALLEN_CRIMSON_STEM.get(), Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM, blockModelGenerators);
+        createFallenLog(MissingWildsBlocks.FALLEN_WARPED_STEM.get(), Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM, blockModelGenerators);
+        createFallenLog(MissingWildsBlocks.FALLEN_MANGROVE_LOG.get(), Blocks.MANGROVE_LOG, Blocks.STRIPPED_MANGROVE_LOG, blockModelGenerators);
     }
 
     @Override

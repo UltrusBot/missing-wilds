@@ -20,6 +20,9 @@
     ],
     "client": [
       "me.ultrusmods.missingwilds.client.MissingWildsClientFabric"
+    ],
+    "fabric-datagen": [
+      "me.ultrusmods.missingwilds.data.MissingWildsDatagenFabric"
     ]
   },
   "accessWidener": "missingwilds.accesswidener",

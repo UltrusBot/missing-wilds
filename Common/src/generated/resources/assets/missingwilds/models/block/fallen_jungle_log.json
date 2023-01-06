@@ -1,0 +1,7 @@
+{
+  "parent": "missingwilds:block/template/fallen_log_template",
+  "textures": {
+    "log": "minecraft:block/jungle_log",
+    "log_inner": "minecraft:block/stripped_jungle_log"
+  }
+}
