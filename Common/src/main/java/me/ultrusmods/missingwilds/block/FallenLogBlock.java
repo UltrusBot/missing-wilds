@@ -22,7 +22,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class FallenLogBlock extends Block implements SimpleWaterloggedBlock {
 	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
-//	public static final BooleanProperty MOSSY = BooleanProperty.create("mossy");
 	public static final EnumProperty<Cover> COVER = EnumProperty.create("cover", Cover.class);
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
@@ -90,7 +89,6 @@ public class FallenLogBlock extends Block implements SimpleWaterloggedBlock {
 	}
 
 	private static Cover getCover(BlockState state) {
-		// TODO: Make a tag for this?
 		if (state.is(MissingWildsTags.MOSS)) {
 			return Cover.MOSSY;
 		} else if (state.is(MissingWildsTags.SNOW)) {
@@ -100,7 +98,6 @@ public class FallenLogBlock extends Block implements SimpleWaterloggedBlock {
 		}
 	}
 
-	// Make an ENUM called Cover with the values: NONE, MOSSY, SNOWY
 	public enum Cover implements StringRepresentable {
 		NONE("none"),
 		MOSSY("moss"),

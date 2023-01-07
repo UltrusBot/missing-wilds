@@ -1,5 +1,6 @@
 package me.ultrusmods.missingwilds.item;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.BlockItem;
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class FireflyJarItem extends BlockItem {
     private static final int BAR_COLOR = Mth.color(.196f, .804f, .196f);
+    private static final Component BAR_TEXT = Component.translatable("tooltip.missingwilds.firefly_jar");
 
     public FireflyJarItem(Block block, Properties properties) {
         super(block, properties);
@@ -20,22 +22,11 @@ public class FireflyJarItem extends BlockItem {
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
-        tooltip.add(Component.nullToEmpty("Light Level: " + stack.getOrCreateTag().getInt("light_level")));
+        int lightLevel = 1;
+        if (stack.hasTag()) {
+            lightLevel = Integer.parseInt(stack.getOrCreateTag().getCompound("BlockStateTag").getString("light_level"));
+        }
+        tooltip.add(Component.translatable("tooltip.missingwilds.firefly_jar", lightLevel).withStyle(ChatFormatting.GRAY));
     }
 
-    //TODO: Fix this for block entity nbt stuff
-    @Override
-    public boolean isBarVisible(ItemStack stack) {
-        return true;
-    }
-
-    @Override
-    public int getBarColor(ItemStack stack) {
-        return BAR_COLOR;
-    }
-
-    @Override
-    public int getBarWidth(ItemStack stack) {
-        return Math.min(1 + 12 * stack.getOrCreateTag().getInt("light_level") / 15, 13);
-    }
 }
