@@ -27,16 +27,16 @@ import net.minecraft.world.phys.BlockHitResult;
 
 public class FireflyJarBlock extends JarBlock implements EntityBlock {
     public static final IntegerProperty LIGHT_LEVEL = IntegerProperty.create("light_level", 1, 15);
-    public static final BooleanProperty COVERED = BooleanProperty.create("covered");
 
     public FireflyJarBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT_LEVEL, 1).setValue(COVERED, true));
+        this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT_LEVEL, 1));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LIGHT_LEVEL, COVERED);
+        super.createBlockStateDefinition(builder);
+        builder.add(LIGHT_LEVEL);
     }
 
     @Override

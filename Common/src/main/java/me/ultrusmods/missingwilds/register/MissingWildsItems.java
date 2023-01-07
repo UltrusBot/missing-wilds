@@ -1,6 +1,7 @@
 package me.ultrusmods.missingwilds.register;
 
 import me.ultrusmods.missingwilds.Constants;
+import me.ultrusmods.missingwilds.block.FireflyJarBlock;
 import me.ultrusmods.missingwilds.item.FireflyJarItem;
 import me.ultrusmods.missingwilds.item.MissingWildsFoodComponents;
 import me.ultrusmods.missingwilds.platform.Services;
@@ -39,6 +40,40 @@ public class MissingWildsItems {
 	public static final RegistryObject<Item> FIREFLY_JAR = register("firefly_jar", () -> new FireflyJarItem(MissingWildsBlocks.FIREFLY_JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	public static final RegistryObject<Item> TINTED_JAR = register("tinted_jar", () -> new BlockItem(MissingWildsBlocks.TINTED_JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	public static final RegistryObject<Item> TINTED_FIREFLY_JAR = register("tinted_firefly_jar", () -> new FireflyJarItem(MissingWildsBlocks.TINTED_FIREFLY_JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
+
+	public static final RegistryObject<Item> WHITE_STAINED_JAR_ITEM = register("white_stained_jar", MissingWildsBlocks.WHITE_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> WHITE_STAINED_FIREFLY_JAR_ITEM = register("white_stained_firefly_jar", MissingWildsBlocks.WHITE_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> ORANGE_STAINED_JAR_ITEM = register("orange_stained_jar", MissingWildsBlocks.ORANGE_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> ORANGE_STAINED_FIREFLY_JAR_ITEM = register("orange_stained_firefly_jar", MissingWildsBlocks.ORANGE_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> MAGENTA_STAINED_JAR_ITEM = register("magenta_stained_jar", MissingWildsBlocks.MAGENTA_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> MAGENTA_STAINED_FIREFLY_JAR_ITEM = register("magenta_stained_firefly_jar", MissingWildsBlocks.MAGENTA_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> LIGHT_BLUE_STAINED_JAR_ITEM = register("light_blue_stained_jar", MissingWildsBlocks.LIGHT_BLUE_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> LIGHT_BLUE_STAINED_FIREFLY_JAR_ITEM = register("light_blue_stained_firefly_jar", MissingWildsBlocks.LIGHT_BLUE_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> YELLOW_STAINED_JAR_ITEM = register("yellow_stained_jar", MissingWildsBlocks.YELLOW_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> YELLOW_STAINED_FIREFLY_JAR_ITEM = register("yellow_stained_firefly_jar", MissingWildsBlocks.YELLOW_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> LIME_STAINED_JAR_ITEM = register("lime_stained_jar", MissingWildsBlocks.LIME_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> LIME_STAINED_FIREFLY_JAR_ITEM = register("lime_stained_firefly_jar", MissingWildsBlocks.LIME_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> PINK_STAINED_JAR_ITEM = register("pink_stained_jar", MissingWildsBlocks.PINK_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> PINK_STAINED_FIREFLY_JAR_ITEM = register("pink_stained_firefly_jar", MissingWildsBlocks.PINK_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> GRAY_STAINED_JAR_ITEM = register("gray_stained_jar", MissingWildsBlocks.GRAY_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> GRAY_STAINED_FIREFLY_JAR_ITEM = register("gray_stained_firefly_jar", MissingWildsBlocks.GRAY_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> LIGHT_GRAY_STAINED_JAR_ITEM = register("light_gray_stained_jar", MissingWildsBlocks.LIGHT_GRAY_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> LIGHT_GRAY_STAINED_FIREFLY_JAR_ITEM = register("light_gray_stained_firefly_jar", MissingWildsBlocks.LIGHT_GRAY_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> CYAN_STAINED_JAR_ITEM = register("cyan_stained_jar", MissingWildsBlocks.CYAN_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> CYAN_STAINED_FIREFLY_JAR_ITEM = register("cyan_stained_firefly_jar", MissingWildsBlocks.CYAN_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> PURPLE_STAINED_JAR_ITEM = register("purple_stained_jar", MissingWildsBlocks.PURPLE_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> PURPLE_STAINED_FIREFLY_JAR_ITEM = register("purple_stained_firefly_jar", MissingWildsBlocks.PURPLE_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> BLUE_STAINED_JAR_ITEM = register("blue_stained_jar", MissingWildsBlocks.BLUE_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> BLUE_STAINED_FIREFLY_JAR_ITEM = register("blue_stained_firefly_jar", MissingWildsBlocks.BLUE_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> BROWN_STAINED_JAR_ITEM = register("brown_stained_jar", MissingWildsBlocks.BROWN_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> BROWN_STAINED_FIREFLY_JAR_ITEM = register("brown_stained_firefly_jar", MissingWildsBlocks.BROWN_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> GREEN_STAINED_JAR_ITEM = register("green_stained_jar", MissingWildsBlocks.GREEN_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> GREEN_STAINED_FIREFLY_JAR_ITEM = register("green_stained_firefly_jar", MissingWildsBlocks.GREEN_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> RED_STAINED_JAR_ITEM = register("red_stained_jar", MissingWildsBlocks.RED_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> RED_STAINED_FIREFLY_JAR_ITEM = register("red_stained_firefly_jar", MissingWildsBlocks.RED_STAINED_FIREFLY_JAR_BLOCK);
+	public static final RegistryObject<Item> BLACK_STAINED_JAR_ITEM = register("black_stained_jar", MissingWildsBlocks.BLACK_STAINED_JAR_BLOCK);
+	public static final RegistryObject<Item> BLACK_STAINED_FIREFLY_JAR_ITEM = register("black_stained_firefly_jar", MissingWildsBlocks.BLACK_STAINED_FIREFLY_JAR_BLOCK);
+
 	public static void init() {
 
 	}
@@ -47,6 +82,9 @@ public class MissingWildsItems {
 		return ITEMS.register(id, supplier);
 	}
 	public static RegistryObject<Item> register(String id, RegistryObject<Block> block) {
+		if (block.get() instanceof FireflyJarBlock) {
+			return ITEMS.register(id, () -> new FireflyJarItem(block.get(), new Item.Properties().tab(Services.PLATFORM.getCreativeTab())));
+		}
 		return ITEMS.register(id,() -> new BlockItem(block.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	}
 }

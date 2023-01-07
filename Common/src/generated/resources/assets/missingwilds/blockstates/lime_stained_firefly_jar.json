@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "covered=false": {
+      "model": "missingwilds:block/lime_stained_firefly_jar_open"
+    },
+    "covered=true": {
+      "model": "missingwilds:block/lime_stained_firefly_jar"
+    }
+  }
+}
