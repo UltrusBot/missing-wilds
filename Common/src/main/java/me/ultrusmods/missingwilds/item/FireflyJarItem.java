@@ -12,9 +12,6 @@ import net.minecraft.world.level.block.Block;
 import java.util.List;
 
 public class FireflyJarItem extends BlockItem {
-    private static final int BAR_COLOR = Mth.color(.196f, .804f, .196f);
-    private static final Component BAR_TEXT = Component.translatable("tooltip.missingwilds.firefly_jar");
-
     public FireflyJarItem(Block block, Properties properties) {
         super(block, properties);
     }
