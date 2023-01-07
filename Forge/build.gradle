@@ -116,6 +116,7 @@ processResources {
     filesMatching('*.mixins.json') {
         expand "refmap_target": "${mod_id}."
     }
+    exclude '.cache'
 }
 
 
