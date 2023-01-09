@@ -1,9 +1,15 @@
 package me.ultrusmods.missingwilds;
 
 import me.ultrusmods.missingwilds.compat.ModCompatForge;
+import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.Services;
+import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.RegistryObject;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -26,6 +32,12 @@ public class MissingWildsForge {
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(MissingWildsModCommon::postInit);
+    }
+
+    @SubscribeEvent
+    private void spawnPlacementsEvent(SpawnPlacementRegisterEvent event) {
+        event.register(MissingWildsEntities.FIREFLY_SWARM.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules, SpawnPlacementRegisterEvent.Operation.AND);
+        System.out.println("Spawn Placement Registered on Forge"); //TODO remove
     }
 
 

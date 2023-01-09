@@ -18,4 +18,5 @@ public class MissingWildsTags {
     public static final TagKey<Biome> ACACIA = TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Constants.MOD_ID, "acacia"));
     public static final TagKey<Biome> DARK_OAK = TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Constants.MOD_ID, "dark_oak"));
 
+    public static final TagKey<Biome> SPAWNS_FIREFLY_SWARMS = TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Constants.MOD_ID, "spawns_firefly_swarms"));
 }

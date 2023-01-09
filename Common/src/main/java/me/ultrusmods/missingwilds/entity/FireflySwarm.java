@@ -1,15 +1,20 @@
 package me.ultrusmods.missingwilds.entity;
 
 import me.ultrusmods.missingwilds.particle.FireflyParticleOptions;
+import me.ultrusmods.missingwilds.tags.MissingWildsTags;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 
 public class FireflySwarm extends AmbientCreature {
     private static final EntityDataAccessor<Integer> SIZE = SynchedEntityData.defineId(FireflySwarm.class, EntityDataSerializers.INT);
@@ -40,6 +45,18 @@ public class FireflySwarm extends AmbientCreature {
             }
         }
         super.aiStep();
+    }
+
+    public static boolean checkFireflySpawnRules(EntityType<? extends FireflySwarm> entityType, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource random) {
+        if (level.getBiome(blockPos).is(MissingWildsTags.SPAWNS_FIREFLY_SWARMS)) {
+            if (blockPos.getY() > 60 && blockPos.getY() < 70) {
+                if (random.nextFloat() < 0.6f && random.nextFloat() > level.getMoonBrightness()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public static AttributeSupplier.Builder createAttributes() {
