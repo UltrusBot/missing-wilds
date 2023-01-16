@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "quilt_loader": {
+    "group": "me.ultrusmods",
+    "id": "missingwilds",
+    "version": "${version}",
+    "metadata": {
+      "name": "Missing Wilds",
+      "description": "Adds the features scrapped in the Wild Update.",
+      "contributors": {
+        "UltrusBot": "Owner"
+      },
+      "contact": {
+        "homepage": "https://www.ultrusmods.me/",
+        "issues": "https://github.com/UltrusBot/missing-wilds/issues",
+        "sources": "https://github.com/UltrusBot/missing-wilds"
+      },
+      "icon": "assets/icon.png"
+    },
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "entrypoints": {
+      "init": "me.ultrusmods.missingwilds.MissingWildsQuilt",
+      "client_init": "me.ultrusmods.missingwilds.client.MissingWildsClientQuilt"
+    },
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "versions": ">=0.17.0-"
+      },
+      {
+        "id": "quilted_fabric_api",
+        "versions": ">=4.0.0-"
+      },
+      {
+        "id": "minecraft",
+        "versions": "1.19.2"
+      }
+    ]
+  },
+  "accessWidener": "missingwilds.accesswidener",
+  "mixin": [
+    "missingwilds.quilt.mixins.json",
+    "missingwilds.mixins.json"
+  ]
+}

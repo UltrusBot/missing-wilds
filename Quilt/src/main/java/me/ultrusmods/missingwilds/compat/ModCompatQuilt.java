@@ -1,29 +1,31 @@
 package me.ultrusmods.missingwilds.compat;
 
-import me.ultrusmods.missingwilds.Constants;
-import me.ultrusmods.missingwilds.resource.MissingWildsResources;
-import net.fabricmc.loader.api.FabricLoader;
+import me.ultrusmods.missingwilds.MissingWildsQuilt;
+import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
+import me.ultrusmods.missingwilds.register.MissingWildsItems;
+import me.ultrusmods.missingwilds.register.RegistryObject;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import org.quiltmc.loader.api.QuiltLoader;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class ModCompat {
+public abstract class ModCompatQuilt {
 	private final List<LogData> logList = new ArrayList<>();
-	public static HashMap<String, ModCompat> modCompats = new HashMap<>();
+	public static HashMap<String, ModCompatQuilt> modCompats = new HashMap<>();
 	public static void checkModCompat() {
 		modCompats.forEach((modId, modCompat) -> {
-			if (FabricLoader.getInstance().isModLoaded(modId)) {
+			if (QuiltLoader.isModLoaded(modId)) {
 				modCompat.addLogs();
 				modCompat.logList.forEach(logData -> {
-					MissingWildsResources.addLog(logData, modId);
+					RegistryObject<Block> block = MissingWildsBlocks.registerFallenLog(modId + "_" + logData.name());
+					MissingWildsQuilt.COMPAT_LOGS.add(block.get());
+					Item item = MissingWildsItems.register(modId + "_" + logData.name(), block).get();
 				});
 			}
 		});
-		MissingWildsResources.RESOURCE_PACK.addTag(
-				Constants.id("blocks/fallen_logs"),
-				MissingWildsResources.FALLEN_LOGS
-		);
 	}
 
 	public abstract void addLogs();
@@ -42,7 +44,6 @@ public abstract class ModCompat {
 
 	}
 	static {
-//		modCompats.put("minecraft", new MinecraftBase());
 		modCompats.put("traverse", new TraverseModCompat());
 		modCompats.put("byg", new BygModCompat());
 		modCompats.put("blockus", new BlockusCompat());
@@ -53,5 +54,6 @@ public abstract class ModCompat {
 		modCompats.put("terrestria", new TerrestriaCompat());
 		modCompats.put("cinderscapes", new CinderscapesCompat());
 		modCompats.put("goodending", new GoodEndingCompat());
+		modCompats.put("aurorasdeco", new AurorasDecorationsCompat());
 	}
 }

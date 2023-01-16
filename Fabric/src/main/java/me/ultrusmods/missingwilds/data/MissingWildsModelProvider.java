@@ -1,7 +1,6 @@
 package me.ultrusmods.missingwilds.data;
 
 import me.ultrusmods.missingwilds.block.FallenLogBlock;
-import me.ultrusmods.missingwilds.block.FireflyJarBlock;
 import me.ultrusmods.missingwilds.block.JarBlock;
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
