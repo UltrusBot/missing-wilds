@@ -1,7 +1,6 @@
 package me.ultrusmods.missingwilds.register;
 
 import me.ultrusmods.missingwilds.Constants;
-import me.ultrusmods.missingwilds.block.FireflyJarBlock;
 import me.ultrusmods.missingwilds.item.FireflyJarItem;
 import me.ultrusmods.missingwilds.item.MissingWildsFoodComponents;
 import me.ultrusmods.missingwilds.platform.Services;

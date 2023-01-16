@@ -3,7 +3,6 @@ package me.ultrusmods.missingwilds.platform.services;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;

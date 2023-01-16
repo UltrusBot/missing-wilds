@@ -5,7 +5,6 @@ import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.Services;
 import net.minecraft.core.Registry;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
 
 public class MissingWildsEntities {
     public static final RegistrationProvider<EntityType<?>> ENTITY_TYPES = RegistrationProvider.get(Registry.ENTITY_TYPE, Constants.MOD_ID);

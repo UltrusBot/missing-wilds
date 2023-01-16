@@ -5,7 +5,6 @@ import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import net.fabricmc.fabric.api.biome.v1.*;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
 import java.util.function.Predicate;
