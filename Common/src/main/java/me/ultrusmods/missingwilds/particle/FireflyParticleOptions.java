@@ -41,17 +41,30 @@ public class FireflyParticleOptions implements ParticleOptions {
     private final float red;
     private final float green;
     private final float blue;
+    private final int lifetime;
+    private final float speedMultiplier;
+
 
     public FireflyParticleOptions(float red, float green, float blue) {
         this.red = red;
         this.green = green;
         this.blue = blue;
+        this.lifetime = (int)(Math.random() * 120) + 180;
+        this.speedMultiplier = 0.0075f;
     }
     public FireflyParticleOptions(double red, double green, double blue) {
-        this.red = (float) red;
-        this.green = (float) green;
-        this.blue = (float) blue;
+        this((float) red, (float) green, (float) blue);
     }
+
+    public FireflyParticleOptions(float red, float green, float blue, int lifetime, float speedMultiplier) {
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+        this.lifetime = lifetime;
+        this.speedMultiplier = speedMultiplier;
+    }
+
+
     @Override
     public ParticleType<FireflyParticleOptions> getType() {
         return MissingWildsParticles.FIREFLY.get();
@@ -79,6 +92,12 @@ public class FireflyParticleOptions implements ParticleOptions {
 
     public float getBlue() {
         return blue;
+    }
+    public int getLifetime() {
+        return lifetime;
+    }
+    public float getSpeedMultiplier() {
+        return speedMultiplier;
     }
 
 }

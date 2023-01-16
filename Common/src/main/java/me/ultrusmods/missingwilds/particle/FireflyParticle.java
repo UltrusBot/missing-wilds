@@ -6,14 +6,16 @@ import net.minecraft.util.Mth;
 
 public class FireflyParticle extends TextureSheetParticle {
 
+    private final float speedMultiplier;
     private double xDir;
     private double yDir;
     private double zDir;
     private boolean lit;
 
-    protected FireflyParticle(ClientLevel level, double x, double y, double z, float r, float g, float b) {
+    protected FireflyParticle(ClientLevel level, double x, double y, double z, float r, float g, float b, int lifetime, float speedMultiplier) {
         super(level, x, y, z);
-        this.lifetime = (int)(Math.random() * 120) + 180;
+        this.lifetime = lifetime;
+        this.speedMultiplier = speedMultiplier;
         this.xDir = (Math.random() * 2.0 - 1.0) * 0.02;
         this.yDir = (Math.random() * 2.0 - 1.0) * 0.02;
         this.zDir = (Math.random() * 2.0 - 1.0) * 0.02;
@@ -46,9 +48,9 @@ public class FireflyParticle extends TextureSheetParticle {
         }
         // Storing another direction isn't great, but it creates nice smooth movement. I should come back to this later.
         // TODO: Make a better particle movement algorithm.
-        this.xDir += (Math.random() * 2.0 - 1.0)  * 0.0075;
-        this.yDir += (Math.random() * 2.0 - 1.0)  * 0.0075;
-        this.zDir += (Math.random() * 2.0 - 1.0)  * 0.0075;
+        this.xDir += (Math.random() * 2.0 - 1.0)  * speedMultiplier;
+        this.yDir += (Math.random() * 2.0 - 1.0)  * speedMultiplier;
+        this.zDir += (Math.random() * 2.0 - 1.0)  * speedMultiplier;
         this.xd = Mth.lerp(0.2F, this.xd, this.xDir);
         this.yd = Mth.lerp(0.2F, this.yd, this.yDir);
         this.zd = Mth.lerp(0.2F, this.zd, this.zDir);
@@ -72,7 +74,7 @@ public class FireflyParticle extends TextureSheetParticle {
 
         @Override
         public Particle createParticle(FireflyParticleOptions type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            var particle = new FireflyParticle(level, x, y, z, type.getRed(), type.getGreen(), type.getBlue());
+            var particle = new FireflyParticle(level, x, y, z, type.getRed(), type.getGreen(), type.getBlue(), type.getLifetime(), type.getSpeedMultiplier());
             particle.pickSprite(this.sprite);
             return particle;
         }

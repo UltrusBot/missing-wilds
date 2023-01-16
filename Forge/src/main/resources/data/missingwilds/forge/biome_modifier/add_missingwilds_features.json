@@ -1,8 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": [
-    "#missingwilds:birch"
-  ],
+  "biomes": "#missingwilds:birch",
   "features": [
     "missingwilds:blue_forget_me_not",
     "missingwilds:purple_forget_me_not",

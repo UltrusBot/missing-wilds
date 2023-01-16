@@ -26,4 +26,17 @@ public class FireflyJarItem extends BlockItem {
         tooltip.add(Component.translatable("tooltip.missingwilds.firefly_jar", lightLevel).withStyle(ChatFormatting.GRAY));
     }
 
+    public static void increaseLightLevel(ItemStack stack, int amount) {
+        int lightLevel = 0;
+        if (stack.hasTag()) {
+            lightLevel = Integer.parseInt(stack.getOrCreateTag().getCompound("BlockStateTag").getString("light_level"));
+        }
+        lightLevel = Mth.clamp(lightLevel + amount, 1, 15);
+        var tag = stack.getOrCreateTag();
+        var compound = tag.getCompound("BlockStateTag");
+        compound.putString("light_level", "" + lightLevel);
+        tag.put("BlockStateTag", compound);
+        stack.setTag(tag);
+    }
+
 }

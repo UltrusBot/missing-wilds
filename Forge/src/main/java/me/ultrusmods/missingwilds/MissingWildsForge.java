@@ -8,8 +8,8 @@ import me.ultrusmods.missingwilds.register.RegistryObject;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -23,6 +23,8 @@ public class MissingWildsForge {
     public MissingWildsForge() {
         MissingWildsModCommon.init();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::spawnPlacementsEvent);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerAttributes);
         if (Services.PLATFORM.isModLoaded("better_runtime_resource_pack")) {
             ModCompatForge.checkModCompat();
         }
@@ -34,11 +36,14 @@ public class MissingWildsForge {
         event.enqueueWork(MissingWildsModCommon::postInit);
     }
 
-    @SubscribeEvent
+
     private void spawnPlacementsEvent(SpawnPlacementRegisterEvent event) {
         event.register(MissingWildsEntities.FIREFLY_SWARM.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules, SpawnPlacementRegisterEvent.Operation.AND);
         System.out.println("Spawn Placement Registered on Forge"); //TODO remove
     }
 
+    private void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(MissingWildsEntities.FIREFLY_SWARM.get(), FireflySwarm.createAttributes().build());
+    }
 
 }

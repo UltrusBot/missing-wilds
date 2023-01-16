@@ -1,11 +1,14 @@
 package me.ultrusmods.missingwilds.platform;
 
 import me.ultrusmods.missingwilds.compat.ModCompatForge;
+import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.item.MissingWildsItemGroup;
 import me.ultrusmods.missingwilds.platform.services.IPlatformHelper;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -51,17 +54,25 @@ public class ForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public void duringItemRegistering() {
-        ModCompatForge.registerModCompatItems();
-
+        if (isModLoaded("better_runtime_resource_pack")) {
+            ModCompatForge.registerModCompatItems();
+        }
     }
 
     @Override
     public void duringBlockRegistering() {
-        ModCompatForge.registerModComatBlocks();
+        if (isModLoaded("better_runtime_resource_pack")) {
+            ModCompatForge.registerModComatBlocks();
+        }
     }
 
     @Override
     public <T extends BlockEntity> BlockEntityType<T> buildBlockEntity(BiFunction<BlockPos, BlockState, T> supplier, Block... blocks) {
         return BlockEntityType.Builder.of(supplier::apply, blocks).build(null);
+    }
+
+    @Override
+    public EntityType<FireflySwarm> createFirefly() {
+        return EntityType.Builder.of(FireflySwarm::new, MobCategory.AMBIENT).sized(2.0F, 2.0F).clientTrackingRange(16).build("firefly_swarm");
     }
 }

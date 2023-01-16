@@ -1,7 +1,10 @@
 package me.ultrusmods.missingwilds.platform.services;
 
+import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -44,4 +47,6 @@ public interface IPlatformHelper {
     void duringBlockRegistering();
 
     <T extends BlockEntity> BlockEntityType<T> buildBlockEntity(BiFunction<BlockPos, BlockState, T> supplier, Block... blocks);
+
+    EntityType<FireflySwarm> createFirefly();
 }
