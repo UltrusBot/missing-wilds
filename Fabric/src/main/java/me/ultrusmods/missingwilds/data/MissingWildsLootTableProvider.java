@@ -32,6 +32,6 @@ public class MissingWildsLootTableProvider extends SimpleFabricLootTableProvider
     }
 
     public void dropSelf(String id, Block block, BiConsumer<ResourceLocation, LootTable.Builder> biConsumer) {
-        biConsumer.accept(Constants.id(id), BlockLoot.createSingleItemTable(block));
+        biConsumer.accept(Constants.id("blocks/" +  id), BlockLoot.createSingleItemTable(block));
     }
 }
