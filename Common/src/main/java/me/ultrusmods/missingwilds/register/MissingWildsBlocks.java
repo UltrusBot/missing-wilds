@@ -4,10 +4,7 @@ import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.block.*;
 import net.minecraft.core.Registry;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FlowerPotBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.TallFlowerBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.material.Material;
@@ -81,6 +78,12 @@ public class MissingWildsBlocks {
 	public static final RegistryObject<Block> RED_STAINED_FIREFLY_JAR_BLOCK = register("red_stained_firefly_jar", MissingWildsBlocks::createFireflyJarBlock);
 	public static final RegistryObject<Block> BLACK_STAINED_JAR_BLOCK = register("black_stained_jar", MissingWildsBlocks::createJarBlock);
 	public static final RegistryObject<Block> BLACK_STAINED_FIREFLY_JAR_BLOCK = register("black_stained_firefly_jar", MissingWildsBlocks::createFireflyJarBlock);
+
+	// TODO: Work on this again at some point.
+//	public static final RegistryObject<Block> FORGET_ME_NOT = register("forget_me_not", () -> new BetterStackingFlowerBlock(MobEffects.LUCK, 10, Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.NONE)));
+
+
+	public static final RegistryObject<Block> WATERLILY_BLOCK = register("waterlily", () -> new WaterlilyBlock(Properties.copy(Blocks.LILY_PAD)));
 
 	public static void init() {
 	}

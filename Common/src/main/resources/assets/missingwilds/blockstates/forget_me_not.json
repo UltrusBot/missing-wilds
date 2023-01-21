@@ -1,0 +1,149 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "missingwilds:block/forgetmenots_test/blue_forget_me_not_1"
+      },
+      "when": {
+        "AND": [
+          {
+            "flower_1": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "missingwilds:block/forgetmenots_test/blue_forget_me_not_2"
+      },
+      "when": {
+        "AND": [
+          {
+            "flower_2": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "missingwilds:block/forgetmenots_test/blue_forget_me_not_3"
+      },
+      "when": {
+        "AND": [
+          {
+            "flower_3": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "missingwilds:block/forgetmenots_test/purple_forget_me_not_1"
+      },
+      "when": {
+        "AND": [
+          {
+            "flower_1": "purple"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "missingwilds:block/forgetmenots_test/purple_forget_me_not_2"
+      },
+      "when": {
+        "AND": [
+          {
+            "flower_2": "purple"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "missingwilds:block/forgetmenots_test/purple_forget_me_not_3"
+      },
+      "when": {
+        "AND": [
+          {
+            "flower_3": "purple"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "missingwilds:block/forgetmenots_test/pink_forget_me_not_1"
+      },
+      "when": {
+        "AND": [
+          {
+            "flower_1": "pink"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "missingwilds:block/forgetmenots_test/pink_forget_me_not_2"
+      },
+      "when": {
+        "AND": [
+          {
+            "flower_2": "pink"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "missingwilds:block/forgetmenots_test/pink_forget_me_not_3"
+      },
+      "when": {
+        "AND": [
+          {
+            "flower_3": "pink"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "missingwilds:block/forgetmenots_test/white_forget_me_not_1"
+      },
+      "when": {
+        "AND": [
+          {
+            "flower_1": "white"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "missingwilds:block/forgetmenots_test/white_forget_me_not_2"
+      },
+      "when": {
+        "AND": [
+          {
+            "flower_2": "white"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "missingwilds:block/forgetmenots_test/white_forget_me_not_3"
+      },
+      "when": {
+        "AND": [
+          {
+            "flower_3": "white"
+          }
+        ]
+      }
+    }
+
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "missingwilds:block/template/forget_me_not_3_template",
+  "textures": {
+    "flower": "missingwilds:block/purple_forget_me_not"
+  }
+}

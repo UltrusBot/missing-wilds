@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "missingwilds:block/waterlily"
+      },
+      {
+        "model": "missingwilds:block/waterlily",
+        "y": 90
+      },
+      {
+        "model": "missingwilds:block/waterlily",
+        "y": 180
+      },
+      {
+        "model": "missingwilds:block/waterlily",
+        "y": 270
+      }
+    ]
+  }
+}

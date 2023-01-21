@@ -8,6 +8,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.PlaceOnWaterBlockItem;
 import net.minecraft.world.level.block.Block;
 
 import java.util.function.Supplier;
@@ -73,6 +74,7 @@ public class MissingWildsItems {
 	public static final RegistryObject<Item> BLACK_STAINED_JAR_ITEM = register("black_stained_jar", MissingWildsBlocks.BLACK_STAINED_JAR_BLOCK);
 	public static final RegistryObject<Item> BLACK_STAINED_FIREFLY_JAR_ITEM = registerFireflyJar("black_stained_firefly_jar", MissingWildsBlocks.BLACK_STAINED_FIREFLY_JAR_BLOCK);
 	public static final RegistryObject<Item> FIREFLY_BOTTLE_ITEM = register("firefly_bottle", () -> new Item(new Item.Properties().tab(Services.PLATFORM.getCreativeTab())));
+	public static final RegistryObject<Item> WATERLILY_ITEM = register("waterlily", () -> new PlaceOnWaterBlockItem(MissingWildsBlocks.WATERLILY_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	public static void init() {
 
 	}

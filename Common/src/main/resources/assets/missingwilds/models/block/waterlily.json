@@ -1,0 +1,106 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
+	"textures": {
+		"0": "minecraft:block/lily_pad",
+		"particle": "minecraft:block/lily_pad",
+		"waterlily": "missingwilds:block/waterlily"
+	},
+	"elements": [
+		{
+			"name": "lilypad",
+			"from": [0, 0.25, 0],
+			"to": [16, 0.25, 16],
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0", "tintindex": 0},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0", "tintindex": 0}
+			}
+		}, 
+		{
+			"name": "petal",
+			"from": [8, 0.5, 5.5],
+			"to": [15, 0.5, 10.5],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [8, 0, 8]},
+			"faces": {
+				"up": {"uv": [0, 9, 5, 16], "rotation": 90, "texture": "#waterlily"},
+				"down": {"uv": [0, 9, 5, 16], "rotation": 90, "texture": "#waterlily"}
+			}
+		}, 
+		{
+			"name": "petal",
+			"from": [5.5, 0.5, 8],
+			"to": [10.5, 0.5, 15],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 0, 8]},
+			"faces": {
+				"up": {"uv": [0, 9, 5, 16], "rotation": 180, "texture": "#waterlily"},
+				"down": {"uv": [0, 9, 5, 16], "texture": "#waterlily"}
+			}
+		}, 
+		{
+			"name": "petal",
+			"from": [1, 0.5, 5.5],
+			"to": [8, 0.5, 10.5],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [8, 0, 8]},
+			"faces": {
+				"up": {"uv": [0, 9, 5, 16], "rotation": 270, "texture": "#waterlily"},
+				"down": {"uv": [0, 9, 5, 16], "rotation": 270, "texture": "#waterlily"}
+			}
+		}, 
+		{
+			"name": "petal",
+			"from": [5.5, 0.5, 1],
+			"to": [10.5, 0.5, 8],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 0, 8]},
+			"faces": {
+				"up": {"uv": [0, 9, 5, 16], "texture": "#waterlily"},
+				"down": {"uv": [0, 9, 5, 16], "rotation": 180, "texture": "#waterlily"}
+			}
+		},
+		{
+			"name": "flower",
+			"from": [8.5, 0.25, 5],
+			"to": [8.5, 5.25, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.5, 1.5, 7.5]},
+			"faces": {
+				"east": {"uv": [11, 0, 16, 5], "texture": "#waterlily"},
+				"west": {"uv": [11, 0, 16, 5], "texture": "#waterlily"}
+			}
+		},
+		{
+			"name": "flower",
+			"from": [6, 0.25, 7.5],
+			"to": [11, 5.25, 7.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.5, 1.5, 7.5]},
+			"faces": {
+				"north": {"uv": [11, 0, 16, 5], "texture": "#waterlily"},
+				"south": {"uv": [11, 0, 16, 5], "texture": "#waterlily"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"ground": {
+			"translation": [0, 1.75, 0],
+			"scale": [0.71, 0.71, 0.71]
+		},
+		"gui": {
+			"rotation": [90, 0, 0]
+		},
+		"head": {
+			"translation": [0, 14.75, 0]
+		},
+		"fixed": {
+			"rotation": [-90, 0, 0],
+			"translation": [0, 0, -8.25]
+		}
+	},
+	"groups": [
+		0, 
+		{
+			"name": "flower",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [1, 2, 3, 4, 5, 6]
+		}
+	]
+}
