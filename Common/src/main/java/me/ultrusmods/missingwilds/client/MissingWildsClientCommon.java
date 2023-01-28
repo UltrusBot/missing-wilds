@@ -32,6 +32,7 @@ public class MissingWildsClientCommon {
                 MissingWildsBlocks.POTTED_WHITE_FORGET_ME_NOT.get(),
                 MissingWildsBlocks.POTTED_PINK_FORGET_ME_NOT.get(),
                 MissingWildsBlocks.POTTED_PURPLE_FORGET_ME_NOT.get(),
+                MissingWildsBlocks.FORGET_ME_NOT.get(),
                 MissingWildsBlocks.WATERLILY_BLOCK.get());
         Services.PLATFORM.setBlockRenderType(RenderType.translucent(),
                 MissingWildsBlocks.TINTED_JAR_BLOCK.get(),

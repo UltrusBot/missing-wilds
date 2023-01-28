@@ -4,6 +4,7 @@ import me.ultrusmods.missingwilds.Constants;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
@@ -17,6 +18,6 @@ public class MissingWildsTags {
     public static final TagKey<Biome> JUNGLE = TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Constants.MOD_ID, "jungle"));
     public static final TagKey<Biome> ACACIA = TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Constants.MOD_ID, "acacia"));
     public static final TagKey<Biome> DARK_OAK = TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Constants.MOD_ID, "dark_oak"));
-
+    public static final TagKey<Item> FORGET_ME_NOTS = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(Constants.MOD_ID, "forget_me_nots"));
     public static final TagKey<Biome> SPAWNS_FIREFLY_SWARMS = TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Constants.MOD_ID, "spawns_firefly_swarms"));
 }

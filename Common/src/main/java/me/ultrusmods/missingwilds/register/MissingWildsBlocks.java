@@ -26,10 +26,10 @@ public class MissingWildsBlocks {
 	public static final RegistryObject<Block> FALLEN_WARPED_STEM = registerFallenLog("fallen_warped_stem");
 	public static final RegistryObject<Block> FALLEN_MUSHROOM_STEM = registerFallenLog("fallen_mushroom_stem");
 
-	public static final RegistryObject<Block> BLUE_FORGET_ME_NOT = registerForgetMeNot("blue_forget_me_not");
-	public static final RegistryObject<Block> PURPLE_FORGET_ME_NOT = registerForgetMeNot("purple_forget_me_not");
-	public static final RegistryObject<Block> PINK_FORGET_ME_NOT = registerForgetMeNot("pink_forget_me_not");
-	public static final RegistryObject<Block> WHITE_FORGET_ME_NOT = registerForgetMeNot("white_forget_me_not");
+	public static final RegistryObject<Block> BLUE_FORGET_ME_NOT = registerForgetMeNot("blue_forget_me_not", CombinedStackingFlowerBlock.FlowerType.BLUE);
+	public static final RegistryObject<Block> PURPLE_FORGET_ME_NOT = registerForgetMeNot("purple_forget_me_not", CombinedStackingFlowerBlock.FlowerType.PURPLE);
+	public static final RegistryObject<Block> PINK_FORGET_ME_NOT = registerForgetMeNot("pink_forget_me_not", CombinedStackingFlowerBlock.FlowerType.PINK);
+	public static final RegistryObject<Block> WHITE_FORGET_ME_NOT = registerForgetMeNot("white_forget_me_not", CombinedStackingFlowerBlock.FlowerType.WHITE);
 
 	public static final RegistryObject<Block> BROWN_POLYPORE_MUSHROOM = registerPolypore("brown_polypore_mushroom");
 
@@ -80,7 +80,7 @@ public class MissingWildsBlocks {
 	public static final RegistryObject<Block> BLACK_STAINED_FIREFLY_JAR_BLOCK = register("black_stained_firefly_jar", MissingWildsBlocks::createFireflyJarBlock);
 
 	// TODO: Work on this again at some point.
-//	public static final RegistryObject<Block> FORGET_ME_NOT = register("forget_me_not", () -> new BetterStackingFlowerBlock(MobEffects.LUCK, 10, Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.NONE)));
+	public static final RegistryObject<Block> FORGET_ME_NOT = register("forget_me_not", () -> new CombinedStackingFlowerBlock(MobEffects.LUCK, 10, Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.NONE)));
 
 
 	public static final RegistryObject<Block> WATERLILY_BLOCK = register("waterlily", () -> new WaterlilyBlock(Properties.copy(Blocks.LILY_PAD)));
@@ -95,8 +95,8 @@ public class MissingWildsBlocks {
 		return register(id, () -> new FallenLogBlock(Properties.of(Material.WOOD).strength(2.0F).sound(SoundType.WOOD).noOcclusion()));
 	}
 
-	private static RegistryObject<Block> registerForgetMeNot(String id) {
-		return register(id, () -> new StackingFlowerBlock(MobEffects.LUCK, 10, Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.NONE)));
+	private static RegistryObject<Block> registerForgetMeNot(String id, CombinedStackingFlowerBlock.FlowerType type) {
+		return register(id, () -> new StackingFlowerBlock(MobEffects.LUCK, 10, Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.NONE), type));
 	}
 
 	private static RegistryObject<Block> registerPolypore(String id) {

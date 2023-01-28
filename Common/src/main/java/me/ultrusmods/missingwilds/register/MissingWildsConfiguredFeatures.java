@@ -2,6 +2,7 @@ package me.ultrusmods.missingwilds.register;
 
 import com.google.common.collect.ImmutableList;
 import me.ultrusmods.missingwilds.Constants;
+import me.ultrusmods.missingwilds.block.CombinedStackingFlowerBlock;
 import me.ultrusmods.missingwilds.block.StackingFlowerBlock;
 import me.ultrusmods.missingwilds.worldgen.feature.FallenLogFeatureConfig;
 import me.ultrusmods.missingwilds.worldgen.feature.tree.BranchTreeDecorator;
@@ -27,6 +28,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -104,12 +106,32 @@ public class MissingWildsConfiguredFeatures {
 	}
 
 	public static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> createForgetMeNot(String name, Block block) {
-		return registerConfiguredFeature(
-				name,
-				Feature.FLOWER,
-				createRandomPatchFeatureConfig(
-						new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(block.defaultBlockState().setValue(StackingFlowerBlock.FLOWERS, 3), 3).add(block.defaultBlockState().setValue(StackingFlowerBlock.FLOWERS, 2), 2).add(block.defaultBlockState().setValue(StackingFlowerBlock.FLOWERS, 1), 1)), 64
-				)
-		);
+		// TODO: Can probably do this a better way, at some point.
+		if (block instanceof StackingFlowerBlock stackingFlowerBlock) {
+			var type = stackingFlowerBlock.getFlowerType();
+			var types = new ArrayList<CombinedStackingFlowerBlock.FlowerType>();
+			for (var flowerType : CombinedStackingFlowerBlock.FlowerType.values()) {
+				if (flowerType != type && flowerType != CombinedStackingFlowerBlock.FlowerType.NONE) {
+					types.add(flowerType);
+				}
+			}
+			var simpleWeightedRandomList = SimpleWeightedRandomList.<BlockState>builder();
+			for (var flowerType : types) {
+				simpleWeightedRandomList.add(MissingWildsBlocks.FORGET_ME_NOT.get().defaultBlockState().setValue(CombinedStackingFlowerBlock.FLOWER_1, type).setValue(CombinedStackingFlowerBlock.FLOWER_2, flowerType), flowerType == type ? 4 : 2);
+				for (var flowerType2 : types) {
+					simpleWeightedRandomList.add(MissingWildsBlocks.FORGET_ME_NOT.get().defaultBlockState().setValue(CombinedStackingFlowerBlock.FLOWER_1, type).setValue(CombinedStackingFlowerBlock.FLOWER_2, flowerType).setValue(CombinedStackingFlowerBlock.FLOWER_3, flowerType2), flowerType2 == type ? 6 : 3);
+				}
+			}
+			simpleWeightedRandomList.add(block.defaultBlockState(), 6);
+			return registerConfiguredFeature(
+					name,
+					Feature.FLOWER,
+					createRandomPatchFeatureConfig(
+							new WeightedStateProvider(simpleWeightedRandomList), 64
+					)
+			);
+		} else {
+			throw new IllegalArgumentException("Block must be a StackingFlowerBlock");
+		}
 	}
 }
