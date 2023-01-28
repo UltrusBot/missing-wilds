@@ -35,10 +35,10 @@ public class MissingWildsBlocks {
 
 	public static final RegistryObject<Block> SWEETSPIRE = register("sweetspire",() -> new TallFlowerBlock(Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
 	public static final RegistryObject<Block> POTTED_SWEETSPIRE = register("potted_sweetspire", () -> new FlowerPotBlock(SWEETSPIRE.get(), Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> POTTED_BLUE_FORGET_ME_NOT = register("potted_blue_forget_me_not", () -> new FlowerPotBlock(BLUE_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> POTTED_PURPLE_FORGET_ME_NOT = register("potted_purple_forget_me_not", () -> new FlowerPotBlock(PURPLE_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> POTTED_PINK_FORGET_ME_NOT = register("potted_pink_forget_me_not", () -> new FlowerPotBlock(PINK_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> POTTED_WHITE_FORGET_ME_NOT = register("potted_white_forget_me_not", () ->new FlowerPotBlock(WHITE_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> POTTED_BLUE_FORGET_ME_NOT = register("potted_blue_forget_me_not", () -> new FlowerPotBlock(BLUE_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> POTTED_PURPLE_FORGET_ME_NOT = register("potted_purple_forget_me_not", () -> new FlowerPotBlock(PURPLE_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> POTTED_PINK_FORGET_ME_NOT = register("potted_pink_forget_me_not", () -> new FlowerPotBlock(PINK_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> POTTED_WHITE_FORGET_ME_NOT = register("potted_white_forget_me_not", () ->new FlowerPotBlock(WHITE_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noOcclusion().instabreak().sound(SoundType.GRASS)));
 
 	public static final RegistryObject<Block> JAR_BLOCK = register("jar", MissingWildsBlocks::createJarBlock);
 	public static final RegistryObject<Block> FIREFLY_JAR_BLOCK = register("firefly_jar", MissingWildsBlocks::createFireflyJarBlock);
