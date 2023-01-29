@@ -27,6 +27,25 @@ public class MissingWildsRecipeProvider extends FabricRecipeProvider {
         createFallenLogRecipe(MissingWildsBlocks.FALLEN_WARPED_STEM.get(), Blocks.WARPED_STEM, exporter);
         createFallenLogRecipe(MissingWildsBlocks.FALLEN_MANGROVE_LOG.get(), Blocks.MANGROVE_LOG, exporter);
         createFallenLogRecipe(MissingWildsBlocks.FALLEN_MUSHROOM_STEM.get(), Blocks.MUSHROOM_STEM, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.JAR_BLOCK.get(), Blocks.GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.TINTED_JAR_BLOCK.get(), Blocks.TINTED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.WHITE_STAINED_JAR_BLOCK.get(), Blocks.WHITE_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.ORANGE_STAINED_JAR_BLOCK.get(), Blocks.ORANGE_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.MAGENTA_STAINED_JAR_BLOCK.get(), Blocks.MAGENTA_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.LIGHT_BLUE_STAINED_JAR_BLOCK.get(), Blocks.LIGHT_BLUE_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.YELLOW_STAINED_JAR_BLOCK.get(), Blocks.YELLOW_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.LIME_STAINED_JAR_BLOCK.get(), Blocks.LIME_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.PINK_STAINED_JAR_BLOCK.get(), Blocks.PINK_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.GRAY_STAINED_JAR_BLOCK.get(), Blocks.GRAY_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.LIGHT_GRAY_STAINED_JAR_BLOCK.get(), Blocks.LIGHT_GRAY_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.CYAN_STAINED_JAR_BLOCK.get(), Blocks.CYAN_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.PURPLE_STAINED_JAR_BLOCK.get(), Blocks.PURPLE_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.BLUE_STAINED_JAR_BLOCK.get(), Blocks.BLUE_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.BROWN_STAINED_JAR_BLOCK.get(), Blocks.BROWN_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.GREEN_STAINED_JAR_BLOCK.get(), Blocks.GREEN_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.RED_STAINED_JAR_BLOCK.get(), Blocks.RED_STAINED_GLASS, exporter);
+        createGlassJarRecipe(MissingWildsBlocks.BLACK_STAINED_JAR_BLOCK.get(), Blocks.BLACK_STAINED_GLASS, exporter);
+
     }
     public void createFallenLogRecipe(Block fallenLog, Block baseLog, Consumer<FinishedRecipe> exporter) {
         ShapedRecipeBuilder.shaped(fallenLog, 8)
@@ -36,6 +55,17 @@ public class MissingWildsRecipeProvider extends FabricRecipeProvider {
                 .define('L', baseLog)
                 .unlockedBy("has_log", has(baseLog))
                 .group("missingwilds:fallen_logs")
+                .save(exporter);
+    }
+
+    public void createGlassJarRecipe(Block glassJar, Block baseGlass, Consumer<FinishedRecipe> exporter) {
+        ShapedRecipeBuilder.shaped(glassJar, 1)
+                .pattern(" G ")
+                .pattern("G G")
+                .pattern("GGG")
+                .define('G', baseGlass)
+                .unlockedBy("has_glass", has(baseGlass))
+                .group("missingwilds:glass_jars")
                 .save(exporter);
     }
 }

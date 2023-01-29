@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "missingwilds:glass_jars",
+  "key": {
+    "G": {
+      "item": "minecraft:pink_stained_glass"
+    }
+  },
+  "pattern": [
+    " G ",
+    "G G",
+    "GGG"
+  ],
+  "result": {
+    "item": "missingwilds:pink_stained_jar"
+  }
+}
