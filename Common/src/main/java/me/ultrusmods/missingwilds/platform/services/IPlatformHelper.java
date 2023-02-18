@@ -6,8 +6,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.WaterlilyBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.BiFunction;
@@ -48,4 +50,8 @@ public interface IPlatformHelper {
     <T extends BlockEntity> BlockEntityType<T> buildBlockEntity(BiFunction<BlockPos, BlockState, T> supplier, Block... blocks);
 
     EntityType<FireflySwarm> createFirefly();
+
+    default Block getWaterlilyBlock(BlockBehaviour.Properties properties) {
+        return new WaterlilyBlock(properties);
+    }
 }

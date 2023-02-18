@@ -1,5 +1,6 @@
 package me.ultrusmods.missingwilds.platform;
 
+import me.ultrusmods.missingwilds.block.CustomWaterlilyBlock;
 import me.ultrusmods.missingwilds.compat.ModCompatForge;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.item.MissingWildsItemGroup;
@@ -13,6 +14,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
@@ -74,5 +76,10 @@ public class ForgePlatformHelper implements IPlatformHelper {
     @Override
     public EntityType<FireflySwarm> createFirefly() {
         return EntityType.Builder.of(FireflySwarm::new, MobCategory.AMBIENT).sized(2.0F, 2.0F).clientTrackingRange(16).build("firefly_swarm");
+    }
+
+    @Override
+    public Block getWaterlilyBlock(BlockBehaviour.Properties properties) {
+        return new CustomWaterlilyBlock(properties);
     }
 }

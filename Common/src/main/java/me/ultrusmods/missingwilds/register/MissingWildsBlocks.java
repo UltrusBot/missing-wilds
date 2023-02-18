@@ -2,6 +2,7 @@ package me.ultrusmods.missingwilds.register;
 
 import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.block.*;
+import me.ultrusmods.missingwilds.platform.Services;
 import net.minecraft.core.Registry;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.block.*;
@@ -83,7 +84,7 @@ public class MissingWildsBlocks {
 	public static final RegistryObject<Block> FORGET_ME_NOT = register("forget_me_not", () -> new CombinedStackingFlowerBlock(MobEffects.LUCK, 10, Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.NONE)));
 
 
-	public static final RegistryObject<Block> WATERLILY_BLOCK = register("waterlily", () -> new WaterlilyBlock(Properties.copy(Blocks.LILY_PAD)));
+	public static final RegistryObject<Block> WATERLILY_BLOCK = register("waterlily", () -> Services.PLATFORM.getWaterlilyBlock(Properties.copy(Blocks.LILY_PAD)));
 
 	public static void init() {
 	}
