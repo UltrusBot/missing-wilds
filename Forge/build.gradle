@@ -91,11 +91,11 @@ minecraft {
 sourceSets.main.resources.srcDir 'src/generated/resources'
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    minecraft libs.forge
     compileOnly project(":Common")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    implementation fg.deobf( "maven.modrinth:brrp:0.8.2-mc1.19.2-forge")
-    implementation fg.deobf("maven.modrinth:midnightlib:1.0.0-forge")
+    implementation fg.deobf(libs.brrp)
+    implementation fg.deobf(libs.midnightlib.forge)
 }
 tasks.build.dependsOn tasks.jarJar
 tasks.jarJar.archiveClassifier.set("");

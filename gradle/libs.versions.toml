@@ -1,0 +1,38 @@
+[versions]
+minecraft = "1.19.2"
+fabric_loader = "0.14.12"
+fabric_api = "0.71.0+1.19.2"
+quilt_loader = "0.18.1-beta.41"
+qfapi = "4.0.0-beta.26+0.72.0-1.19.2"
+forge = "1.19.2-43.2.0"
+machete = "1.1.2"
+midnightlib_forge = "1.0.0-forge"
+midnightlib_fabric = "1.0.0-fabric"
+midnightlib_quilt = "1.0.0-quilt"
+
+# Extra Libraries
+arrp = "0.6.2"
+emi = "0.6.0+1.19.2"
+brrp = "0.8.2-mc1.19.2-forge"
+
+
+
+[libraries]
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
+fabric_loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric_loader" }
+fabric_api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric_api" }
+quilt_loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt_loader" }
+qfapi = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api", version.ref = "qfapi" }
+forge = { module = "net.minecraftforge:forge", version.ref = "forge" }
+
+# Extra Libraries
+arrp = { module = "net.devtech:arrp", version.ref = "arrp" }
+emi = { module = "dev.emi:emi", version.ref = "emi" }
+brrp = { module = "maven.modrinth:brrp", version.ref = "brrp" }
+midnightlib_forge = { module = "maven.modrinth:midnightlib-forge", version.ref = "midnightlib_forge" }
+midnightlib_fabric = { module = "maven.modrinth:midnightlib-fabric", version.ref = "midnightlib_fabric" }
+midnightlib_quilt = { module = "maven.modrinth:midnightlib-quilt", version.ref = "midnightlib_quilt" }
+
+
+#[plugins]
+#machete = { id = "io.github.p03w.machete", version.ref = "machete" }
