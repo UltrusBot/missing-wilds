@@ -24,6 +24,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
@@ -32,6 +33,7 @@ public class FireflySwarm extends PathfinderMob {
     private static final EntityDataAccessor<Integer> SIZE = SynchedEntityData.defineId(FireflySwarm.class, EntityDataSerializers.INT);
     private BlockPos nextPosition = null;
     private int waitTime = 0;
+    private int pickNewPosTimer = 0;
 
     public FireflySwarm(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
@@ -73,6 +75,11 @@ public class FireflySwarm extends PathfinderMob {
     }
 
     @Override
+    public boolean attackable() {
+        return false;
+    }
+
+    @Override
     protected void pushEntities() {
 
     }
@@ -87,19 +94,32 @@ public class FireflySwarm extends PathfinderMob {
     @Override
     protected void customServerAiStep() {
         super.customServerAiStep();
-        if (this.nextPosition == null && this.waitTime <= 0) {
+        pickNewPosTimer++;
+//        this.noPhysics = this.waitTime != 0;
+//        var distanceToNextPosition = this.nextPosition == null ? -1 : this.distanceToSqr(this.nextPosition.getX(), this.getY(), this.nextPosition.getZ());
+//        if (distanceToNextPosition != -1 && distanceToNextPosition < 6) {
+//            this.noPhysics = false;
+//        }
+        if ((this.nextPosition == null && this.waitTime <= 0) || pickNewPosTimer >= 200) {
             if (this.random.nextFloat() < 0.2) {
                 this.waitTime = this.random.nextInt(100, 250);
             } else {
-                this.nextPosition = this.blockPosition().offset(this.random.nextInt(-8, 8), this.random.nextInt(-4, 4), this.random.nextInt(-8, 8));
-                if (!this.level.getBlockState(this.nextPosition).isAir()) {
+//                this.nextPosition = this.blockPosition().offset(this.random.nextInt(-8, 8), this.random.nextInt(-4, 4), this.random.nextInt(-8, 8));
+//                if (!this.level.getBlockState(this.nextPosition).isAir()) {
+//                    this.nextPosition = null;
+//                }
+                var pos = this.getLevel().clip(new ClipContext(this.position(), this.position().add(this.random.nextInt(-4, 5), this.random.nextInt(-2, 3), this.random.nextInt(-4, 5)), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
+                if (!this.level.getBlockState(pos.getBlockPos()).isAir()) {
                     this.nextPosition = null;
+                } else {
+                    this.nextPosition = pos.getBlockPos();
+                    pickNewPosTimer = 0;
                 }
             }
 
         }
         if (this.nextPosition != null) {
-            this.setDeltaMovement(this.getDeltaMovement().lerp(new Vec3(this.nextPosition.getX() + this.random.nextInt(-3, 3) - this.getX(), this.nextPosition.getY() - this.getY(), this.nextPosition.getZ() + this.random.nextInt(-3, 3) - this.getZ()).normalize().multiply(0.5f, 0.5f, 0.5f), 0.1));
+            this.setDeltaMovement(this.getDeltaMovement().lerp(new Vec3(this.nextPosition.getX() + this.random.nextInt(-3, 4) - this.getX(), this.nextPosition.getY() - this.getY(), this.nextPosition.getZ() + this.random.nextInt(-3, 4) - this.getZ()).normalize().multiply(0.5f, 0.5f, 0.5f), 0.1));
         }
 
         if (this.nextPosition != null && this.distanceToSqr(this.nextPosition.getX(), this.nextPosition.getY(), this.nextPosition.getZ()) < 3) {
@@ -107,6 +127,7 @@ public class FireflySwarm extends PathfinderMob {
         }
         this.waitTime--;
     }
+
 
     @Override
     protected InteractionResult mobInteract(Player player, InteractionHand hand) {
@@ -119,7 +140,6 @@ public class FireflySwarm extends PathfinderMob {
             return InteractionResult.sidedSuccess(this.level.isClientSide);
         } else if(stack.getItem() instanceof FireflyJarItem) {
             FireflyJarItem.increaseLightLevel(stack, 3);
-            System.out.println("Increased light level of firefly jar");
             player.playSound(MissingWildsSounds.JAR_OPEN.get(), 1.0f, 1.0f);
             discard();
             return InteractionResult.sidedSuccess(this.level.isClientSide);
@@ -149,7 +169,6 @@ public class FireflySwarm extends PathfinderMob {
                 return random.nextFloat() < 0.6f && random.nextFloat() > level.getMoonBrightness();
             }
         }
-
         return false;
     }
 
