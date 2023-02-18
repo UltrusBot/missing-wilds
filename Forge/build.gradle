@@ -94,8 +94,8 @@ dependencies {
     minecraft libs.forge
     compileOnly project(":Common")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    implementation fg.deobf(libs.brrp)
-    implementation fg.deobf(libs.midnightlib.forge)
+    implementation fg.deobf(libs.brrp.get())
+    implementation fg.deobf(libs.midnightlib.forge.get())
 }
 tasks.build.dependsOn tasks.jarJar
 tasks.jarJar.archiveClassifier.set("");

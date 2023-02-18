@@ -29,9 +29,9 @@ forge = { module = "net.minecraftforge:forge", version.ref = "forge" }
 arrp = { module = "net.devtech:arrp", version.ref = "arrp" }
 emi = { module = "dev.emi:emi", version.ref = "emi" }
 brrp = { module = "maven.modrinth:brrp", version.ref = "brrp" }
-midnightlib_forge = { module = "maven.modrinth:midnightlib-forge", version.ref = "midnightlib_forge" }
-midnightlib_fabric = { module = "maven.modrinth:midnightlib-fabric", version.ref = "midnightlib_fabric" }
-midnightlib_quilt = { module = "maven.modrinth:midnightlib-quilt", version.ref = "midnightlib_quilt" }
+midnightlib_forge = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_forge" }
+midnightlib_fabric = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_fabric" }
+midnightlib_quilt = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_quilt" }
 
 
 #[plugins]
