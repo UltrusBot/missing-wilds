@@ -10,12 +10,7 @@ import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
 import me.ultrusmods.missingwilds.register.MissingWildsParticles;
-import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
@@ -43,21 +38,18 @@ public class MissingWildsClientForge {
     }
 
     @SubscribeEvent
-    private void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(MissingWildsEntities.FIREFLY_SWARM.get(), FireflySwarmRenderer::new);
     }
 
-
     @SubscribeEvent
-    public void registerBlockColors(RegisterColorHandlersEvent.Block event) {
+    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
         event.register((blockState, blockAndTintGetter, blockPos, col) -> blockAndTintGetter != null && blockPos != null ? 2129968 : 7455580, MissingWildsBlocks.WATERLILY_BLOCK.get());
     }
+
     @SubscribeEvent
-    public void registerItemColors(RegisterColorHandlersEvent.Item event) {
-        event.register((itemStack, col) -> {
-            BlockState blockstate = ((BlockItem)itemStack.getItem()).getBlock().defaultBlockState();
-            return event.getBlockColors().getColor(blockstate, null, null, col);
-        }, MissingWildsItems.WATERLILY_ITEM.get());
+    public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
+        event.register((itemStack, col) -> 7455580, MissingWildsItems.WATERLILY_ITEM.get());
     }
 
 

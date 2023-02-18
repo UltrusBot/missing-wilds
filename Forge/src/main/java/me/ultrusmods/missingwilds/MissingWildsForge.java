@@ -25,7 +25,6 @@ public class MissingWildsForge {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::spawnPlacementsEvent);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerAttributes);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerSpawnPlacements);
         if (Services.PLATFORM.isModLoaded("better_runtime_resource_pack")) {
             ModCompatForge.checkModCompat();
         }
@@ -40,15 +39,10 @@ public class MissingWildsForge {
 
     private void spawnPlacementsEvent(SpawnPlacementRegisterEvent event) {
         event.register(MissingWildsEntities.FIREFLY_SWARM.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules, SpawnPlacementRegisterEvent.Operation.AND);
-        System.out.println("Spawn Placement Registered on Forge"); //TODO remove
     }
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(MissingWildsEntities.FIREFLY_SWARM.get(), FireflySwarm.createAttributes().build());
-    }
-
-    private void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
-        event.register(MissingWildsEntities.FIREFLY_SWARM.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules, SpawnPlacementRegisterEvent.Operation.AND);
     }
 
 }
