@@ -52,6 +52,12 @@ public class JarBlock extends Block {
                 stack.shrink(1);
                 return InteractionResult.SUCCESS;
             }
+        } else if (FoodJarBlock.isValidItem(stack)) {
+            if (JarMaps.JAR_TO_FOOD_JAR.get(this) instanceof FoodJarBlock jar) {
+                level.setBlockAndUpdate(pos, jar.defaultBlockState().setValue(COVERED, state.getValue(COVERED)));
+                FoodJarBlock.insertItem(level, pos, stack);
+                return InteractionResult.SUCCESS;
+            }
         }
         if (checkToggleCover(state, level, pos, player, hand)) {
             return InteractionResult.SUCCESS;

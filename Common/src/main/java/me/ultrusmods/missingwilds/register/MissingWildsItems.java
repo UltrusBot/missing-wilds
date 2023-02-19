@@ -86,6 +86,6 @@ public class MissingWildsItems {
 		return ITEMS.register(id,() -> new BlockItem(block.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	}
 	public static RegistryObject<Item> registerFireflyJar(String id, RegistryObject<Block> block) {
-		return ITEMS.register(id, () -> new FireflyJarItem(block.get(), new Item.Properties().tab(Services.PLATFORM.getCreativeTab())));
+		return ITEMS.register(id, () -> new FireflyJarItem(block.get(), new Item.Properties()));
 	}
 }

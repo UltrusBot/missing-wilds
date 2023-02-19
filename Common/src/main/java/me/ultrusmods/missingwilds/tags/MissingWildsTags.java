@@ -20,4 +20,9 @@ public class MissingWildsTags {
     public static final TagKey<Biome> DARK_OAK = TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Constants.MOD_ID, "dark_oak"));
     public static final TagKey<Item> FORGET_ME_NOTS = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(Constants.MOD_ID, "forget_me_nots"));
     public static final TagKey<Biome> SPAWNS_FIREFLY_SWARMS = TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Constants.MOD_ID, "spawns_firefly_swarms"));
+    public static final TagKey<Item> FOOD_JAR_BLACKLIST = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(Constants.MOD_ID, "food_jar_blacklist"));
+    /**
+     * Items that can be put in a food jar, that typically aren't food.
+     */
+    public static final TagKey<Item> FOOD_JAR_OVERRIDE = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(Constants.MOD_ID, "food_jar_override"));
 }

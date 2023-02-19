@@ -40,6 +40,7 @@ public class MissingWildsClientForge {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(MissingWildsEntities.FIREFLY_SWARM.get(), FireflySwarmRenderer::new);
+        MissingWildsClientCommon.registerEntityRenderers(event::registerBlockEntityRenderer);
     }
 
     @SubscribeEvent

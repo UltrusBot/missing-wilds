@@ -74,6 +74,26 @@ public class MissingWildsModelProvider extends FabricModelProvider {
         createJar(MissingWildsBlocks.BLACK_STAINED_JAR_BLOCK.get(), Blocks.BLACK_STAINED_GLASS, blockModelGenerators, null);
         createJar(MissingWildsBlocks.BLACK_STAINED_FIREFLY_JAR_BLOCK.get(), Blocks.BLACK_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.BLACK_STAINED_JAR_BLOCK.get());
 
+        createJar(MissingWildsBlocks.FOOD_JAR_BLOCK.get(), Blocks.GLASS, blockModelGenerators, MissingWildsBlocks.JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.TINTED_FOOD_JAR_BLOCK.get(), Blocks.TINTED_GLASS, blockModelGenerators, MissingWildsBlocks.TINTED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.WHITE_STAINED_FOOD_JAR_BLOCK.get(), Blocks.WHITE_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.WHITE_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.ORANGE_STAINED_FOOD_JAR_BLOCK.get(), Blocks.ORANGE_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.ORANGE_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.MAGENTA_STAINED_FOOD_JAR_BLOCK.get(), Blocks.MAGENTA_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.MAGENTA_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.LIGHT_BLUE_STAINED_FOOD_JAR_BLOCK.get(), Blocks.LIGHT_BLUE_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.LIGHT_BLUE_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.YELLOW_STAINED_FOOD_JAR_BLOCK.get(), Blocks.YELLOW_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.YELLOW_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.LIME_STAINED_FOOD_JAR_BLOCK.get(), Blocks.LIME_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.LIME_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.PINK_STAINED_FOOD_JAR_BLOCK.get(), Blocks.PINK_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.PINK_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.GRAY_STAINED_FOOD_JAR_BLOCK.get(), Blocks.GRAY_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.GRAY_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.LIGHT_GRAY_STAINED_FOOD_JAR_BLOCK.get(), Blocks.LIGHT_GRAY_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.LIGHT_GRAY_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.CYAN_STAINED_FOOD_JAR_BLOCK.get(), Blocks.CYAN_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.CYAN_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.PURPLE_STAINED_FOOD_JAR_BLOCK.get(), Blocks.PURPLE_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.PURPLE_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.BLUE_STAINED_FOOD_JAR_BLOCK.get(), Blocks.BLUE_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.BLUE_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.BROWN_STAINED_FOOD_JAR_BLOCK.get(), Blocks.BROWN_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.BROWN_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.GREEN_STAINED_FOOD_JAR_BLOCK.get(), Blocks.GREEN_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.GREEN_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.RED_STAINED_FOOD_JAR_BLOCK.get(), Blocks.RED_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.RED_STAINED_JAR_BLOCK.get());
+        createJar(MissingWildsBlocks.BLACK_STAINED_FOOD_JAR_BLOCK.get(), Blocks.BLACK_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.BLACK_STAINED_JAR_BLOCK.get());
+
+
 
 
 
@@ -117,4 +137,5 @@ public class MissingWildsModelProvider extends FabricModelProvider {
                         .select(true, Variant.variant().with(VariantProperties.MODEL, jarModel)));
         blockModelGenerators.blockStateOutput.accept(multiVariant);
     }
+
 }

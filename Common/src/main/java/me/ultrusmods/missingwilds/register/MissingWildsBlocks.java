@@ -80,8 +80,27 @@ public class MissingWildsBlocks {
 	public static final RegistryObject<Block> BLACK_STAINED_JAR_BLOCK = register("black_stained_jar", MissingWildsBlocks::createJarBlock);
 	public static final RegistryObject<Block> BLACK_STAINED_FIREFLY_JAR_BLOCK = register("black_stained_firefly_jar", MissingWildsBlocks::createFireflyJarBlock);
 
-	// TODO: Work on this again at some point.
 	public static final RegistryObject<Block> FORGET_ME_NOT = register("forget_me_not", () -> new CombinedStackingFlowerBlock(MobEffects.LUCK, 10, Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.NONE)));
+
+	public static final RegistryObject<Block> FOOD_JAR_BLOCK = register("food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> TINTED_FOOD_JAR_BLOCK = register("tinted_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> WHITE_STAINED_FOOD_JAR_BLOCK = register("white_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> ORANGE_STAINED_FOOD_JAR_BLOCK = register("orange_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> MAGENTA_STAINED_FOOD_JAR_BLOCK = register("magenta_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> LIGHT_BLUE_STAINED_FOOD_JAR_BLOCK = register("light_blue_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> YELLOW_STAINED_FOOD_JAR_BLOCK = register("yellow_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> LIME_STAINED_FOOD_JAR_BLOCK = register("lime_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> PINK_STAINED_FOOD_JAR_BLOCK = register("pink_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> GRAY_STAINED_FOOD_JAR_BLOCK = register("gray_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> LIGHT_GRAY_STAINED_FOOD_JAR_BLOCK = register("light_gray_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> CYAN_STAINED_FOOD_JAR_BLOCK = register("cyan_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> PURPLE_STAINED_FOOD_JAR_BLOCK = register("purple_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> BLUE_STAINED_FOOD_JAR_BLOCK = register("blue_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> BROWN_STAINED_FOOD_JAR_BLOCK = register("brown_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> GREEN_STAINED_FOOD_JAR_BLOCK = register("green_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> RED_STAINED_FOOD_JAR_BLOCK = register("red_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+	public static final RegistryObject<Block> BLACK_STAINED_FOOD_JAR_BLOCK = register("black_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
+
 
 
 	public static final RegistryObject<Block> WATERLILY_BLOCK = register("waterlily", () -> Services.PLATFORM.getWaterlilyBlock(Properties.copy(Blocks.LILY_PAD)));
@@ -105,6 +124,9 @@ public class MissingWildsBlocks {
 	}
 	public static Block createJarBlock() {
 		return new JarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion());
+	}
+	public static Block createFoodJarBlock() {
+		return new FoodJarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion());
 	}
 	public static Block createFireflyJarBlock() {
 		return new FireflyJarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion().lightLevel((state) -> state.getValue(FireflyJarBlock.LIGHT_LEVEL)));
