@@ -5,6 +5,7 @@ import me.ultrusmods.missingwilds.block.FallenLogBlock;
 import me.ultrusmods.missingwilds.block.PolyporeMushroomBlock;
 import me.ultrusmods.missingwilds.block.StackingFlowerBlock;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -19,7 +20,7 @@ import net.minecraft.world.level.material.MaterialColor;
 import java.util.function.Supplier;
 
 public class MissingWildsBlocks {
-	public static final RegistrationProvider<Block> BLOCKS = RegistrationProvider.get(Registry.BLOCK, Constants.MOD_ID);
+	public static final RegistrationProvider<Block> BLOCKS = RegistrationProvider.get(Registries.BLOCK, Constants.MOD_ID);
 
 	public static final RegistryObject<Block> FALLEN_OAK_LOG = registerFallenLog("fallen_oak_log");
 	public static final RegistryObject<Block> FALLEN_BIRCH_LOG = registerFallenLog("fallen_birch_log");

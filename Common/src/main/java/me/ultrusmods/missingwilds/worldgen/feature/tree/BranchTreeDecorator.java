@@ -6,6 +6,8 @@ import me.ultrusmods.missingwilds.register.MissingWildsFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
@@ -79,7 +81,7 @@ public class BranchTreeDecorator extends TreeDecorator {
                     int i = 2 + random.nextInt(2);
                     for (int j = 0; j < i; ++j) {
                         CompoundTag nbtCompound = new CompoundTag();
-                        nbtCompound.putString("id", Registry.ENTITY_TYPE.getKey(EntityType.BEE).toString());
+                        nbtCompound.putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.BEE).toString());
                         blockEntity.storeBee(nbtCompound, random.nextInt(599), false);
                     }
                 });

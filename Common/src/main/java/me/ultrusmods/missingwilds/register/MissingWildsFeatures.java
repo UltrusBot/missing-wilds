@@ -7,13 +7,14 @@ import me.ultrusmods.missingwilds.worldgen.feature.FallenLogFeatureConfig;
 import me.ultrusmods.missingwilds.worldgen.feature.tree.BranchTreeDecorator;
 import me.ultrusmods.missingwilds.worldgen.feature.tree.PolyporeMushroomTreeDecorator;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
 public class MissingWildsFeatures {
-	public static final RegistrationProvider<Feature<?>> FEATURES = RegistrationProvider.get(Registry.FEATURE_REGISTRY, Constants.MOD_ID);
-	public static final RegistrationProvider<TreeDecoratorType<?>> TREE_DECORATOR_TYPES = RegistrationProvider.get(Registry.TREE_DECORATOR_TYPES, Constants.MOD_ID);
+	public static final RegistrationProvider<Feature<?>> FEATURES = RegistrationProvider.get(Registries.FEATURE, Constants.MOD_ID);
+	public static final RegistrationProvider<TreeDecoratorType<?>> TREE_DECORATOR_TYPES = RegistrationProvider.get(Registries.TREE_DECORATOR_TYPE, Constants.MOD_ID);
 
 	public static final RegistryObject<Feature<FallenLogFeatureConfig>> FALLEN_LOG = FEATURES.register("fallen_log", () -> new FallenLogFeature(FallenLogFeatureConfig.CODEC));
 

@@ -7,8 +7,19 @@ plugins {
 archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
 repositories {
     maven { url 'https://jitpack.io' }
-    maven {
-        url = uri("https://storage.googleapis.com/devan-maven/")
+//    maven {
+//        url = uri("https://maven.ueaj.dev") // This is broken ATM
+//    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
     }
 }
 
@@ -18,7 +29,8 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     implementation project(":Common")
-    modImplementation include("net.devtech:arrp:0.6.2")
+//    modImplementation include("net.devtech:arrp:0.6.7")
+    modImplementation include("maven.modrinth:arrp:0.6.7")
 }
 
 loom {

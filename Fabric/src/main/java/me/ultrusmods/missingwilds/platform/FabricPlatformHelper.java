@@ -1,9 +1,7 @@
 package me.ultrusmods.missingwilds.platform;
 
-import me.ultrusmods.missingwilds.MissingWildsFabric;
 import me.ultrusmods.missingwilds.platform.services.IPlatformHelper;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.world.item.CreativeModeTab;
 
 public class FabricPlatformHelper implements IPlatformHelper {
 
@@ -24,8 +22,4 @@ public class FabricPlatformHelper implements IPlatformHelper {
         return FabricLoader.getInstance().isDevelopmentEnvironment();
     }
 
-    @Override
-    public CreativeModeTab getCreativeTab() {
-        return MissingWildsFabric.MISSING_WILD_ITEMS;
-    }
 }
