@@ -9,6 +9,7 @@ machete = "1.1.2"
 midnightlib_forge = "1.0.0-forge"
 midnightlib_fabric = "1.0.0-fabric"
 midnightlib_quilt = "1.0.0-quilt"
+tablesaw = "1.4.1+1.19.2"
 
 # Extra Libraries
 arrp = "0.6.2"
@@ -32,6 +33,7 @@ brrp = { module = "maven.modrinth:brrp", version.ref = "brrp" }
 midnightlib_forge = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_forge" }
 midnightlib_fabric = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_fabric" }
 midnightlib_quilt = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_quilt" }
+tablesaw = { module = "maven.modrinth:tablesaw", version.ref = "tablesaw" }
 
 
 #[plugins]

@@ -20,7 +20,8 @@
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
       "init": "me.ultrusmods.missingwilds.MissingWildsQuilt",
-      "client_init": "me.ultrusmods.missingwilds.client.MissingWildsClientQuilt"
+      "client_init": "me.ultrusmods.missingwilds.client.MissingWildsClientQuilt",
+      "tablesaw": "me.ultrusmods.missingwilds.compat.TablesawCompat"
     },
     "depends": [
       {

@@ -18,6 +18,17 @@ repositories {
         name = "TerraformersMC"
         url = uri("https://maven.terraformersmc.com/")
     }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = uri("https://api.modrinth.com/maven")
+            }
+        }
+        filter {
+            includeGroup("maven.modrinth")
+        }
+    }
 }
 
 dependencies {
@@ -28,6 +39,7 @@ dependencies {
 
     modImplementation(libs.qfapi)
     modImplementation(libs.emi)
+    modImplementation(libs.tablesaw)
 
     implementation(project(":Common"))
 }

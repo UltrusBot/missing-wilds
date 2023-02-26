@@ -49,6 +49,9 @@ public class MissingWildsQuiltResources {
                     pack.putText(PackType.SERVER_DATA, Constants.id("recipes/" + modId + "_" + logData.name() + ".json"), createFallenLogRecipe(modId, logData));
                     pack.putText(PackType.SERVER_DATA, Constants.id("advancements/recipes/items/" + modId + "_" + logData.name() + ".json"), createFallenLogRecipeAdvancement(modId, logData));
                     pack.putText(PackType.SERVER_DATA, Constants.id("loot_tables/blocks/" + modId + "_" + logData.name() + ".json"), createFallenLogLootTable(modId, logData));
+                    if (QuiltLoader.isModLoaded("tablesaw")) {
+                        pack.putText(PackType.SERVER_DATA, Constants.id("custom_recipes/tablesaw/" + modId + "_" + logData.name() + ".json"), createTablesawRecipe(modId, logData));
+                    }
                     LOGS.add(modId + "_" + logData.name());
                 });
             }
@@ -213,5 +216,13 @@ public class MissingWildsQuiltResources {
                   ]
                 }
                 """, modId, data.name());
+    }
+    public static String createTablesawRecipe(String modId, ModCompatQuilt.LogData data) {
+        return String.format("""
+                {
+                    "input": "%1$s:%2$s",
+                    "result": "missingwilds:%1$s_%3$s"
+                }
+                """, modId, data.name().substring(7), data.name());
     }
 }
