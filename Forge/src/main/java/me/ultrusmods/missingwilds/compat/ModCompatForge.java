@@ -91,5 +91,6 @@ public abstract class ModCompatForge {
 		modCompats.put("biomemakeover", new BiomeMakeoverCompatForge());
 		modCompats.put("ecologics", new EcologicsCompatForge());
 		modCompats.put("goodending", new GoodEndingCompatForge());
+		modCompats.put("biomesoplenty", new BiomesOPlentyCompat());
 	}
 }
