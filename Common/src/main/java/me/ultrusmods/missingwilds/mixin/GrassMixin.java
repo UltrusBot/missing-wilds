@@ -18,9 +18,8 @@ public class GrassMixin {
     @ModifyVariable(method = "performBonemeal", at = @At(value = "STORE", ordinal = 0))
     Holder missingWildsChangeBonemealFlowers(Holder value, ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
         if (serverLevel.getBiome(blockPos).is(MissingWildsTags.BIRCH)) {
-            return MissingWildsConfiguredFeatures.FORGET_ME_NOTS[randomSource.nextInt(0, MissingWildsConfiguredFeatures.FORGET_ME_NOTS.length)].value().config().feature();
-        } else {
-            return value;
+            return MissingWildsConfiguredFeatures.FORGET_ME_NOT_BONEMEAL.value().config().feature();
         }
+        return value;
     }
 }

@@ -16,23 +16,23 @@ public class MissingWildsWorldGen {
     public static final Predicate<BiomeSelectionContext> BIOMES = BiomeSelectors.tag(MissingWildsTags.BIRCH);
     public static void init() {
         BiomeModification biomeModifications = BiomeModifications.create(new ResourceLocation(MOD_ID, "world_features"));
-        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.PLACED_FALLEN_BIRCH_LOG.value()));
-        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.BLUE_FORGET_ME_NOT.value()));
-        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.PURPLE_FORGET_ME_NOT.value()));
-        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.PINK_FORGET_ME_NOT.value()));
-        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.WHITE_FORGET_ME_NOT.value()));
-        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.SWEETSPIRE.value()));
-        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.TALL_GRASS.value()));
-        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addBuiltInFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.GRASS.value()));
+        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.PLACED_FALLEN_BIRCH_LOG));
+        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.BLUE_FORGET_ME_NOT));
+        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.PURPLE_FORGET_ME_NOT));
+        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.PINK_FORGET_ME_NOT));
+        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.WHITE_FORGET_ME_NOT));
+        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.SWEETSPIRE));
+        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.TALL_GRASS));
+        biomeModifications.add(ModificationPhase.ADDITIONS, BIOMES, context -> context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.GRASS));
         BiomeModifications.create(new ResourceLocation(MOD_ID, "branched_birch_tree"))
                 .add(ModificationPhase.REPLACEMENTS,
                         BIOMES,
                         (context) -> {
                             if (context.getGenerationSettings().removeBuiltInFeature(VegetationPlacements.TREES_BIRCH.value())) {
-                                context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.TREES_BIRCH.unwrapKey().get());
+                                context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.TREES_BIRCH);
                             }
                             if (context.getGenerationSettings().removeBuiltInFeature(VegetationPlacements.BIRCH_TALL.value())) {
-                                context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.TALL_TREES_BIRCH.unwrapKey().get());
+                                context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.TALL_TREES_BIRCH);
                             }
                         });
     }

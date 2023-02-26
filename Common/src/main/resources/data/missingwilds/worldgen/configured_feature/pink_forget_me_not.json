@@ -1,0 +1,78 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 64,
+    "xz_spread": 7,
+    "y_spread": 3,
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "missingwilds:forget_me_not",
+                  "Properties": {
+                    "flower_1": "pink",
+                    "flower_2": "pink",
+                    "flower_3": "white"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "missingwilds:forget_me_not",
+                  "Properties": {
+                    "flower_1": "pink",
+                    "flower_2": "pink",
+                    "flower_3": "purple"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "missingwilds:forget_me_not",
+                  "Properties": {
+                    "flower_1": "pink",
+                    "flower_2": "pink",
+                    "flower_3": "blue"
+                  }
+                }
+              },
+              {
+                "weight": 2,
+                "data": {
+                  "Name": "missingwilds:forget_me_not",
+                  "Properties": {
+                    "flower_1": "pink",
+                    "flower_2": "pink"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "missingwilds:pink_forget_me_not"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
+    }
+  }
+}

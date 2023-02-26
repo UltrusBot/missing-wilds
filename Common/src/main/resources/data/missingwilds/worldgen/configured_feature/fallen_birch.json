@@ -1,0 +1,11 @@
+{
+  "type": "missingwilds:fallen_log",
+  "config": {
+    "state_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "missingwilds:fallen_birch_log"
+      }
+    }
+  }
+}
