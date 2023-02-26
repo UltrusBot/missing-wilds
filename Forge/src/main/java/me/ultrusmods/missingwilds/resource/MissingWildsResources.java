@@ -73,7 +73,7 @@ public class MissingWildsResources {
 						JPattern.pattern("xxx", "x x", "xxx"),
 						JKeys.keys()
 								.key("x", JIngredient.ingredient().item(modid + ":" + logData.name().substring(7))),
-						JResult.result(modid + ":" + logData.name())
+						JResult.result( "missingwilds:" + modid + "_" + logData.name())
 
 				).group("missingwilds:fallen_logs")
 		);
