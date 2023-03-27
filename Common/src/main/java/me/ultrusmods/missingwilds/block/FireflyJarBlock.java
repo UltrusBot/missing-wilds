@@ -46,6 +46,7 @@ public class FireflyJarBlock extends JarBlock implements EntityBlock {
         if (stack.is(MissingWildsItems.FIREFLY_BOTTLE_ITEM.get()) && state.getValue(LIGHT_LEVEL) < 15) {
             level.setBlockAndUpdate(pos, state.setValue(LIGHT_LEVEL, state.getValue(LIGHT_LEVEL) + 1));
             stack.shrink(1);
+            player.addItem(new ItemStack(Items.GLASS_BOTTLE));
             return InteractionResult.SUCCESS;
         }
         if (stack.is(Items.GLASS_BOTTLE) && state.getValue(LIGHT_LEVEL) > 1) {

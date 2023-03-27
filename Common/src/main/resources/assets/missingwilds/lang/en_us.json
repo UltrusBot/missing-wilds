@@ -124,5 +124,7 @@
   "block.missingwilds.biomesoplenty_fallen_palm_log": "Fallen Palm Log",
   "block.missingwilds.biomesoplenty_fallen_redwood_log": "Fallen Redwood Log",
   "block.missingwilds.biomesoplenty_fallen_umbran_log": "Fallen Umbran Log",
-  "block.missingwilds.biomesoplenty_fallen_willow_log": "Fallen Willow Log"
+  "block.missingwilds.biomesoplenty_fallen_willow_log": "Fallen Willow Log",
+  "missingwilds.advancements.adventure.fireflies.title": "You Would Not Believe Your Eyes",
+  "missingwilds.advancements.adventure.fireflies.description": "Find and collect a firefly in a bottle."
 }
