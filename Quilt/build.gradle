@@ -1,0 +1,89 @@
+plugins {
+    id("org.quiltmc.loom") version "0.12.+"
+    id("maven-publish")
+}
+
+
+archivesBaseName = "${mod_name}-quilt-${minecraft_version}"
+repositories {
+    maven {
+        name = "Quilt"
+        url = "https://maven.quiltmc.org/repository/release"
+        content {
+            includeGroupByRegex('org\\.quiltmc.*')
+        }
+    }
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+        content {
+            includeGroup("dev.emi")
+        }
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
+}
+
+dependencies {
+
+    minecraft(libs.minecraft)
+    mappings(loom.officialMojangMappings())
+    modImplementation(libs.quilt.loader)
+
+    modImplementation(libs.qfapi)
+    modImplementation(libs.emi)
+    modImplementation(libs.tablesaw)
+
+    implementation(project(":Common"))
+}
+loom {
+    accessWidenerPath.set(file("src/main/resources/missingwilds.accesswidener"))
+    mixin {
+        defaultRefmapName.set("${mod_id}.refmap.json")
+    }
+}
+processResources {
+    from project(":Common").sourceSets.main.resources
+    inputs.property "version", project.version
+
+    filesMatching("quilt.mod.json") {
+        expand "version": project.version
+    }
+    filesMatching('*.mixins.json') {
+        expand "refmap_target": "${archivesBaseName}-"
+    }
+}
+
+
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${mod_name}" }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId project.group
+            artifactId project.archivesBaseName
+            version project.version
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url "file://" + System.getenv("local_maven")
+        }
+    }
+}

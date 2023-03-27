@@ -1,0 +1,86 @@
+plugins {
+    id 'fabric-loom' version '0.11-SNAPSHOT'
+    id 'maven-publish'
+    id 'idea'
+}
+
+archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
+repositories {
+    maven{ url "https://jitpack.io"}
+    maven{ url "https://storage.googleapis.com/devan-maven/"}
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+        content {
+            includeGroup("dev.emi")
+        }
+    }
+}
+
+dependencies {
+    minecraft(libs.minecraft)
+    mappings(loom.officialMojangMappings())
+    modImplementation(libs.fabric.loader)
+    modImplementation(libs.fabric.api)
+    implementation(project(":Common"))
+    modImplementation(libs.arrp)
+    modImplementation(libs.emi)
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/missingwilds.accesswidener")
+    runs {
+        client {
+            client()
+            setConfigName("Fabric Client")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+        server {
+            server()
+            setConfigName("Fabric Server")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+    }
+}
+
+
+processResources {
+    from project(":Common").sourceSets.main.resources
+    inputs.property "version", project.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+    filesMatching('*.mixins.json') {
+        expand "refmap_target": "${archivesBaseName}-"
+    }
+}
+
+tasks.withType(JavaCompile) {
+    source(project(":Common").sourceSets.main.allSource)
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${mod_name}" }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId project.group
+                    artifactId project.archivesBaseName
+                    version project.version
+                    from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url "file://" + System.getenv("local_maven")
+        }
+    }
+}

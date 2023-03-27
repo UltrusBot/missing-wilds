@@ -1,7 +1,0 @@
-{
-    "loader": "fabric",
-    "id": "charm",
-    "logs": [
-        "azalea_log"
-    ]
-}
