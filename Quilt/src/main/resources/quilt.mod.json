@@ -38,7 +38,7 @@
       }
     ]
   },
-  "accessWidener": "missingwilds.accesswidener",
+  "access_widener": "missingwilds.accesswidener",
   "mixin": [
     "missingwilds.quilt.mixins.json",
     "missingwilds.mixins.json"
