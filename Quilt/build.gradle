@@ -5,6 +5,7 @@ plugins {
 
 
 archivesBaseName = "${mod_name}-quilt-${minecraft_version}"
+
 repositories {
     maven {
         name = "Quilt"
@@ -46,28 +47,31 @@ dependencies {
     implementation(project(":Common"))
 }
 loom {
-    accessWidenerPath.set(file("src/main/resources/missingwilds.accesswidener"))
+    accessWidenerPath = file("src/main/resources/missingwilds.accesswidener")
     mixin {
-        defaultRefmapName.set("${mod_id}.refmap.json")
+        defaultRefmapName = "${mod_id}.refmap.json"
     }
 }
 processResources {
+
     from project(":Common").sourceSets.main.resources
     inputs.property "version", project.version
 
     filesMatching("quilt.mod.json") {
         expand "version": project.version
     }
-    filesMatching('*.mixins.json') {
-        expand "refmap_target": "${archivesBaseName}-"
-    }
+
+    exclude '.cache'
 }
 
+tasks.withType(JavaCompile) {
 
+    source(project(":Common").sourceSets.main.allSource)
+}
 
 jar {
     from("LICENSE") {
-        rename { "${it}_${mod_name}" }
+        rename { "${it}_${mod_name}"}
     }
 }
 

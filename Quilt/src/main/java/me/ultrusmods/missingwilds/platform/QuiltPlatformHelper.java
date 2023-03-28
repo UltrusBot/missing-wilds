@@ -24,7 +24,7 @@ public class QuiltPlatformHelper implements IPlatformHelper {
 
     @Override
     public String getPlatformName() {
-        return "Fabric";
+        return "Quilt";
     }
 
     @Override
