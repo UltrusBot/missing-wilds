@@ -44,6 +44,13 @@ dependencies {
     modImplementation(libs.emi)
     modImplementation(libs.tablesaw)
 
+    modImplementation(libs.defaultresources.quilt) {
+        exclude group: "org.quiltmc"
+    }
+    include(libs.defaultresources.quilt) {
+        exclude group: "org.quiltmc"
+    }
+
     implementation(project(":Common"))
 }
 loom {
@@ -59,6 +66,9 @@ processResources {
 
     filesMatching("quilt.mod.json") {
         expand "version": project.version
+    }
+    from(rootProject.rootDir.absolutePath + "/ModCompat") {
+        into "defaultresources"
     }
 
     exclude '.cache'

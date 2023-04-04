@@ -17,6 +17,5 @@ public class TablesawCompat implements TableSawCompat {
         api.registerTableSawRecipe(Blocks.CRIMSON_STEM.asItem(),1, MissingWildsItems.FALLEN_CRIMSON_STEM.get().getDefaultInstance());
         api.registerTableSawRecipe(Blocks.WARPED_STEM.asItem(),1, MissingWildsItems.FALLEN_WARPED_STEM.get().getDefaultInstance());
         api.registerTableSawRecipe(Blocks.MANGROVE_LOG.asItem(),1, MissingWildsItems.FALLEN_MANGROVE_LOG.get().getDefaultInstance());
-
     }
 }

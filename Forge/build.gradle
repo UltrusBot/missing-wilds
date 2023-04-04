@@ -95,7 +95,10 @@ dependencies {
     compileOnly project(":Common")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     implementation fg.deobf(libs.brrp.get())
-    implementation fg.deobf(libs.midnightlib.forge.get())
+//    implementation fg.deobf(libs.midnightlib.forge.get())
+    implementation fg.deobf(libs.defaultresources.forge.get())
+    jarJar("io.github.lukebemish.defaultresources:defaultresources-forge-1.19.2:[0.3.0,)")
+
 }
 tasks.build.dependsOn tasks.jarJar
 tasks.jarJar.archiveClassifier.set("");
@@ -115,6 +118,9 @@ processResources {
 
     filesMatching('*.mixins.json') {
         expand "refmap_target": "${mod_id}."
+    }
+    from(rootProject.rootDir.absolutePath + "/ModCompat") {
+        into "defaultresources"
     }
     exclude '.cache'
 }

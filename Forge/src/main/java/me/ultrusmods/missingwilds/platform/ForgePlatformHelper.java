@@ -1,7 +1,7 @@
 package me.ultrusmods.missingwilds.platform;
 
 import me.ultrusmods.missingwilds.block.CustomWaterlilyBlock;
-import me.ultrusmods.missingwilds.compat.ModCompatForge;
+import me.ultrusmods.missingwilds.compat.ForgeModCompatHandler;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.item.MissingWildsItemGroup;
 import me.ultrusmods.missingwilds.platform.services.IPlatformHelper;
@@ -57,14 +57,14 @@ public class ForgePlatformHelper implements IPlatformHelper {
     @Override
     public void duringItemRegistering() {
         if (isModLoaded("better_runtime_resource_pack")) {
-            ModCompatForge.registerModCompatItems();
+            ForgeModCompatHandler.registerModCompatItems();
         }
     }
 
     @Override
     public void duringBlockRegistering() {
         if (isModLoaded("better_runtime_resource_pack")) {
-            ModCompatForge.registerModComatBlocks();
+            ForgeModCompatHandler.registerModCompatBlocks();
         }
     }
 

@@ -1,6 +1,7 @@
 package me.ultrusmods.missingwilds;
 
-import me.ultrusmods.missingwilds.compat.ModCompatForge;
+import me.ultrusmods.missingwilds.compat.ForgeModCompatHandler;
+import me.ultrusmods.missingwilds.data.ModCompatLoader;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
@@ -21,12 +22,15 @@ import java.util.List;
 public class MissingWildsForge {
     public static final List<RegistryObject<Block>> COMPAT_LOGS = new ArrayList<>();
     public MissingWildsForge() {
+        if (Services.PLATFORM.isModLoaded("better_runtime_resource_pack")) {
+            ModCompatLoader.init();
+        }
         MissingWildsModCommon.init();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::spawnPlacementsEvent);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerAttributes);
         if (Services.PLATFORM.isModLoaded("better_runtime_resource_pack")) {
-            ModCompatForge.checkModCompat();
+            ForgeModCompatHandler.checkModCompat();
         }
 
 

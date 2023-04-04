@@ -1,6 +1,6 @@
 package me.ultrusmods.missingwilds;
 
-import me.ultrusmods.missingwilds.compat.ModCompatQuilt;
+import me.ultrusmods.missingwilds.compat.QuiltModCompatHandler;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
@@ -18,7 +18,6 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.quiltmc.qsl.item.group.api.QuiltItemGroup;
-import org.quiltmc.qsl.worldgen.biome.api.BiomeModification;
 import org.quiltmc.qsl.worldgen.biome.api.BiomeModifications;
 import org.quiltmc.qsl.worldgen.biome.api.BiomeSelectors;
 
@@ -34,9 +33,8 @@ public class MissingWildsQuilt implements ModInitializer {
 
     @Override
     public void onInitialize(ModContainer mod) {
-        //        MissingWildsResources.init();
         MissingWildsModCommon.init();
-        ModCompatQuilt.checkModCompat();
+        QuiltModCompatHandler.checkModCompat();
         MissingWildsWorldGen.init();
         MissingWildsQuiltResources.init();
         BiomeModifications.addSpawn(

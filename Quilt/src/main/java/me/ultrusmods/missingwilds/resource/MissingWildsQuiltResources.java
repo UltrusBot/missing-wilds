@@ -1,7 +1,9 @@
 package me.ultrusmods.missingwilds.resource;
 
 import me.ultrusmods.missingwilds.Constants;
-import me.ultrusmods.missingwilds.compat.ModCompatQuilt;
+import me.ultrusmods.missingwilds.compat.QuiltModCompatHandler;
+import me.ultrusmods.missingwilds.data.LogData;
+import me.ultrusmods.missingwilds.data.ModCompatLoader;
 import net.minecraft.SharedConstants;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
@@ -15,6 +17,9 @@ import org.quiltmc.qsl.resource.loader.api.ResourcePackActivationType;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
+/**
+ * Creates the virtual resource/data packs for mod compatability features added through {@link QuiltModCompatHandler}
+ */
 public class MissingWildsQuiltResources {
 
     public static void init() {
@@ -32,15 +37,14 @@ public class MissingWildsQuiltResources {
                 return ResourcePackActivationType.ALWAYS_ENABLED;
             }
         };
-        System.out.println("Generating resource pack of type " + type.name());
         pack.putText("pack.mcmeta", String.format("""
                 {"pack":{"pack_format":%d,"description":"MissingWilds Mod Compat Pack"}}
                 	""", type.getVersion(SharedConstants.getCurrentVersion())));
         ArrayList<String> LOGS = new ArrayList<>();
-        ModCompatQuilt.modCompats.forEach((modId, modCompat) -> {
+        ModCompatLoader.modCompats.forEach((modId, modCompat) -> {
             if (QuiltLoader.isModLoaded(modId)) {
-                modCompat.addLogs();
-                modCompat.getLogList().forEach(logData -> {
+                modCompat.logs().forEach(logEither -> {
+                    LogData logData = logEither.left().isPresent() ? QuiltModCompatHandler.getSimpleLogName(logEither.left().get(), modId) : logEither.right().get();
                     pack.putText(PackType.CLIENT_RESOURCES, Constants.id("models/block/" + modId + "_" + logData.name() + ".json"), createBlockModel(logData, ""));
                     pack.putText(PackType.CLIENT_RESOURCES, Constants.id("models/block/" + modId + "_" + logData.name() + "_mossy.json"), createBlockModel(logData, "_mossy"));
                     pack.putText(PackType.CLIENT_RESOURCES, Constants.id("models/block/" + modId + "_" + logData.name() + "_snowy.json"), createBlockModel(logData, "_snowy"));
@@ -66,6 +70,7 @@ public class MissingWildsQuiltResources {
                 """, String.join(", ", LOGS.stream().map(log -> "\"" + Constants.id(log) + "\"").toList())));
         profileAdder.accept(Pack.create("missingWildsCompat", false, () -> pack, packConstructor,
                 Pack.Position.TOP, PackSource.BUILT_IN));
+        Constants.LOG.info("Generated missing wilds compat for mods: " + ModCompatLoader.modCompats.keySet().stream().filter(QuiltLoader::isModLoaded).toList());
     }
 
     private static String createLogItemModel(String name, String modId) {
@@ -118,7 +123,7 @@ public class MissingWildsQuiltResources {
                 """, id, modId);
     }
 
-    public static String createBlockModel(ModCompatQuilt.LogData data, String type) {
+    public static String createBlockModel(LogData data, String type) {
         return String.format("""
                 {
                   "parent": "missingwilds:block/template/fallen_log_template%s",
@@ -130,7 +135,7 @@ public class MissingWildsQuiltResources {
                 """, type, data.logTexture(), data.strippedLogTexture());
     }
 
-    public static String createFallenLogRecipe(String modId, ModCompatQuilt.LogData data) {
+    public static String createFallenLogRecipe(String modId, LogData data) {
         return String.format("""
                 {
                   "type": "minecraft:crafting_shaped",
@@ -153,7 +158,7 @@ public class MissingWildsQuiltResources {
                                                 """, modId, data.name().substring(7), data.name());
     }
 
-    public static String createFallenLogRecipeAdvancement(String modId, ModCompatQuilt.LogData data) {
+    public static String createFallenLogRecipeAdvancement(String modId, LogData data) {
         return String.format("""
                 {
                   "parent": "minecraft:recipes/root",
@@ -193,7 +198,7 @@ public class MissingWildsQuiltResources {
         );
     }
 
-    public static String createFallenLogLootTable(String modId, ModCompatQuilt.LogData data) {
+    public static String createFallenLogLootTable(String modId, LogData data) {
         return String.format("""
                 {
                   "type": "minecraft:block",
@@ -217,7 +222,7 @@ public class MissingWildsQuiltResources {
                 }
                 """, modId, data.name());
     }
-    public static String createTablesawRecipe(String modId, ModCompatQuilt.LogData data) {
+    public static String createTablesawRecipe(String modId, LogData data) {
         return String.format("""
                 {
                     "input": "%1$s:%2$s",

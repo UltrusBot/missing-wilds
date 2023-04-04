@@ -1,11 +1,7 @@
 package me.ultrusmods.missingwilds.resource;
 
 import me.ultrusmods.missingwilds.Constants;
-import me.ultrusmods.missingwilds.MissingWildsForge;
-import me.ultrusmods.missingwilds.compat.ModCompatForge;
-import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
-import me.ultrusmods.missingwilds.register.MissingWildsItems;
-import me.ultrusmods.missingwilds.register.RegistryObject;
+import me.ultrusmods.missingwilds.data.LogData;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
@@ -14,17 +10,14 @@ import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
 import net.devtech.arrp.json.tags.JTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 
 import static net.devtech.arrp.json.loot.JLootTable.*;
 
-// TODO: Rewrite when have gotten more sleep
 public class MissingWildsResources {
 	public static final RuntimeResourcePack RESOURCE_PACK = RuntimeResourcePack.create(Constants.id("resources"));
 	public static final JTag FALLEN_LOGS = JTag.tag();
 
-	public static void addLog(ModCompatForge.LogData logData, String modid) {
+	public static void addLog(LogData logData, String modid) {
 		var fallenLogLocation = Constants.id("block/" + modid + "_" + logData.name());
 		var fallenLogLocationMossy = Constants.id("block/" + modid + "_" + logData.name() + "_mossy");
 		var fallenLogLocationSnowy = Constants.id("block/" + modid + "_" + logData.name() + "_snowy");
@@ -85,17 +78,5 @@ public class MissingWildsResources {
 								.type("minecraft:item")
 								.name(id.toString()))
 						.condition(condition("minecraft:survives_explosion"))));
-	}
-
-	public static void addLogItem(ModCompatForge.LogData logData, String modid, ModCompatForge modCompat) {
-		RegistryObject<Item> item = MissingWildsItems.register(modid + "_" + logData.name(), modCompat.getLogsBlocks().get(logData.blockId()));
-		modCompat.addItem(item, logData.blockId());
-
-	}
-
-	public static void addLogBlock(ModCompatForge.LogData logData, String modid, ModCompatForge modCompat) {
-		RegistryObject<Block> block = MissingWildsBlocks.registerFallenLog(modid + "_" + logData.name());
-		modCompat.addBlock(block, logData.blockId());
-		MissingWildsForge.COMPAT_LOGS.add(block);
 	}
 }
