@@ -62,6 +62,9 @@
   "block.missingwilds.black_stained_firefly_jar": "Black Stained Firefly Jar",
   "item.missingwilds.firefly_bottle": "Firefly Bottle",
   "tag.missingwilds.forget_me_nots": "Forget Me Nots",
+  "missingwilds.advancements.adventure.fireflies.title": "You Would Not Believe Your Eyes",
+  "missingwilds.advancements.adventure.fireflies.description": "Find and collect a firefly in a bottle.",
+
 
   "block.missingwilds.traverse_fallen_fir_log": "Fallen Fir Log",
   "block.missingwilds.byg_fallen_aspen_log": "Fallen Aspen log",
@@ -125,6 +128,5 @@
   "block.missingwilds.biomesoplenty_fallen_redwood_log": "Fallen Redwood Log",
   "block.missingwilds.biomesoplenty_fallen_umbran_log": "Fallen Umbran Log",
   "block.missingwilds.biomesoplenty_fallen_willow_log": "Fallen Willow Log",
-  "missingwilds.advancements.adventure.fireflies.title": "You Would Not Believe Your Eyes",
-  "missingwilds.advancements.adventure.fireflies.description": "Find and collect a firefly in a bottle."
+  "block.missingwilds.cobblemon_fallen_apricorn_log": "Fallen Apricorn Log"
 }

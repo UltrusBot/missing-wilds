@@ -1,0 +1,11 @@
+{
+  "modid": "cobblemon",
+  "logs": [
+    {
+      "name": "fallen_apricorn_log",
+      "block_id": "cobblemon:apricorn_log",
+      "log_texture": "cobblemon:blocks/apricorn_log",
+      "inner_log_texture": "cobblemon:blocks/stripped_apricorn_log"
+    }
+  ]
+}
