@@ -53,5 +53,6 @@ public abstract class ModCompat {
 		modCompats.put("terrestria", new TerrestriaCompat());
 		modCompats.put("cinderscapes", new CinderscapesCompat());
 		modCompats.put("goodending", new GoodEndingCompat());
+		modCompats.put("cobblemon", new CobblemonCompat());
 	}
 }
