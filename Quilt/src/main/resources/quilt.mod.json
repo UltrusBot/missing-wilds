@@ -35,6 +35,10 @@
       {
         "id": "minecraft",
         "versions": "1.19.2"
+      },
+      {
+        "id": "defaultresources",
+        "versions": ">=0.3.0"
       }
     ]
   },

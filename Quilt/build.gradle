@@ -45,11 +45,9 @@ dependencies {
     modImplementation(libs.tablesaw)
 
     modImplementation(libs.defaultresources.quilt) {
-        exclude group: "org.quiltmc"
+        transitive = false
     }
-    include(libs.defaultresources.quilt) {
-        exclude group: "org.quiltmc"
-    }
+    include(libs.defaultresources.quilt)
 
     implementation(project(":Common"))
 }
