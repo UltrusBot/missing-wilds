@@ -54,5 +54,6 @@ public abstract class ModCompat {
 		modCompats.put("cinderscapes", new CinderscapesCompat());
 		modCompats.put("goodending", new GoodEndingCompat());
 		modCompats.put("cobblemon", new CobblemonCompat());
+		modCompats.put("gardens_of_the_dead", new GardensOfTheDeadCompat());
 	}
 }
