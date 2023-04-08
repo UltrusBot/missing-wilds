@@ -68,6 +68,6 @@ public class QuiltPlatformHelper implements IPlatformHelper {
 
     @Override
     public EntityType<FireflySwarm> createFirefly() {
-        return QuiltEntityTypeBuilder.create(MobCategory.AMBIENT, FireflySwarm::new).setDimensions(EntityDimensions.fixed(2.0F, 2.0F)).maxBlockTrackingRange(16).build();
+        return QuiltEntityTypeBuilder.create(MobCategory.AMBIENT, FireflySwarm::new).setDimensions(EntityDimensions.scalable(2.0F, 2.0F)).maxBlockTrackingRange(16).build();
     }
 }

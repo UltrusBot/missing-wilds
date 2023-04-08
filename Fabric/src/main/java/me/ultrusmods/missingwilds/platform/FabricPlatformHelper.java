@@ -68,6 +68,6 @@ public class FabricPlatformHelper implements IPlatformHelper {
 
     @Override
     public EntityType<FireflySwarm> createFirefly() {
-        return FabricEntityTypeBuilder.create(MobCategory.AMBIENT, FireflySwarm::new).dimensions(EntityDimensions.fixed(2.0F, 2.0F)).trackRangeBlocks(16).build();
+        return FabricEntityTypeBuilder.create(MobCategory.AMBIENT, FireflySwarm::new).dimensions(EntityDimensions.scalable(2.0F, 2.0F)).trackRangeBlocks(16).build();
     }
 }
