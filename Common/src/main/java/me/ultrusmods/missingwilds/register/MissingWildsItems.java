@@ -37,9 +37,9 @@ public class MissingWildsItems {
 	public static final RegistryObject<Item> SWEETSPIRE = register("sweetspire", () -> new DoubleHighBlockItem(MissingWildsBlocks.SWEETSPIRE.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	public static final RegistryObject<Item> ROASTED_POLYPORE_MUSHROOM = register("roasted_polypore_mushroom", () -> new Item(new Properties().tab(Services.PLATFORM.getCreativeTab()).food(MissingWildsFoodComponents.ROASTED_POLYPORE)));
 	public static final RegistryObject<Item> JAR = register("jar", () -> new BlockItem(MissingWildsBlocks.JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
-	public static final RegistryObject<Item> FIREFLY_JAR = register("firefly_jar", () -> new FireflyJarItem(MissingWildsBlocks.FIREFLY_JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
+	public static final RegistryObject<Item> FIREFLY_JAR = registerFireflyJar("firefly_jar", MissingWildsBlocks.FIREFLY_JAR_BLOCK);
 	public static final RegistryObject<Item> TINTED_JAR = register("tinted_jar", () -> new BlockItem(MissingWildsBlocks.TINTED_JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
-	public static final RegistryObject<Item> TINTED_FIREFLY_JAR = register("tinted_firefly_jar", () -> new FireflyJarItem(MissingWildsBlocks.TINTED_FIREFLY_JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
+	public static final RegistryObject<Item> TINTED_FIREFLY_JAR = registerFireflyJar("tinted_firefly_jar",MissingWildsBlocks.TINTED_FIREFLY_JAR_BLOCK);
 
 	public static final RegistryObject<Item> WHITE_STAINED_JAR_ITEM = register("white_stained_jar", MissingWildsBlocks.WHITE_STAINED_JAR_BLOCK);
 	public static final RegistryObject<Item> WHITE_STAINED_FIREFLY_JAR_ITEM = registerFireflyJar("white_stained_firefly_jar", MissingWildsBlocks.WHITE_STAINED_FIREFLY_JAR_BLOCK);
