@@ -45,12 +45,12 @@ public class MissingWildsClientForge {
 
     @SubscribeEvent
     public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
-        event.register((blockState, blockAndTintGetter, blockPos, col) -> blockAndTintGetter != null && blockPos != null ? 2129968 : 7455580, MissingWildsBlocks.WATERLILY_BLOCK.get());
+//        event.register((blockState, blockAndTintGetter, blockPos, col) -> blockAndTintGetter != null && blockPos != null ? 2129968 : 7455580, MissingWildsBlocks.WATERLILY_BLOCK.get());
     }
 
     @SubscribeEvent
     public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
-        event.register((itemStack, col) -> 7455580, MissingWildsItems.WATERLILY_ITEM.get());
+//        event.register((itemStack, col) -> 7455580, MissingWildsItems.WATERLILY_ITEM.get());
     }
 
 

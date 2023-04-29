@@ -103,7 +103,7 @@ public class MissingWildsBlocks {
 
 
 
-	public static final RegistryObject<Block> WATERLILY_BLOCK = register("waterlily", () -> Services.PLATFORM.getWaterlilyBlock(Properties.copy(Blocks.LILY_PAD)));
+//	public static final RegistryObject<Block> WATERLILY_BLOCK = register("waterlily", () -> Services.PLATFORM.getWaterlilyBlock(Properties.copy(Blocks.LILY_PAD)));
 
 	public static void init() {
 	}
