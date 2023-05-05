@@ -95,14 +95,31 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
             double x = pos.getX() + 0.5 + (2 * random.nextDouble() - 1);
             double y = pos.getY() + 0.5 + (random.nextInt(3) + 1);
             double z = pos.getZ() + 0.5 + (2 * random.nextDouble() - 1);
-            // TODO: Revisit this
-            if (colorSet != null) {
-                var color = colorSet[random.nextInt(colorSet.length)].getRGBColorComponents(null);
-                level.addParticle(new FireflyParticleOptions(color[0], color[1], color[2]), x, y, z, color[0], color[1], color[2]);
-            } else {
-                var color = getColorArr();
-                level.addParticle(new FireflyParticleOptions(color[0], color[1], color[2]), x, y, z, color[0], color[1], color[2]);
-            }
+            spawnFireflies(level, random, colorSet, x, y, z, 0.0075f);
+        }
+
+    }
+
+    public void createInnerParticles(Level level, int lightLevel, BlockPos pos, RandomSource random) {
+        Color[] colorSet = null;
+        if (this.name != null) {
+            colorSet = ColorSets.COLOR_SETS.get(this.name.getString());
+        }
+        for (int i = 0; i < 3; i++) {
+            double x = (pos.getX() + 0.5) + ((2 * random.nextDouble() - 1) / 5.0f);
+            double y = (pos.getY() + 0.5) + ((2 * random.nextDouble() - 1) / 4.0f);
+            double z = (pos.getZ() + 0.5) + ((2 * random.nextDouble() - 1) / 5.0f);
+            spawnFireflies(level, random, colorSet, x, y, z, 0f);
+        }
+    }
+
+    private void spawnFireflies(Level level, RandomSource random, Color[] colors, double x, double y, double z, float speed) {
+        if (colors != null) {
+            var color = colors[random.nextInt(colors.length)].getRGBColorComponents(null);
+            level.addParticle(new FireflyParticleOptions(color[0], color[1], color[2], 0.5f, speed), x, y, z, 0, 0, 0);
+        } else {
+            var color = getColorArr();
+            level.addParticle(new FireflyParticleOptions(color[0], color[1], color[2], 0.5f, speed), x, y, z, 0, 0, 0);
         }
     }
 

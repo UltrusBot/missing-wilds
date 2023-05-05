@@ -11,23 +11,25 @@ public class FireflyParticle extends TextureSheetParticle {
     private double yDir;
     private double zDir;
     private boolean lit;
+    private boolean scale;
 
-    protected FireflyParticle(ClientLevel level, double x, double y, double z, float r, float g, float b, int lifetime, float speedMultiplier) {
+    protected FireflyParticle(ClientLevel level, double x, double y, double z, float r, float g, float b, int lifetime, float speedMultiplier, float scale) {
         super(level, x, y, z);
         this.lifetime = lifetime;
         this.speedMultiplier = speedMultiplier;
         this.xDir = (Math.random() * 2.0 - 1.0) * 0.02;
         this.yDir = (Math.random() * 2.0 - 1.0) * 0.02;
         this.zDir = (Math.random() * 2.0 - 1.0) * 0.02;
-        this.xd = this.xDir;
-        this.yd = this.yDir;
-        this.zd = this.zDir;
+        this.xd = speedMultiplier != 0 ? this.xDir : 0;
+        this.yd = speedMultiplier != 0 ? this.yDir : 0;
+        this.zd = speedMultiplier != 0 ? this.zDir : 0;
         this.rCol = r;
         this.gCol = g;
         this.bCol = b;
         this.quadSize = 0.25f;
         this.lit = true;
         this.alpha = 0;
+        this.scale(scale);
     }
 
 
@@ -51,10 +53,12 @@ public class FireflyParticle extends TextureSheetParticle {
         this.xDir += (Math.random() * 2.0 - 1.0)  * speedMultiplier;
         this.yDir += (Math.random() * 2.0 - 1.0)  * speedMultiplier;
         this.zDir += (Math.random() * 2.0 - 1.0)  * speedMultiplier;
-        this.xd = Mth.lerp(0.2F, this.xd, this.xDir);
-        this.yd = Mth.lerp(0.2F, this.yd, this.yDir);
-        this.zd = Mth.lerp(0.2F, this.zd, this.zDir);
+        if (speedMultiplier != 0) {
+            this.xd = Mth.lerp(0.2F, this.xd, this.xDir);
+            this.yd = Mth.lerp(0.2F, this.yd, this.yDir);
+            this.zd = Mth.lerp(0.2F, this.zd, this.zDir);
 
+        }
         if (Math.random() < 0.0005D) {
             this.lit = !this.lit;
         }
@@ -74,7 +78,7 @@ public class FireflyParticle extends TextureSheetParticle {
 
         @Override
         public Particle createParticle(FireflyParticleOptions type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            var particle = new FireflyParticle(level, x, y, z, type.getRed(), type.getGreen(), type.getBlue(), type.getLifetime(), type.getSpeedMultiplier());
+            var particle = new FireflyParticle(level, x, y, z, type.getRed(), type.getGreen(), type.getBlue(), type.getLifetime(), type.getSpeedMultiplier(), type.getScale());
             particle.pickSprite(this.sprite);
             return particle;
         }

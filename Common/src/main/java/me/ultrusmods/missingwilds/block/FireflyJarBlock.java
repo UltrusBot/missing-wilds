@@ -100,11 +100,16 @@ public class FireflyJarBlock extends JarBlock implements EntityBlock {
     @Override
     public void animateTick(BlockState blockState, Level level, BlockPos pos, RandomSource random) {
         int lightLevel = blockState.getValue(LIGHT_LEVEL);
-        if (!blockState.getValue(COVERED) && lightLevel > 0 && random.nextInt(30 - lightLevel) == 0) {
+        if (lightLevel > 0 && random.nextInt(30 - lightLevel) == 0) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof FireflyJarBlockEntity fireflyJarBlockEntity) {
-                fireflyJarBlockEntity.createParticles(level, lightLevel, pos, random);
+                if (blockState.getValue(COVERED)) {
+                    fireflyJarBlockEntity.createInnerParticles(level, lightLevel, pos, random);
+                } else {
+                    fireflyJarBlockEntity.createParticles(level, lightLevel, pos, random);
+                }
             }
+
         }
     }
 
