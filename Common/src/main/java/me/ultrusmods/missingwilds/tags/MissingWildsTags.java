@@ -25,4 +25,6 @@ public class MissingWildsTags {
      * Items that can be put in a food jar, that typically aren't food.
      */
     public static final TagKey<Item> FOOD_JAR_OVERRIDE = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(Constants.MOD_ID, "food_jar_override"));
+
+    public static final TagKey<Item> FIREFLY_JARS = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(Constants.MOD_ID, "firefly_jars"));
 }

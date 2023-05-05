@@ -42,6 +42,15 @@ loom {
             ideConfigGenerated(true)
             runDir("run")
         }
+        datagenCommon {
+            client()
+            setConfigName("Fabric Datagen Common")
+            vmArg("-Dmw.common=true")
+            vmArg("-Dfabric-api.datagen")
+            vmArg("-Dfabric-api.datagen.output-dir=${file("../Common/src/generated/resources")}")
+            vmArg("-Dfabric-api.datagen.modid=${mod_id}")
+            runDir = "build/datagen"
+        }
     }
 }
 
@@ -56,6 +65,7 @@ processResources {
     filesMatching('*.mixins.json') {
         expand "refmap_target": "${archivesBaseName}-"
     }
+    exclude '.cache'
 }
 
 tasks.withType(JavaCompile) {

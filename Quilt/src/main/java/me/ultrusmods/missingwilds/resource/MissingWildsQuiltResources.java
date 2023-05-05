@@ -3,7 +3,6 @@ package me.ultrusmods.missingwilds.resource;
 import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.compat.QuiltModCompatHandler;
 import me.ultrusmods.missingwilds.data.LogData;
-import me.ultrusmods.missingwilds.data.ModCompatLoader;
 import net.minecraft.SharedConstants;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
@@ -41,7 +40,7 @@ public class MissingWildsQuiltResources {
                 {"pack":{"pack_format":%d,"description":"MissingWilds Mod Compat Pack"}}
                 	""", type.getVersion(SharedConstants.getCurrentVersion())));
         ArrayList<String> LOGS = new ArrayList<>();
-        ModCompatLoader.modCompats.forEach((modId, modCompat) -> {
+        QuiltModCompatHandler.modCompats.forEach((modId, modCompat) -> {
             if (QuiltLoader.isModLoaded(modId)) {
                 modCompat.logs().forEach(logEither -> {
                     LogData logData = logEither.left().isPresent() ? QuiltModCompatHandler.getSimpleLogName(logEither.left().get(), modId) : logEither.right().get();
@@ -70,7 +69,7 @@ public class MissingWildsQuiltResources {
                 """, String.join(", ", LOGS.stream().map(log -> "\"" + Constants.id(log) + "\"").toList())));
         profileAdder.accept(Pack.create("missingWildsCompat", false, () -> pack, packConstructor,
                 Pack.Position.TOP, PackSource.BUILT_IN));
-        Constants.LOG.info("Generated missing wilds compat for mods: " + ModCompatLoader.modCompats.keySet().stream().filter(QuiltLoader::isModLoaded).toList());
+        Constants.LOG.info("Generated missing wilds compat for mods: " + QuiltModCompatHandler.modCompats.keySet().stream().filter(QuiltLoader::isModLoaded).toList());
     }
 
     private static String createLogItemModel(String name, String modId) {

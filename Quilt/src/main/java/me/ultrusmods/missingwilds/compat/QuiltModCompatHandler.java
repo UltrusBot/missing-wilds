@@ -1,24 +1,33 @@
 package me.ultrusmods.missingwilds.compat;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.mojang.serialization.JsonOps;
+import io.github.lukebemish.defaultresources.api.ResourceProvider;
+import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.MissingWildsQuilt;
 import me.ultrusmods.missingwilds.data.LogData;
 import me.ultrusmods.missingwilds.data.ModCompat;
-import me.ultrusmods.missingwilds.data.ModCompatLoader;
+import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
 import me.ultrusmods.missingwilds.register.RegistryObject;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 
-/**
- * Handles the mod compat files loaded by {@link ModCompatLoader}
- */
 public class QuiltModCompatHandler {
 
+    public static HashMap<String, ModCompat> modCompats = new HashMap<>();
+    private static final Gson GSON = new Gson();
+
+
     public static void checkModCompat() {
-        ModCompatLoader.init();
-        ModCompatLoader.modCompats.values().forEach((modCompat) -> {
+        QuiltModCompatHandler.loadModCompat();
+        modCompats.values().forEach((modCompat) -> {
             modCompat.logs().forEach(logEither -> {
                 LogData logData = logEither.left().isPresent() ? QuiltModCompatHandler.getSimpleLogName(logEither.left().get(), modCompat.modid()) : logEither.right().get();
                 RegistryObject<Block> block = MissingWildsBlocks.registerFallenLog(modCompat.modid() + "_" + logData.name());
@@ -27,6 +36,29 @@ public class QuiltModCompatHandler {
             });
         });
     }
+
+    public static void loadModCompat() {
+        ResourceProvider.forceInitialization();
+
+        var resourceLocations = ResourceProvider.instance().getResources(Constants.MOD_ID, "compat", predicate -> true);
+
+        for (ResourceLocation resource : resourceLocations) {
+            try (var resourceStream = ResourceProvider.instance().getResourceStreams(Constants.MOD_ID, resource)) {
+                var optional = resourceStream.findFirst();
+                if (optional.isPresent() && resource.getPath().endsWith(".json")) {
+                    InputStream stream = optional.get();
+                    JsonObject jsonObject = GSON.fromJson(new InputStreamReader(stream), JsonObject.class);
+                    ModCompat modCompat = ModCompat.CODEC.parse(JsonOps.INSTANCE, jsonObject).getOrThrow(false, Constants.LOG::error);
+                    if (Services.PLATFORM.isModLoaded(modCompat.modid())) {
+                        modCompats.put(modCompat.modid(), modCompat);
+                    }
+                }
+            } catch (Exception e) {
+                Constants.LOG.error("Failed to load mod compat file {} with error {}", resource, e.getMessage());
+            }
+        }
+    }
+
 
     /**
      * Gets the LogData of a log name, that follows the vanilla texture location and naming convention.
