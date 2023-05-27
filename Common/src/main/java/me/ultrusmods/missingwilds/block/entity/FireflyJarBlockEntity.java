@@ -87,7 +87,7 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
     }
 
     public void createParticles(Level level, int lightLevel, BlockPos pos, RandomSource random) {
-        Color[] colorSet = null;
+        ColorSets.ColorSet colorSet = null;
         if (this.name != null) {
             colorSet = ColorSets.COLOR_SETS.get(this.name.getString());
         }
@@ -101,7 +101,7 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
     }
 
     public void createInnerParticles(Level level, int lightLevel, BlockPos pos, RandomSource random) {
-        Color[] colorSet = null;
+        ColorSets.ColorSet colorSet = null;
         if (this.name != null) {
             colorSet = ColorSets.COLOR_SETS.get(this.name.getString());
         }
@@ -113,10 +113,10 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
         }
     }
 
-    private void spawnFireflies(Level level, RandomSource random, Color[] colors, double x, double y, double z, float speed) {
-        if (colors != null) {
-            var color = colors[random.nextInt(colors.length)].getRGBColorComponents(null);
-            level.addParticle(new FireflyParticleOptions(color[0], color[1], color[2], 0.5f, speed), x, y, z, 0, 0, 0);
+    private void spawnFireflies(Level level, RandomSource random, ColorSets.ColorSet colorSet, double x, double y, double z, float speed) {
+        if (colorSet != null) {
+            var color = colorSet.colors[random.nextInt(colorSet.colors.length)];
+            level.addParticle(new FireflyParticleOptions(color[0]/255.0F, color[1]/255.0F, color[2]/255.0F, 0.5f, speed), x, y, z, 0, 0, 0);
         } else {
             var color = getColorArr();
             level.addParticle(new FireflyParticleOptions(color[0], color[1], color[2], 0.5f, speed), x, y, z, 0, 0, 0);

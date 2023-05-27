@@ -22,6 +22,7 @@ public class MissingWildsModCommon {
             postInit();
         }
         Constants.LOG.info("Missing Wilds for {} is loading!", Services.PLATFORM.getPlatformName());
+        ColorSets.addSpecialColors(); // Loads special firefly jar colors
 
     }
     public static void postInit() {
