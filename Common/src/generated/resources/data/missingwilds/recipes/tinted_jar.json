@@ -4,10 +4,13 @@
   "key": {
     "G": {
       "item": "minecraft:tinted_glass"
+    },
+    "P": {
+      "tag": "minecraft:planks"
     }
   },
   "pattern": [
-    " G ",
+    "GPG",
     "G G",
     "GGG"
   ],

@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
@@ -60,10 +61,11 @@ public class MissingWildsRecipeProvider extends FabricRecipeProvider {
 
     public void createGlassJarRecipe(Block glassJar, Block baseGlass, Consumer<FinishedRecipe> exporter) {
         ShapedRecipeBuilder.shaped(glassJar, 1)
-                .pattern(" G ")
+                .pattern("GPG")
                 .pattern("G G")
                 .pattern("GGG")
                 .define('G', baseGlass)
+                .define('P', ItemTags.PLANKS)
                 .unlockedBy("has_glass", has(baseGlass))
                 .group("missingwilds:glass_jars")
                 .save(exporter);
