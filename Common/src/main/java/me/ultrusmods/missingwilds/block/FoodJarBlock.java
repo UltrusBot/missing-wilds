@@ -44,8 +44,6 @@ public class FoodJarBlock extends JarBlock implements EntityBlock {
                 if (addItem) {
                     return InteractionResult.SUCCESS;
                 }
-            } else {
-                return InteractionResult.PASS;
             }
         }
         if (checkToggleCover(state, level, pos, player, hand)) {
