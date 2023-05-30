@@ -129,5 +129,13 @@
   "block.missingwilds.biomesoplenty_fallen_umbran_log": "Fallen Umbran Log",
   "block.missingwilds.biomesoplenty_fallen_willow_log": "Fallen Willow Log",
   "block.missingwilds.cobblemon_fallen_apricorn_log": "Fallen Apricorn Log",
-  "block.missingwilds.gardens_of_the_dead_fallen_soulblight_stem": "Fallen Soulblight Stem"
+  "block.missingwilds.gardens_of_the_dead_fallen_soulblight_stem": "Fallen Soulblight Stem",
+
+
+  "text.missingwilds.tip.jar": "You can craft jars, which can be used to store food and fireflies. The more fireflies you store, the brighter the jar shines.",
+  "text.missingwilds.tip.jar_name": "You can rename a firefly jar in an anvil, and sometimes the name will cause special firefly colors to appear.",
+  "text.missingwilds.tip.crawl": "You can crawl through fallen logs, you can even view your distance crawled in the statistics menu.",
+  "text.missingwilds.tip.forget_me_not_bonemeal": "You can use bonemeal in birch forests to grow forget me nots.",
+  "text.missingwilds.tip.firefly_spawn": "Fireflies spawn in the swamp at night, and spawn most frequently during a new moon.",
+  "text.missingwilds.tip.firefly_capture": "Fireflies can be captured in jars and bottles."
 }

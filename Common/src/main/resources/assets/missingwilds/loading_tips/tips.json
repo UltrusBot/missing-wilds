@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "tips": [
+    "text.missingwilds.tip.jar",
+    "text.missingwilds.tip.jar_name",
+    "text.missingwilds.tip.crawl",
+    "text.missingwilds.tip.forget_me_not_bonemeal",
+    "text.missingwilds.tip.firefly_spawn",
+    "text.missingwilds.tip.firefly_capture"
+  ]
+}
