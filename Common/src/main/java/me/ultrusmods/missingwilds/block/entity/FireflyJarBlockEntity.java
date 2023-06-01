@@ -15,8 +15,7 @@ import net.minecraft.world.Nameable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-
-import java.awt.*;
+import org.jetbrains.annotations.Nullable;
 
 public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
     private int color = 7601920;
@@ -129,5 +128,11 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
 
     public int getColor() {
         return color;
+    }
+
+    @Nullable
+    @Override
+    public Component getCustomName() {
+        return name;
     }
 }

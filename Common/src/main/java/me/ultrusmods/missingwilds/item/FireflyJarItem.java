@@ -20,7 +20,7 @@ public class FireflyJarItem extends BlockItem {
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
         int lightLevel = 1;
-        if (stack.hasTag()) {
+        if (stack.hasTag() && stack.getOrCreateTag().getCompound("BlockStateTag").contains("light_level")) {
             lightLevel = Integer.parseInt(stack.getOrCreateTag().getCompound("BlockStateTag").getString("light_level"));
         }
         tooltip.add(Component.translatable("tooltip.missingwilds.firefly_jar", lightLevel).withStyle(ChatFormatting.GRAY));

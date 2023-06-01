@@ -15,6 +15,24 @@
             {
               "function": "minecraft:copy_name",
               "source": "block_entity"
+            },
+            {
+              "block": "missingwilds:white_stained_firefly_jar",
+              "function": "minecraft:copy_state",
+              "properties": [
+                "light_level"
+              ]
+            },
+            {
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "op": "replace",
+                  "source": "color",
+                  "target": "BlockEntityTag.color"
+                }
+              ],
+              "source": "block_entity"
             }
           ],
           "name": "missingwilds:white_stained_firefly_jar"

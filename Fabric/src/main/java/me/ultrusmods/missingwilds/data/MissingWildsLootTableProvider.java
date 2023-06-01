@@ -1,16 +1,26 @@
 package me.ultrusmods.missingwilds.data;
 
 import me.ultrusmods.missingwilds.Constants;
+import me.ultrusmods.missingwilds.block.FireflyJarBlock;
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.CopyBlockState;
+import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
+import net.minecraft.world.level.storage.loot.functions.CopyNbtFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
 import java.util.function.BiConsumer;
+
+import static net.minecraft.data.loot.BlockLoot.applyExplosionCondition;
 
 public class MissingWildsLootTableProvider extends SimpleFabricLootTableProvider {
     public MissingWildsLootTableProvider(FabricDataGenerator dataGenerator) {
@@ -97,6 +107,17 @@ public class MissingWildsLootTableProvider extends SimpleFabricLootTableProvider
     }
 
     public void dropBlockEntity(String id, Block block, BiConsumer<ResourceLocation, LootTable.Builder> biConsumer) {
-        biConsumer.accept(Constants.id("blocks/" +  id), BlockLoot.createNameableBlockEntityTable(block));
+        biConsumer.accept(Constants.id("blocks/" +  id),
+                LootTable.lootTable()
+                        .withPool(applyExplosionCondition(block,
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(LootItem.lootTableItem(block)
+                                                .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
+                                                .apply(CopyBlockState.copyState(block).copy(FireflyJarBlock.LIGHT_LEVEL))
+                                                .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
+                                                        .copy("color", "BlockEntityTag.color")
+                                        )))
+        ));
     }
 }
