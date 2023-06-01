@@ -1,7 +1,12 @@
 plugins {
-    id("org.quiltmc.loom") version "0.12.+"
-    id("maven-publish")
+    id "org.quiltmc.loom"  version "0.12.+"
+    id "maven-publish"
+    id "com.github.breadmoirai.github-release" version "2.4.1"
+    id "com.modrinth.minotaur" version "2.+"
+    id 'me.hypherionmc.cursegradle' version '2.0.1'
+
 }
+apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/master/release.gradle'
 
 
 archivesBaseName = "${mod_name}-quilt-${minecraft_version}"
@@ -57,6 +62,22 @@ loom {
         defaultRefmapName = "${mod_id}.refmap.json"
     }
 }
+
+var mod = createModReleaseMetadata(
+        "Missing Wilds v$project.version",
+        file("$rootDir/CHANGELOG.md"),
+        ["1.19.2"],
+        ["quilt"],
+        "remapJar",
+        ["sourcesJar", "javadocJar"],
+        "v${project.version}-quilt",
+        true
+)
+modrinthInfo(mod, "missing-wilds", ["qsl"])
+githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
+curseforgeInfo(mod, "622590", [], ["qsl"])
+
+
 processResources {
 
     from project(":Common").sourceSets.main.resources

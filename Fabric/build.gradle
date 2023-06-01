@@ -2,8 +2,11 @@ plugins {
     id 'fabric-loom' version '0.11-SNAPSHOT'
     id 'maven-publish'
     id 'idea'
+    id "com.github.breadmoirai.github-release" version "2.4.1"
+    id "com.modrinth.minotaur" version "2.+"
+    id 'me.hypherionmc.cursegradle' version '2.0.1'
 }
-
+apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/master/release.gradle'
 archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
 repositories {
     maven{ url "https://jitpack.io"}
@@ -54,6 +57,19 @@ loom {
     }
 }
 
+var mod = createModReleaseMetadata(
+        "Missing Wilds v$project.version",
+        file("$rootDir/CHANGELOG.md"),
+        ["1.19.2"],
+        ["fabric"],
+        "remapJar",
+        ["sourcesJar", "javadocJar"],
+        "v${project.version}-fabric",
+        true
+)
+modrinthInfo(mod, "missing-wilds", ["fabric-api"])
+githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
+curseforgeInfo(mod, "622590", [], ["fabric-api"])
 
 processResources {
     from project(":Common").sourceSets.main.resources

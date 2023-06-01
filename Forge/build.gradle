@@ -9,11 +9,19 @@ buildscript {
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
+plugins {
+    id "com.github.breadmoirai.github-release" version "2.4.1"
+    id "com.modrinth.minotaur" version "2.+"
+    id 'me.hypherionmc.cursegradle' version '2.0.1'
+}
 apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
+apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/master/release.gradle'
+
+
 jarJar.enable()
 
 archivesBaseName = "${mod_name}-forge-${minecraft_version}"
@@ -112,6 +120,21 @@ tasks.withType(JavaCompile) {
 tasks.withType(JavaCompile) {
     source(project(":Common").sourceSets.main.allSource)
 }
+
+var mod = createModReleaseMetadata(
+        "Missing Wilds v$project.version",
+        file("$rootDir/CHANGELOG.md"),
+        ["1.19.2"],
+        ["forge"],
+        "jar",
+        ["sourcesJar", "javadocJar"],
+        "v${project.version}-quilt",
+        true
+)
+modrinthInfo(mod, "missing-wilds")
+githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
+curseforgeInfo(mod, "634277")
+
 
 processResources {
     from project(":Common").sourceSets.main.resources
