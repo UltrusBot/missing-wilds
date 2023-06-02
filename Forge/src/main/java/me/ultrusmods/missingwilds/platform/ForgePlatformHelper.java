@@ -56,14 +56,14 @@ public class ForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public void duringItemRegistering() {
-        if (isModLoaded("better_runtime_resource_pack")) {
+        if (isModLoaded("brrp_v1")) {
             ForgeModCompatHandler.registerModCompatItems();
         }
     }
 
     @Override
     public void duringBlockRegistering() {
-        if (isModLoaded("better_runtime_resource_pack")) {
+        if (isModLoaded("brrp_v1")) {
             ForgeModCompatHandler.registerModCompatBlocks();
         }
     }

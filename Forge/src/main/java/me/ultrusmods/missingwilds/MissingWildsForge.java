@@ -5,6 +5,7 @@ import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.RegistryObject;
+import me.ultrusmods.missingwilds.resource.MissingWildsForgeResources;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -21,18 +22,18 @@ import java.util.List;
 public class MissingWildsForge {
     public static final List<RegistryObject<Block>> COMPAT_LOGS = new ArrayList<>();
     public MissingWildsForge() {
-        if (Services.PLATFORM.isModLoaded("better_runtime_resource_pack")) {
+        if (Services.PLATFORM.isModLoaded("brrp_v1")) {
             ForgeModCompatHandler.loadModCompat();
+            MissingWildsForgeResources.registerPack();
         }
         MissingWildsModCommon.init();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::spawnPlacementsEvent);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerAttributes);
-        if (Services.PLATFORM.isModLoaded("better_runtime_resource_pack")) {
-            ForgeModCompatHandler.checkModCompat();
+
+        if (Services.PLATFORM.isModLoaded("brrp_v1")) {
+            MissingWildsForgeResources.generatePack();
         }
-
-
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event) {

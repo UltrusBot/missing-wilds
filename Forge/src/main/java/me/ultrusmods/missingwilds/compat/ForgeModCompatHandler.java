@@ -12,8 +12,6 @@ import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
 import me.ultrusmods.missingwilds.register.RegistryObject;
-import me.ultrusmods.missingwilds.resource.MissingWildsResources;
-import net.devtech.arrp.api.RRPEventHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -37,17 +35,6 @@ public class ForgeModCompatHandler {
 
     public static void checkModCompat() {
         loadModCompat();
-        modCompats.values().forEach((modCompat) -> {
-            modCompat.logs().forEach(logEither -> {
-                LogData logData = logEither.left().isPresent() ? ForgeModCompatHandler.getSimpleLogName(logEither.left().get(), modCompat.modid()) : logEither.right().get();
-                MissingWildsResources.addLog(logData, modCompat.modid());
-            });
-        });
-        MissingWildsResources.RESOURCE_PACK.addTag(
-                Constants.id("blocks/fallen_logs"),
-                MissingWildsResources.FALLEN_LOGS
-        );
-        RRPEventHelper.BEFORE_VANILLA.registerPack(MissingWildsResources.RESOURCE_PACK);
     }
     public static void loadModCompat() {
         ResourceProvider.forceInitialization();
@@ -120,7 +107,7 @@ public class ForgeModCompatHandler {
         return blockMap;
     }
 
-    public HashMap<String, RegistryObject<Item>> getLogItems() {
+    public static HashMap<String, RegistryObject<Item>> getLogItems() {
         return itemMap;
     }
 
@@ -128,11 +115,7 @@ public class ForgeModCompatHandler {
         blockMap.put(blockId, block);
     }
 
-    ;
-
     public static void addItem(RegistryObject<Item> item, String itemId) {
         itemMap.put(itemId, item);
     }
-
-    ;
 }

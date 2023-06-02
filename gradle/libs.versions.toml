@@ -18,7 +18,7 @@ defaultresources = "0.3.0"
 # Extra Libraries
 arrp = "0.6.2"
 emi = "0.6.0+1.19.2"
-brrp = "0.8.2-mc1.19.2-forge"
+brrp = "1.0.0-mc1.19.2-forge"
 
 
 
