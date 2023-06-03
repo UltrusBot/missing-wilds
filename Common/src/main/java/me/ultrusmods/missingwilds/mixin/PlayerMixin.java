@@ -1,7 +1,7 @@
 package me.ultrusmods.missingwilds.mixin;
 
-import me.ultrusmods.missingwilds.MissingWildsModCommon;
 import me.ultrusmods.missingwilds.stat.MissingWildsStats;
+import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,7 +24,7 @@ public abstract class PlayerMixin extends LivingEntity {
     @Inject(method = "checkMovementStatistics", at = @At("TAIL"))
     void addCrawlingStats(double dx, double dy, double dz, CallbackInfo ci) {
         if (!this.isPassenger()) {
-            if (this.isVisuallyCrawling() && this.getFeetBlockState().is(MissingWildsModCommon.FALLEN_LOGS)) {
+            if (this.isVisuallyCrawling() && this.getFeetBlockState().is(MissingWildsTags.FALLEN_LOGS)) {
                 int dist = Math.round((float)Math.sqrt(dx * dx + dz * dz) * 100.0F);
                 this.awardStat(MissingWildsStats.LOG_CRAWL_ONE_CM, dist);
             }

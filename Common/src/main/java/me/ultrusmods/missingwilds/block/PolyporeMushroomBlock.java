@@ -1,6 +1,6 @@
 package me.ultrusmods.missingwilds.block;
 
-import me.ultrusmods.missingwilds.MissingWildsModCommon;
+import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -21,8 +21,6 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import java.util.Random;
 
 public class PolyporeMushroomBlock extends Block {
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -92,7 +90,7 @@ public class PolyporeMushroomBlock extends Block {
 
 	private boolean isValidBlock(BlockGetter world, BlockPos pos) {
 		BlockState blockState = world.getBlockState(pos);
-		return blockState.is(BlockTags.LOGS) || blockState.is(MissingWildsModCommon.FALLEN_LOGS);
+		return blockState.is(BlockTags.LOGS) || blockState.is(MissingWildsTags.FALLEN_LOGS);
 	}
 
 	@Override

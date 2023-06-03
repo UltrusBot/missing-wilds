@@ -1,0 +1,37 @@
+{
+  "variants": {
+    "axis=x,cover=moss": {
+      "model": "missingwilds:block/fallen_oak_log_mossy",
+      "y": 90
+    },
+    "axis=x,cover=none": {
+      "model": "missingwilds:block/fallen_oak_log",
+      "y": 90
+    },
+    "axis=x,cover=snow": {
+      "model": "missingwilds:block/fallen_oak_log_snowy",
+      "y": 90
+    },
+    "axis=y,cover=moss": {
+      "model": "missingwilds:block/fallen_oak_log_mossy",
+      "x": 90
+    },
+    "axis=y,cover=none": {
+      "model": "missingwilds:block/fallen_oak_log",
+      "x": 90
+    },
+    "axis=y,cover=snow": {
+      "model": "missingwilds:block/fallen_oak_log_snowy",
+      "x": 90
+    },
+    "axis=z,cover=moss": {
+      "model": "missingwilds:block/fallen_oak_log_mossy"
+    },
+    "axis=z,cover=none": {
+      "model": "missingwilds:block/fallen_oak_log"
+    },
+    "axis=z,cover=snow": {
+      "model": "missingwilds:block/fallen_oak_log_snowy"
+    }
+  }
+}

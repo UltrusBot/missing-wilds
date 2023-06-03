@@ -1,0 +1,123 @@
+plugins {
+    id "org.quiltmc.loom"  version "0.12.+"
+    id "maven-publish"
+    id "com.github.breadmoirai.github-release" version "2.4.1"
+    id "com.modrinth.minotaur" version "2.+"
+    id 'me.hypherionmc.cursegradle' version '2.0.1'
+
+}
+apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/de0163acac82903713cc9c508f31833d813ead1c/release.gradle'
+
+
+archivesBaseName = "${mod_name}-quilt-${minecraft_version}"
+
+repositories {
+    maven {
+        name = "Quilt"
+        url = "https://maven.quiltmc.org/repository/release"
+        content {
+            includeGroupByRegex('org\\.quiltmc.*')
+        }
+    }
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+        content {
+            includeGroup("dev.emi")
+        }
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
+}
+
+dependencies {
+
+    minecraft(libs.minecraft)
+    mappings(loom.officialMojangMappings())
+    modImplementation(libs.quilt.loader)
+
+    modImplementation(libs.qfapi)
+    modImplementation(libs.emi)
+    modImplementation(libs.tablesaw)
+
+    modImplementation(libs.defaultresources.quilt) {
+        transitive = false
+    }
+    include(libs.defaultresources.quilt)
+
+    implementation(project(":Common"))
+}
+loom {
+    accessWidenerPath = file("src/main/resources/missingwilds.accesswidener")
+    mixin {
+        defaultRefmapName = "${mod_id}.refmap.json"
+    }
+}
+
+var mod = createModReleaseMetadata(
+        "Missing Wilds v$project.version",
+        file("$rootDir/CHANGELOG.md"),
+        ["1.19.2"],
+        ["quilt"],
+        "remapJar",
+        ["sourcesJar", "javadocJar"],
+        "v${project.version}-quilt",
+        project.testRelease as boolean,
+        project.releaseType
+)
+modrinthInfo(mod, "missing-wilds", ["qsl"])
+githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
+curseforgeInfo(mod, "622590", [], ["qsl"])
+
+
+processResources {
+
+    from project(":Common").sourceSets.main.resources
+    inputs.property "version", project.version
+
+    filesMatching("quilt.mod.json") {
+        expand "version": project.version
+    }
+    from(rootProject.rootDir.absolutePath + "/ModCompat") {
+        into "defaultresources"
+    }
+
+    exclude '.cache'
+}
+
+tasks.withType(JavaCompile) {
+
+    source(project(":Common").sourceSets.main.allSource)
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${mod_name}"}
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId project.group
+            artifactId project.archivesBaseName
+            version project.version
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url "file://" + System.getenv("local_maven")
+        }
+    }
+}

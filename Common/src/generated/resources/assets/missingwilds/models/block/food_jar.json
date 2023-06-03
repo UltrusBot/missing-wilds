@@ -1,0 +1,7 @@
+{
+  "parent": "missingwilds:block/template/glass_jar_template",
+  "textures": {
+    "glass": "minecraft:block/glass",
+    "jar": "missingwilds:block/jar"
+  }
+}

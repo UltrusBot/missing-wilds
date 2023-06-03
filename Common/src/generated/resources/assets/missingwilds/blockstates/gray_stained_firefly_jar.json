@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "covered=false": {
+      "model": "missingwilds:block/gray_stained_firefly_jar_open"
+    },
+    "covered=true": {
+      "model": "missingwilds:block/gray_stained_firefly_jar"
+    }
+  }
+}

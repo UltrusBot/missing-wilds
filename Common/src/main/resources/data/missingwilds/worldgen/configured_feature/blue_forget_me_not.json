@@ -12,30 +12,52 @@
             "type": "minecraft:weighted_state_provider",
             "entries": [
               {
-                "weight": 3,
+                "weight": 1,
                 "data": {
-                  "Name": "missingwilds:blue_forget_me_not",
+                  "Name": "missingwilds:forget_me_not",
                   "Properties": {
-                    "flowers": "3"
-                  }
-                }
-              },
-              {
-                "weight": 2,
-                "data": {
-                  "Name": "missingwilds:blue_forget_me_not",
-                  "Properties": {
-                    "flowers": "2"
+                    "flower_1": "blue",
+                    "flower_2": "blue",
+                    "flower_3": "purple"
                   }
                 }
               },
               {
                 "weight": 1,
                 "data": {
-                  "Name": "missingwilds:blue_forget_me_not",
+                  "Name": "missingwilds:forget_me_not",
                   "Properties": {
-                    "flowers": "1"
+                    "flower_1": "blue",
+                    "flower_2": "blue",
+                    "flower_3": "pink"
                   }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "missingwilds:forget_me_not",
+                  "Properties": {
+                    "flower_1": "blue",
+                    "flower_2": "blue",
+                    "flower_3": "white"
+                  }
+                }
+              },
+              {
+                "weight": 2,
+                "data": {
+                  "Name": "missingwilds:forget_me_not",
+                  "Properties": {
+                    "flower_1": "blue",
+                    "flower_2": "blue"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "missingwilds:blue_forget_me_not"
                 }
               }
             ]

@@ -4,8 +4,10 @@
   "package": "me.ultrusmods.missingwilds.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BirchTreeGrowerMixin",
     "CustomStatAccessor",
     "FireBlockAccessor",
+    "GrassMixin",
     "PlayerMixin"
   ],
   "client": [
@@ -15,5 +17,5 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "${refmap_target}refmap.json"
+  "refmap": "missingwilds.refmap.json"
 }

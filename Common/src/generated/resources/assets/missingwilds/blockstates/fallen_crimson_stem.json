@@ -1,0 +1,37 @@
+{
+  "variants": {
+    "axis=x,cover=moss": {
+      "model": "missingwilds:block/fallen_crimson_stem_mossy",
+      "y": 90
+    },
+    "axis=x,cover=none": {
+      "model": "missingwilds:block/fallen_crimson_stem",
+      "y": 90
+    },
+    "axis=x,cover=snow": {
+      "model": "missingwilds:block/fallen_crimson_stem_snowy",
+      "y": 90
+    },
+    "axis=y,cover=moss": {
+      "model": "missingwilds:block/fallen_crimson_stem_mossy",
+      "x": 90
+    },
+    "axis=y,cover=none": {
+      "model": "missingwilds:block/fallen_crimson_stem",
+      "x": 90
+    },
+    "axis=y,cover=snow": {
+      "model": "missingwilds:block/fallen_crimson_stem_snowy",
+      "x": 90
+    },
+    "axis=z,cover=moss": {
+      "model": "missingwilds:block/fallen_crimson_stem_mossy"
+    },
+    "axis=z,cover=none": {
+      "model": "missingwilds:block/fallen_crimson_stem"
+    },
+    "axis=z,cover=snow": {
+      "model": "missingwilds:block/fallen_crimson_stem_snowy"
+    }
+  }
+}

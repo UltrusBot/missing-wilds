@@ -1,0 +1,364 @@
+{
+  "multipart": [
+    {
+      "apply": [
+        {
+          "model": "missingwilds:block/forget_me_not/blue_forget_me_not_1",
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/blue_forget_me_not_1",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/blue_forget_me_not_1",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/blue_forget_me_not_1",
+          "y": 270,
+          "weight": 1
+        }
+      ],
+      "when": {
+        "AND": [
+          {
+            "flower_1": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "missingwilds:block/forget_me_not/blue_forget_me_not_2",
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/blue_forget_me_not_2",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/blue_forget_me_not_2",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/blue_forget_me_not_2",
+          "y": 270,
+          "weight": 1
+        }
+      ],
+      "when": {
+        "AND": [
+          {
+            "flower_2": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "missingwilds:block/forget_me_not/blue_forget_me_not_3",
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/blue_forget_me_not_3",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/blue_forget_me_not_3",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/blue_forget_me_not_3",
+          "y": 270,
+          "weight": 1
+        }
+      ],
+      "when": {
+        "AND": [
+          {
+            "flower_3": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "missingwilds:block/forget_me_not/purple_forget_me_not_1",
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/purple_forget_me_not_1",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/purple_forget_me_not_1",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/purple_forget_me_not_1",
+          "y": 270,
+          "weight": 1
+        }
+      ],
+      "when": {
+        "AND": [
+          {
+            "flower_1": "purple"
+          }
+        ]
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "missingwilds:block/forget_me_not/purple_forget_me_not_2",
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/purple_forget_me_not_2",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/purple_forget_me_not_2",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/purple_forget_me_not_2",
+          "y": 270,
+          "weight": 1
+        }
+      ],
+      "when": {
+        "AND": [
+          {
+            "flower_2": "purple"
+          }
+        ]
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "missingwilds:block/forget_me_not/purple_forget_me_not_3",
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/purple_forget_me_not_3",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/purple_forget_me_not_3",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/purple_forget_me_not_3",
+          "y": 270,
+          "weight": 1
+        }
+      ],
+      "when": {
+        "AND": [
+          {
+            "flower_3": "purple"
+          }
+        ]
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "missingwilds:block/forget_me_not/pink_forget_me_not_1",
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/pink_forget_me_not_1",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/pink_forget_me_not_1",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/pink_forget_me_not_1",
+          "y": 270,
+          "weight": 1
+        }
+      ],
+      "when": {
+        "AND": [
+          {
+            "flower_1": "pink"
+          }
+        ]
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "missingwilds:block/forget_me_not/pink_forget_me_not_2",
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/pink_forget_me_not_2",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/pink_forget_me_not_2",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/pink_forget_me_not_2",
+          "y": 270,
+          "weight": 1
+        }
+      ],
+      "when": {
+        "AND": [
+          {
+            "flower_2": "pink"
+          }
+        ]
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "missingwilds:block/forget_me_not/pink_forget_me_not_3",
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/pink_forget_me_not_3",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/pink_forget_me_not_3",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/pink_forget_me_not_3",
+          "y": 270,
+          "weight": 1
+        }
+      ],
+      "when": {
+        "AND": [
+          {
+            "flower_3": "pink"
+          }
+        ]
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "missingwilds:block/forget_me_not/white_forget_me_not_1",
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/white_forget_me_not_1",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/white_forget_me_not_1",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/white_forget_me_not_1",
+          "y": 270,
+          "weight": 1
+        }
+      ],
+      "when": {
+        "AND": [
+          {
+            "flower_1": "white"
+          }
+        ]
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "missingwilds:block/forget_me_not/white_forget_me_not_2",
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/white_forget_me_not_2",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/white_forget_me_not_2",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/white_forget_me_not_2",
+          "y": 270,
+          "weight": 1
+        }
+      ],
+      "when": {
+        "AND": [
+          {
+            "flower_2": "white"
+          }
+        ]
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "missingwilds:block/forget_me_not/white_forget_me_not_3",
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/white_forget_me_not_3",
+          "y": 90,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/white_forget_me_not_3",
+          "y": 180,
+          "weight": 1
+        },
+        {
+          "model": "missingwilds:block/forget_me_not/white_forget_me_not_3",
+          "y": 270,
+          "weight": 1
+        }
+      ],
+      "when": {
+        "AND": [
+          {
+            "flower_3": "white"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,11 +1,16 @@
 package me.ultrusmods.missingwilds.block;
 
+import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -20,7 +25,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class FallenLogBlock extends Block implements SimpleWaterloggedBlock {
 	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
-	public static final BooleanProperty MOSSY = BooleanProperty.create("mossy");
+	public static final EnumProperty<Cover> COVER = EnumProperty.create("cover", Cover.class);
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	private static final VoxelShape INSIDE_Z = box(2.0D, 2.0D, 0.0D, 14.0D, 14.0D, 16.0D);
@@ -35,7 +40,7 @@ public class FallenLogBlock extends Block implements SimpleWaterloggedBlock {
 
 	public FallenLogBlock(Properties settings)  {
 		super(settings);
-		this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.Y).setValue(MOSSY, false).setValue(WATERLOGGED, false));
+		this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.Y).setValue(COVER, Cover.NONE).setValue(WATERLOGGED, false));
 
 	}
 
@@ -45,7 +50,7 @@ public class FallenLogBlock extends Block implements SimpleWaterloggedBlock {
 			world.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
 		}
 		return direction == Direction.UP ?
-				state.setValue(MOSSY, isMossBlock(neighborState)) :
+				state.setValue(COVER, getCover(neighborState)) :
 				super.updateShape(state, direction, neighborState, world, pos, neighborPos);
 	}
 
@@ -72,7 +77,7 @@ public class FallenLogBlock extends Block implements SimpleWaterloggedBlock {
 	}
 
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(AXIS, MOSSY, WATERLOGGED);
+		builder.add(AXIS, COVER, WATERLOGGED);
 	}
 
 	@Override
@@ -83,11 +88,31 @@ public class FallenLogBlock extends Block implements SimpleWaterloggedBlock {
 	public BlockState getStateForPlacement(BlockPlaceContext ctx) {
 		BlockState blockstate = ctx.getLevel().getBlockState(ctx.getClickedPos().above());
 		FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
-		return this.defaultBlockState().setValue(AXIS, ctx.getClickedFace().getAxis()).setValue(MOSSY, isMossBlock(blockstate)).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
+		return this.defaultBlockState().setValue(AXIS, ctx.getClickedFace().getAxis()).setValue(COVER, getCover(blockstate)).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
 	}
 
-	private static boolean isMossBlock(BlockState state) {
-		// TODO: Make a tag for this?
-		return state.is(Blocks.MOSS_CARPET) || state.is(Blocks.MOSS_BLOCK);
+	private static Cover getCover(BlockState state) {
+		if (state.is(MissingWildsTags.MOSS)) {
+			return Cover.MOSSY;
+		} else if (state.is(MissingWildsTags.SNOW)) {
+			return Cover.SNOWY;
+		} else {
+			return Cover.NONE;
+		}
+	}
+
+	public enum Cover implements StringRepresentable {
+		NONE("none"),
+		MOSSY("moss"),
+		SNOWY("snow");
+		final String name;
+		Cover(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public String getSerializedName() {
+			return this.name;
+		}
 	}
 }

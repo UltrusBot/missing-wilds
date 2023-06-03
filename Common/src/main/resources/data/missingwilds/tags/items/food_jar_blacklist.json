@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:cake",
+    "minecraft:mushroom_stew",
+    "minecraft:rabbit_stew",
+    "minecraft:beetroot_soup",
+    "minecraft:suspicious_stew",
+    "minecraft:honey_bottle",
+    {
+      "required": false,
+      "id": "kfa:fried_axolotl"
+    },
+    {
+      "required": false,
+      "id": "bovinesandbuttercups:nectar_bowl"
+    }
+  ]
+}

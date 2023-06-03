@@ -2,39 +2,39 @@ plugins {
     id 'fabric-loom' version '0.11-SNAPSHOT'
     id 'maven-publish'
     id 'idea'
+    id "com.github.breadmoirai.github-release" version "2.4.1"
+    id "com.modrinth.minotaur" version "2.+"
+    id 'me.hypherionmc.cursegradle' version '2.0.1'
 }
-
+apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/de0163acac82903713cc9c508f31833d813ead1c/release.gradle'
 archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
 repositories {
-    maven { url 'https://jitpack.io' }
-//    maven {
-//        url = uri("https://maven.ueaj.dev") // This is broken ATM
-//    }
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = "Modrinth"
-                url = "https://api.modrinth.com/maven"
-            }
-        }
-        filter {
-            includeGroup "maven.modrinth"
+    maven{ url "https://jitpack.io"}
+    maven{ url "https://storage.googleapis.com/devan-maven/"}
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+        content {
+            includeGroup("dev.emi")
         }
     }
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${minecraft_version}"
-    mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
-    implementation project(":Common")
-//    modImplementation include("net.devtech:arrp:0.6.7")
-    modImplementation include("maven.modrinth:arrp:0.6.7")
+    minecraft(libs.minecraft)
+    mappings(loom.officialMojangMappings())
+    modImplementation(libs.fabric.loader)
+    modImplementation(libs.fabric.api)
+    implementation(project(":Common"))
+    modImplementation(libs.arrp)
+    modImplementation(libs.emi)
 }
 
 loom {
     accessWidenerPath = file("src/main/resources/missingwilds.accesswidener")
+    mixin {
+        defaultRefmapName = "${mod_id}.refmap.json"
+    }
     runs {
         client {
             client()
@@ -48,9 +48,32 @@ loom {
             ideConfigGenerated(true)
             runDir("run")
         }
+        datagenCommon {
+            client()
+            setConfigName("Fabric Datagen Common")
+            vmArg("-Dmw.common=true")
+            vmArg("-Dfabric-api.datagen")
+            vmArg("-Dfabric-api.datagen.output-dir=${file("../Common/src/generated/resources")}")
+            vmArg("-Dfabric-api.datagen.modid=${mod_id}")
+            runDir = "build/datagen"
+        }
     }
 }
 
+var mod = createModReleaseMetadata(
+        "Missing Wilds v$project.version",
+        file("$rootDir/CHANGELOG.md"),
+        ["1.19.2"],
+        ["fabric"],
+        "remapJar",
+        ["sourcesJar", "javadocJar"],
+        "v${project.version}-fabric",
+        project.testRelease as boolean,
+        project.releaseType
+)
+modrinthInfo(mod, "missing-wilds", ["fabric-api"], ["arrp"])
+githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
+curseforgeInfo(mod, "622590", [], ["fabric-api"])
 
 processResources {
     from project(":Common").sourceSets.main.resources
@@ -59,9 +82,7 @@ processResources {
     filesMatching("fabric.mod.json") {
         expand "version": project.version
     }
-    filesMatching('*.mixins.json') {
-        expand "refmap_target": "${archivesBaseName}-"
-    }
+    exclude '.cache'
 }
 
 tasks.withType(JavaCompile) {
@@ -78,9 +99,9 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
-            from components.java
+                    artifactId project.archivesBaseName
+                    version project.version
+                    from components.java
         }
     }
 

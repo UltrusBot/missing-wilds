@@ -23,8 +23,16 @@ minecraft {
 }
 
 dependencies {
-    compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
+    compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
+    compileOnly(libs.defaultresources.common)
 }
+
+sourceSets {
+    named("main") {
+        resources.srcDir("src/generated/resources")
+    }
+}
+
 
 processResources {
 

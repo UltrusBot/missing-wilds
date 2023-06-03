@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_name",
+              "source": "block_entity"
+            },
+            {
+              "block": "missingwilds:green_stained_firefly_jar",
+              "function": "minecraft:copy_state",
+              "properties": [
+                "light_level"
+              ]
+            },
+            {
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "op": "replace",
+                  "source": "color",
+                  "target": "BlockEntityTag.color"
+                }
+              ],
+              "source": "block_entity"
+            }
+          ],
+          "name": "missingwilds:green_stained_firefly_jar"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

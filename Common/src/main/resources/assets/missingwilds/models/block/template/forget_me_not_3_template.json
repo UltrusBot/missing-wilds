@@ -1,0 +1,46 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+      "particle": "#flower"
+	},
+	"elements": [
+		{
+			"from": [8.2, 0, 3],
+			"to": [11.8, 4, 3],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [10, 8, 3], "rescale": true},
+			"faces": {
+				"north": {"uv": [6, 10, 11, 16], "texture": "#flower"},
+				"south": {"uv": [6, 10, 11, 16], "texture": "#flower"}
+			}
+		},
+		{
+			"from": [10, 0, 1.2],
+			"to": [10, 4, 4.8],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [10, 8, 3], "rescale": true},
+			"faces": {
+				"east": {"uv": [6, 10, 11, 16], "texture": "#flower"},
+				"west": {"uv": [6, 10, 11, 16], "texture": "#flower"}
+			}
+		},
+		{
+			"from": [7.5, 4, 0.5],
+			"to": [12.5, 4, 5.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, 3, -4.5]},
+			"faces": {
+				"up": {"uv": [6, 5, 11, 10], "texture": "#flower"},
+				"down": {"uv": [6, 5, 11, 10], "texture": "#flower"}
+			}
+		}
+	],
+	"display": {},
+	"groups": [
+		{
+			"name": "flower1",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1, 2]
+		}
+	]
+}

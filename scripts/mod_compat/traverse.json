@@ -1,7 +1,0 @@
-{
-    "loader": "fabric",
-    "id": "traverse",
-    "logs": [
-        "fir_log"
-    ]
-}

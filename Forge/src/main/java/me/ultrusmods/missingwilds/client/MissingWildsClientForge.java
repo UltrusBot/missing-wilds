@@ -2,41 +2,54 @@ package me.ultrusmods.missingwilds.client;
 
 
 import me.ultrusmods.missingwilds.Constants;
-import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import me.ultrusmods.missingwilds.MissingWildsForge;
+import me.ultrusmods.missingwilds.client.render.FireflySwarmRenderer;
+import me.ultrusmods.missingwilds.particle.FireflyParticle;
+import me.ultrusmods.missingwilds.platform.Services;
+import me.ultrusmods.missingwilds.register.MissingWildsEntities;
+import me.ultrusmods.missingwilds.register.MissingWildsParticles;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-import static net.minecraftforge.fml.common.Mod.EventBusSubscriber.*;
+import static net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
 @Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Bus.MOD, value = Dist.CLIENT)
 public class MissingWildsClientForge {
 
     @SubscribeEvent
     public static void onInitializeClient(FMLClientSetupEvent event) {
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_BIRCH_LOG.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_ACACIA_LOG.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_OAK_LOG.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_SPRUCE_LOG.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_DARK_OAK_LOG.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_JUNGLE_LOG.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_MANGROVE_LOG.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_CRIMSON_STEM.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_WARPED_STEM.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.FALLEN_MUSHROOM_STEM.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.BROWN_POLYPORE_MUSHROOM.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.BLUE_FORGET_ME_NOT.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.PURPLE_FORGET_ME_NOT.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.PINK_FORGET_ME_NOT.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.WHITE_FORGET_ME_NOT.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.SWEETSPIRE.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.POTTED_SWEETSPIRE.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.POTTED_BLUE_FORGET_ME_NOT.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.POTTED_WHITE_FORGET_ME_NOT.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.POTTED_PINK_FORGET_ME_NOT.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(MissingWildsBlocks.POTTED_PURPLE_FORGET_ME_NOT.get(), RenderType.cutout());
+        MissingWildsClientCommon.init();
+        MissingWildsForge.COMPAT_LOGS.forEach(block -> {
+            Services.PLATFORM.setBlockRenderType(RenderType.cutoutMipped(), block.get());
+        });
     }
+
+    @SubscribeEvent
+    public static void onRegisterParticleProviders(RegisterParticleProvidersEvent event) {
+        event.register(MissingWildsParticles.FIREFLY.get(), FireflyParticle.Provider::new);
+    }
+
+    @SubscribeEvent
+    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(MissingWildsEntities.FIREFLY_SWARM.get(), FireflySwarmRenderer::new);
+        MissingWildsClientCommon.registerEntityRenderers(event::registerBlockEntityRenderer);
+    }
+
+    @SubscribeEvent
+    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
+//        event.register((blockState, blockAndTintGetter, blockPos, col) -> blockAndTintGetter != null && blockPos != null ? 2129968 : 7455580, MissingWildsBlocks.WATERLILY_BLOCK.get());
+    }
+
+    @SubscribeEvent
+    public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
+//        event.register((itemStack, col) -> 7455580, MissingWildsItems.WATERLILY_ITEM.get());
+    }
+
+
 }

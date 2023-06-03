@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "missingwilds:firefly_bottle"
+    },
+    "title": {
+      "translate": "missingwilds.advancements.adventure.fireflies.title"
+    },
+    "description": {
+      "translate": "missingwilds.advancements.adventure.fireflies.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "fireflies": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "missingwilds:firefly_bottle"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "fireflies"
+    ]
+  ]
+}

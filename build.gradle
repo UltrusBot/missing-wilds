@@ -1,5 +1,5 @@
 plugins {
-    id "io.github.p03w.machete" version "1.1.2"
+    id "io.github.p03w.machete" version "2.0.1"
 }
 subprojects {
     apply plugin: 'java'
@@ -8,7 +8,7 @@ subprojects {
     java.toolchain.languageVersion = JavaLanguageVersion.of(17)
     java.withSourcesJar()
     java.withJavadocJar()
-        
+
     jar {
         manifest {
             attributes([
@@ -25,7 +25,7 @@ subprojects {
             ])
         }
     }
-    
+
     repositories {
 
         mavenCentral()
@@ -39,11 +39,24 @@ subprojects {
             name = 'BlameJared Maven (CrT / Bookshelf)'
             url = 'https://maven.blamejared.com'
         }
+        maven {
+            url = 'https://maven.lukebemish.dev/releases'
+        }
+        maven {
+            url "https://jitpack.io"
+
+        }
+        mavenLocal() {
+            content {
+                includeGroup("io.github.lukebemish.defaultresources")
+            }
+        }
+
     }
-    
+
 
     tasks.withType(JavaCompile).configureEach {
-    
+
         it.options.encoding = 'UTF-8'
         it.options.release = 17
     }

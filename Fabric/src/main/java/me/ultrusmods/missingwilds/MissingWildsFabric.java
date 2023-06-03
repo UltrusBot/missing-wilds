@@ -1,51 +1,55 @@
 package me.ultrusmods.missingwilds;
 
 import me.ultrusmods.missingwilds.compat.ModCompat;
+import me.ultrusmods.missingwilds.entity.FireflySwarm;
+import me.ultrusmods.missingwilds.platform.Services;
+import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
 import me.ultrusmods.missingwilds.resource.MissingWildsResources;
+import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import me.ultrusmods.missingwilds.worldgen.MissingWildsWorldGen;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.Heightmap;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MissingWildsFabric implements ModInitializer {
     public static final List<Block> COMPAT_LOGS = new ArrayList<>();
-    public static final CreativeModeTab MISSING_WILD_ITEMS = FabricItemGroup.builder(
+    public static final CreativeModeTab MISSING_WILD_ITEMS = FabricItemGroupBuilder.create(
                     new ResourceLocation(Constants.MOD_ID, "items"))
             .icon(() -> new ItemStack(MissingWildsItems.FALLEN_BIRCH_LOG.get()))
-            .displayItems((context, entries) -> {
-                entries.accept(MissingWildsItems.FALLEN_OAK_LOG.get());
-                entries.accept(MissingWildsItems.FALLEN_BIRCH_LOG.get());
-                entries.accept(MissingWildsItems.FALLEN_SPRUCE_LOG.get());
-                entries.accept(MissingWildsItems.FALLEN_JUNGLE_LOG.get());
-                entries.accept(MissingWildsItems.FALLEN_DARK_OAK_LOG.get());
-                entries.accept(MissingWildsItems.FALLEN_ACACIA_LOG.get());
-                entries.accept(MissingWildsItems.FALLEN_MANGROVE_LOG.get());
-                entries.accept(MissingWildsItems.FALLEN_CRIMSON_STEM.get());
-                entries.accept(MissingWildsItems.FALLEN_WARPED_STEM.get());
-                entries.accept(MissingWildsItems.FALLEN_MUSHROOM_STEM.get());
-                entries.accept(MissingWildsItems.BLUE_FORGET_ME_NOT.get());
-                entries.accept(MissingWildsItems.PURPLE_FORGET_ME_NOT.get());
-                entries.accept(MissingWildsItems.PINK_FORGET_ME_NOT.get());
-                entries.accept(MissingWildsItems.WHITE_FORGET_ME_NOT.get());
-                entries.accept(MissingWildsItems.SWEETSPIRE.get());
-                entries.accept(MissingWildsItems.BROWN_POLYPORE_MUSHROOM.get());
-                entries.accept(MissingWildsItems.ROASTED_POLYPORE_MUSHROOM.get());
-            })
             .build();
 
     @Override
     public void onInitialize() {
-        MissingWildsResources.init();
+        if (Services.PLATFORM.isModLoaded("advanced_runtime_resource_pack")) {
+            MissingWildsResources.init();
+        }
         MissingWildsModCommon.init();
-        ModCompat.checkModCompat();
+        if (Services.PLATFORM.isModLoaded("advanced_runtime_resource_pack")) {
+            ModCompat.checkModCompat();
+        }
         MissingWildsWorldGen.init();
-
+        SpawnPlacements.register(MissingWildsEntities.FIREFLY_SWARM.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules);
+        BiomeModifications.addSpawn(
+                BiomeSelectors.tag(MissingWildsTags.SPAWNS_FIREFLY_SWARMS),
+                MobCategory.AMBIENT,
+                MissingWildsEntities.FIREFLY_SWARM.get(),
+                12,
+                1,
+                2
+        );
+        FabricDefaultAttributeRegistry.register(MissingWildsEntities.FIREFLY_SWARM.get(), FireflySwarm.createAttributes().build());
     }
 }

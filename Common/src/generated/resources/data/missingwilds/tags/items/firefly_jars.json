@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "missingwilds:firefly_jar",
+    "missingwilds:tinted_firefly_jar",
+    "missingwilds:white_stained_firefly_jar",
+    "missingwilds:orange_stained_firefly_jar",
+    "missingwilds:magenta_stained_firefly_jar",
+    "missingwilds:light_blue_stained_firefly_jar",
+    "missingwilds:yellow_stained_firefly_jar",
+    "missingwilds:lime_stained_firefly_jar",
+    "missingwilds:pink_stained_firefly_jar",
+    "missingwilds:gray_stained_firefly_jar",
+    "missingwilds:light_gray_stained_firefly_jar",
+    "missingwilds:cyan_stained_firefly_jar",
+    "missingwilds:purple_stained_firefly_jar",
+    "missingwilds:blue_stained_firefly_jar",
+    "missingwilds:brown_stained_firefly_jar",
+    "missingwilds:green_stained_firefly_jar",
+    "missingwilds:red_stained_firefly_jar",
+    "missingwilds:black_stained_firefly_jar"
+  ]
+}

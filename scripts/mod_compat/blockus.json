@@ -1,7 +1,0 @@
-{
-    "loader": "fabric",
-    "id": "blockus",
-    "logs": [
-        "white_oak_log"
-    ]
-}
