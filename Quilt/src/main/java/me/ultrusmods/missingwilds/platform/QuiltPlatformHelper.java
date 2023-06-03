@@ -1,6 +1,5 @@
 package me.ultrusmods.missingwilds.platform;
 
-import me.ultrusmods.missingwilds.MissingWildsQuilt;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.services.IPlatformHelper;
 import net.minecraft.client.renderer.RenderType;
@@ -8,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -39,12 +37,6 @@ public class QuiltPlatformHelper implements IPlatformHelper {
         return QuiltLoader.isDevelopmentEnvironment();
     }
 
-
-
-    @Override
-    public CreativeModeTab getCreativeTab() {
-        return MissingWildsQuilt.MISSING_WILD_ITEMS;
-    }
 
     @Override
     public void setBlockRenderType(RenderType layer, Block... blocks) {

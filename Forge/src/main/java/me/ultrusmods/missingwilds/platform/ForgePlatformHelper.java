@@ -3,14 +3,12 @@ package me.ultrusmods.missingwilds.platform;
 import me.ultrusmods.missingwilds.block.CustomWaterlilyBlock;
 import me.ultrusmods.missingwilds.compat.ForgeModCompatHandler;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
-import me.ultrusmods.missingwilds.item.MissingWildsItemGroup;
 import me.ultrusmods.missingwilds.platform.services.IPlatformHelper;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -39,11 +37,6 @@ public class ForgePlatformHelper implements IPlatformHelper {
     public boolean isDevelopmentEnvironment() {
 
         return !FMLLoader.isProduction();
-    }
-
-    @Override
-    public CreativeModeTab getCreativeTab() {
-        return MissingWildsItemGroup.MISSING_WILDS;
     }
 
     @Override

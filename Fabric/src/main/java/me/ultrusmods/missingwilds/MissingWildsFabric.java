@@ -11,12 +11,13 @@ import me.ultrusmods.missingwilds.worldgen.MissingWildsWorldGen;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -26,10 +27,7 @@ import java.util.List;
 
 public class MissingWildsFabric implements ModInitializer {
     public static final List<Block> COMPAT_LOGS = new ArrayList<>();
-    public static final CreativeModeTab MISSING_WILD_ITEMS = FabricItemGroupBuilder.create(
-                    new ResourceLocation(Constants.MOD_ID, "items"))
-            .icon(() -> new ItemStack(MissingWildsItems.FALLEN_BIRCH_LOG.get()))
-            .build();
+    public static CreativeModeTab MISSING_WILD_ITEMS;
 
     @Override
     public void onInitialize() {
@@ -40,6 +38,14 @@ public class MissingWildsFabric implements ModInitializer {
         if (Services.PLATFORM.isModLoaded("advanced_runtime_resource_pack")) {
             ModCompat.checkModCompat();
         }
+        MISSING_WILD_ITEMS = FabricItemGroup.builder(
+                        Constants.id("items"))
+                .icon(() -> new ItemStack(MissingWildsItems.FALLEN_BIRCH_LOG.get()))
+                .displayItems((displayParameters, output) -> {
+                    Services.PLATFORM.registerItems(displayParameters, output);
+                    ModCompat.FALLEN_LOG_ITEMS.forEach(output::accept);
+                })
+                .build();
         MissingWildsWorldGen.init();
         SpawnPlacements.register(MissingWildsEntities.FIREFLY_SWARM.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules);
         BiomeModifications.addSpawn(

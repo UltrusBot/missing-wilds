@@ -6,7 +6,6 @@ import me.ultrusmods.missingwilds.worldgen.feature.FallenLogFeature;
 import me.ultrusmods.missingwilds.worldgen.feature.FallenLogFeatureConfig;
 import me.ultrusmods.missingwilds.worldgen.feature.tree.BranchTreeDecorator;
 import me.ultrusmods.missingwilds.worldgen.feature.tree.PolyporeMushroomTreeDecorator;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;

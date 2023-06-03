@@ -2,22 +2,28 @@
   "modid": "promenade",
   "logs": [
     {
-      "name": "fallen_cherry_oak_log",
-      "block_id": "promenade:cherry_oak_log",
-      "log_texture": "promenade:block/cherry_oak_log/side",
-      "inner_log_texture": "promenade:block/stripped_cherry_oak_log/side"
+      "name": "fallen_sakura_log",
+      "block_id": "promenade:sakura_log",
+      "log_texture": "promenade:block/sakura/log/side",
+      "inner_log_texture": "promenade:block/sakura/stripped_log/side"
     },
     {
       "name": "fallen_palm_log",
       "block_id": "promenade:palm_log",
-      "log_texture": "promenade:block/palm_log/side",
-      "inner_log_texture": "promenade:block/stripped_palm_log/side"
+      "log_texture": "promenade:block/palm/log/side",
+      "inner_log_texture": "promenade:block/palm/stripped_log/side"
+    },
+    {
+      "name": "fallen_maple_log",
+      "block_id": "promenade:maple_log",
+      "log_texture": "promenade:block/maple/log/side",
+      "inner_log_texture": "promenade:block/maple/stripped_log/side"
     },
     {
       "name": "fallen_dark_amaranth_stem",
       "block_id": "promenade:dark_amaranth_stem",
-      "log_texture": "promenade:block/dark_amaranth_stem/side",
-      "inner_log_texture": "promenade:block/stripped_dark_amaranth_stem/side"
+      "log_texture": "promenade:block/dark_amaranth/stem/side",
+      "inner_log_texture": "promenade:block/dark_amaranth/stripped_stem/side"
     }
   ]
 }

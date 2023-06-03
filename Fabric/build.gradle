@@ -10,7 +10,7 @@ apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/de0163aca
 archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
 repositories {
     maven{ url "https://jitpack.io"}
-    maven{ url "https://storage.googleapis.com/devan-maven/"}
+    maven{ url "https://ueaj.dev/maven"}
     maven {
         name = "TerraformersMC"
         url = "https://maven.terraformersmc.com/"

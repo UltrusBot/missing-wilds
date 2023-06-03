@@ -3,7 +3,7 @@ package me.ultrusmods.missingwilds.compat;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.mojang.serialization.JsonOps;
-import io.github.lukebemish.defaultresources.api.ResourceProvider;
+import dev.lukebemish.defaultresources.api.ResourceProvider;
 import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.MissingWildsForge;
 import me.ultrusmods.missingwilds.data.LogData;

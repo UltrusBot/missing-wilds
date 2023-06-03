@@ -4,6 +4,7 @@ import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.compat.QuiltModCompatHandler;
 import me.ultrusmods.missingwilds.data.LogData;
 import net.minecraft.SharedConstants;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
@@ -24,12 +25,12 @@ public class MissingWildsQuiltResources {
     public static void init() {
 
         ResourceLoader.get(PackType.CLIENT_RESOURCES)
-                .registerResourcePackProfileProvider((profileAdder, factory) -> MissingWildsQuiltResources.providePacks(profileAdder, factory, PackType.CLIENT_RESOURCES));
+                .registerResourcePackProfileProvider((profileAdder) -> MissingWildsQuiltResources.providePacks(profileAdder, PackType.CLIENT_RESOURCES));
         ResourceLoader.get(PackType.SERVER_DATA)
-                .registerResourcePackProfileProvider((profileAdder, factory) -> MissingWildsQuiltResources.providePacks(profileAdder, factory, PackType.SERVER_DATA));
+                .registerResourcePackProfileProvider((profileAdder) -> MissingWildsQuiltResources.providePacks(profileAdder, PackType.SERVER_DATA));
     }
 
-    private static void providePacks(Consumer<Pack> profileAdder, Pack.PackConstructor packConstructor, PackType type) {
+    private static void providePacks(Consumer<Pack> profileAdder, PackType type) {
         var pack = new InMemoryResourcePack.Named("missingwildsCompat") {
             @Override
             public @NotNull ResourcePackActivationType getActivationType() {
@@ -38,7 +39,7 @@ public class MissingWildsQuiltResources {
         };
         pack.putText("pack.mcmeta", String.format("""
                 {"pack":{"pack_format":%d,"description":"MissingWilds Mod Compat Pack"}}
-                	""", type.getVersion(SharedConstants.getCurrentVersion())));
+                	""", SharedConstants.getCurrentVersion().getPackVersion(type)));
         ArrayList<String> LOGS = new ArrayList<>();
         QuiltModCompatHandler.modCompats.forEach((modId, modCompat) -> {
             if (QuiltLoader.isModLoaded(modId)) {
@@ -67,8 +68,8 @@ public class MissingWildsQuiltResources {
                     ]
                     }
                 """, String.join(", ", LOGS.stream().map(log -> "\"" + Constants.id(log) + "\"").toList())));
-        profileAdder.accept(Pack.create("missingWildsCompat", false, () -> pack, packConstructor,
-                Pack.Position.TOP, PackSource.BUILT_IN));
+        profileAdder.accept(Pack.readMetaAndCreate("missingWildsCompat", Component.literal("Missing Wilds Mod Compat"), false, name -> pack, type,
+                Pack.Position.TOP, PackSource.DEFAULT));
         Constants.LOG.info("Generated missing wilds compat for mods: " + QuiltModCompatHandler.modCompats.keySet().stream().filter(QuiltLoader::isModLoaded).toList());
     }
 

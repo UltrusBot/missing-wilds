@@ -42,16 +42,6 @@ subprojects {
         maven {
             url = 'https://maven.lukebemish.dev/releases'
         }
-        maven {
-            url "https://jitpack.io"
-
-        }
-        mavenLocal() {
-            content {
-                includeGroup("io.github.lukebemish.defaultresources")
-            }
-        }
-
     }
 
 

@@ -3,14 +3,12 @@ package me.ultrusmods.missingwilds.stat;
 import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.mixin.CustomStatAccessor;
 import me.ultrusmods.missingwilds.register.RegistrationProvider;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.StatFormatter;
 
 public class MissingWildsStats {
-    public static final RegistrationProvider<ResourceLocation> CUSTOM_STATS = RegistrationProvider.get(Registries.CUSTOM_STAT, Constants.MOD_ID);
+    public static final RegistrationProvider<ResourceLocation> CUSTOM_STATS = RegistrationProvider.get(BuiltInRegistries.CUSTOM_STAT, Constants.MOD_ID);
 
     public static void init() {
 

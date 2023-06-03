@@ -36,6 +36,7 @@ public class MissingWildsResources {
 		RegistryObject<Block> block = MissingWildsBlocks.registerFallenLog(modid + "_" + logData.name());
 		MissingWildsFabric.COMPAT_LOGS.add(block.get());
 		Item item = MissingWildsItems.register(modid + "_" + logData.name(), block).get();
+		ModCompat.FALLEN_LOG_ITEMS.add(item);
 		ResourceLocation id = Constants.id(modid + "_" + logData.name());
 		var model = new JBlockModel(fallenLogLocation);
 		var modelMossy = new JBlockModel(fallenLogLocationMossy);

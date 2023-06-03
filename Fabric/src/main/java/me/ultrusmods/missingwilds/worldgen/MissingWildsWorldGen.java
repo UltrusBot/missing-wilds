@@ -28,10 +28,10 @@ public class MissingWildsWorldGen {
                 .add(ModificationPhase.REPLACEMENTS,
                         BIOMES,
                         (context) -> {
-                            if (context.getGenerationSettings().removeBuiltInFeature(VegetationPlacements.TREES_BIRCH.value())) {
+                            if (context.getGenerationSettings().removeFeature(VegetationPlacements.TREES_BIRCH)) {
                                 context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.TREES_BIRCH);
                             }
-                            if (context.getGenerationSettings().removeBuiltInFeature(VegetationPlacements.BIRCH_TALL.value())) {
+                            if (context.getGenerationSettings().removeFeature(VegetationPlacements.BIRCH_TALL)) {
                                 context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MissingWildsPlacedFeatures.TALL_TREES_BIRCH);
                             }
                         });

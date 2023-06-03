@@ -2,8 +2,10 @@ package me.ultrusmods.missingwilds.data;
 
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
@@ -12,12 +14,13 @@ import net.minecraft.world.level.block.Blocks;
 import java.util.function.Consumer;
 
 public class MissingWildsRecipeProvider extends FabricRecipeProvider {
-    public MissingWildsRecipeProvider(FabricDataGenerator dataGenerator) {
-        super(dataGenerator);
+
+    public MissingWildsRecipeProvider(FabricDataOutput output) {
+        super(output);
     }
 
     @Override
-    protected void generateRecipes(Consumer<FinishedRecipe> exporter) {
+    public void buildRecipes(Consumer<FinishedRecipe> exporter) {
         createFallenLogRecipe(MissingWildsBlocks.FALLEN_OAK_LOG.get(), Blocks.OAK_LOG, exporter);
         createFallenLogRecipe(MissingWildsBlocks.FALLEN_BIRCH_LOG.get(), Blocks.BIRCH_LOG, exporter);
         createFallenLogRecipe(MissingWildsBlocks.FALLEN_SPRUCE_LOG.get(), Blocks.SPRUCE_LOG, exporter);
@@ -49,7 +52,7 @@ public class MissingWildsRecipeProvider extends FabricRecipeProvider {
 
     }
     public void createFallenLogRecipe(Block fallenLog, Block baseLog, Consumer<FinishedRecipe> exporter) {
-        ShapedRecipeBuilder.shaped(fallenLog, 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, fallenLog, 8)
                 .pattern("LLL")
                 .pattern("L L")
                 .pattern("LLL")
@@ -60,7 +63,7 @@ public class MissingWildsRecipeProvider extends FabricRecipeProvider {
     }
 
     public void createGlassJarRecipe(Block glassJar, Block baseGlass, Consumer<FinishedRecipe> exporter) {
-        ShapedRecipeBuilder.shaped(glassJar, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, glassJar, 1)
                 .pattern("GPG")
                 .pattern("G G")
                 .pattern("GGG")

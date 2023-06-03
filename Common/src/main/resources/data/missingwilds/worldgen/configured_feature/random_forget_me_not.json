@@ -1,0 +1,418 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 3,
+          "data": {
+            "Name": "missingwilds:blue_forget_me_not"
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "missingwilds:purple_forget_me_not"
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "missingwilds:pink_forget_me_not"
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "missingwilds:white_forget_me_not"
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "blue",
+              "flower_2": "purple"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "blue",
+              "flower_2": "purple",
+              "flower_3": "pink"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "blue",
+              "flower_2": "purple",
+              "flower_3": "white"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "blue",
+              "flower_2": "pink"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "blue",
+              "flower_2": "pink",
+              "flower_3": "purple"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "blue",
+              "flower_2": "pink",
+              "flower_3": "white"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "blue",
+              "flower_2": "white"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "blue",
+              "flower_2": "white",
+              "flower_3": "purple"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "blue",
+              "flower_2": "white",
+              "flower_3": "pink"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "purple",
+              "flower_2": "blue"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "purple",
+              "flower_2": "blue",
+              "flower_3": "pink"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "purple",
+              "flower_2": "blue",
+              "flower_3": "white"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "purple",
+              "flower_2": "pink"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "purple",
+              "flower_2": "pink",
+              "flower_3": "blue"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "purple",
+              "flower_2": "pink",
+              "flower_3": "white"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "purple",
+              "flower_2": "white"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "purple",
+              "flower_2": "white",
+              "flower_3": "blue"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "purple",
+              "flower_2": "white",
+              "flower_3": "pink"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "pink",
+              "flower_2": "blue"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "pink",
+              "flower_2": "blue",
+              "flower_3": "purple"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "pink",
+              "flower_2": "blue",
+              "flower_3": "white"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "pink",
+              "flower_2": "purple"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "pink",
+              "flower_2": "purple",
+              "flower_3": "blue"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "pink",
+              "flower_2": "purple",
+              "flower_3": "white"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "pink",
+              "flower_2": "white"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "pink",
+              "flower_2": "white",
+              "flower_3": "blue"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "pink",
+              "flower_2": "white",
+              "flower_3": "purple"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "white",
+              "flower_2": "blue"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "white",
+              "flower_2": "blue",
+              "flower_3": "purple"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "white",
+              "flower_2": "blue",
+              "flower_3": "pink"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "white",
+              "flower_2": "purple"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "white",
+              "flower_2": "purple",
+              "flower_3": "blue"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "white",
+              "flower_2": "purple",
+              "flower_3": "pink"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "white",
+              "flower_2": "pink"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "white",
+              "flower_2": "pink",
+              "flower_3": "blue"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "missingwilds:forget_me_not",
+            "Properties": {
+              "flower_1": "white",
+              "flower_2": "pink",
+              "flower_3": "purple"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

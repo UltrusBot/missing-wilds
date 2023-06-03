@@ -3,6 +3,7 @@ package me.ultrusmods.missingwilds.compat;
 import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.resource.MissingWildsResources;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.world.item.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,6 +12,8 @@ import java.util.List;
 public abstract class ModCompat {
 	private final List<LogData> logList = new ArrayList<>();
 	public static HashMap<String, ModCompat> modCompats = new HashMap<>();
+	public static List<Item> FALLEN_LOG_ITEMS = new ArrayList<>();
+
 	public static void checkModCompat() {
 		modCompats.forEach((modId, modCompat) -> {
 			if (FabricLoader.getInstance().isModLoaded(modId)) {

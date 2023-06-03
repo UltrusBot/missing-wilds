@@ -3,7 +3,7 @@ package me.ultrusmods.missingwilds.data;
 import me.ultrusmods.missingwilds.block.FallenLogBlock;
 import me.ultrusmods.missingwilds.block.JarBlock;
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.data.models.BlockModelGenerators;
@@ -21,8 +21,8 @@ import javax.annotation.Nullable;
 
 public class MissingWildsModelProvider extends FabricModelProvider {
 
-    public MissingWildsModelProvider(FabricDataGenerator dataGenerator) {
-        super(dataGenerator);
+    public MissingWildsModelProvider(FabricDataOutput output) {
+        super(output);
     }
 
     @Override

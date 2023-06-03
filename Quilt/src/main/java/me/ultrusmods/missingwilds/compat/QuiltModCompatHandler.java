@@ -3,7 +3,7 @@ package me.ultrusmods.missingwilds.compat;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.mojang.serialization.JsonOps;
-import io.github.lukebemish.defaultresources.api.ResourceProvider;
+import dev.lukebemish.defaultresources.api.ResourceProvider;
 import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.MissingWildsQuilt;
 import me.ultrusmods.missingwilds.data.LogData;
@@ -13,14 +13,18 @@ import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
 import me.ultrusmods.missingwilds.register.RegistryObject;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class QuiltModCompatHandler {
 
+    public static final List<Item> FALLEN_LOG_ITEMS = new ArrayList<>();
     public static HashMap<String, ModCompat> modCompats = new HashMap<>();
     private static final Gson GSON = new Gson();
 
@@ -32,7 +36,8 @@ public class QuiltModCompatHandler {
                 LogData logData = logEither.left().isPresent() ? QuiltModCompatHandler.getSimpleLogName(logEither.left().get(), modCompat.modid()) : logEither.right().get();
                 RegistryObject<Block> block = MissingWildsBlocks.registerFallenLog(modCompat.modid() + "_" + logData.name());
                 MissingWildsQuilt.COMPAT_LOGS.add(block.get());
-                MissingWildsItems.register(modCompat.modid() + "_" + logData.name(), block).get();
+                Item item = MissingWildsItems.register(modCompat.modid() + "_" + logData.name(), block).get();
+                FALLEN_LOG_ITEMS.add(item);
             });
         });
     }

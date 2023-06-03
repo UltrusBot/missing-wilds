@@ -3,12 +3,10 @@ package me.ultrusmods.missingwilds.register;
 import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.item.FireflyJarItem;
 import me.ultrusmods.missingwilds.item.MissingWildsFoodComponents;
-import me.ultrusmods.missingwilds.platform.Services;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.PlaceOnWaterBlockItem;
 import net.minecraft.world.level.block.Block;
 
 import java.util.function.Supplier;
@@ -16,7 +14,7 @@ import java.util.function.Supplier;
 import static net.minecraft.world.item.Item.Properties;
 
 public class MissingWildsItems {
-	public static final RegistrationProvider<Item> ITEMS = RegistrationProvider.get(Registry.ITEM_REGISTRY, Constants.MOD_ID);
+	public static final RegistrationProvider<Item> ITEMS = RegistrationProvider.get(Registries.ITEM, Constants.MOD_ID);
 
 
 	public static final RegistryObject<Item> FALLEN_OAK_LOG = register("fallen_oak_log", MissingWildsBlocks.FALLEN_OAK_LOG);
@@ -34,11 +32,11 @@ public class MissingWildsItems {
 	public static final RegistryObject<Item> PINK_FORGET_ME_NOT = register("pink_forget_me_not", MissingWildsBlocks.PINK_FORGET_ME_NOT);
 	public static final RegistryObject<Item> WHITE_FORGET_ME_NOT = register("white_forget_me_not", MissingWildsBlocks.WHITE_FORGET_ME_NOT);
 	public static final RegistryObject<Item> BROWN_POLYPORE_MUSHROOM = register("brown_polypore_mushroom", MissingWildsBlocks.BROWN_POLYPORE_MUSHROOM);
-	public static final RegistryObject<Item> SWEETSPIRE = register("sweetspire", () -> new DoubleHighBlockItem(MissingWildsBlocks.SWEETSPIRE.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
-	public static final RegistryObject<Item> ROASTED_POLYPORE_MUSHROOM = register("roasted_polypore_mushroom", () -> new Item(new Properties().tab(Services.PLATFORM.getCreativeTab()).food(MissingWildsFoodComponents.ROASTED_POLYPORE)));
-	public static final RegistryObject<Item> JAR = register("jar", () -> new BlockItem(MissingWildsBlocks.JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
+	public static final RegistryObject<Item> SWEETSPIRE = register("sweetspire", () -> new DoubleHighBlockItem(MissingWildsBlocks.SWEETSPIRE.get(), new Properties()));
+	public static final RegistryObject<Item> ROASTED_POLYPORE_MUSHROOM = register("roasted_polypore_mushroom", () -> new Item(new Properties().food(MissingWildsFoodComponents.ROASTED_POLYPORE)));
+	public static final RegistryObject<Item> JAR = register("jar", () -> new BlockItem(MissingWildsBlocks.JAR_BLOCK.get(), new Properties()));
 	public static final RegistryObject<Item> FIREFLY_JAR = registerFireflyJar("firefly_jar", MissingWildsBlocks.FIREFLY_JAR_BLOCK);
-	public static final RegistryObject<Item> TINTED_JAR = register("tinted_jar", () -> new BlockItem(MissingWildsBlocks.TINTED_JAR_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
+	public static final RegistryObject<Item> TINTED_JAR = register("tinted_jar", () -> new BlockItem(MissingWildsBlocks.TINTED_JAR_BLOCK.get(), new Properties()));
 	public static final RegistryObject<Item> TINTED_FIREFLY_JAR = registerFireflyJar("tinted_firefly_jar",MissingWildsBlocks.TINTED_FIREFLY_JAR_BLOCK);
 
 	public static final RegistryObject<Item> WHITE_STAINED_JAR_ITEM = register("white_stained_jar", MissingWildsBlocks.WHITE_STAINED_JAR_BLOCK);
@@ -73,7 +71,7 @@ public class MissingWildsItems {
 	public static final RegistryObject<Item> RED_STAINED_FIREFLY_JAR_ITEM = registerFireflyJar("red_stained_firefly_jar", MissingWildsBlocks.RED_STAINED_FIREFLY_JAR_BLOCK);
 	public static final RegistryObject<Item> BLACK_STAINED_JAR_ITEM = register("black_stained_jar", MissingWildsBlocks.BLACK_STAINED_JAR_BLOCK);
 	public static final RegistryObject<Item> BLACK_STAINED_FIREFLY_JAR_ITEM = registerFireflyJar("black_stained_firefly_jar", MissingWildsBlocks.BLACK_STAINED_FIREFLY_JAR_BLOCK);
-	public static final RegistryObject<Item> FIREFLY_BOTTLE_ITEM = register("firefly_bottle", () -> new Item(new Item.Properties().tab(Services.PLATFORM.getCreativeTab())));
+	public static final RegistryObject<Item> FIREFLY_BOTTLE_ITEM = register("firefly_bottle", () -> new Item(new Item.Properties()));
 //	public static final RegistryObject<Item> WATERLILY_ITEM = register("waterlily", () -> new PlaceOnWaterBlockItem(MissingWildsBlocks.WATERLILY_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	public static void init() {
 
@@ -83,7 +81,7 @@ public class MissingWildsItems {
 		return ITEMS.register(id, supplier);
 	}
 	public static RegistryObject<Item> register(String id, RegistryObject<Block> block) {
-		return ITEMS.register(id,() -> new BlockItem(block.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
+		return ITEMS.register(id,() -> new BlockItem(block.get(), new Properties()));
 	}
 	public static RegistryObject<Item> registerFireflyJar(String id, RegistryObject<Block> block) {
 		return ITEMS.register(id, () -> new FireflyJarItem(block.get(), new Item.Properties()));

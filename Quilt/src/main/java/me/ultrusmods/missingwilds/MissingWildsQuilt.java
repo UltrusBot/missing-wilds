@@ -2,11 +2,13 @@ package me.ultrusmods.missingwilds;
 
 import me.ultrusmods.missingwilds.compat.QuiltModCompatHandler;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
+import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
 import me.ultrusmods.missingwilds.resource.MissingWildsQuiltResources;
 import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import me.ultrusmods.missingwilds.worldgen.MissingWildsWorldGen;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.MobCategory;
@@ -17,7 +19,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.Heightmap;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
-import org.quiltmc.qsl.item.group.api.QuiltItemGroup;
 import org.quiltmc.qsl.worldgen.biome.api.BiomeModifications;
 import org.quiltmc.qsl.worldgen.biome.api.BiomeSelectors;
 
@@ -26,15 +27,20 @@ import java.util.List;
 
 public class MissingWildsQuilt implements ModInitializer {
     public static final List<Block> COMPAT_LOGS = new ArrayList<>();
-    public static final CreativeModeTab MISSING_WILD_ITEMS = QuiltItemGroup.builder(
-                    new ResourceLocation(Constants.MOD_ID, "items"))
-            .icon(() -> new ItemStack(MissingWildsItems.FALLEN_BIRCH_LOG.get()))
-            .build();
+    public static CreativeModeTab MISSING_WILD_ITEMS;
 
     @Override
     public void onInitialize(ModContainer mod) {
         MissingWildsModCommon.init();
         QuiltModCompatHandler.checkModCompat();
+        MISSING_WILD_ITEMS = FabricItemGroup.builder(
+                        Constants.id("items"))
+                .icon(() -> new ItemStack(MissingWildsItems.FALLEN_BIRCH_LOG.get()))
+                .displayItems((displayParameters, output) -> {
+                    Services.PLATFORM.registerItems(displayParameters, output);
+                    QuiltModCompatHandler.FALLEN_LOG_ITEMS.forEach(output::accept);
+                })
+                .build();
         MissingWildsWorldGen.init();
         MissingWildsQuiltResources.init();
         BiomeModifications.addSpawn(
