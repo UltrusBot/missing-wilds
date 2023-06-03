@@ -6,7 +6,7 @@ plugins {
     id 'me.hypherionmc.cursegradle' version '2.0.1'
 
 }
-apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/master/release.gradle'
+apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/de0163acac82903713cc9c508f31833d813ead1c/release.gradle'
 
 
 archivesBaseName = "${mod_name}-quilt-${minecraft_version}"
@@ -71,7 +71,8 @@ var mod = createModReleaseMetadata(
         "remapJar",
         ["sourcesJar", "javadocJar"],
         "v${project.version}-quilt",
-        true
+        project.testRelease as boolean,
+        project.releaseType
 )
 modrinthInfo(mod, "missing-wilds", ["qsl"])
 githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")

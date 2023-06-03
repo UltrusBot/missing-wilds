@@ -19,7 +19,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
-apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/master/release.gradle'
+apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/de0163acac82903713cc9c508f31833d813ead1c/release.gradle'
 
 
 jarJar.enable()
@@ -129,7 +129,8 @@ var mod = createModReleaseMetadata(
         "jar",
         ["sourcesJar", "javadocJar"],
         "v${project.version}-quilt",
-        true
+        project.testRelease as boolean,
+        project.releaseType
 )
 modrinthInfo(mod, "missing-wilds")
 githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")

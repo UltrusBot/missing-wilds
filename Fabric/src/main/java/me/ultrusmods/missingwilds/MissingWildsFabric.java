@@ -2,6 +2,7 @@ package me.ultrusmods.missingwilds;
 
 import me.ultrusmods.missingwilds.compat.ModCompat;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
+import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
 import me.ultrusmods.missingwilds.resource.MissingWildsResources;
@@ -32,9 +33,13 @@ public class MissingWildsFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        MissingWildsResources.init();
+        if (Services.PLATFORM.isModLoaded("advanced_runtime_resource_pack")) {
+            MissingWildsResources.init();
+        }
         MissingWildsModCommon.init();
-        ModCompat.checkModCompat();
+        if (Services.PLATFORM.isModLoaded("advanced_runtime_resource_pack")) {
+            ModCompat.checkModCompat();
+        }
         MissingWildsWorldGen.init();
         SpawnPlacements.register(MissingWildsEntities.FIREFLY_SWARM.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules);
         BiomeModifications.addSpawn(

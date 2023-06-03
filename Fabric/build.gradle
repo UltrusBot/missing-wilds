@@ -6,7 +6,7 @@ plugins {
     id "com.modrinth.minotaur" version "2.+"
     id 'me.hypherionmc.cursegradle' version '2.0.1'
 }
-apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/master/release.gradle'
+apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/de0163acac82903713cc9c508f31833d813ead1c/release.gradle'
 archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
 repositories {
     maven{ url "https://jitpack.io"}
@@ -32,6 +32,9 @@ dependencies {
 
 loom {
     accessWidenerPath = file("src/main/resources/missingwilds.accesswidener")
+    mixin {
+        defaultRefmapName = "${mod_id}.refmap.json"
+    }
     runs {
         client {
             client()
@@ -65,9 +68,10 @@ var mod = createModReleaseMetadata(
         "remapJar",
         ["sourcesJar", "javadocJar"],
         "v${project.version}-fabric",
-        true
+        project.testRelease as boolean,
+        project.releaseType
 )
-modrinthInfo(mod, "missing-wilds", ["fabric-api"])
+modrinthInfo(mod, "missing-wilds", ["fabric-api"], ["arrp"])
 githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
 curseforgeInfo(mod, "622590", [], ["fabric-api"])
 
@@ -77,9 +81,6 @@ processResources {
 
     filesMatching("fabric.mod.json") {
         expand "version": project.version
-    }
-    filesMatching('*.mixins.json') {
-        expand "refmap_target": "${archivesBaseName}-"
     }
     exclude '.cache'
 }
