@@ -54,13 +54,13 @@ public class FireflySwarm extends PathfinderMob {
 
     @Override
     public void aiStep() {
-        if (!this.level.isClientSide() && this.isAlive() && this.level.isDay() && this.random.nextInt(100) <= 10) {
+        if (!this.level().isClientSide() && this.isAlive() && this.level().isDay() && this.random.nextInt(100) <= 10) {
             this.discard();
         }
-        if (this.level.isClientSide()) {
+        if (this.level().isClientSide()) {
             for (int i = 0; i < this.getSize() * 3; i++) {
                 if (this.getRandom().nextInt(25) == 0) {
-                    this.level.addParticle(new FireflyParticleOptions(.60f, .92f, .2f, 100, 0.0035f),
+                    this.level().addParticle(new FireflyParticleOptions(.60f, .92f, .2f, 100, 0.0035f),
                             this.getX() + this.random.nextFloat() - 0.5f,
                             this.getY() + this.random.nextFloat(),
                             this.getZ() + this.random.nextFloat() - 0.5f,
@@ -111,8 +111,8 @@ public class FireflySwarm extends PathfinderMob {
             if (this.random.nextFloat() < 0.2) {
                 this.waitTime = this.random.nextInt(200, 600); // 10 - 30 seconds
             } else {
-                var pos = this.getLevel().clip(new ClipContext(this.position(), this.position().add(this.random.nextInt(-8, 10), this.random.nextInt(-4, 6), this.random.nextInt(-8, 10)), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
-                if (!this.level.getBlockState(pos.getBlockPos()).isAir()) {
+                var pos = this.level().clip(new ClipContext(this.position(), this.position().add(this.random.nextInt(-8, 10), this.random.nextInt(-4, 6), this.random.nextInt(-8, 10)), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
+                if (!this.level().getBlockState(pos.getBlockPos()).isAir()) {
                     this.nextPosition = null;
                     this.setStill(true);
                 } else {
@@ -154,19 +154,19 @@ public class FireflySwarm extends PathfinderMob {
             player.getItemInHand(hand).shrink(1);
             player.addItem(MissingWildsItems.FIREFLY_BOTTLE_ITEM.get().getDefaultInstance());
             shrink();
-            return InteractionResult.sidedSuccess(this.level.isClientSide);
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
         } else if(stack.getItem() instanceof FireflyJarItem) {
             FireflyJarItem.increaseLightLevel(stack, 3);
             player.playSound(MissingWildsSounds.JAR_OPEN.get(), 1.0f, 1.0f);
             discard();
-            return InteractionResult.sidedSuccess(this.level.isClientSide);
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
         } else if(stack.getItem() instanceof BlockItem blockItem && JarMaps.JAR_TO_FIREFLY_JAR.containsKey(blockItem.getBlock())) {
             player.playSound(MissingWildsSounds.JAR_OPEN.get(), 1.0f, 1.0f);
             var newStack = JarMaps.JAR_TO_FIREFLY_JAR.get(blockItem.getBlock()).asItem().getDefaultInstance();
             FireflyJarItem.increaseLightLevel(newStack, 3);
             player.setItemInHand(hand, newStack);
             discard();
-            return InteractionResult.sidedSuccess(this.level.isClientSide);
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
         } else {
             return super.mobInteract(player, hand);
         }

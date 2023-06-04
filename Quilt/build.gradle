@@ -46,8 +46,8 @@ dependencies {
     modImplementation(libs.quilt.loader)
 
     modImplementation(libs.qfapi)
-    modImplementation(libs.emi)
-    modImplementation(libs.tablesaw)
+//    modImplementation(libs.emi) //TODO 1.20
+//    modImplementation(libs.tablesaw)
 
     modImplementation(libs.defaultresources.quilt) {
         transitive = false

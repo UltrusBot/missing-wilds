@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
 import java.util.function.Supplier;
 
@@ -36,18 +36,18 @@ public class MissingWildsBlocks {
 
 	public static final RegistryObject<Block> BROWN_POLYPORE_MUSHROOM = registerPolypore("brown_polypore_mushroom");
 
-	public static final RegistryObject<Block> SWEETSPIRE = register("sweetspire",() -> new TallFlowerBlock(Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> POTTED_SWEETSPIRE = register("potted_sweetspire", () -> new FlowerPotBlock(SWEETSPIRE.get(), Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> POTTED_BLUE_FORGET_ME_NOT = register("potted_blue_forget_me_not", () -> new FlowerPotBlock(BLUE_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> POTTED_PURPLE_FORGET_ME_NOT = register("potted_purple_forget_me_not", () -> new FlowerPotBlock(PURPLE_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> POTTED_PINK_FORGET_ME_NOT = register("potted_pink_forget_me_not", () -> new FlowerPotBlock(PINK_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noOcclusion().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> POTTED_WHITE_FORGET_ME_NOT = register("potted_white_forget_me_not", () ->new FlowerPotBlock(WHITE_FORGET_ME_NOT.get(), Properties.of(Material.REPLACEABLE_PLANT).noOcclusion().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> SWEETSPIRE = register("sweetspire",() -> new TallFlowerBlock(Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().pushReaction(PushReaction.DESTROY)));
+	public static final RegistryObject<Block> POTTED_SWEETSPIRE = register("potted_sweetspire", () -> new FlowerPotBlock(SWEETSPIRE.get(), Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+	public static final RegistryObject<Block> POTTED_BLUE_FORGET_ME_NOT = register("potted_blue_forget_me_not", () -> new FlowerPotBlock(BLUE_FORGET_ME_NOT.get(), Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+	public static final RegistryObject<Block> POTTED_PURPLE_FORGET_ME_NOT = register("potted_purple_forget_me_not", () -> new FlowerPotBlock(PURPLE_FORGET_ME_NOT.get(), Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+	public static final RegistryObject<Block> POTTED_PINK_FORGET_ME_NOT = register("potted_pink_forget_me_not", () -> new FlowerPotBlock(PINK_FORGET_ME_NOT.get(), Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+	public static final RegistryObject<Block> POTTED_WHITE_FORGET_ME_NOT = register("potted_white_forget_me_not", () ->new FlowerPotBlock(WHITE_FORGET_ME_NOT.get(), Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
 
 	public static final RegistryObject<Block> JAR_BLOCK = register("jar", MissingWildsBlocks::createJarBlock);
 	public static final RegistryObject<Block> FIREFLY_JAR_BLOCK = register("firefly_jar", MissingWildsBlocks::createFireflyJarBlock);
 
 	public static final RegistryObject<Block> TINTED_JAR_BLOCK = register("tinted_jar", MissingWildsBlocks::createJarBlock);
-	public static final RegistryObject<Block> TINTED_FIREFLY_JAR_BLOCK = register("tinted_firefly_jar", () -> new FireflyJarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion()));
+	public static final RegistryObject<Block> TINTED_FIREFLY_JAR_BLOCK = register("tinted_firefly_jar", () -> new FireflyJarBlock(Properties.of().strength(2.0F).sound(SoundType.GLASS).noOcclusion()));
 
 	public static final RegistryObject<Block> WHITE_STAINED_JAR_BLOCK = register("white_stained_jar", MissingWildsBlocks::createJarBlock);
 	public static final RegistryObject<Block> WHITE_STAINED_FIREFLY_JAR_BLOCK = register("white_stained_firefly_jar", MissingWildsBlocks::createFireflyJarBlock);
@@ -82,7 +82,7 @@ public class MissingWildsBlocks {
 	public static final RegistryObject<Block> BLACK_STAINED_JAR_BLOCK = register("black_stained_jar", MissingWildsBlocks::createJarBlock);
 	public static final RegistryObject<Block> BLACK_STAINED_FIREFLY_JAR_BLOCK = register("black_stained_firefly_jar", MissingWildsBlocks::createFireflyJarBlock);
 
-	public static final RegistryObject<Block> FORGET_ME_NOT = register("forget_me_not", () -> new CombinedStackingFlowerBlock(MobEffects.LUCK, 10, Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.NONE)));
+	public static final RegistryObject<Block> FORGET_ME_NOT = register("forget_me_not", () -> new CombinedStackingFlowerBlock(MobEffects.LUCK, 10, Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.NONE).pushReaction(PushReaction.DESTROY)));
 
 	public static final RegistryObject<Block> FOOD_JAR_BLOCK = register("food_jar", MissingWildsBlocks::createFoodJarBlock);
 	public static final RegistryObject<Block> TINTED_FOOD_JAR_BLOCK = register("tinted_food_jar", MissingWildsBlocks::createFoodJarBlock);
@@ -114,23 +114,23 @@ public class MissingWildsBlocks {
 		return BLOCKS.register(id, supplier);
 	}
 	public static RegistryObject<Block> registerFallenLog(String id) {
-		return register(id, () -> new FallenLogBlock(Properties.of(Material.WOOD).strength(2.0F).sound(SoundType.WOOD).noOcclusion()));
+		return register(id, () -> new FallenLogBlock(Properties.of().strength(2.0F).sound(SoundType.WOOD).noOcclusion()));
 	}
 
 	private static RegistryObject<Block> registerForgetMeNot(String id, CombinedStackingFlowerBlock.FlowerType type) {
-		return register(id, () -> new StackingFlowerBlock(MobEffects.LUCK, 10, Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.NONE), type));
+		return register(id, () -> new StackingFlowerBlock(MobEffects.LUCK, 10, Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.NONE).pushReaction(PushReaction.DESTROY), type));
 	}
 
 	private static RegistryObject<Block> registerPolypore(String id) {
-		return register(id, () -> new PolyporeMushroomBlock(Properties.of(Material.WOOD, MaterialColor.DIRT).strength(0.2F).sound(SoundType.WOOD).noOcclusion()));
+		return register(id, () -> new PolyporeMushroomBlock(Properties.of().mapColor(MapColor.DIRT).strength(0.2F).sound(SoundType.WOOD).noOcclusion()));
 	}
 	public static Block createJarBlock() {
-		return new JarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion());
+		return new JarBlock(Properties.of().strength(2.0F).sound(SoundType.GLASS).noOcclusion());
 	}
 	public static Block createFoodJarBlock() {
-		return new FoodJarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion());
+		return new FoodJarBlock(Properties.of().strength(2.0F).sound(SoundType.GLASS).noOcclusion());
 	}
 	public static Block createFireflyJarBlock() {
-		return new FireflyJarBlock(Properties.of(Material.GLASS).strength(2.0F).sound(SoundType.GLASS).noOcclusion().lightLevel((state) -> state.getValue(FireflyJarBlock.LIGHT_LEVEL)));
+		return new FireflyJarBlock(Properties.of().strength(2.0F).sound(SoundType.GLASS).noOcclusion().lightLevel((state) -> state.getValue(FireflyJarBlock.LIGHT_LEVEL)));
 	}
 }
