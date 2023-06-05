@@ -19,7 +19,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
-apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/de0163acac82903713cc9c508f31833d813ead1c/release.gradle'
+apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/61556de3c834075f02353af9c9c55462c6f8bea0/release.gradle'
 
 
 jarJar.enable()
@@ -128,7 +128,7 @@ var mod = createModReleaseMetadata(
         ["forge"],
         "jar",
         ["sourcesJar", "javadocJar"],
-        "v${project.version}+${project.minecraft_version}-quilt",
+        "v${project.version}+${project.minecraft_version}-forge",
         project.testRelease.toBoolean(),
         project.releaseType
 )

@@ -6,7 +6,7 @@ plugins {
     id "com.modrinth.minotaur" version "2.+"
     id 'me.hypherionmc.cursegradle' version '2.0.1'
 }
-apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/de0163acac82903713cc9c508f31833d813ead1c/release.gradle'
+apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/61556de3c834075f02353af9c9c55462c6f8bea0/release.gradle'
 archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
 repositories {
     maven{ url "https://jitpack.io"}
