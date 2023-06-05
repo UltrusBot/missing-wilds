@@ -2,6 +2,7 @@
 - Missing Wilds Feature (Forget me nots, and more grass) spawns in biomes in the `missingwilds:birch` tag
 - Birch Trees grown from saplings are now larger, and have a branch, making them match the
 - Fallen logs can now have a snowy overlay if any snowy block is above them. This is controlled by the `missingwilds:snow` block tag.
+- Added Turkish Translation (Thanks Hexasan)
 - Fireflies have been added.
     - Firefly Swarms spawn in the `missingwilds:firefly_spawn_biomes` tag.
     - Fireflies spawn rate is influenced by the moon phase, with the new moon giving the highest spawn rate.
