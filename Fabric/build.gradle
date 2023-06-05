@@ -61,13 +61,13 @@ loom {
 }
 
 var mod = createModReleaseMetadata(
-        "Missing Wilds v$project.version",
+        "Missing Wilds v1.2.0+1.19.2 Beta 1 - Fabric",
         file("$rootDir/CHANGELOG.md"),
         ["1.19.2"],
         ["fabric"],
         "remapJar",
         ["sourcesJar", "javadocJar"],
-        "v${project.version}-fabric",
+        "v${project.version}+${project.minecraft_version}-fabric",
         project.testRelease as boolean,
         project.releaseType
 )

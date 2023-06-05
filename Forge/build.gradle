@@ -122,13 +122,13 @@ tasks.withType(JavaCompile) {
 }
 
 var mod = createModReleaseMetadata(
-        "Missing Wilds v$project.version",
+        "Missing Wilds v1.2.0+1.19.2 Beta 1 - Forge",
         file("$rootDir/CHANGELOG.md"),
         ["1.19.2"],
         ["forge"],
         "jar",
         ["sourcesJar", "javadocJar"],
-        "v${project.version}-quilt",
+        "v${project.version}+${project.minecraft_version}-quilt",
         project.testRelease as boolean,
         project.releaseType
 )
