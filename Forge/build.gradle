@@ -129,7 +129,7 @@ var mod = createModReleaseMetadata(
         "jar",
         ["sourcesJar", "javadocJar"],
         "v${project.version}+${project.minecraft_version}-quilt",
-        project.testRelease as boolean,
+        project.testRelease.toBoolean(),
         project.releaseType
 )
 modrinthInfo(mod, "missing-wilds")
