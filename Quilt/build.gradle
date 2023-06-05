@@ -64,9 +64,9 @@ loom {
 }
 
 var mod = createModReleaseMetadata(
-        "Missing Wilds v1.2.0+1.19.2 Beta 1 - Quilt",
+        "Missing Wilds v1.2.0+1.19.4 Beta 1 - Quilt",
         file("$rootDir/CHANGELOG.md"),
-        ["1.19.2"],
+        ["1.19.4"],
         ["quilt"],
         "remapJar",
         ["sourcesJar", "javadocJar"],
@@ -75,7 +75,7 @@ var mod = createModReleaseMetadata(
         project.releaseType
 )
 modrinthInfo(mod, "missing-wilds", ["qsl"])
-githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
+githubInfo(mod, "UltrusBot", "missing-wilds", "1.19.4")
 curseforgeInfo(mod, "622590", [], ["qsl"])
 
 

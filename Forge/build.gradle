@@ -122,9 +122,9 @@ tasks.withType(JavaCompile) {
 }
 
 var mod = createModReleaseMetadata(
-        "Missing Wilds v1.2.0+1.19.2 Beta 1 - Forge",
+        "Missing Wilds v1.2.0+1.19.4 Beta 1 - Forge",
         file("$rootDir/CHANGELOG.md"),
-        ["1.19.2"],
+        ["1.19.4"],
         ["forge"],
         "jar",
         ["sourcesJar", "javadocJar"],
@@ -133,7 +133,7 @@ var mod = createModReleaseMetadata(
         project.releaseType
 )
 modrinthInfo(mod, "missing-wilds")
-githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
+githubInfo(mod, "UltrusBot", "missing-wilds", "1.19.4")
 curseforgeInfo(mod, "634277")
 
 
