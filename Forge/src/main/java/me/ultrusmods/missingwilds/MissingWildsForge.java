@@ -42,7 +42,7 @@ public class MissingWildsForge {
 
 
     private void spawnPlacementsEvent(SpawnPlacementRegisterEvent event) {
-        event.register(MissingWildsEntities.FIREFLY_SWARM.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules, SpawnPlacementRegisterEvent.Operation.AND);
+        event.register(MissingWildsEntities.FIREFLY_SWARM.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
