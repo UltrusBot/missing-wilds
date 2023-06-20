@@ -105,7 +105,7 @@ dependencies {
     implementation fg.deobf(libs.brrp.get())
 //    implementation fg.deobf(libs.midnightlib.forge.get())
     implementation fg.deobf(libs.defaultresources.forge.get())
-    jarJar("dev.lukebemish.defaultresources:defaultresources-forge-1.19.4:[1.0.3,)")
+    jarJar("io.github.lukebemish.defaultresources:defaultresources-forge-1.19.2:[0.3.0,)")
 
 }
 tasks.build.dependsOn tasks.jarJar
@@ -122,7 +122,7 @@ tasks.withType(JavaCompile) {
 }
 
 var mod = createModReleaseMetadata(
-        "Missing Wilds v1.2.0+1.19.4 Beta 1 - Forge",
+        "Missing Wilds v1.2.0+1.19.4 Beta 2 - Forge",
         file("$rootDir/CHANGELOG.md"),
         ["1.19.4"],
         ["forge"],
