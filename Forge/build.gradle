@@ -1,3 +1,4 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
@@ -12,15 +13,14 @@ buildscript {
 plugins {
     id "com.github.breadmoirai.github-release" version "2.4.1"
     id "com.modrinth.minotaur" version "2.+"
-    id 'me.hypherionmc.cursegradle' version '2.0.1'
+    id 'net.darkhax.curseforgegradle' version '1.1.15'
 }
 apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
-apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/61556de3c834075f02353af9c9c55462c6f8bea0/release.gradle'
-
+apply from: "https://raw.githubusercontent.com/UltrusBot/GradleScripts/${project.upload_script_version}/release.gradle"
 
 jarJar.enable()
 
@@ -134,7 +134,7 @@ var mod = createModReleaseMetadata(
 )
 modrinthInfo(mod, "missing-wilds")
 githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
-curseforgeInfo(mod, "634277")
+curseforgeInfo(mod, TaskPublishCurseForge, "634277")
 
 
 processResources {

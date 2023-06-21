@@ -1,13 +1,13 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
+
 plugins {
     id "org.quiltmc.loom"  version "0.12.+"
     id "maven-publish"
     id "com.github.breadmoirai.github-release" version "2.4.1"
     id "com.modrinth.minotaur" version "2.+"
-    id 'me.hypherionmc.cursegradle' version '2.0.1'
-
+    id 'net.darkhax.curseforgegradle' version '1.1.15'
 }
-apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/61556de3c834075f02353af9c9c55462c6f8bea0/release.gradle'
-
+apply from: "https://raw.githubusercontent.com/UltrusBot/GradleScripts/${project.upload_script_version}/release.gradle"
 
 archivesBaseName = "${mod_name}-quilt-${minecraft_version}"
 
@@ -76,7 +76,7 @@ var mod = createModReleaseMetadata(
 )
 modrinthInfo(mod, "missing-wilds", ["qsl"])
 githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
-curseforgeInfo(mod, "622590", [], ["qsl"])
+curseforgeInfo(mod, TaskPublishCurseForge, "622590", [], ["qsl"])
 
 
 processResources {

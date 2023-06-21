@@ -1,12 +1,15 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
+
 plugins {
     id 'fabric-loom' version '0.11-SNAPSHOT'
     id 'maven-publish'
     id 'idea'
     id "com.github.breadmoirai.github-release" version "2.4.1"
     id "com.modrinth.minotaur" version "2.+"
-    id 'me.hypherionmc.cursegradle' version '2.0.1'
+    id 'net.darkhax.curseforgegradle' version '1.1.15'
 }
-apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/61556de3c834075f02353af9c9c55462c6f8bea0/release.gradle'
+apply from: "https://raw.githubusercontent.com/UltrusBot/GradleScripts/${project.upload_script_version}/release.gradle"
+
 archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
 repositories {
     maven{ url "https://jitpack.io"}
@@ -73,7 +76,7 @@ var mod = createModReleaseMetadata(
 )
 modrinthInfo(mod, "missing-wilds", ["fabric-api"], ["arrp"])
 githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
-curseforgeInfo(mod, "622590", [], ["fabric-api"])
+curseforgeInfo(mod, TaskPublishCurseForge, "622590", [], ["fabric-api"])
 
 processResources {
     from project(":Common").sourceSets.main.resources
