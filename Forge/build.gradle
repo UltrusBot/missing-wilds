@@ -105,7 +105,7 @@ dependencies {
     implementation fg.deobf(libs.brrp.get())
 //    implementation fg.deobf(libs.midnightlib.forge.get())
     implementation fg.deobf(libs.defaultresources.forge.get())
-    jarJar("io.github.lukebemish.defaultresources:defaultresources-forge-1.19.2:[0.3.0,)")
+    jarJar("dev.lukebemish.defaultresources:defaultresources-forge-1.19.4:[1.0.3,)")
 
 }
 tasks.build.dependsOn tasks.jarJar
