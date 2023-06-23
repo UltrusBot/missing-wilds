@@ -1,13 +1,13 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
+
 plugins {
     id "org.quiltmc.loom"  version "0.12.+"
     id "maven-publish"
     id "com.github.breadmoirai.github-release" version "2.4.1"
     id "com.modrinth.minotaur" version "2.+"
-    id 'me.hypherionmc.cursegradle' version '2.0.1'
-
+    id 'net.darkhax.curseforgegradle' version '1.1.15'
 }
-apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/de0163acac82903713cc9c508f31833d813ead1c/release.gradle'
-
+apply from: "https://raw.githubusercontent.com/UltrusBot/GradleScripts/${project.upload_script_version}/release.gradle"
 
 archivesBaseName = "${mod_name}-quilt-${minecraft_version}"
 
@@ -64,19 +64,19 @@ loom {
 }
 
 var mod = createModReleaseMetadata(
-        "Missing Wilds v$project.version",
+        "Missing Wilds v1.2.0+1.19.4 Beta 2 - Quilt",
         file("$rootDir/CHANGELOG.md"),
-        ["1.19.2"],
+        ["1.19.4"],
         ["quilt"],
         "remapJar",
         ["sourcesJar", "javadocJar"],
-        "v${project.version}-quilt",
-        project.testRelease as boolean,
+        "v${project.version}+${project.minecraft_version}-quilt",
+        project.testRelease.toBoolean(),
         project.releaseType
 )
 modrinthInfo(mod, "missing-wilds", ["qsl"])
-githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
-curseforgeInfo(mod, "622590", [], ["qsl"])
+githubInfo(mod, "UltrusBot", "missing-wilds", "1.19.4")
+curseforgeInfo(mod, TaskPublishCurseForge, "622590", [], ["qsl"])
 
 
 processResources {

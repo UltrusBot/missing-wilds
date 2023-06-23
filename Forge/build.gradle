@@ -1,3 +1,4 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
@@ -12,15 +13,14 @@ buildscript {
 plugins {
     id "com.github.breadmoirai.github-release" version "2.4.1"
     id "com.modrinth.minotaur" version "2.+"
-    id 'me.hypherionmc.cursegradle' version '2.0.1'
+    id 'net.darkhax.curseforgegradle' version '1.1.15'
 }
 apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
-apply from: 'https://raw.githubusercontent.com/UltrusBot/GradleScripts/de0163acac82903713cc9c508f31833d813ead1c/release.gradle'
-
+apply from: "https://raw.githubusercontent.com/UltrusBot/GradleScripts/${project.upload_script_version}/release.gradle"
 
 jarJar.enable()
 
@@ -122,19 +122,19 @@ tasks.withType(JavaCompile) {
 }
 
 var mod = createModReleaseMetadata(
-        "Missing Wilds v$project.version",
+        "Missing Wilds v1.2.0+1.19.4 Beta 2 - Forge",
         file("$rootDir/CHANGELOG.md"),
-        ["1.19.2"],
+        ["1.19.4"],
         ["forge"],
         "jar",
         ["sourcesJar", "javadocJar"],
-        "v${project.version}-quilt",
-        project.testRelease as boolean,
+        "v${project.version}+${project.minecraft_version}-forge",
+        project.testRelease.toBoolean(),
         project.releaseType
 )
 modrinthInfo(mod, "missing-wilds")
-githubInfo(mod, "UltrusBot", "missing-wilds", "1.19")
-curseforgeInfo(mod, "634277")
+githubInfo(mod, "UltrusBot", "missing-wilds", "1.19.4")
+curseforgeInfo(mod, TaskPublishCurseForge, "634277")
 
 
 processResources {
