@@ -9,6 +9,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -50,6 +51,7 @@ public class JarBlock extends Block {
             if (JarMaps.JAR_TO_FIREFLY_JAR.get(this) instanceof FireflyJarBlock jar) {
                 level.setBlockAndUpdate(pos, jar.defaultBlockState().setValue(COVERED, state.getValue(COVERED)).setValue(FireflyJarBlock.LIGHT_LEVEL, 1));
                 stack.shrink(1);
+                player.addItem(new ItemStack(Items.GLASS_BOTTLE));
                 return InteractionResult.SUCCESS;
             }
         } else if (FoodJarBlock.isValidItem(stack)) {
