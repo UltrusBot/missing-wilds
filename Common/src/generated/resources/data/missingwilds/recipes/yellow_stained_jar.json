@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "group": "missingwilds:glass_jars",
   "key": {
     "G": {
@@ -16,5 +17,6 @@
   ],
   "result": {
     "item": "missingwilds:yellow_stained_jar"
-  }
+  },
+  "show_notification": true
 }

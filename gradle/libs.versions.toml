@@ -1,24 +1,24 @@
 [versions]
-minecraft = "1.20-rc1"
+minecraft = "1.20.1"
 fabric_loader = "0.14.21"
-fabric_api = "0.83.0+1.20"
-quilt_loader = "0.19.0-beta.18"
-qfapi = "7.0.0-alpha.4+0.83.0-1.20"
-forge = "1.19.4-45.0.66"
+fabric_api = "0.84.0+1.20.1"
+quilt_loader = "0.19.2-beta.2"
+qfapi = "7.0.3+0.83.1-1.20.1"
+forge = "1.20.1-47.0.19"
 machete = "1.1.2"
 midnightlib_forge = "1.0.0-forge"
 midnightlib_fabric = "1.0.0-fabric"
 midnightlib_quilt = "1.0.0-quilt"
-tablesaw = "1.5.0+1.19.4"
+tablesaw = "1.5.1+1.20"
 
 # Default Resources
-defaultresources = "1.0.3"
+defaultresources = "2.0.0"
 
 
 # Extra Libraries
-arrp = "0.6.7"
-emi = "1.0.1+1.19.4"
-brrp = "1.0.0-mc1.19.4-forge"
+arrp = "0.6.5.0"
+emi = "1.0.5+1.20.1"
+brrp = "1.0.1-mc1.20.1-forge"
 
 
 
@@ -40,9 +40,9 @@ midnightlib_quilt = { module = "maven.modrinth:midnightlib", version.ref = "midn
 tablesaw = { module = "maven.modrinth:tablesaw", version.ref = "tablesaw" }
 
 # Default Resources
-defaultresources_common = { module = "dev.lukebemish.defaultresources:defaultresources-common-1.19.4", version.ref = "defaultresources" }
-defaultresources_forge = { module = "dev.lukebemish.defaultresources:defaultresources-forge-1.19.4", version.ref = "defaultresources" }
-defaultresources_quilt = { module = "dev.lukebemish.defaultresources:defaultresources-quilt-1.19.4", version.ref = "defaultresources" }
+defaultresources_common = { module = "dev.lukebemish.defaultresources:defaultresources-common-1.20", version.ref = "defaultresources" }
+defaultresources_forge = { module = "dev.lukebemish.defaultresources:defaultresources-forge-1.20", version.ref = "defaultresources" }
+defaultresources_quilt = { module = "dev.lukebemish.defaultresources:defaultresources-quilt-1.20", version.ref = "defaultresources" }
 
 
 #[plugins]

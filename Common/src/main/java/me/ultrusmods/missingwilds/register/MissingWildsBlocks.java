@@ -28,6 +28,7 @@ public class MissingWildsBlocks {
 	public static final RegistryObject<Block> FALLEN_CRIMSON_STEM = registerFallenLog("fallen_crimson_stem");
 	public static final RegistryObject<Block> FALLEN_WARPED_STEM = registerFallenLog("fallen_warped_stem");
 	public static final RegistryObject<Block> FALLEN_MUSHROOM_STEM = registerFallenLog("fallen_mushroom_stem");
+	public static final RegistryObject<Block> FALLEN_CHERRY_LOG = registerFallenLog("fallen_cherry_log");
 
 	public static final RegistryObject<Block> BLUE_FORGET_ME_NOT = registerForgetMeNot("blue_forget_me_not", CombinedStackingFlowerBlock.FlowerType.BLUE);
 	public static final RegistryObject<Block> PURPLE_FORGET_ME_NOT = registerForgetMeNot("purple_forget_me_not", CombinedStackingFlowerBlock.FlowerType.PURPLE);

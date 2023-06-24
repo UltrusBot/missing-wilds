@@ -1,7 +1,6 @@
 package me.ultrusmods.missingwilds.data;
 
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -31,6 +30,7 @@ public class MissingWildsRecipeProvider extends FabricRecipeProvider {
         createFallenLogRecipe(MissingWildsBlocks.FALLEN_WARPED_STEM.get(), Blocks.WARPED_STEM, exporter);
         createFallenLogRecipe(MissingWildsBlocks.FALLEN_MANGROVE_LOG.get(), Blocks.MANGROVE_LOG, exporter);
         createFallenLogRecipe(MissingWildsBlocks.FALLEN_MUSHROOM_STEM.get(), Blocks.MUSHROOM_STEM, exporter);
+        createFallenLogRecipe(MissingWildsBlocks.FALLEN_CHERRY_LOG.get(), Blocks.CHERRY_LOG, exporter);
         createGlassJarRecipe(MissingWildsBlocks.JAR_BLOCK.get(), Blocks.GLASS, exporter);
         createGlassJarRecipe(MissingWildsBlocks.TINTED_JAR_BLOCK.get(), Blocks.TINTED_GLASS, exporter);
         createGlassJarRecipe(MissingWildsBlocks.WHITE_STAINED_JAR_BLOCK.get(), Blocks.WHITE_STAINED_GLASS, exporter);

@@ -22,6 +22,7 @@ public class MissingWildsClientCommon {
                 MissingWildsBlocks.FALLEN_WARPED_STEM.get(),
                 MissingWildsBlocks.FALLEN_MUSHROOM_STEM.get(),
                 MissingWildsBlocks.FALLEN_MANGROVE_LOG.get(),
+                MissingWildsBlocks.FALLEN_CHERRY_LOG.get(),
                 MissingWildsBlocks.BROWN_POLYPORE_MUSHROOM.get(),
                 MissingWildsBlocks.JAR_BLOCK.get(),
                 MissingWildsBlocks.FIREFLY_JAR_BLOCK.get()

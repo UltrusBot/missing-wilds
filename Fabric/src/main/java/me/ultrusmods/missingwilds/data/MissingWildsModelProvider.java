@@ -36,6 +36,7 @@ public class MissingWildsModelProvider extends FabricModelProvider {
         createFallenLog(MissingWildsBlocks.FALLEN_CRIMSON_STEM.get(), Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM, blockModelGenerators);
         createFallenLog(MissingWildsBlocks.FALLEN_WARPED_STEM.get(), Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM, blockModelGenerators);
         createFallenLog(MissingWildsBlocks.FALLEN_MANGROVE_LOG.get(), Blocks.MANGROVE_LOG, Blocks.STRIPPED_MANGROVE_LOG, blockModelGenerators);
+        createFallenLog(MissingWildsBlocks.FALLEN_CHERRY_LOG.get(), Blocks.CHERRY_LOG, Blocks.STRIPPED_CHERRY_LOG, blockModelGenerators);
 
         createJar(MissingWildsBlocks.JAR_BLOCK.get(), Blocks.GLASS, blockModelGenerators, null);
         createJar(MissingWildsBlocks.FIREFLY_JAR_BLOCK.get(), Blocks.GLASS, blockModelGenerators, MissingWildsBlocks.JAR_BLOCK.get());

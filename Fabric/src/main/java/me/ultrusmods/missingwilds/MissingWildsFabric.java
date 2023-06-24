@@ -13,11 +13,13 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -38,14 +40,14 @@ public class MissingWildsFabric implements ModInitializer {
         if (Services.PLATFORM.isModLoaded("advanced_runtime_resource_pack")) {
             ModCompat.checkModCompat();
         }
-        MISSING_WILD_ITEMS = FabricItemGroup.builder(
-                        Constants.id("items"))
+        MISSING_WILD_ITEMS = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, new ResourceLocation(Constants.MOD_ID, "items"), FabricItemGroup.builder()
                 .icon(() -> new ItemStack(MissingWildsItems.FALLEN_BIRCH_LOG.get()))
+                .title(Component.translatable("itemGroup.missingwilds.items"))
                 .displayItems((displayParameters, output) -> {
                     Services.PLATFORM.registerItems(displayParameters, output);
                     ModCompat.FALLEN_LOG_ITEMS.forEach(output::accept);
                 })
-                .build();
+                .build());
         MissingWildsWorldGen.init();
         SpawnPlacements.register(MissingWildsEntities.FIREFLY_SWARM.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules);
         BiomeModifications.addSpawn(

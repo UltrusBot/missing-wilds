@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "group": "missingwilds:fallen_logs",
   "key": {
     "L": {
@@ -14,5 +15,6 @@
   "result": {
     "count": 8,
     "item": "missingwilds:fallen_spruce_log"
-  }
+  },
+  "show_notification": true
 }

@@ -34,6 +34,7 @@ public class MissingWildsLootTableProvider extends FabricBlockLootTableProvider 
         dropSelf(MissingWildsBlocks.FALLEN_WARPED_STEM.get());
         dropSelf(MissingWildsBlocks.FALLEN_MANGROVE_LOG.get());
         dropSelf(MissingWildsBlocks.FALLEN_MUSHROOM_STEM.get());
+        dropSelf(MissingWildsBlocks.FALLEN_CHERRY_LOG.get());
 
         dropSelf(MissingWildsBlocks.JAR_BLOCK.get());
         dropSelf(MissingWildsBlocks.TINTED_JAR_BLOCK.get());
@@ -51,7 +52,7 @@ public class MissingWildsLootTableProvider extends FabricBlockLootTableProvider 
         dropSelf(MissingWildsBlocks.BLUE_STAINED_JAR_BLOCK.get());
         dropSelf(MissingWildsBlocks.BROWN_STAINED_JAR_BLOCK.get());
         dropSelf(MissingWildsBlocks.GREEN_STAINED_JAR_BLOCK.get());
-        dropSelf( MissingWildsBlocks.RED_STAINED_JAR_BLOCK.get());
+        dropSelf(MissingWildsBlocks.RED_STAINED_JAR_BLOCK.get());
         dropSelf(MissingWildsBlocks.BLACK_STAINED_JAR_BLOCK.get());
 
         dropFireflyJar(MissingWildsBlocks.FIREFLY_JAR_BLOCK.get());

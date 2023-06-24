@@ -61,6 +61,7 @@ public interface IPlatformHelper {
         output.accept(MissingWildsItems.FALLEN_CRIMSON_STEM.get());
         output.accept(MissingWildsItems.FALLEN_WARPED_STEM.get());
         output.accept(MissingWildsItems.FALLEN_MUSHROOM_STEM.get());
+        output.accept(MissingWildsItems.FALLEN_CHERRY_LOG.get());
         output.accept(MissingWildsItems.BLUE_FORGET_ME_NOT.get());
         output.accept(MissingWildsItems.PURPLE_FORGET_ME_NOT.get());
         output.accept(MissingWildsItems.PINK_FORGET_ME_NOT.get());
