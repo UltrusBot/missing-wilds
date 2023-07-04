@@ -75,7 +75,7 @@ var mod = createModReleaseMetadata(
         project.releaseType
 )
 modrinthInfo(mod, "missing-wilds", ["fabric-api"], ["arrp"])
-githubInfo(mod, "UltrusBot", "missing-wilds", "1.19.4")
+githubInfo(mod, "UltrusBot", "missing-wilds", "1.20")
 curseforgeInfo(mod, TaskPublishCurseForge, "622590", [], ["fabric-api"])
 
 processResources {
