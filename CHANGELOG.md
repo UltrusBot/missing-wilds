@@ -1,2 +1,2 @@
-- Fix firefly texture breaking mipmap.
-- Fix fireflies not spawning on forge.
+- Update to 1.20
+- Fallen Cherry Logs added.

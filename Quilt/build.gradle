@@ -46,8 +46,8 @@ dependencies {
     modImplementation(libs.quilt.loader)
 
     modImplementation(libs.qfapi)
-//    modImplementation(libs.emi) //TODO 1.20
-//    modImplementation(libs.tablesaw)
+    modImplementation(libs.emi)
+    modImplementation(libs.tablesaw)
 
     modImplementation(libs.defaultresources.quilt) {
         transitive = false
@@ -64,9 +64,9 @@ loom {
 }
 
 var mod = createModReleaseMetadata(
-        "Missing Wilds v1.2.0+1.19.4 Beta 2 - Quilt",
+        "Missing Wilds v1.2.0+1.20 Beta 2 - Quilt",
         file("$rootDir/CHANGELOG.md"),
-        ["1.19.4"],
+        ["1.20.1", "1.20"],
         ["quilt"],
         "remapJar",
         ["sourcesJar", "javadocJar"],
@@ -75,7 +75,7 @@ var mod = createModReleaseMetadata(
         project.releaseType
 )
 modrinthInfo(mod, "missing-wilds", ["qsl"])
-githubInfo(mod, "UltrusBot", "missing-wilds", "1.19.4")
+githubInfo(mod, "UltrusBot", "missing-wilds", "1.20")
 curseforgeInfo(mod, TaskPublishCurseForge, "622590", [], ["qsl"])
 
 

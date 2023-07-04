@@ -9,7 +9,7 @@ machete = "1.1.2"
 midnightlib_forge = "1.0.0-forge"
 midnightlib_fabric = "1.0.0-fabric"
 midnightlib_quilt = "1.0.0-quilt"
-tablesaw = "1.5.1+1.20"
+tablesaw = "1.5.2+1.20.1"
 
 # Default Resources
 defaultresources = "2.0.0"
