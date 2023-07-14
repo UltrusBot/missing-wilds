@@ -1,2 +1,4 @@
-- Update to 1.20
-- Fallen Cherry Logs added.
+- Add compat to the following mods:
+  - Tropics
+  - Wandering Wizardry
+- Add uk_ua translation (Thanks @unroman)

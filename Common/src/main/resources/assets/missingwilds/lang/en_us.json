@@ -151,6 +151,9 @@
   "block.missingwilds.biomesoplenty_fallen_willow_log": "Fallen Willow Log",
   "block.missingwilds.cobblemon_fallen_apricorn_log": "Fallen Apricorn Log",
   "block.missingwilds.gardens_of_the_dead_fallen_soulblight_stem": "Fallen Soulblight Stem",
+  "block.missingwilds.tropics_fallen_palm_log": "Fallen Palm Log",
+  "block.missingwilds.wwizardry_fallen_denia_log": "Fallen Denia Log",
+  "block.missingwilds.wwizardry_fallen_mycha_stem": "Fallen Mycha Stem",
 
 
   "text.missingwilds.tip.jar": "You can craft jars, which can be used to store food and fireflies. The more fireflies you store, the brighter the jar shines.",

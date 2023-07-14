@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@SuppressWarnings("StaticInitializerReferencesSubClass")
 public abstract class ModCompat {
 	private final List<LogData> logList = new ArrayList<>();
 	public static HashMap<String, ModCompat> modCompats = new HashMap<>();
@@ -18,9 +19,7 @@ public abstract class ModCompat {
 		modCompats.forEach((modId, modCompat) -> {
 			if (FabricLoader.getInstance().isModLoaded(modId)) {
 				modCompat.addLogs();
-				modCompat.logList.forEach(logData -> {
-					MissingWildsResources.addLog(logData, modId);
-				});
+				modCompat.logList.forEach(logData -> MissingWildsResources.addLog(logData, modId));
 			}
 		});
 		MissingWildsResources.RESOURCE_PACK.addTag(
@@ -58,5 +57,6 @@ public abstract class ModCompat {
 		modCompats.put("goodending", new GoodEndingCompat());
 		modCompats.put("cobblemon", new CobblemonCompat());
 		modCompats.put("gardens_of_the_dead", new GardensOfTheDeadCompat());
+		modCompats.put("tropics", new TropicsCompat());
 	}
 }
