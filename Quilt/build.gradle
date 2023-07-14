@@ -64,7 +64,7 @@ loom {
 }
 
 var mod = createModReleaseMetadata(
-        "Missing Wilds v1.2.0+1.20 Beta 2 - Quilt",
+        "Missing Wilds v1.2.0+1.20 Beta 3 - Quilt",
         file("$rootDir/CHANGELOG.md"),
         ["1.20.1", "1.20"],
         ["quilt"],
