@@ -1,4 +1,1 @@
-- Add compat to the following mods:
-  - Tropics
-  - Wandering Wizardry
-- Add uk_ua translation (Thanks @unroman)
+- Fix quilt version icon being in the wrong location

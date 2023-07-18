@@ -15,7 +15,7 @@
         "issues": "https://github.com/UltrusBot/missing-wilds/issues",
         "sources": "https://github.com/UltrusBot/missing-wilds"
       },
-      "icon": "assets/icon.png"
+      "icon": "icon.png"
     },
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
