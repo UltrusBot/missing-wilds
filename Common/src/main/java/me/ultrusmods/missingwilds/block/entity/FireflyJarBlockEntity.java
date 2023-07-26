@@ -79,8 +79,6 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
         int green = (curGreen + newGreen) / 2;
         int blue = (curBlue + newBlue) / 2;
 
-        Constants.LOG.info("blendedRed: " + red + " blendedGreen: " + green + " blendedBlue: " + blue);
-
         this.color = (red << 16) | (green << 8) | blue;
 
         this.setChanged();
