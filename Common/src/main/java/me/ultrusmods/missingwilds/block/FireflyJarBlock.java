@@ -85,7 +85,7 @@ public class FireflyJarBlock extends JarBlock implements EntityBlock {
             DyeColor color = ((DyeItem) player.getItemInHand(hand).getItem()).getDyeColor();
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof FireflyJarBlockEntity) {
-                ((FireflyJarBlockEntity) blockEntity).mixColor(color.getFireworkColor());
+                ((FireflyJarBlockEntity) blockEntity).mixColor(color.getTextureDiffuseColors());
                 if (!player.isCreative()) {
                     player.getItemInHand(hand).shrink(1);
                 }

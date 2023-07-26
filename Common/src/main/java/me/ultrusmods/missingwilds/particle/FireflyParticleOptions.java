@@ -86,6 +86,8 @@ public class FireflyParticleOptions implements ParticleOptions {
         buffer.writeFloat(red);
         buffer.writeFloat(green);
         buffer.writeFloat(blue);
+        buffer.writeFloat(scale);
+        buffer.writeFloat(speedMultiplier);
     }
 
     @Override

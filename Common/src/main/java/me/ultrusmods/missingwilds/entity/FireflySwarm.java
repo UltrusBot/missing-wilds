@@ -7,6 +7,7 @@ import me.ultrusmods.missingwilds.register.MissingWildsItems;
 import me.ultrusmods.missingwilds.register.MissingWildsSounds;
 import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -32,6 +33,7 @@ public class FireflySwarm extends PathfinderMob {
     private BlockPos nextPosition = null;
     private int waitTime = 0;
     private int pickNewPosTimer = 0;
+    private boolean dayLightSafe = false;
 
     public FireflySwarm(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
@@ -44,6 +46,18 @@ public class FireflySwarm extends PathfinderMob {
         this.entityData.define(STILL, true);
     }
 
+    @Override
+    public void addAdditionalSaveData(CompoundTag $$0) {
+        super.addAdditionalSaveData($$0);
+        $$0.putBoolean("DayLightSafe", this.dayLightSafe);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag $$0) {
+        super.readAdditionalSaveData($$0);
+        this.dayLightSafe = $$0.getBoolean("DayLightSafe");
+    }
+
     public int getSize() {
         return this.entityData.get(SIZE);
     }
@@ -54,7 +68,7 @@ public class FireflySwarm extends PathfinderMob {
 
     @Override
     public void aiStep() {
-        if (!this.level().isClientSide() && this.isAlive() && this.level().isDay() && this.random.nextInt(100) <= 10) {
+        if (!this.level().isClientSide() && this.isAlive() && this.level().isDay() && !dayLightSafe && this.random.nextInt(100) <= 10) {
             this.discard();
         }
         if (this.level().isClientSide()) {

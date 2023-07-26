@@ -1,1 +1,3 @@
-- Fix quilt version icon being in the wrong location
+- Fix player kick when receiving firefly particle packet.
+- Fixed some firefly color issues.
+- Firefly swarm can now have a nbt tag `DayLightSafe` that allows them to not despawn during the day.

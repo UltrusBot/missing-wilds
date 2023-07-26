@@ -1,6 +1,7 @@
 package me.ultrusmods.missingwilds.block.entity;
 
 import me.ultrusmods.missingwilds.ColorSets;
+import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.particle.FireflyParticleOptions;
 import me.ultrusmods.missingwilds.register.MissingWildsBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -9,7 +10,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Nameable;
 import net.minecraft.world.level.Level;
@@ -66,20 +66,22 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    public void mixColor(int color) {
-        int curRed = (this.color >> 16) & 0xFF;
-        int curGreen = (this.color >> 8) & 0xFF;
-        int curBlue = this.color & 0xFF;
+    public void mixColor(float[] dyeColor) {
+        int curRed = (this.color & 0xFF0000) >> 16;
+        int curGreen = (this.color & 0xFF00) >> 8;
+        int curBlue = (this.color & 0xFF);
 
-        int newRed = (color >> 16) & 0xFF;
-        int newGreen = (color >> 8) & 0xFF;
-        int newBlue = color & 0xFF;
+        int newRed = (int)(dyeColor[0] * 255);
+        int newGreen = (int)(dyeColor[1] * 255);
+        int newBlue = (int)(dyeColor[2] * 255);
 
         int red = (curRed + newRed) / 2;
         int green = (curGreen + newGreen) / 2;
         int blue = (curBlue + newBlue) / 2;
 
-        this.color = Mth.color(red, green, blue);
+        Constants.LOG.info("blendedRed: " + red + " blendedGreen: " + green + " blendedBlue: " + blue);
+
+        this.color = (red << 16) | (green << 8) | blue;
 
         this.setChanged();
     }
@@ -87,7 +89,7 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
     public void createParticles(Level level, int lightLevel, BlockPos pos, RandomSource random) {
         ColorSets.ColorSet colorSet = null;
         if (this.name != null) {
-            colorSet = ColorSets.COLOR_SETS.get(this.name.getString());
+            colorSet = ColorSets.COLOR_SETS.getOrDefault(this.name.getString(), null);
         }
         for (int i = 0; i < lightLevel / 2; i++) {
             double x = pos.getX() + 0.5 + (2 * random.nextDouble() - 1);
@@ -122,7 +124,7 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
     }
 
     public double[] getColorArr() {
-        return new double[]{((this.color >> 16) & 0xFF) / 255.0, ((this.color >> 8) & 0xFF) / 255.0, (this.color & 0xFF) / 255.0};
+        return new double[]{((this.color & 0xFF0000) >> 16) / 255.0D, ((this.color & 0xFF00) >> 8) / 255.0D, (this.color & 0xFF) / 255.0D};
     }
 
     public int getColor() {
