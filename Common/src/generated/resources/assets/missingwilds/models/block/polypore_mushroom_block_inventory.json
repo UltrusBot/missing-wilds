@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "missingwilds:block/polypore_mushroom_block"
+  }
+}

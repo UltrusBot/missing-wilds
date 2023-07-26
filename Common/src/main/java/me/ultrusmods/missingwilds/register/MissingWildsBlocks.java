@@ -4,12 +4,10 @@ import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.block.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FlowerPotBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.TallFlowerBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
@@ -104,6 +102,12 @@ public class MissingWildsBlocks {
 	public static final RegistryObject<Block> RED_STAINED_FOOD_JAR_BLOCK = register("red_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
 	public static final RegistryObject<Block> BLACK_STAINED_FOOD_JAR_BLOCK = register("black_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
 
+	public static final RegistryObject<Block> POLYPORE_MUSHROOM_BLOCK = register("polypore_mushroom_block", () -> new HugeMushroomBlock(Properties.of()
+			.mapColor(MapColor.COLOR_ORANGE)
+			.instrument(NoteBlockInstrument.BASS)
+			.strength(0.2F)
+			.sound(SoundType.WOOD)
+			.ignitedByLava()));
 
 
 //	public static final RegistryObject<Block> WATERLILY_BLOCK = register("waterlily", () -> Services.PLATFORM.getWaterlilyBlock(Properties.copy(Blocks.LILY_PAD)));

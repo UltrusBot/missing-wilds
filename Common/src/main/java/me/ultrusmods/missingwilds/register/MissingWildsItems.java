@@ -74,6 +74,8 @@ public class MissingWildsItems {
 	public static final RegistryObject<Item> BLACK_STAINED_FIREFLY_JAR_ITEM = registerFireflyJar("black_stained_firefly_jar", MissingWildsBlocks.BLACK_STAINED_FIREFLY_JAR_BLOCK);
 	public static final RegistryObject<Item> FIREFLY_BOTTLE_ITEM = register("firefly_bottle", () -> new Item(new Item.Properties()));
 //	public static final RegistryObject<Item> WATERLILY_ITEM = register("waterlily", () -> new PlaceOnWaterBlockItem(MissingWildsBlocks.WATERLILY_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
+
+	public static final RegistryObject<Item> POLYPORE_MUSHROOM_BLOCK = register("polypore_mushroom_block", MissingWildsBlocks.POLYPORE_MUSHROOM_BLOCK);
 	public static void init() {
 
 	}

@@ -94,6 +94,7 @@ public class MissingWildsModelProvider extends FabricModelProvider {
         createJar(MissingWildsBlocks.RED_STAINED_FOOD_JAR_BLOCK.get(), Blocks.RED_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.RED_STAINED_JAR_BLOCK.get());
         createJar(MissingWildsBlocks.BLACK_STAINED_FOOD_JAR_BLOCK.get(), Blocks.BLACK_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.BLACK_STAINED_JAR_BLOCK.get());
 
+        blockModelGenerators.createMushroomBlock(MissingWildsBlocks.POLYPORE_MUSHROOM_BLOCK.get());
 
 
 
