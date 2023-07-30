@@ -88,9 +88,6 @@ processResources {
     filesMatching("quilt.mod.json") {
         expand "version": project.version
     }
-    from(rootProject.rootDir.absolutePath + "/ModCompat") {
-        into "defaultresources"
-    }
 
     exclude '.cache'
 }
