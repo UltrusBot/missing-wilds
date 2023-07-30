@@ -111,7 +111,7 @@ public class MissingWildsBlocks {
 	public static void init() {
 	}
 
-	private static RegistryObject<Block> register(String id, Supplier<? extends Block> supplier) {
+	public static RegistryObject<Block> register(String id, Supplier<? extends Block> supplier) {
 		return BLOCKS.register(id, supplier);
 	}
 	public static RegistryObject<Block> registerFallenLog(String id) {

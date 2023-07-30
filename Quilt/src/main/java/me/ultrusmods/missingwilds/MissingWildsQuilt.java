@@ -1,6 +1,7 @@
 package me.ultrusmods.missingwilds;
 
 import me.ultrusmods.missingwilds.compat.QuiltModCompatHandler;
+import me.ultrusmods.missingwilds.compat.template.TemplateModCompat;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;

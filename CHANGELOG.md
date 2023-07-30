@@ -1,3 +1,1 @@
-- Fix player kick when receiving firefly particle packet.
-- Fixed some firefly color issues.
-- Firefly swarm can now have a nbt tag `DayLightSafe` that allows them to not despawn during the day.
+- Added mod compat to templates 2 mod, adding a fallen log template block.

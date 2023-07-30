@@ -6,6 +6,7 @@ import com.mojang.serialization.JsonOps;
 import dev.lukebemish.defaultresources.api.ResourceProvider;
 import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.MissingWildsQuilt;
+import me.ultrusmods.missingwilds.compat.template.TemplateModCompat;
 import me.ultrusmods.missingwilds.data.LogData;
 import me.ultrusmods.missingwilds.data.ModCompat;
 import me.ultrusmods.missingwilds.platform.Services;
@@ -40,6 +41,9 @@ public class QuiltModCompatHandler {
                 FALLEN_LOG_ITEMS.add(item);
             });
         });
+        if (Services.PLATFORM.isModLoaded("templates")) {
+            TemplateModCompat.init();
+        }
     }
 
     public static void loadModCompat() {

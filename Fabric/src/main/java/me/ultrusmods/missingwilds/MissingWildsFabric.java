@@ -1,6 +1,7 @@
 package me.ultrusmods.missingwilds;
 
 import me.ultrusmods.missingwilds.compat.ModCompat;
+import me.ultrusmods.missingwilds.compat.template.TemplateModCompat;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
@@ -39,6 +40,9 @@ public class MissingWildsFabric implements ModInitializer {
         MissingWildsModCommon.init();
         if (Services.PLATFORM.isModLoaded("advanced_runtime_resource_pack")) {
             ModCompat.checkModCompat();
+        }
+        if (Services.PLATFORM.isModLoaded("templates")) {
+            TemplateModCompat.init();
         }
         MISSING_WILD_ITEMS = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, new ResourceLocation(Constants.MOD_ID, "items"), FabricItemGroup.builder()
                 .icon(() -> new ItemStack(MissingWildsItems.FALLEN_BIRCH_LOG.get()))

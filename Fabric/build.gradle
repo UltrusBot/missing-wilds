@@ -21,6 +21,17 @@ repositories {
             includeGroup("dev.emi")
         }
     }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 dependencies {
@@ -30,6 +41,8 @@ dependencies {
     modImplementation(libs.fabric.api)
     implementation(project(":Common"))
     modImplementation(libs.arrp)
+    modImplementation("maven.modrinth:templates-2:2.0.4-fabric-1.20.1");
+
 //    modImplementation(libs.emi) //TODO 1.20
 }
 

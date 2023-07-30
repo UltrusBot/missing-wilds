@@ -78,7 +78,7 @@ public class MissingWildsItems {
 
 	}
 
-	private static RegistryObject<Item> register(String id, Supplier<? extends Item> supplier) {
+	public static RegistryObject<Item> register(String id, Supplier<? extends Item> supplier) {
 		return ITEMS.register(id, supplier);
 	}
 	public static RegistryObject<Item> register(String id, RegistryObject<Block> block) {

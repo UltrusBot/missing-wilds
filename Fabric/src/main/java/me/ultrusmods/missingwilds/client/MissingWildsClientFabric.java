@@ -2,7 +2,9 @@ package me.ultrusmods.missingwilds.client;
 
 import me.ultrusmods.missingwilds.MissingWildsFabric;
 import me.ultrusmods.missingwilds.client.render.FireflySwarmRenderer;
+import me.ultrusmods.missingwilds.compat.template.TemplateModCompatClient;
 import me.ultrusmods.missingwilds.particle.FireflyParticle;
+import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.MissingWildsParticles;
 import net.fabricmc.api.ClientModInitializer;
@@ -24,7 +26,9 @@ public class MissingWildsClientFabric implements ClientModInitializer {
         EntityRendererRegistry.register(MissingWildsEntities.FIREFLY_SWARM.get(), FireflySwarmRenderer::new);
 
         MissingWildsClientCommon.registerEntityRenderers(BlockEntityRenderers::register);
-
+        if (Services.PLATFORM.isModLoaded("templates")) {
+            TemplateModCompatClient.init();
+        }
 //        ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, col) -> blockAndTintGetter != null && blockPos != null ? 2129968 : 7455580, MissingWildsBlocks.WATERLILY_BLOCK.get());
 //        ColorProviderRegistry.ITEM.register((itemStack, col) -> 7455580, MissingWildsItems.WATERLILY_ITEM.get());
     }

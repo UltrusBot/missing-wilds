@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "#missingwilds:fallen_logs"
+    "#missingwilds:fallen_logs",
+    {
+      "required": false,
+      "id": "missingwilds:template_fallen_log"
+    }
   ]
 }
