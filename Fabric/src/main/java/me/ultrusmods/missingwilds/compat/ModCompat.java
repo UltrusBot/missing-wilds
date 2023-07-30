@@ -58,5 +58,6 @@ public abstract class ModCompat {
 		modCompats.put("cobblemon", new CobblemonCompat());
 		modCompats.put("gardens_of_the_dead", new GardensOfTheDeadCompat());
 		modCompats.put("tropics", new TropicsCompat());
+		modCompats.put("hexcasting", new HexCastingCompat());
 	}
 }
