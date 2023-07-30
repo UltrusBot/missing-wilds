@@ -142,7 +142,7 @@ public class MissingWildsQuiltResources {
                   "group": "missingwilds:fallen_logs",
                   "key": {
                     "L": {
-                      "item": "%1$s:%2$s"
+                      "item": "%2$s"
                     }
                   },
                   "pattern": [
@@ -155,7 +155,7 @@ public class MissingWildsQuiltResources {
                     "item": "missingwilds:%1$s_%3$s"
                   }
                 }
-                                                """, modId, data.name().substring(7), data.name());
+                                                """, modId, data.blockId(), data.name());
     }
 
     public static String createFallenLogRecipeAdvancement(String modId, LogData data) {
@@ -168,7 +168,7 @@ public class MissingWildsQuiltResources {
                         "items": [
                           {
                             "items": [
-                              "%1$s:%2$s"
+                              "%2$s"
                             ]
                           }
                         ]
@@ -194,7 +194,7 @@ public class MissingWildsQuiltResources {
                     ]
                   }
                 }
-                """, modId, data.name().substring(7), data.name()
+                """, modId, data.blockId(), data.name()
         );
     }
 
@@ -225,9 +225,9 @@ public class MissingWildsQuiltResources {
     public static String createTablesawRecipe(String modId, LogData data) {
         return String.format("""
                 {
-                    "input": "%1$s:%2$s",
+                    "input": "%2$s",
                     "result": "missingwilds:%1$s_%3$s"
                 }
-                """, modId, data.name().substring(7), data.name());
+                """, modId, data.blockId(), data.name());
     }
 }
