@@ -42,7 +42,7 @@ public class TemplateFallenLog extends SimpleFallenLogBlock implements EntityBlo
     @Override
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         InteractionResult result = TemplateInteractionUtil.onUse(blockState, level, blockPos, player, interactionHand, blockHitResult);
-        if (result.consumesAction()) result = super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
+        if (!result.consumesAction()) result = super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
         return result;
     }
 

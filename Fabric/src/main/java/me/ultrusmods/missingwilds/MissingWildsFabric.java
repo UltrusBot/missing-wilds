@@ -1,12 +1,12 @@
 package me.ultrusmods.missingwilds;
 
-import me.ultrusmods.missingwilds.compat.ModCompat;
-import me.ultrusmods.missingwilds.compat.template.TemplateModCompat;
+import me.ultrusmods.missingwilds.compat.FabricModCompatHandler;
+import me.ultrusmods.missingwilds.compat.ModCompatHandler;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
-import me.ultrusmods.missingwilds.resource.MissingWildsResources;
+import me.ultrusmods.missingwilds.resource.MissingWildsFabricResources;
 import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import me.ultrusmods.missingwilds.worldgen.MissingWildsWorldGen;
 import net.fabricmc.api.ModInitializer;
@@ -22,35 +22,22 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.Heightmap;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MissingWildsFabric implements ModInitializer {
-    public static final List<Block> COMPAT_LOGS = new ArrayList<>();
     public static CreativeModeTab MISSING_WILD_ITEMS;
+    public static final ModCompatHandler FABRIC_MOD_COMPAT_HANDLER = new FabricModCompatHandler();
 
     @Override
     public void onInitialize() {
-        if (Services.PLATFORM.isModLoaded("advanced_runtime_resource_pack")) {
-            MissingWildsResources.init();
-        }
         MissingWildsModCommon.init();
         if (Services.PLATFORM.isModLoaded("advanced_runtime_resource_pack")) {
-            ModCompat.checkModCompat();
-        }
-        if (Services.PLATFORM.isModLoaded("templates")) {
-            TemplateModCompat.init();
+            MissingWildsFabricResources.init();
         }
         MISSING_WILD_ITEMS = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, new ResourceLocation(Constants.MOD_ID, "items"), FabricItemGroup.builder()
                 .icon(() -> new ItemStack(MissingWildsItems.FALLEN_BIRCH_LOG.get()))
                 .title(Component.translatable("itemGroup.missingwilds.items"))
-                .displayItems((displayParameters, output) -> {
-                    Services.PLATFORM.registerItems(displayParameters, output);
-                    ModCompat.FALLEN_LOG_ITEMS.forEach(output::accept);
-                })
+                .displayItems(Services.PLATFORM::registerItems)
                 .build());
         MissingWildsWorldGen.init();
         SpawnPlacements.register(MissingWildsEntities.FIREFLY_SWARM.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules);

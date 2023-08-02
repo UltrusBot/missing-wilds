@@ -46,7 +46,7 @@ dependencies {
     modImplementation(libs.quilt.loader)
 
     modImplementation(libs.qfapi)
-    modImplementation(libs.emi)
+    modRuntimeOnly(libs.emi)
     modImplementation(libs.tablesaw)
 
     modImplementation(libs.defaultresources.quilt) {
@@ -87,9 +87,6 @@ processResources {
 
     filesMatching("quilt.mod.json") {
         expand "version": project.version
-    }
-    from(rootProject.rootDir.absolutePath + "/ModCompat") {
-        into "defaultresources"
     }
 
     exclude '.cache'

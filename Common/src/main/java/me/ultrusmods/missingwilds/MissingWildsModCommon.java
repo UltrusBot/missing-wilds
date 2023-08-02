@@ -1,5 +1,6 @@
 package me.ultrusmods.missingwilds;
 
+import me.ultrusmods.missingwilds.compat.ModCompatInstance;
 import me.ultrusmods.missingwilds.mixin.FireBlockAccessor;
 import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.*;
@@ -9,6 +10,10 @@ import net.minecraft.world.level.block.Blocks;
 public class MissingWildsModCommon {
 
     public static void init() {
+        Services.PLATFORM.getModCompatHandler().init();
+        if (Services.PLATFORM.getModCompatHandler().getModCompats().size() > 0) {
+            Constants.LOG.info("Enabled missing wilds compatibility for mods: " + Services.PLATFORM.getModCompatHandler().enabledModCompats.stream().map(ModCompatInstance::getModid).toList());
+        }
         MissingWildsBlocks.init();
         Services.PLATFORM.duringBlockRegistering();
         MissingWildsItems.init();

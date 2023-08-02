@@ -1,5 +1,7 @@
 package me.ultrusmods.missingwilds.platform;
 
+import me.ultrusmods.missingwilds.MissingWildsFabric;
+import me.ultrusmods.missingwilds.compat.ModCompatHandler;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.services.IPlatformHelper;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -61,5 +63,10 @@ public class FabricPlatformHelper implements IPlatformHelper {
     @Override
     public EntityType<FireflySwarm> createFirefly() {
         return FabricEntityTypeBuilder.create(MobCategory.AMBIENT, FireflySwarm::new).dimensions(EntityDimensions.scalable(2.0F, 2.0F)).trackRangeBlocks(16).build();
+    }
+
+    @Override
+    public ModCompatHandler getModCompatHandler() {
+        return MissingWildsFabric.FABRIC_MOD_COMPAT_HANDLER;
     }
 }

@@ -1,0 +1,16 @@
+{
+  "modid": "biomesoplenty",
+  "logs": [
+    "biomesoplenty:cherry_log",
+    "biomesoplenty:dead_log",
+    "biomesoplenty:fir_log",
+    "biomesoplenty:hellbark_log",
+    "biomesoplenty:jacaranda_log",
+    "biomesoplenty:magic_log",
+    "biomesoplenty:mahogany_log",
+    "biomesoplenty:palm_log",
+    "biomesoplenty:redwood_log",
+    "biomesoplenty:umbran_log",
+    "biomesoplenty:willow_log"
+  ]
+}

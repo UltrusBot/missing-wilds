@@ -5,7 +5,11 @@ import io.github.debuggyteam.tablesaw.api.TableSawCompat;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
 import net.minecraft.world.level.block.Blocks;
 
-public class TablesawCompat implements TableSawCompat {
+public class TablesawCompat extends ModCompatInstance implements TableSawCompat {
+    public TablesawCompat() {
+        super("tablesaw");
+    }
+
     @Override
     public void run(TableSawAPI api) {
         api.registerTableSawRecipe(Blocks.OAK_LOG.asItem(),1, MissingWildsItems.FALLEN_OAK_LOG.get().getDefaultInstance());
@@ -18,6 +22,16 @@ public class TablesawCompat implements TableSawCompat {
         api.registerTableSawRecipe(Blocks.WARPED_STEM.asItem(),1, MissingWildsItems.FALLEN_WARPED_STEM.get().getDefaultInstance());
         api.registerTableSawRecipe(Blocks.MANGROVE_LOG.asItem(),1, MissingWildsItems.FALLEN_MANGROVE_LOG.get().getDefaultInstance());
         api.registerTableSawRecipe(Blocks.CHERRY_LOG.asItem(),1, MissingWildsItems.FALLEN_CHERRY_LOG.get().getDefaultInstance());
+
+    }
+
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public void clientInit() {
 
     }
 }
