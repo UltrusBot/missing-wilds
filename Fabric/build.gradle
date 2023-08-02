@@ -43,7 +43,7 @@ dependencies {
     modImplementation(libs.arrp)
     modImplementation("maven.modrinth:templates-2:2.0.4-fabric-1.20.1");
 
-//    modImplementation(libs.emi) //TODO 1.20
+    modRuntimeOnly(libs.emi)
 }
 
 loom {

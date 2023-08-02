@@ -1,7 +1,7 @@
 {
   "modid": "hexcasting",
   "logs": [
-    "edified_log",
+    "hexcasting:edified_log",
     {
       "name": "fallen_edified_purple_log",
       "block_id": "hexcasting:edified_log_purple",

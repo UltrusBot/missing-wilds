@@ -1,6 +1,6 @@
 {
   "modid": "traverse",
   "logs": [
-    "fir_log"
+    "traverse:fir_log"
   ]
 }

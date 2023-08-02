@@ -32,8 +32,8 @@ public class TemplateModCompatClient {
         provider.addTemplateModel(Constants.id("special_fallen_template_log"), new UnbakedJsonRetexturedModel(Constants.id("block/template_compat/template_fallen_log")));
         provider.addTemplateModel(Constants.id("special_fallen_template_log_mossy"), new UnbakedJsonRetexturedModel(Constants.id("block/template_compat/template_fallen_log_mossy")));
         provider.addTemplateModel(Constants.id("special_fallen_template_log_snowy"), new UnbakedJsonRetexturedModel(Constants.id("block/template_compat/template_fallen_log_snowy")));
-        provider.assignItemModel(Constants.id("special_fallen_template_log"), TemplateModCompat.TEMPLATE_FALLEN_LOG_ITEM);
-        BlockRenderLayerMap.INSTANCE.putBlock(TemplateModCompat.TEMPLATE_FALLEN_LOG, RenderType.cutoutMipped());
+        provider.assignItemModel(Constants.id("special_fallen_template_log"), TemplateModCompat.TEMPLATE_FALLEN_LOG_ITEM.get());
+        BlockRenderLayerMap.INSTANCE.putBlock(TemplateModCompat.TEMPLATE_FALLEN_LOG.get(), RenderType.cutoutMipped());
 
     }
 }

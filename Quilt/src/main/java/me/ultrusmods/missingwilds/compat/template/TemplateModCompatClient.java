@@ -1,7 +1,6 @@
 package me.ultrusmods.missingwilds.compat.template;
 
 import io.github.cottonmc.templates.TemplatesModelProvider;
-import io.github.cottonmc.templates.model.UnbakedAutoRetexturedModel;
 import io.github.cottonmc.templates.model.UnbakedJsonRetexturedModel;
 import me.ultrusmods.missingwilds.Constants;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
@@ -33,8 +32,8 @@ public class TemplateModCompatClient {
         provider.addTemplateModel(Constants.id("special_fallen_template_log"), new UnbakedJsonRetexturedModel(Constants.id("block/template_compat/template_fallen_log")));
         provider.addTemplateModel(Constants.id("special_fallen_template_log_mossy"), new UnbakedJsonRetexturedModel(Constants.id("block/template_compat/template_fallen_log_mossy")));
         provider.addTemplateModel(Constants.id("special_fallen_template_log_snowy"), new UnbakedJsonRetexturedModel(Constants.id("block/template_compat/template_fallen_log_snowy")));
-        provider.assignItemModel(Constants.id("special_fallen_template_log"), TemplateModCompat.TEMPLATE_FALLEN_LOG_ITEM);
-        BlockRenderLayerMap.put(RenderType.cutoutMipped(), TemplateModCompat.TEMPLATE_FALLEN_LOG);
+        provider.assignItemModel(Constants.id("special_fallen_template_log"), TemplateModCompat.TEMPLATE_FALLEN_LOG_ITEM.get());
+        BlockRenderLayerMap.put(RenderType.cutoutMipped(), TemplateModCompat.TEMPLATE_FALLEN_LOG.get());
 
     }
 }

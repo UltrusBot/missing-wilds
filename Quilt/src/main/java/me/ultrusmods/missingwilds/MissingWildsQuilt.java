@@ -1,7 +1,7 @@
 package me.ultrusmods.missingwilds;
 
+import me.ultrusmods.missingwilds.compat.ModCompatHandler;
 import me.ultrusmods.missingwilds.compat.QuiltModCompatHandler;
-import me.ultrusmods.missingwilds.compat.template.TemplateModCompat;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
@@ -31,12 +31,12 @@ import java.util.List;
 
 public class MissingWildsQuilt implements ModInitializer {
     public static final List<Block> COMPAT_LOGS = new ArrayList<>();
+    public static final ModCompatHandler QUILT_MOD_COMPAT_HANDLER = new QuiltModCompatHandler();
     public static CreativeModeTab MISSING_WILD_ITEMS;
 
     @Override
     public void onInitialize(ModContainer mod) {
         MissingWildsModCommon.init();
-        QuiltModCompatHandler.checkModCompat();
         MissingWildsWorldGen.init();
         MissingWildsQuiltResources.init();
         BiomeModifications.addSpawn(
@@ -51,10 +51,7 @@ public class MissingWildsQuilt implements ModInitializer {
         MISSING_WILD_ITEMS = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, new ResourceLocation(Constants.MOD_ID, "items"), FabricItemGroup.builder()
                 .icon(() -> new ItemStack(MissingWildsItems.FALLEN_BIRCH_LOG.get()))
                 .title(Component.translatable("itemGroup.missingwilds.items"))
-                .displayItems((displayParameters, output) -> {
-                    Services.PLATFORM.registerItems(displayParameters, output);
-                    QuiltModCompatHandler.FALLEN_LOG_ITEMS.forEach(output::accept);
-                })
+                .displayItems(Services.PLATFORM::registerItems)
                 .build());
 
         SpawnPlacements.register(MissingWildsEntities.FIREFLY_SWARM.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules);

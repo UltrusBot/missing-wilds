@@ -1,16 +1,16 @@
 {
   "modid": "biomesoplenty",
   "logs": [
-    "cherry_log",
-    "dead_log",
-    "fir_log",
-    "hellbark_log",
-    "jacaranda_log",
-    "magic_log",
-    "mahogany_log",
-    "palm_log",
-    "redwood_log",
-    "umbran_log",
-    "willow_log"
+    "biomesoplenty:cherry_log",
+    "biomesoplenty:dead_log",
+    "biomesoplenty:fir_log",
+    "biomesoplenty:hellbark_log",
+    "biomesoplenty:jacaranda_log",
+    "biomesoplenty:magic_log",
+    "biomesoplenty:mahogany_log",
+    "biomesoplenty:palm_log",
+    "biomesoplenty:redwood_log",
+    "biomesoplenty:umbran_log",
+    "biomesoplenty:willow_log"
   ]
 }

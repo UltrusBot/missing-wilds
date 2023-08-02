@@ -145,6 +145,6 @@
       "log_texture": "byg:block/sythian/log",
       "inner_log_texture": "byg:block/sythian/stripped_log"
     },
-    "palo_verde_log"
+    "byg:palo_verde_log"
   ]
 }

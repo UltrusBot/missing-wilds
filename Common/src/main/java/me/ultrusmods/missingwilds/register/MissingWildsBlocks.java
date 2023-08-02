@@ -2,6 +2,8 @@ package me.ultrusmods.missingwilds.register;
 
 import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.block.*;
+import me.ultrusmods.missingwilds.compat.RegisteringModCompat;
+import me.ultrusmods.missingwilds.platform.Services;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.block.Block;
@@ -109,6 +111,11 @@ public class MissingWildsBlocks {
 //	public static final RegistryObject<Block> WATERLILY_BLOCK = register("waterlily", () -> Services.PLATFORM.getWaterlilyBlock(Properties.copy(Blocks.LILY_PAD)));
 
 	public static void init() {
+		Services.PLATFORM.getModCompatHandler().getModCompats().forEach(modCompat -> {
+			if (modCompat instanceof RegisteringModCompat) {
+				((RegisteringModCompat) modCompat).registerBlocks();
+			}
+		});
 	}
 
 	public static RegistryObject<Block> register(String id, Supplier<? extends Block> supplier) {

@@ -1,7 +1,10 @@
 package me.ultrusmods.missingwilds.platform.services;
 
+import me.ultrusmods.missingwilds.compat.ModCompatHandler;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
+import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
+import me.ultrusmods.missingwilds.register.RegistryObject;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
@@ -62,6 +65,7 @@ public interface IPlatformHelper {
         output.accept(MissingWildsItems.FALLEN_WARPED_STEM.get());
         output.accept(MissingWildsItems.FALLEN_MUSHROOM_STEM.get());
         output.accept(MissingWildsItems.FALLEN_CHERRY_LOG.get());
+        Services.PLATFORM.getModCompatHandler().getFallenLogItems().values().stream().map(RegistryObject::get).forEach(output::accept);
         output.accept(MissingWildsItems.BLUE_FORGET_ME_NOT.get());
         output.accept(MissingWildsItems.PURPLE_FORGET_ME_NOT.get());
         output.accept(MissingWildsItems.PINK_FORGET_ME_NOT.get());
@@ -88,9 +92,14 @@ public interface IPlatformHelper {
         output.accept(MissingWildsItems.GREEN_STAINED_JAR_ITEM.get());
         output.accept(MissingWildsItems.RED_STAINED_JAR_ITEM.get());
         output.accept(MissingWildsItems.BLACK_STAINED_JAR_ITEM.get());
+        Services.PLATFORM.getModCompatHandler().getJarBlocks().values().stream().map(RegistryObject::get).forEach(output::accept);
+        Services.PLATFORM.getModCompatHandler().OTHER_ITEMS_TO_ITEM_GROUPS.stream().map(RegistryObject::get).forEach(output::accept);
+
     }
 
     default Block getWaterlilyBlock(BlockBehaviour.Properties properties) {
         return new WaterlilyBlock(properties);
     }
+
+    ModCompatHandler getModCompatHandler();
 }

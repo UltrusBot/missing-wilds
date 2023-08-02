@@ -1,7 +1,7 @@
 {
   "modid": "goodending",
   "logs": [
-    "cypress_log",
+    "goodending:cypress_log",
     {
       "name": "fallen_muddy_oak_log",
       "block_id": "goodending:muddy_oak_log",

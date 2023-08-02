@@ -1,5 +1,7 @@
 package me.ultrusmods.missingwilds.platform;
 
+import me.ultrusmods.missingwilds.MissingWildsQuilt;
+import me.ultrusmods.missingwilds.compat.ModCompatHandler;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.services.IPlatformHelper;
 import net.minecraft.client.renderer.RenderType;
@@ -61,5 +63,10 @@ public class QuiltPlatformHelper implements IPlatformHelper {
     @Override
     public EntityType<FireflySwarm> createFirefly() {
         return QuiltEntityTypeBuilder.create(MobCategory.AMBIENT, FireflySwarm::new).setDimensions(EntityDimensions.scalable(2.0F, 2.0F)).maxBlockTrackingRange(16).build();
+    }
+
+    @Override
+    public ModCompatHandler getModCompatHandler() {
+        return MissingWildsQuilt.QUILT_MOD_COMPAT_HANDLER;
     }
 }

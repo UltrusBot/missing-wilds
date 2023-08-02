@@ -1,9 +1,9 @@
 {
   "modid": "biomemakeover",
   "logs": [
-    "ancient_oak_log",
-    "blighted_balsa_log",
-    "swamp_cypress_log",
-    "willow_log"
+    "biomemakeover:ancient_oak_log",
+    "biomemakeover:blighted_balsa_log",
+    "biomemakeover:swamp_cypress_log",
+    "biomemakeover:willow_log"
   ]
 }

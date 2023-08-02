@@ -1,13 +1,13 @@
 {
   "modid": "aurorasdeco",
   "logs": [
-    "azalea_log",
+    "aurorasdeco:azalea_log",
     {
       "name": "fallen_flowering_azalea_log",
       "block_id": "aurorasdeco:flowering_azalea_log",
       "log_texture": "aurorasdeco:block/flowering_azalea_log",
       "inner_log_texture": "aurorasdeco:block/stripped_azalea_log"
     },
-    "jacaranda_log"
+    "aurorasdeco:jacaranda_log"
   ]
 }

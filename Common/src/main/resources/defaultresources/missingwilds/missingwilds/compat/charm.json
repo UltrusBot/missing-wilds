@@ -1,6 +1,6 @@
 {
   "modid": "charm",
   "logs": [
-    "azalea_log"
+    "charm:azalea_log"
   ]
 }

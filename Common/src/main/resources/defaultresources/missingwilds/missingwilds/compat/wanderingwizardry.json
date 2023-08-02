@@ -1,7 +1,7 @@
 {
   "modid": "wwizardry",
   "logs": [
-    "denia_log",
-    "mycha_stem"
+    "wwizardry:denia_log",
+    "wwizardry:mycha_stem"
   ]
 }

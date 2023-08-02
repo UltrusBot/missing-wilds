@@ -1,8 +1,10 @@
 package me.ultrusmods.missingwilds.register;
 
 import me.ultrusmods.missingwilds.Constants;
+import me.ultrusmods.missingwilds.compat.RegisteringModCompat;
 import me.ultrusmods.missingwilds.item.FireflyJarItem;
 import me.ultrusmods.missingwilds.item.MissingWildsFoodComponents;
+import me.ultrusmods.missingwilds.platform.Services;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
@@ -75,7 +77,11 @@ public class MissingWildsItems {
 	public static final RegistryObject<Item> FIREFLY_BOTTLE_ITEM = register("firefly_bottle", () -> new Item(new Item.Properties()));
 //	public static final RegistryObject<Item> WATERLILY_ITEM = register("waterlily", () -> new PlaceOnWaterBlockItem(MissingWildsBlocks.WATERLILY_BLOCK.get(), new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	public static void init() {
-
+		Services.PLATFORM.getModCompatHandler().getModCompats().forEach(modCompat -> {
+			if (modCompat instanceof RegisteringModCompat) {
+				((RegisteringModCompat) modCompat).registerItems();
+			}
+		});
 	}
 
 	public static RegistryObject<Item> register(String id, Supplier<? extends Item> supplier) {
