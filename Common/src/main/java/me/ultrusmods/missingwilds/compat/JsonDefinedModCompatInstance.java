@@ -64,7 +64,7 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
             Services.PLATFORM.getModCompatHandler().addFallenLogItem(item, logData);
         });
         jarBlocks.forEach((jarData, block) -> MissingWildsItems.register(modCompatJsonData.modid() + "_" + jarData.name() + "_jar", block));
-        fireflyJarBlocks.forEach((jarData, block) -> MissingWildsItems.register(modCompatJsonData.modid() + "_" + jarData.name() + "_firefly_jar", block));
+        fireflyJarBlocks.forEach((jarData, block) -> MissingWildsItems.registerFireflyJar(modCompatJsonData.modid() + "_" + jarData.name() + "_firefly_jar", block));
     }
 
     @Override
@@ -87,6 +87,7 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
                 createJarModels(resourceAdder, jarData);
                 createJarRecipe(resourceAdder, jarData);
                 createJarAdvancement(resourceAdder, jarData);
+                createJarLootTables(resourceAdder, jarData);
         }
     }
 
@@ -314,6 +315,88 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
                 }
                 """, data.blockId(), recipeId));
     }
+    public void createJarLootTables(ResourceAdder resourceAdder, JarData jarData) {
+        String jsonString = """
+                {
+                  "type": "minecraft:block",
+                  "pools": [
+                    {
+                      "bonus_rolls": 0.0,
+                      "conditions": [
+                        {
+                          "condition": "minecraft:survives_explosion"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "type": "minecraft:item",
+                          "name": "%s"
+                        }
+                      ],
+                      "rolls": 1.0
+                    }
+                  ]
+                }
+                """;
+        String regularJarName = jarData.name() + "_jar";
+        String fireflyJarName = jarData.name() + "_firefly_jar";
+        String foodJarName = jarData.name() + "_food_jar";
+
+        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("loot_tables/blocks/" + modid + "_" + regularJarName + ".json"),
+                String.format(jsonString, Constants.id(modid + "_" + regularJarName))
+                );
+        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("loot_tables/blocks/" + modid + "_" + foodJarName + ".json"),
+                String.format(jsonString, Constants.id(modid + "_" + regularJarName))
+        );
+
+        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("loot_tables/blocks/" + modid + "_" + fireflyJarName + ".json"),
+                String.format("""
+                        {
+                          "type": "minecraft:block",
+                          "pools": [
+                            {
+                              "bonus_rolls": 0.0,
+                              "conditions": [
+                                {
+                                  "condition": "minecraft:survives_explosion"
+                                }
+                              ],
+                              "entries": [
+                                {
+                                  "type": "minecraft:item",
+                                  "functions": [
+                                    {
+                                      "function": "minecraft:copy_name",
+                                      "source": "block_entity"
+                                    },
+                                    {
+                                      "block": "%1$s",
+                                      "function": "minecraft:copy_state",
+                                      "properties": [
+                                        "light_level"
+                                      ]
+                                    },
+                                    {
+                                      "function": "minecraft:copy_nbt",
+                                      "ops": [
+                                        {
+                                          "op": "replace",
+                                          "source": "color",
+                                          "target": "BlockEntityTag.color"
+                                        }
+                                      ],
+                                      "source": "block_entity"
+                                    }
+                                  ],
+                                  "name": "%1$s"
+                                }
+                              ],
+                              "rolls": 1.0
+                            }
+                          ]
+                        }
+                        """, Constants.id(modid + "_" + fireflyJarName))
+        );    }
 
     public static String getJarModelText(boolean isOpen, JarData jarData) {
         if (isOpen) {
