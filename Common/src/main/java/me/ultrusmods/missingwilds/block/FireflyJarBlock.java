@@ -17,6 +17,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -95,6 +96,22 @@ public class FireflyJarBlock extends JarBlock implements EntityBlock {
             }
         }
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+        ItemStack jarStack = new ItemStack(this.asItem());
+        CompoundTag subTag = new CompoundTag();
+        subTag.putString(LIGHT_LEVEL.getName(), String.valueOf(state.getValue(LIGHT_LEVEL)));
+        jarStack.addTagElement("BlockStateTag", subTag);
+
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof FireflyJarBlockEntity fireflyJarBlockEntity) {
+            fireflyJarBlockEntity.saveToItem(jarStack);
+            jarStack.setHoverName(fireflyJarBlockEntity.getName());
+        }
+        return jarStack;
+
     }
 
     @Override
