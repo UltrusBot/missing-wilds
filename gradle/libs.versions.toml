@@ -10,6 +10,7 @@ midnightlib_forge = "1.0.0-forge"
 midnightlib_fabric = "1.0.0-fabric"
 midnightlib_quilt = "1.0.0-quilt"
 tablesaw = "1.5.2+1.20.1"
+templates = "2.1.0-fabric-1.20.1"
 
 # Default Resources
 defaultresources = "2.0.0"
@@ -38,7 +39,7 @@ midnightlib_forge = { module = "maven.modrinth:midnightlib", version.ref = "midn
 midnightlib_fabric = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_fabric" }
 midnightlib_quilt = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_quilt" }
 tablesaw = { module = "maven.modrinth:tablesaw", version.ref = "tablesaw" }
-
+templates = { module= "maven.modrinth:templates-2", version.ref = "templates" }
 # Default Resources
 defaultresources_common = { module = "dev.lukebemish.defaultresources:defaultresources-common-1.20", version.ref = "defaultresources" }
 defaultresources_forge = { module = "dev.lukebemish.defaultresources:defaultresources-forge-1.20", version.ref = "defaultresources" }

@@ -53,7 +53,7 @@ dependencies {
         transitive = false
     }
     include(libs.defaultresources.quilt)
-    modImplementation("maven.modrinth:templates-2:2.0.4-fabric-1.20.1");
+    modImplementation(libs.templates)
 
     implementation(project(":Common"))
 }

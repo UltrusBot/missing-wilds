@@ -1,1 +1,3 @@
 - Added mod compat to templates 2 mod, adding a fallen log template block.
+- Added hex casting compat, which adds fallen logs for: Edified Logs, Purple Edified Logs, Amethyst Edified Logs, Aventurine Edified Logs, and Citrine Edified Logs
+- Added compat for softer pastels, adding jars for the pastel glass.

@@ -1,0 +1,95 @@
+{
+  "modid": "softerpastels",
+  "jars": [
+    {
+      "name": "pastel_blue_stained",
+      "block_id": "softerpastels:blue_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_blue_stained_jar",
+      "block_texture": "softerpastels:block/blue_glass"
+    },
+    {
+      "name": "pastel_brown_stained",
+      "block_id": "softerpastels:brown_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_brown_stained_jar",
+      "block_texture": "softerpastels:block/brown_glass"
+    },
+    {
+      "name": "pastel_gray_stained",
+      "block_id": "softerpastels:gray_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_gray_stained_jar",
+      "block_texture": "softerpastels:block/gray_glass"
+    },
+    {
+      "name": "pastel_green_stained",
+      "block_id": "softerpastels:green_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_green_stained_jar",
+      "block_texture": "softerpastels:block/green_glass"
+    },
+    {
+      "name": "pastel_light_blue_stained",
+      "block_id": "softerpastels:light_blue_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_light_blue_stained_jar",
+      "block_texture": "softerpastels:block/light_blue_glass"
+    },
+    {
+      "name": "pastel_light_gray_stained",
+      "block_id": "softerpastels:light_gray_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_light_gray_stained_jar",
+      "block_texture": "softerpastels:block/light_gray_glass"
+    },
+    {
+      "name": "pastel_light_green_stained",
+      "block_id": "softerpastels:light_green_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_light_green_stained_jar",
+      "block_texture": "softerpastels:block/light_green_glass"
+    },
+    {
+      "name": "pastel_light_red_stained",
+      "block_id": "softerpastels:light_red_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_light_red_stained_jar",
+      "block_texture": "softerpastels:block/light_red_glass"
+    },
+    {
+      "name": "pastel_magenta_stained",
+      "block_id": "softerpastels:magenta_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_magenta_stained_jar",
+      "block_texture": "softerpastels:block/magenta_glass"
+    },
+    {
+      "name": "pastel_orange_stained",
+      "block_id": "softerpastels:orange_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_orange_stained_jar",
+      "block_texture": "softerpastels:block/orange_glass"
+    },
+    {
+      "name": "pastel_purple_stained",
+      "block_id": "softerpastels:purple_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_purple_stained_jar",
+      "block_texture": "softerpastels:block/purple_glass"
+    },
+    {
+      "name": "pastel_red_stained",
+      "block_id": "softerpastels:red_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_red_stained_jar",
+      "block_texture": "softerpastels:block/red_glass"
+    },
+    {
+      "name": "pastel_white_stained",
+      "block_id": "softerpastels:white_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_white_stained_jar",
+      "block_texture": "softerpastels:block/white_glass"
+    },
+    {
+      "name": "pastel_yellow_stained",
+      "block_id": "softerpastels:yellow_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_yellow_stained_jar",
+      "block_texture": "softerpastels:block/yellow_glass"
+    },
+    {
+      "name": "pastel_black_stained",
+      "block_id": "softerpastels:black_glass",
+      "jar_texture": "missingwilds:block/softerpastels/pastel_black_stained_jar",
+      "block_texture": "softerpastels:block/black_glass"
+    }
+  ]
+}

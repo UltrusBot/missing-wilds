@@ -41,7 +41,7 @@ dependencies {
     modImplementation(libs.fabric.api)
     implementation(project(":Common"))
     modImplementation(libs.arrp)
-    modImplementation("maven.modrinth:templates-2:2.0.4-fabric-1.20.1");
+    modImplementation(libs.templates)
 
     modRuntimeOnly(libs.emi)
 }
