@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "missingwilds:potted_sweetspire",
+    "missingwilds:potted_blue_forget_me_not",
+    "missingwilds:potted_pink_forget_me_not",
+    "missingwilds:potted_purple_forget_me_not",
+    "missingwilds:potted_white_forget_me_not"
+  ]
+}

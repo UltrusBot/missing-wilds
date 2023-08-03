@@ -12,7 +12,8 @@ public class MissingWildsDatagenFabric implements DataGeneratorEntrypoint {
             pack.addProvider(MissingWildsModelProvider::new);
             pack.addProvider(MissingWildsLootTableProvider::new);
             pack.addProvider(MissingWildsRecipeProvider::new);
-            pack.addProvider(MissingWildsTagProvider::new);
+            pack.addProvider(MissingWildsTagProvider.MissingWildsItemTagProvider::new);
+            pack.addProvider(MissingWildsTagProvider.MissingWildsBlockTagProvider::new);
         } else {
             // Fabric only data gen here, when I add some.
         }
