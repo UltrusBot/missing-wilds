@@ -2,3 +2,4 @@
 - Added hex casting compat, which adds fallen logs for: Edified Logs, Purple Edified Logs, Amethyst Edified Logs, Aventurine Edified Logs, and Citrine Edified Logs
 - Added compat for softer pastels, adding jars for the pastel glass.
 - Fix forget me not flower pots being treated as actual flowers
+- Added translation for firefly
