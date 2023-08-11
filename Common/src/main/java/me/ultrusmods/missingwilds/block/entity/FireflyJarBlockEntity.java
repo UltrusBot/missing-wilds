@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
     private int color = 7601920;
 
-    private Component name;
+    private Component name = null;
 
     public FireflyJarBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(MissingWildsBlockEntities.FIREFLY_JAR.get(), blockPos, blockState);
@@ -49,7 +49,7 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
 
     @Override
     public Component getName() {
-        return name;
+        return this.name != null ? this.name : Component.translatable("block.missingwilds.firefly_jar");
     }
 
     @Override
@@ -132,5 +132,10 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
     @Override
     public Component getCustomName() {
         return name;
+    }
+
+    @Override
+    public boolean hasCustomName() {
+        return name != null;
     }
 }

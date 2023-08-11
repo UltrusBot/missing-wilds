@@ -44,40 +44,42 @@ public class FireflyJarBlock extends JarBlock implements EntityBlock {
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
-        if (stack.is(MissingWildsItems.FIREFLY_BOTTLE_ITEM.get()) && state.getValue(LIGHT_LEVEL) < 15) {
-            level.setBlockAndUpdate(pos, state.setValue(LIGHT_LEVEL, state.getValue(LIGHT_LEVEL) + 1));
-            stack.shrink(1);
-            player.addItem(new ItemStack(Items.GLASS_BOTTLE));
-            return InteractionResult.SUCCESS;
-        }
-        if (stack.is(Items.GLASS_BOTTLE) && state.getValue(LIGHT_LEVEL) > 1) {
-            level.setBlockAndUpdate(pos, state.setValue(LIGHT_LEVEL, state.getValue(LIGHT_LEVEL) - 1));
-            stack.shrink(1);
-            player.addItem(new ItemStack(MissingWildsItems.FIREFLY_BOTTLE_ITEM.get()));
-            return InteractionResult.SUCCESS;
-        } else if (stack.is(Items.GLASS_BOTTLE) && state.getValue(LIGHT_LEVEL) == 1) {
-            Block block = JarMaps.JAR_TO_FIREFLY_JAR.inverse().get(this);
-            if (block != null) {
-                level.setBlockAndUpdate(pos, block.defaultBlockState());
+        if (player.mayBuild()) {
+            if (stack.is(MissingWildsItems.FIREFLY_BOTTLE_ITEM.get()) && state.getValue(LIGHT_LEVEL) < 15) {
+                level.setBlockAndUpdate(pos, state.setValue(LIGHT_LEVEL, state.getValue(LIGHT_LEVEL) + 1));
+                stack.shrink(1);
+                player.addItem(new ItemStack(Items.GLASS_BOTTLE));
+                return InteractionResult.SUCCESS;
+            }
+            if (stack.is(Items.GLASS_BOTTLE) && state.getValue(LIGHT_LEVEL) > 1) {
+                level.setBlockAndUpdate(pos, state.setValue(LIGHT_LEVEL, state.getValue(LIGHT_LEVEL) - 1));
                 stack.shrink(1);
                 player.addItem(new ItemStack(MissingWildsItems.FIREFLY_BOTTLE_ITEM.get()));
                 return InteractionResult.SUCCESS;
+            } else if (stack.is(Items.GLASS_BOTTLE) && state.getValue(LIGHT_LEVEL) == 1) {
+                Block block = JarMaps.JAR_TO_FIREFLY_JAR.inverse().get(this);
+                if (block != null) {
+                    level.setBlockAndUpdate(pos, block.defaultBlockState());
+                    stack.shrink(1);
+                    player.addItem(new ItemStack(MissingWildsItems.FIREFLY_BOTTLE_ITEM.get()));
+                    return InteractionResult.SUCCESS;
+                }
             }
-        }
-        if (player.isShiftKeyDown()) {
-            ItemStack jarStack = new ItemStack(this.asItem());
-            CompoundTag subTag = new CompoundTag();
-            subTag.putString(LIGHT_LEVEL.getName(), String.valueOf(state.getValue(LIGHT_LEVEL)));
-            jarStack.addTagElement("BlockStateTag", subTag);
+            if (player.isShiftKeyDown()) {
+                ItemStack jarStack = new ItemStack(this.asItem());
+                CompoundTag subTag = new CompoundTag();
+                subTag.putString(LIGHT_LEVEL.getName(), String.valueOf(state.getValue(LIGHT_LEVEL)));
+                jarStack.addTagElement("BlockStateTag", subTag);
 
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof FireflyJarBlockEntity fireflyJarBlockEntity) {
-                fireflyJarBlockEntity.saveToItem(jarStack);
-                jarStack.setHoverName(fireflyJarBlockEntity.getName());
+                BlockEntity blockEntity = level.getBlockEntity(pos);
+                if (blockEntity instanceof FireflyJarBlockEntity fireflyJarBlockEntity) {
+                    fireflyJarBlockEntity.saveToItem(jarStack);
+                    jarStack.setHoverName(fireflyJarBlockEntity.getCustomName());
+                }
+                level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), jarStack));
+                level.removeBlock(pos, false);
+                return InteractionResult.SUCCESS;
             }
-            level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), jarStack));
-            level.removeBlock(pos, false);
-            return InteractionResult.SUCCESS;
         }
         if (JarBlock.checkToggleCover(state, level, pos, player, hand)) {
             return InteractionResult.SUCCESS;
@@ -108,7 +110,7 @@ public class FireflyJarBlock extends JarBlock implements EntityBlock {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof FireflyJarBlockEntity fireflyJarBlockEntity) {
             fireflyJarBlockEntity.saveToItem(jarStack);
-            jarStack.setHoverName(fireflyJarBlockEntity.getName());
+            jarStack.setHoverName(fireflyJarBlockEntity.getCustomName());
         }
         return jarStack;
 
