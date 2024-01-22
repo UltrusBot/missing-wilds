@@ -5,10 +5,7 @@ import io.github.debuggyteam.tablesaw.api.TableSawCompat;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
 import net.minecraft.world.level.block.Blocks;
 
-public class TablesawCompat extends ModCompatInstance implements TableSawCompat {
-    public TablesawCompat() {
-        super("tablesaw");
-    }
+public class TablesawCompat implements TableSawCompat {
 
     @Override
     public void run(TableSawAPI api) {
@@ -25,13 +22,4 @@ public class TablesawCompat extends ModCompatInstance implements TableSawCompat 
 
     }
 
-    @Override
-    public void init() {
-
-    }
-
-    @Override
-    public void clientInit() {
-
-    }
 }

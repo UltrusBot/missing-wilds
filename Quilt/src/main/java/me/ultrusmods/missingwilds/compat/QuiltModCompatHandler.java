@@ -40,9 +40,6 @@ public class QuiltModCompatHandler extends ModCompatHandler {
         if (Services.PLATFORM.isModLoaded("templates")) {
             this.addModCompat(new TemplateModCompat());
         }
-        if (Services.PLATFORM.isModLoaded("tablesaw")) {
-            this.addModCompat(new TablesawCompat());
-        }
     }
 
     @Override
