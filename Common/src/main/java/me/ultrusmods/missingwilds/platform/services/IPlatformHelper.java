@@ -10,10 +10,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.WaterlilyBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.BiFunction;
@@ -96,10 +94,5 @@ public interface IPlatformHelper {
         Services.PLATFORM.getModCompatHandler().OTHER_ITEMS_TO_ITEM_GROUPS.stream().map(RegistryObject::get).forEach(output::accept);
 
     }
-
-    default Block getWaterlilyBlock(BlockBehaviour.Properties properties) {
-        return new WaterlilyBlock(properties);
-    }
-
     ModCompatHandler getModCompatHandler();
 }

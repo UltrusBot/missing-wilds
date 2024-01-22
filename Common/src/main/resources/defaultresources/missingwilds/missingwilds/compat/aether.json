@@ -1,0 +1,17 @@
+{
+  "modid": "aether",
+  "logs": [
+    {
+      "name": "fallen_skyroot_log",
+      "block_id": "aether:skyroot_log",
+      "log_texture": "aether:block/natural/skyroot_log",
+      "inner_log_texture": "aether:block/natural/stripped_skyroot_log"
+    },
+    {
+      "name": "fallen_golden_oak_log",
+      "block_id": "aether:golden_oak_log",
+      "log_texture": "aether:block/natural/golden_oak_log",
+      "inner_log_texture": "aether:block/natural/stripped_skyroot_log"
+    }
+  ]
+}

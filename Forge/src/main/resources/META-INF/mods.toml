@@ -22,12 +22,12 @@ Adds the features scrapped in the Wild Update.
 [[dependencies.missingwilds]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.4]"
+    versionRange="[1.20.1,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.missingwilds]]
-    modId="brrp_v1"
+    modId="dynamic_asset_generator"
     mandatory=false
-    versionRange="[1.0.0,)"
+    versionRange="[4.2.1,)"
     ordering="NONE"
     side="BOTH"

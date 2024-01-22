@@ -8,6 +8,7 @@ import me.ultrusmods.missingwilds.particle.FireflyParticle;
 import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.MissingWildsParticles;
+import me.ultrusmods.missingwilds.resource.MissingWildsForgeAssetResources;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -22,6 +23,10 @@ import static net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 @Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Bus.MOD, value = Dist.CLIENT)
 public class MissingWildsClientForge {
 
+    public MissingWildsClientForge() {
+        MissingWildsForgeAssetResources.init();
+    }
+
     @SubscribeEvent
     public static void onInitializeClient(FMLClientSetupEvent event) {
         MissingWildsClientCommon.init();
@@ -32,7 +37,7 @@ public class MissingWildsClientForge {
 
     @SubscribeEvent
     public static void onRegisterParticleProviders(RegisterParticleProvidersEvent event) {
-        event.register(MissingWildsParticles.FIREFLY.get(), FireflyParticle.Provider::new);
+        event.registerSpriteSet(MissingWildsParticles.FIREFLY.get(), FireflyParticle.Provider::new);
     }
 
     @SubscribeEvent

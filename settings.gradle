@@ -17,5 +17,4 @@ pluginManagement {
 }
 
 rootProject.name = 'Missing Wilds'
-// TODO 1.20: Bring back forge when 1.20 fully releases
-include("Common", "Fabric", "Quilt")
+include("Common", "Fabric", "Quilt", "Forge")

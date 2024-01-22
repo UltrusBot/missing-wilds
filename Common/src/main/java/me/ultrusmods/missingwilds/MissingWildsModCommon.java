@@ -11,7 +11,7 @@ public class MissingWildsModCommon {
 
     public static void init() {
         Services.PLATFORM.getModCompatHandler().init();
-        if (Services.PLATFORM.getModCompatHandler().getModCompats().size() > 0) {
+        if (!Services.PLATFORM.getModCompatHandler().getModCompats().isEmpty()) {
             Constants.LOG.info("Enabled missing wilds compatibility for mods: " + Services.PLATFORM.getModCompatHandler().enabledModCompats.stream().map(ModCompatInstance::getModid).toList());
         }
         MissingWildsBlocks.init();

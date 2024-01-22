@@ -1,7 +1,7 @@
 package me.ultrusmods.missingwilds.platform;
 
-import me.ultrusmods.missingwilds.block.CustomWaterlilyBlock;
-import me.ultrusmods.missingwilds.compat.ForgeModCompatHandler;
+import me.ultrusmods.missingwilds.MissingWildsForge;
+import me.ultrusmods.missingwilds.compat.ModCompatHandler;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.services.IPlatformHelper;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -12,7 +12,6 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
@@ -49,16 +48,12 @@ public class ForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public void duringItemRegistering() {
-        if (isModLoaded("brrp_v1")) {
-            ForgeModCompatHandler.registerModCompatItems();
-        }
+
     }
 
     @Override
     public void duringBlockRegistering() {
-        if (isModLoaded("brrp_v1")) {
-            ForgeModCompatHandler.registerModCompatBlocks();
-        }
+
     }
 
     @Override
@@ -72,7 +67,7 @@ public class ForgePlatformHelper implements IPlatformHelper {
     }
 
     @Override
-    public Block getWaterlilyBlock(BlockBehaviour.Properties properties) {
-        return new CustomWaterlilyBlock(properties);
+    public ModCompatHandler getModCompatHandler() {
+        return MissingWildsForge.FORGE_MOD_COMPAT_HANDLER;
     }
 }

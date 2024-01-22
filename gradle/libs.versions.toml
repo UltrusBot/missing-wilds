@@ -12,14 +12,12 @@ midnightlib_quilt = "1.0.0-quilt"
 tablesaw = "1.5.2+1.20.1"
 templates = "2.1.0-fabric-1.20.1"
 
-# Default Resources
-defaultresources = "2.0.0"
-
-
 # Extra Libraries
 arrp = "0.6.5.0"
+defaultresources = "2.0.0"
+dynamicassetgenerator = "4.2.1"
 emi = "1.0.5+1.20.1"
-brrp = "1.0.1-mc1.20.1-forge"
+
 
 
 
@@ -34,7 +32,6 @@ forge = { module = "net.minecraftforge:forge", version.ref = "forge" }
 # Extra Libraries
 arrp = { module = "net.devtech:arrp", version.ref = "arrp" }
 emi = { module = "dev.emi:emi-fabric", version.ref = "emi" }
-brrp = { module = "maven.modrinth:brrp", version.ref = "brrp" }
 midnightlib_forge = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_forge" }
 midnightlib_fabric = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_fabric" }
 midnightlib_quilt = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_quilt" }
@@ -45,6 +42,8 @@ defaultresources_common = { module = "dev.lukebemish.defaultresources:defaultres
 defaultresources_forge = { module = "dev.lukebemish.defaultresources:defaultresources-forge-1.20", version.ref = "defaultresources" }
 defaultresources_quilt = { module = "dev.lukebemish.defaultresources:defaultresources-quilt-1.20", version.ref = "defaultresources" }
 
+# Dynamic Asset Generator
+dynamicassetgenerator_forge = { module = "dev.lukebemish.dynamicassetgenerator:dynamicassetgenerator-forge-1.20.1", version.ref = "dynamicassetgenerator" }
 
 #[plugins]
 #machete = { id = "io.github.p03w.machete", version.ref = "machete" }

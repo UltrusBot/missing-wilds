@@ -206,7 +206,8 @@
   "block.missingwilds.softerpastels_pastel_yellow_stained_jar": "Pastel Yellow Stained Jar",
   "block.missingwilds.softerpastels_pastel_yellow_stained_firefly_jar": "Pastel Yellow Stained Firefly Jar",
   "block.missingwilds.softerpastels_pastel_yellow_stained_food_jar": "Pastel Yellow Stained Food Jar",
-
+  "block.missingwilds.aether_fallen_skyroot_log": "Fallen Skyroot Log",
+  "block.missingwilds.aether_fallen_golden_oak_log": "Fallen Golden Oak Log",
 
   "text.missingwilds.tip.jar": "You can craft jars, which can be used to store food and fireflies. The more fireflies you store, the brighter the jar shines.",
   "text.missingwilds.tip.jar_name": "You can rename a firefly jar in an anvil, and sometimes the name will cause special firefly colors to appear.",

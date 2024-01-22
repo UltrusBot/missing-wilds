@@ -102,10 +102,13 @@ dependencies {
     minecraft libs.forge
     compileOnly project(":Common")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    implementation fg.deobf(libs.brrp.get())
+//    implementation fg.deobf(libs.brrp.get())
 //    implementation fg.deobf(libs.midnightlib.forge.get())
     implementation fg.deobf(libs.defaultresources.forge.get())
-    jarJar("dev.lukebemish.defaultresources:defaultresources-forge-1.19.4:[1.0.3,)")
+    jarJar(libs.defaultresources.forge.get()) {
+        jarJar.ranged(it, "[${libs.versions.defaultresources.get()},)")
+    }
+    implementation fg.deobf(libs.dynamicassetgenerator.forge.get())
 
 }
 tasks.build.dependsOn tasks.jarJar

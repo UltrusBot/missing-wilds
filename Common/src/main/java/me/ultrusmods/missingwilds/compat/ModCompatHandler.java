@@ -45,7 +45,9 @@ public abstract class ModCompatHandler {
     public abstract void loadModCompat();
 
     public void init() {
-        loadModCompat();
+        if (isJsonModCompatEnabled()) {
+            loadModCompat();
+        }
     }
 
     public abstract boolean isJsonModCompatEnabled();
