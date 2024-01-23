@@ -1,4 +1,3 @@
-import net.darkhax.curseforgegradle.TaskPublishCurseForge
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
@@ -11,20 +10,18 @@ buildscript {
     }
 }
 plugins {
-    id "com.github.breadmoirai.github-release" version "2.4.1"
-    id "com.modrinth.minotaur" version "2.+"
-    id 'net.darkhax.curseforgegradle' version '1.1.15'
+    alias libs.plugins.publishing
 }
 apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
-apply from: "https://raw.githubusercontent.com/UltrusBot/GradleScripts/${project.upload_script_version}/release.gradle"
 
 jarJar.enable()
 
-archivesBaseName = "${mod_name}-forge-${minecraft_version}"
+archivesBaseName = "${mod_name}-forge"
+version = "${version}+${minecraft_version}"
 
 mixin {
     add sourceSets.main, "${mod_id}.refmap.json"
@@ -102,7 +99,6 @@ dependencies {
     minecraft libs.forge
     compileOnly project(":Common")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-//    implementation fg.deobf(libs.brrp.get())
 //    implementation fg.deobf(libs.midnightlib.forge.get())
     implementation fg.deobf(libs.defaultresources.forge.get())
     jarJar(libs.defaultresources.forge.get()) {
@@ -124,20 +120,39 @@ tasks.withType(JavaCompile) {
     source(project(":Common").sourceSets.main.allSource)
 }
 
-var mod = createModReleaseMetadata(
-        "Missing Wilds v1.2.0+1.19.4 Beta 2 - Forge",
-        file("$rootDir/CHANGELOG.md"),
-        ["1.19.4"],
-        ["forge"],
-        "jar",
-        ["sourcesJar", "javadocJar"],
-        "v${project.version}+${project.minecraft_version}-forge",
-        project.testRelease.toBoolean(),
-        project.releaseType
-)
-modrinthInfo(mod, "missing-wilds")
-githubInfo(mod, "UltrusBot", "missing-wilds", "1.19.4")
-curseforgeInfo(mod, TaskPublishCurseForge, "634277")
+publishMods {
+    displayName = "Missing Wilds Forge ${project.version}"
+    file = jar.archiveFile
+    changelog = file("$rootDir/CHANGELOG.md").text
+    version = "v${project.version}-forge"
+    type = STABLE
+    modLoaders.addAll("forge")
+
+    curseforge {
+        projectId = "634277"
+        minecraftVersions.addAll("1.20.1")
+        accessToken = providers.environmentVariable("CF_API_KEY")
+        optional {
+            slug = "dynamic-asset-generator"
+        }
+    }
+    modrinth {
+        projectId = "Nw0MStSd"
+        minecraftVersions.addAll("1.20.1")
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+
+        optional {
+            "dynamic_asset_generator"
+        }
+    }
+    github {
+        repository = "UltrusBot/missing-wilds"
+        commitish = "1.20"
+        accessToken = providers.environmentVariable("GH_TOKEN")
+    }
+
+    dryRun = false
+}
 
 
 processResources {

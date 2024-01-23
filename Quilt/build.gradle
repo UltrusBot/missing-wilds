@@ -1,15 +1,11 @@
-import net.darkhax.curseforgegradle.TaskPublishCurseForge
-
 plugins {
     id "org.quiltmc.loom"  version "0.12.+"
     id "maven-publish"
-    id "com.github.breadmoirai.github-release" version "2.4.1"
-    id "com.modrinth.minotaur" version "2.+"
-    id 'net.darkhax.curseforgegradle' version '1.1.15'
+    alias libs.plugins.publishing
 }
-apply from: "https://raw.githubusercontent.com/UltrusBot/GradleScripts/${project.upload_script_version}/release.gradle"
 
-archivesBaseName = "${mod_name}-quilt-${minecraft_version}"
+archivesBaseName = "${mod_name}-quilt"
+version = "${version}+${minecraft_version}"
 
 repositories {
     maven {
@@ -64,20 +60,38 @@ loom {
     }
 }
 
-var mod = createModReleaseMetadata(
-        "Missing Wilds v1.2.0+1.20 Beta 7 - Quilt",
-        file("$rootDir/CHANGELOG.md"),
-        ["1.20.1", "1.20"],
-        ["quilt"],
-        "remapJar",
-        ["sourcesJar", "javadocJar"],
-        "v${project.version}+${project.minecraft_version}-quilt",
-        project.testRelease.toBoolean(),
-        project.releaseType
-)
-modrinthInfo(mod, "missing-wilds", ["qsl"])
-githubInfo(mod, "UltrusBot", "missing-wilds", "1.20")
-curseforgeInfo(mod, TaskPublishCurseForge, "622590", [], ["qsl"])
+publishMods {
+    displayName = "Missing Wilds Quilt ${project.version}"
+    file = remapJar.archiveFile
+    changelog = file("$rootDir/CHANGELOG.md").text
+    version = "v${project.version}-quilt"
+    type = STABLE
+    modLoaders.addAll("quilt")
+
+    curseforge {
+        projectId = "622590"
+        minecraftVersions.addAll("1.20.1")
+        accessToken = providers.environmentVariable("CF_API_KEY")
+        requires {
+            slug = "qsl"
+        }
+    }
+    modrinth {
+        projectId = "Nw0MStSd"
+        minecraftVersions.addAll("1.20.1")
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+        requires {
+            slug = "qsl"
+        }
+    }
+    github {
+        repository = "UltrusBot/missing-wilds"
+        commitish = "1.20"
+        accessToken = providers.environmentVariable("GH_TOKEN")
+    }
+
+    dryRun = false
+}
 
 
 processResources {

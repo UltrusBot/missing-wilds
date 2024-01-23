@@ -1,16 +1,13 @@
-import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
     id 'fabric-loom' version '0.11-SNAPSHOT'
     id 'maven-publish'
     id 'idea'
-    id "com.github.breadmoirai.github-release" version "2.4.1"
-    id "com.modrinth.minotaur" version "2.+"
-    id 'net.darkhax.curseforgegradle' version '1.1.15'
+    alias libs.plugins.publishing
 }
-apply from: "https://raw.githubusercontent.com/UltrusBot/GradleScripts/${project.upload_script_version}/release.gradle"
 
-archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
+archivesBaseName = "${mod_name}-fabric"
+version = "${version}+${minecraft_version}"
 repositories {
     maven{ url "https://jitpack.io"}
     maven{ url "https://ueaj.dev/maven"}
@@ -76,20 +73,44 @@ loom {
     }
 }
 
-var mod = createModReleaseMetadata(
-        "Missing Wilds v1.2.0+1.20 Beta 7 - Fabric",
-        file("$rootDir/CHANGELOG.md"),
-        ["1.20.1", "1.20"],
-        ["fabric"],
-        "remapJar",
-        ["sourcesJar", "javadocJar"],
-        "v${project.version}+${project.minecraft_version}-fabric",
-        project.testRelease.toBoolean(),
-        project.releaseType
-)
-modrinthInfo(mod, "missing-wilds", ["fabric-api"], ["arrp"])
-githubInfo(mod, "UltrusBot", "missing-wilds", "1.20")
-curseforgeInfo(mod, TaskPublishCurseForge, "622590", [], ["fabric-api"])
+publishMods {
+    displayName = "Missing Wilds Fabric ${project.version}"
+    file = remapJar.archiveFile
+    changelog = file("$rootDir/CHANGELOG.md").text
+    version = "v${project.version}-fabric"
+    type = STABLE
+    modLoaders.addAll("fabric")
+
+    curseforge {
+        projectId = "622590"
+        minecraftVersions.addAll("1.20.1")
+        accessToken = providers.environmentVariable("CF_API_KEY")
+        requires {
+            slug = "fabric-api"
+        }
+        optional {
+            slug = "arrp"
+        }
+    }
+    modrinth {
+        projectId = "Nw0MStSd"
+        minecraftVersions.addAll("1.20.1")
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+        requires {
+            slug = "fabric-api"
+        }
+        optional {
+            "arrp"
+        }
+    }
+    github {
+        repository = "UltrusBot/missing-wilds"
+        commitish = "1.20"
+        accessToken = providers.environmentVariable("GH_TOKEN")
+    }
+
+    dryRun = false
+}
 
 processResources {
     from project(":Common").sourceSets.main.resources

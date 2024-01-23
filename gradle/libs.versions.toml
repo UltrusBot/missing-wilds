@@ -18,7 +18,9 @@ defaultresources = "2.0.0"
 dynamicassetgenerator = "4.2.1"
 emi = "1.0.5+1.20.1"
 
-
+# Plugins
+fabric_loom = "1.4-SNAPSHOT"
+publishing = "0.4.5"
 
 
 [libraries]
@@ -45,5 +47,7 @@ defaultresources_quilt = { module = "dev.lukebemish.defaultresources:defaultreso
 # Dynamic Asset Generator
 dynamicassetgenerator_forge = { module = "dev.lukebemish.dynamicassetgenerator:dynamicassetgenerator-forge-1.20.1", version.ref = "dynamicassetgenerator" }
 
-#[plugins]
+[plugins]
+fabric_loom = { id = "fabric-loom", version.ref = "fabric_loom" }
+publishing = { id = "me.modmuss50.mod-publish-plugin", version.ref = "publishing" }
 #machete = { id = "io.github.p03w.machete", version.ref = "machete" }
