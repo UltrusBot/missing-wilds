@@ -100,7 +100,7 @@ publishMods {
             slug = "fabric-api"
         }
         optional {
-            "arrp"
+            slug = "arrp"
         }
     }
     github {

@@ -142,7 +142,7 @@ publishMods {
         accessToken = providers.environmentVariable("MODRINTH_TOKEN")
 
         optional {
-            "dynamic_asset_generator"
+            slug = "dynamic_asset_generator"
         }
     }
     github {
