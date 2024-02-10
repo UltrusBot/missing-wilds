@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Function;
 
-public record LogData(String name, ResourceLocation blockId, ResourceLocation logTexture, ResourceLocation strippedLogTexture) {
+public record LogData(String name, ResourceLocation blockId, ResourceLocation logTexture, ResourceLocation strippedLogTexture, int light) {
     public static final Codec<LogData> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             // This is the name of the log, e.g. "fallen_oak_log", will be used for the id of the item & block.
             Codec.STRING.fieldOf("name").forGetter(LogData::name),
@@ -16,7 +16,8 @@ public record LogData(String name, ResourceLocation blockId, ResourceLocation lo
             // This is the texture of the log, e.g. "minecraft:block/oak_log"
             ResourceLocation.CODEC.fieldOf("log_texture").forGetter(LogData::logTexture),
 
-            ResourceLocation.CODEC.fieldOf("inner_log_texture").forGetter(LogData::strippedLogTexture)
+            ResourceLocation.CODEC.fieldOf("inner_log_texture").forGetter(LogData::strippedLogTexture),
+            Codec.INT.optionalFieldOf("light", 0).forGetter(LogData::light)
     ).apply(instance, LogData::new));
 
     /**
@@ -28,6 +29,6 @@ public record LogData(String name, ResourceLocation blockId, ResourceLocation lo
     public static LogData getSimpleLogName(ResourceLocation logId) {
         String logName = logId.getPath();
         String modId = logId.getNamespace();
-        return new LogData("fallen_" + logName, new ResourceLocation(modId,  logName), new ResourceLocation(modId, "block/" + logName), new ResourceLocation(modId, "block/stripped_" + logName));
+        return new LogData("fallen_" + logName, new ResourceLocation(modId,  logName), new ResourceLocation(modId, "block/" + logName), new ResourceLocation(modId, "block/stripped_" + logName), 0);
     }
 }

@@ -1,0 +1,35 @@
+{
+  "modid": "botania",
+  "jars": [
+    {
+      "name": "mana_glass",
+      "block_id": "botania:mana_glass",
+      "jar_texture": "missingwilds:block/botania/mana_glass_jar",
+      "block_texture": "botania:block/mana_glass"
+    },
+    {
+      "name": "elf_glass",
+      "block_id": "botania:elf_glass",
+      "jar_texture": "missingwilds:block/botania/elf_glass_jar",
+      "block_texture": "botania:block/elf_glass"
+    }
+  ],
+  "logs": [
+    "botania:livingwood_log",
+    {
+      "name": "fallen_glimmering_livingwood_log",
+      "block_id": "botania:glimmering_livingwood_log",
+      "log_texture": "botania:block/glimmering_livingwood_log",
+      "inner_log_texture": "botania:block/glimmering_stripped_livingwood_log",
+      "light": 12
+    },
+    "botania:dreamwood_log",
+    {
+      "name": "fallen_glimmering_dreamwood_log",
+      "block_id": "botania:glimmering_dreamwood_log",
+      "log_texture": "botania:block/glimmering_dreamwood_log",
+      "inner_log_texture": "botania:block/glimmering_stripped_dreamwood_log",
+      "light": 12
+    }
+  ]
+}

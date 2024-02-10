@@ -3,6 +3,7 @@ package me.ultrusmods.missingwilds.register;
 import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.block.*;
 import me.ultrusmods.missingwilds.compat.RegisteringModCompat;
+import me.ultrusmods.missingwilds.data.LogData;
 import me.ultrusmods.missingwilds.platform.Services;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffects;
@@ -123,6 +124,13 @@ public class MissingWildsBlocks {
 	}
 	public static RegistryObject<Block> registerFallenLog(String id) {
 		return register(id, () -> new FallenLogBlock(Properties.of().strength(2.0F).sound(SoundType.WOOD).noOcclusion()));
+	}
+	public static RegistryObject<Block> registerFallenLogFromData(LogData logData, String modid) {
+		var props = Properties.of().strength(2.0F).sound(SoundType.WOOD).noOcclusion();
+		if (logData.light() > 0) {
+			props.lightLevel((state) -> logData.light());
+		}
+		return register(modid + "_" + logData.name(), () -> new FallenLogBlock(props));
 	}
 
 	private static RegistryObject<Block> registerForgetMeNot(String id, CombinedStackingFlowerBlock.FlowerType type) {

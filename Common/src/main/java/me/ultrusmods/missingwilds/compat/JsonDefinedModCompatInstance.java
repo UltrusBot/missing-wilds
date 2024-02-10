@@ -41,7 +41,7 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
 
     public void registerBlocks() {
         modCompatJsonData.logs().forEach(logData -> {
-            RegistryObject<Block> block = MissingWildsBlocks.registerFallenLog(modCompatJsonData.modid() + "_" + logData.name());
+            RegistryObject<Block> block = MissingWildsBlocks.registerFallenLogFromData(logData, modCompatJsonData.modid());
             Services.PLATFORM.getModCompatHandler().addFallenLogBlock(block);
             fallenLogBlocks.put(logData, block);
         });
