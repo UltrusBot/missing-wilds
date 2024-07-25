@@ -42,9 +42,7 @@ public class MissingWildsForge {
                             .build());
         });
         event.register(Registries.BLOCK, blockRegisterHelper -> MissingWildsBlocks.init(blockRegisterHelper::register));
-        Services.PLATFORM.duringBlockRegistering();
         event.register(Registries.ITEM, itemRegisterHelper -> MissingWildsItems.init(itemRegisterHelper::register));
-        Services.PLATFORM.duringItemRegistering();
         event.register(Registries.FEATURE, featureRegisterHelper -> MissingWildsFeatures.registerFeature(featureRegisterHelper::register));
         event.register(Registries.TREE_DECORATOR_TYPE, treeDecoratorTypeRegisterHelper -> MissingWildsFeatures.registerTreeDecorator(treeDecoratorTypeRegisterHelper::register));
         event.register(Registries.CUSTOM_STAT, customStatRegisterHelper -> MissingWildsStats.init(customStatRegisterHelper::register));

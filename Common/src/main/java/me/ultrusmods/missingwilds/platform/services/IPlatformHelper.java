@@ -1,18 +1,10 @@
 package me.ultrusmods.missingwilds.platform.services;
 
 import me.ultrusmods.missingwilds.compat.ModCompatHandler;
-import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-
-import java.util.function.BiFunction;
 
 public interface IPlatformHelper {
 
@@ -40,14 +32,6 @@ public interface IPlatformHelper {
 
 
     void setBlockRenderType(RenderType layer, Block... blocks);
-
-    void duringItemRegistering();
-
-    void duringBlockRegistering();
-
-    <T extends BlockEntity> BlockEntityType<T> buildBlockEntity(BiFunction<BlockPos, BlockState, T> supplier, Block... blocks);
-
-    EntityType<FireflySwarm> createFirefly();
 
     default void registerItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
         output.accept(MissingWildsItems.FALLEN_OAK_LOG);

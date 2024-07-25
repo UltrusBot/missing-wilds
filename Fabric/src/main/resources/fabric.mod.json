@@ -39,5 +39,8 @@
         "minecraft": "${fabric_minecraft_version_range}",
         "java": ">=${java_version}",
         "defaultresources": ">=3.6.0"
+    },
+    "suggests": {
+        "dynamic_asset_generator": ">=6.1.1"
     }
 }

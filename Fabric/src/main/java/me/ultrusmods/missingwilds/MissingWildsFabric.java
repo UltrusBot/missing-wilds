@@ -27,9 +27,7 @@ public class MissingWildsFabric implements ModInitializer {
     public void onInitialize() {
         MissingWildsModCommon.init();
         MissingWildsBlocks.init((resourceLocation, block) -> Registry.register(BuiltInRegistries.BLOCK, resourceLocation, block));
-        Services.PLATFORM.duringBlockRegistering();
         MissingWildsItems.init((resourceLocation, item) -> Registry.register(BuiltInRegistries.ITEM, resourceLocation, item));
-        Services.PLATFORM.duringItemRegistering();
         MissingWildsSounds.register((resourceLocation, soundEvent) -> Registry.register(BuiltInRegistries.SOUND_EVENT, resourceLocation, soundEvent));
 
         MissingWildsFeatures.registerFeature((resourceLocation, feature) -> Registry.register(BuiltInRegistries.FEATURE, resourceLocation, feature));
