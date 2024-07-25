@@ -88,7 +88,8 @@ publishMods {
     file.set(tasks.named<Jar>("jar").get().archiveFile)
     modLoaders.add("neoforge")
     changelog = rootProject.file("CHANGELOG.md").readText()
-    version = "Missing Wilds Neoforge ${Versions.MOD}+${libs.minecraft.get().version}"
+    displayName = "Missing Wilds NeoForge ${Versions.MOD}+${libs.minecraft.get().version}"
+    version = "${Versions.MOD}+${libs.minecraft.get().version}-neoforge"
     type = STABLE
 
     curseforge {

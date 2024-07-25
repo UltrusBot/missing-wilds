@@ -72,7 +72,7 @@ publishMods {
         repository = Properties.GITHUB_REPO
         tagName = "${Versions.MOD}+${libs.minecraft.get().version}"
         commitish = Properties.GITHUB_COMMITISH
-
+        displayName = "Missing Wilds ${Versions.MOD}+${libs.minecraft.get().version}"
         allowEmptyFiles = true
     }
 }

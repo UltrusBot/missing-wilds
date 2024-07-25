@@ -99,7 +99,8 @@ publishMods {
     file.set(tasks.named<Jar>("remapJar").get().archiveFile)
     modLoaders.add("fabric")
     changelog = rootProject.file("CHANGELOG.md").readText()
-    version = "Missing Wilds Fabric ${Versions.MOD}+${libs.minecraft.get().version}"
+    displayName = "Missing Wilds Fabric ${Versions.MOD}+${libs.minecraft.get().version}"
+    version = "${Versions.MOD}+${libs.minecraft.get().version}-fabric"
     type = STABLE
 
     curseforge {
@@ -119,7 +120,6 @@ publishMods {
 
         minecraftVersions.add(libs.minecraft.get().version!!)
     }
-
 //    github {
 //        accessToken = providers.gradleProperty("GH_TOKEN")
 //        parent(project(":common").tasks.named("publishGithub"))
