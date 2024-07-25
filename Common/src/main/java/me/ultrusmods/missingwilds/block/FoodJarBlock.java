@@ -4,9 +4,11 @@ import me.ultrusmods.missingwilds.JarMaps;
 import me.ultrusmods.missingwilds.block.entity.FoodJarBlockEntity;
 import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -22,8 +24,8 @@ public class FoodJarBlock extends JarBlock implements EntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (player.getItemInHand(hand).isEmpty() && player.isShiftKeyDown()) {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (player.isShiftKeyDown()) {
             if (level.getBlockEntity(pos) instanceof FoodJarBlockEntity foodJarBlockEntity) {
                 ItemStack stack = foodJarBlockEntity.removeItem();
                 if (!stack.isEmpty()) {
@@ -36,21 +38,26 @@ public class FoodJarBlock extends JarBlock implements EntityBlock {
                     return InteractionResult.SUCCESS;
                 }
             }
-        }
-        if (level.getBlockEntity(pos) instanceof FoodJarBlockEntity foodJarBlockEntity) {
-            ItemStack stack = player.getItemInHand(hand);
-            if (isValidItem(stack)) {
-                boolean addItem = foodJarBlockEntity.addItems(player.getItemInHand(hand));
-                if (addItem) {
-                    return InteractionResult.SUCCESS;
-                }
-            }
-        }
-        if (checkToggleCover(state, level, pos, player, hand)) {
+        } else {
+            toggleCover(state, level, pos, player);
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
     }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (level.getBlockEntity(pos) instanceof FoodJarBlockEntity foodJarBlockEntity) {
+            if (isValidItem(stack)) {
+                boolean addItem = foodJarBlockEntity.addItems(player.getItemInHand(hand));
+                if (addItem) {
+                    return ItemInteractionResult.sidedSuccess(level.isClientSide);
+                }
+            }
+        }
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
 
     @Override
     public void onRemove(BlockState state, Level level, BlockPos blockPos, BlockState newState, boolean moved) {
@@ -66,7 +73,7 @@ public class FoodJarBlock extends JarBlock implements EntityBlock {
     }
 
     public static boolean isValidItem(ItemStack stack) {
-        return !stack.is(MissingWildsTags.FOOD_JAR_BLACKLIST) && (stack.getItem().getFoodProperties() != null || stack.is(MissingWildsTags.FOOD_JAR_OVERRIDE));
+        return !stack.is(MissingWildsTags.FOOD_JAR_BLACKLIST) && (stack.getComponents().has(DataComponents.FOOD) || stack.is(MissingWildsTags.FOOD_JAR_OVERRIDE));
     }
 
     public static boolean insertItem(Level level, BlockPos pos, ItemStack stack) {

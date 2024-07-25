@@ -29,6 +29,6 @@ public record LogData(String name, ResourceLocation blockId, ResourceLocation lo
     public static LogData getSimpleLogName(ResourceLocation logId) {
         String logName = logId.getPath();
         String modId = logId.getNamespace();
-        return new LogData("fallen_" + logName, new ResourceLocation(modId,  logName), new ResourceLocation(modId, "block/" + logName), new ResourceLocation(modId, "block/stripped_" + logName), 0);
+        return new LogData("fallen_" + logName, ResourceLocation.fromNamespaceAndPath(modId,  logName), ResourceLocation.fromNamespaceAndPath(modId, "block/" + logName), ResourceLocation.fromNamespaceAndPath(modId, "block/stripped_" + logName), 0);
     }
 }

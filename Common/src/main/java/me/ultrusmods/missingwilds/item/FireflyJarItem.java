@@ -1,12 +1,13 @@
 package me.ultrusmods.missingwilds.item;
 
+import me.ultrusmods.missingwilds.block.FireflyJarBlock;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
 import java.util.List;
@@ -16,27 +17,30 @@ public class FireflyJarItem extends BlockItem {
         super(block, properties);
     }
 
+
+
     @Override
-    public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
-        super.appendHoverText(stack, level, tooltip, flag);
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         int lightLevel = 1;
-        if (stack.hasTag() && stack.getOrCreateTag().getCompound("BlockStateTag").contains("light_level")) {
-            lightLevel = Integer.parseInt(stack.getOrCreateTag().getCompound("BlockStateTag").getString("light_level"));
+        var components = stack.getComponents();
+        var blockState = components.get(DataComponents.BLOCK_STATE);
+//        if (stack.hasTag() && stack.getOrCreateTag().getCompound("BlockStateTag").contains("light_level")) {
+//            lightLevel = Integer.parseInt(stack.getOrCreateTag().getCompound("BlockStateTag").getString("light_level"));
+//        }
+        if (blockState != null && blockState.get(FireflyJarBlock.LIGHT_LEVEL) != null) {
+            lightLevel = blockState.get(FireflyJarBlock.LIGHT_LEVEL);
         }
-        tooltip.add(Component.translatable("tooltip.missingwilds.firefly_jar", lightLevel).withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("tooltip.missingwilds.firefly_jar", lightLevel).withStyle(ChatFormatting.GRAY));
     }
 
     public static void increaseLightLevel(ItemStack stack, int amount) {
         int lightLevel = 0;
-        if (stack.hasTag()) {
-            lightLevel = Integer.parseInt(stack.getOrCreateTag().getCompound("BlockStateTag").getString("light_level"));
+        if (stack.getComponents().get(DataComponents.BLOCK_STATE) != null) {
+            lightLevel = stack.getComponents().get(DataComponents.BLOCK_STATE).get(FireflyJarBlock.LIGHT_LEVEL);
         }
         lightLevel = Mth.clamp(lightLevel + amount, 1, 15);
-        var tag = stack.getOrCreateTag();
-        var compound = tag.getCompound("BlockStateTag");
-        compound.putString("light_level", "" + lightLevel);
-        tag.put("BlockStateTag", compound);
-        stack.setTag(tag);
+        stack.set(DataComponents.BLOCK_STATE, stack.getComponents().get(DataComponents.BLOCK_STATE).with(FireflyJarBlock.LIGHT_LEVEL, lightLevel));
     }
 
 }

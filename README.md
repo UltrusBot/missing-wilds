@@ -5,7 +5,7 @@ Adding what was missing from the wild update into the game!
 
 <img src="https://www.bisecthosting.com/images/CF/Missing_Wilds/BH_MW_banner1.webp" alt="Description"/>
 
-This mod runs on fabric and quilt, and forge.
+This mod runs on fabric and quilt, and NeoForge.
 
 
 Missing Wilds adds the features scrapped / removed from the wild update. These features include:
@@ -20,9 +20,12 @@ Missing Wilds adds the features scrapped / removed from the wild update. These f
 
 <img src="https://www.bisecthosting.com/images/CF/Missing_Wilds/BH_MW_banner2.webp" alt="Mod Support"/>
 
+To enable mod support, you just need to install Dynamic Asset Generator, which enables the mod compat generation system in Missing Wilds.
+
+
 Missing Wilds has some built-in mod support adding fallen logs from other mods logs. Some of the supported mods are:
 - Traverse
-- Oh The Biomes You'll Go Refabricated
+- Oh The Biomes You'll Go
 - Blockus
 - Promenade
 - Charm

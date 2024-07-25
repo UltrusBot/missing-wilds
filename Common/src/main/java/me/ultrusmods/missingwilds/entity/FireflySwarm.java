@@ -40,10 +40,10 @@ public class FireflySwarm extends PathfinderMob {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(SIZE, 3);
-        this.entityData.define(STILL, true);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SIZE, 3);
+        builder.define(STILL, true);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class FireflySwarm extends PathfinderMob {
         if (this.level().isClientSide()) {
             for (int i = 0; i < this.getSize() * 3; i++) {
                 if (this.getRandom().nextInt(25) == 0) {
-                    this.level().addParticle(new FireflyParticleOptions(.60f, .92f, .2f, 100, 0.0035f),
+                    this.level().addParticle(new FireflyParticleOptions(.60f, .92f, .2f, 0.75f,100, 0.0035f),
                             this.getX() + this.random.nextFloat() - 0.5f,
                             this.getY() + this.random.nextFloat(),
                             this.getZ() + this.random.nextFloat() - 0.5f,
@@ -86,8 +86,8 @@ public class FireflySwarm extends PathfinderMob {
     }
 
     @Override
-    public EntityDimensions getDimensions(Pose $$0) {
-        return super.getDimensions($$0).scale(isStill() ? 1 : 0.1f);
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        return super.getDefaultDimensions(pose).scale(isStill() ? 1 : 0.1f);
     }
 
     @Override
@@ -166,16 +166,16 @@ public class FireflySwarm extends PathfinderMob {
         if (stack.is(Items.GLASS_BOTTLE)) {
             player.playSound(SoundEvents.BOTTLE_FILL);
             player.getItemInHand(hand).shrink(1);
-            player.addItem(MissingWildsItems.FIREFLY_BOTTLE_ITEM.get().getDefaultInstance());
+            player.addItem(MissingWildsItems.FIREFLY_BOTTLE_ITEM.getDefaultInstance());
             shrink();
             return InteractionResult.sidedSuccess(this.level().isClientSide);
         } else if(stack.getItem() instanceof FireflyJarItem) {
             FireflyJarItem.increaseLightLevel(stack, 3);
-            player.playSound(MissingWildsSounds.JAR_OPEN.get(), 1.0f, 1.0f);
+            player.playSound(MissingWildsSounds.JAR_OPEN, 1.0f, 1.0f);
             discard();
             return InteractionResult.sidedSuccess(this.level().isClientSide);
         } else if(stack.getItem() instanceof BlockItem blockItem && JarMaps.JAR_TO_FIREFLY_JAR.containsKey(blockItem.getBlock())) {
-            player.playSound(MissingWildsSounds.JAR_OPEN.get(), 1.0f, 1.0f);
+            player.playSound(MissingWildsSounds.JAR_OPEN, 1.0f, 1.0f);
             var newStack = JarMaps.JAR_TO_FIREFLY_JAR.get(blockItem.getBlock()).asItem().getDefaultInstance();
             FireflyJarItem.increaseLightLevel(newStack, 3);
             player.setItemInHand(hand, newStack);
@@ -196,8 +196,8 @@ public class FireflySwarm extends PathfinderMob {
 
     public static boolean checkFireflySpawnRules(EntityType<? extends FireflySwarm> entityType, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource random) {
         if (level.getBiome(blockPos).is(MissingWildsTags.SPAWNS_FIREFLY_SWARMS)) {
-            if (blockPos.getY() > 60 && blockPos.getY() < 70) {
-                return random.nextFloat() < 0.7f && random.nextFloat() > level.getMoonBrightness();
+            if (blockPos.getY() > 50 && blockPos.getY() < 80) {
+                return random.nextFloat() > level.getMoonBrightness();
             }
         }
         return false;

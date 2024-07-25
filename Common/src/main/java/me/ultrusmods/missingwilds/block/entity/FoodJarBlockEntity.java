@@ -2,6 +2,7 @@ package me.ultrusmods.missingwilds.block.entity;
 
 import me.ultrusmods.missingwilds.register.MissingWildsBlockEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -13,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class FoodJarBlockEntity extends BlockEntity {
     NonNullList<ItemStack> items;
     public FoodJarBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(MissingWildsBlockEntities.FOOD_JAR.get(), blockPos, blockState);
+        super(MissingWildsBlockEntities.FOOD_JAR, blockPos, blockState);
         this.items = NonNullList.withSize(16, ItemStack.EMPTY);
     }
 
@@ -25,10 +26,11 @@ public class FoodJarBlockEntity extends BlockEntity {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    public CompoundTag getUpdateTag() {
-        CompoundTag $$0 = new CompoundTag();
-        ContainerHelper.saveAllItems($$0, this.items, true);
-        return $$0;
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag tag = new CompoundTag();
+        ContainerHelper.saveAllItems(tag, this.items, registries);
+        return tag;
     }
 
     public boolean addItems(ItemStack stack) {
@@ -73,15 +75,15 @@ public class FoodJarBlockEntity extends BlockEntity {
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    public void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
         this.items = NonNullList.withSize(16, ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(tag, this.items);
+        ContainerHelper.loadAllItems(tag, this.items, registries);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
-        ContainerHelper.saveAllItems(tag, this.items);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
+        ContainerHelper.saveAllItems(tag, this.items, registries);
     }
 }

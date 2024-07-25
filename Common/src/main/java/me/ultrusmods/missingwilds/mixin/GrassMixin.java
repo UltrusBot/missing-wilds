@@ -1,12 +1,10 @@
 package me.ultrusmods.missingwilds.mixin;
 
-import me.ultrusmods.missingwilds.register.MissingWildsConfiguredFeatures;
 import me.ultrusmods.missingwilds.register.MissingWildsPlacedFeatures;
 import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.GrassBlock;

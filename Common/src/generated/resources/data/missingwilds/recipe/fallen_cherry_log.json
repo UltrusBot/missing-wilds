@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "missingwilds:fallen_logs",
+  "key": {
+    "L": {
+      "item": "minecraft:cherry_log"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "L L",
+    "LLL"
+  ],
+  "result": {
+    "count": 8,
+    "id": "missingwilds:fallen_cherry_log"
+  }
+}

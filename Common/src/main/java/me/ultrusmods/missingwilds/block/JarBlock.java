@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -45,43 +46,42 @@ public class JarBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        ItemStack stack = player.getItemInHand(hand);
-        if (stack.is(MissingWildsItems.FIREFLY_BOTTLE_ITEM.get())) {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        toggleCover(state, level, pos, player);
+        return InteractionResult.SUCCESS;
+    }
+
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (stack.is(MissingWildsItems.FIREFLY_BOTTLE_ITEM)) {
             if (JarMaps.JAR_TO_FIREFLY_JAR.get(this) instanceof FireflyJarBlock jar) {
                 level.setBlockAndUpdate(pos, jar.defaultBlockState().setValue(COVERED, state.getValue(COVERED)).setValue(FireflyJarBlock.LIGHT_LEVEL, 1));
                 stack.shrink(1);
                 player.addItem(new ItemStack(Items.GLASS_BOTTLE));
-                return InteractionResult.SUCCESS;
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
         } else if (FoodJarBlock.isValidItem(stack)) {
             if (JarMaps.JAR_TO_FOOD_JAR.get(this) instanceof FoodJarBlock jar) {
                 level.setBlockAndUpdate(pos, jar.defaultBlockState().setValue(COVERED, state.getValue(COVERED)));
                 FoodJarBlock.insertItem(level, pos, stack);
-                return InteractionResult.SUCCESS;
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
         }
-        if (checkToggleCover(state, level, pos, player, hand)) {
-            return InteractionResult.SUCCESS;
-        }
-        return InteractionResult.PASS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    static boolean checkToggleCover(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand) {
-        if (player.getItemInHand(hand).isEmpty()) {
-            if (state.getValue(COVERED)) {
-                if (!level.isClientSide) {
-                    level.playSound(null, pos, MissingWildsSounds.JAR_CLOSE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-                }
-                level.setBlockAndUpdate(pos, state.setValue(COVERED, false));
-            } else {
-                if (!level.isClientSide) {
-                    level.playSound(null, pos, MissingWildsSounds.JAR_OPEN.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-                }
-                level.setBlockAndUpdate(pos, state.setValue(COVERED, true));
+    static void toggleCover(BlockState state, Level level, BlockPos pos, Player player) {
+        if (state.getValue(COVERED)) {
+            if (!level.isClientSide) {
+                level.playSound(null, pos, MissingWildsSounds.JAR_CLOSE, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
-            return true;
+            level.setBlockAndUpdate(pos, state.setValue(COVERED, false));
+        } else {
+            if (!level.isClientSide) {
+                level.playSound(null, pos, MissingWildsSounds.JAR_OPEN, SoundSource.BLOCKS, 1.0F, 1.0F);
+            }
+            level.setBlockAndUpdate(pos, state.setValue(COVERED, true));
         }
-        return false;
     }
 }

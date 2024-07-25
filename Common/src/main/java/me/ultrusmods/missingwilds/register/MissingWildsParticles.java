@@ -1,20 +1,31 @@
 package me.ultrusmods.missingwilds.register;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.particle.FireflyParticleOptions;
 import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceLocation;
+
+import java.util.function.BiConsumer;
 
 public class MissingWildsParticles {
-    public static RegistrationProvider<ParticleType<?>> PARTICLES = RegistrationProvider.get(Registries.PARTICLE_TYPE, Constants.MOD_ID);
 
-    public static final RegistryObject<ParticleType<FireflyParticleOptions>> FIREFLY = PARTICLES.register("firefly", () -> new ParticleType<>(true, FireflyParticleOptions.DESERIALIZER) {
+
+    public static final ParticleType<FireflyParticleOptions> FIREFLY = new ParticleType<>(true) {
+
         @Override
-        public Codec<FireflyParticleOptions> codec() {
+        public MapCodec<FireflyParticleOptions> codec() {
             return FireflyParticleOptions.CODEC;
         }
-    });
-    public static void init() {
+
+        @Override
+        public StreamCodec<? super RegistryFriendlyByteBuf, FireflyParticleOptions> streamCodec() {
+            return FireflyParticleOptions.STREAM_CODEC;
+        }
+    };
+    public static void register(BiConsumer<ResourceLocation, ParticleType<?>> particleConsumer) {
+        particleConsumer.accept(Constants.id("firefly"), FIREFLY);
     }
 }

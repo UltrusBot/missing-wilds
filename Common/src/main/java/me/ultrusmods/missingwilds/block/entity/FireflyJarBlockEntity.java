@@ -1,10 +1,10 @@
 package me.ultrusmods.missingwilds.block.entity;
 
 import me.ultrusmods.missingwilds.ColorSets;
-import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.particle.FireflyParticleOptions;
 import me.ultrusmods.missingwilds.register.MissingWildsBlockEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -22,26 +22,27 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
     private Component name = null;
 
     public FireflyJarBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(MissingWildsBlockEntities.FIREFLY_JAR.get(), blockPos, blockState);
+        super(MissingWildsBlockEntities.FIREFLY_JAR, blockPos, blockState);
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    public void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
         if (tag.contains("color")) {
             this.color = tag.getInt("color");
         }
         if (tag.contains("CustomName", 8)) {
-            this.name = Component.Serializer.fromJson(tag.getString("CustomName"));
+            this.name = Component.Serializer.fromJson(tag.getString("CustomName"), registries);
         }
     }
 
+
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
         tag.putInt("color", this.color);
         if (this.name != null) {
-            tag.putString("CustomName", Component.Serializer.toJson(this.name));
+            tag.putString("CustomName", Component.Serializer.toJson(this.name, registries));
         }
     }
 
@@ -53,8 +54,8 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
     }
 
     public void setCustomName(Component name) {
@@ -66,14 +67,17 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    public void mixColor(float[] dyeColor) {
+    public void mixColor(int dyeColor) {
         int curRed = (this.color & 0xFF0000) >> 16;
         int curGreen = (this.color & 0xFF00) >> 8;
         int curBlue = (this.color & 0xFF);
 
-        int newRed = (int)(dyeColor[0] * 255);
-        int newGreen = (int)(dyeColor[1] * 255);
-        int newBlue = (int)(dyeColor[2] * 255);
+//        int newRed = (int)(dyeColor[0] * 255);
+//        int newGreen = (int)(dyeColor[1] * 255);
+//        int newBlue = (int)(dyeColor[2] * 255);
+        int newRed = (dyeColor & 0xFF0000) >> 16;
+        int newGreen = (dyeColor & 0xFF00) >> 8;
+        int newBlue = (dyeColor & 0xFF);
 
         int red = (curRed + newRed) / 2;
         int green = (curGreen + newGreen) / 2;

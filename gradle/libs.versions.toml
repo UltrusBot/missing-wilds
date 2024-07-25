@@ -1,53 +1,51 @@
 [versions]
-minecraft = "1.20.1"
-fabric_loader = "0.14.21"
-fabric_api = "0.84.0+1.20.1"
-quilt_loader = "0.20.0-beta.4"
-qfapi = "7.0.6+0.85.0-1.20.1"
-forge = "1.20.1-47.0.19"
-machete = "1.1.2"
-midnightlib_forge = "1.0.0-forge"
-midnightlib_fabric = "1.0.0-fabric"
-midnightlib_quilt = "1.0.0-quilt"
-tablesaw = "1.5.2+1.20.1"
-templates = "2.1.0-fabric-1.20.1"
+minecraft = "1.21"
+fabric_loader = "0.15.11"
+fabric_api = "0.100.7+1.21"
+neoforge = "21.0.111-beta"
+modmenu = "11.0.1"
 
-# Extra Libraries
-arrp = "0.6.5.0"
-defaultresources = "2.0.0"
-dynamicassetgenerator = "4.2.1"
-emi = "1.0.5+1.20.1"
+# Mixin
+fabric_mixin = "0.15.0+mixin.0.8.7"
+mixin_extras = "0.4.0"
 
 # Plugins
-fabric_loom = "1.4-SNAPSHOT"
-publishing = "0.4.5"
+fabric_loom = "1.7-SNAPSHOT"
+publishing = "0.6.2"
+neoforge_moddev = "1.0.13"
+
+# Extra Libraries
+midnightlib_forge = "1.5.7-neoforge"
+midnightlib_fabric = "1.5.7-fabric"
+defaultresources = "3.6.0"
+dynamicassetgenerator = "6.1.1"
+emi = "1.1.10+1.21"
 
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
 fabric_loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric_loader" }
 fabric_api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric_api" }
-quilt_loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt_loader" }
-qfapi = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api", version.ref = "qfapi" }
-forge = { module = "net.minecraftforge:forge", version.ref = "forge" }
+neoforge = { module = "net.neoforged:neoforge", version.ref = "neoforge" }
 
 # Extra Libraries
-arrp = { module = "net.devtech:arrp", version.ref = "arrp" }
-emi = { module = "dev.emi:emi-fabric", version.ref = "emi" }
+modmenu = { module = "com.terraformersmc:modmenu", version.ref = "modmenu" }
+emi_fabric = { module = "dev.emi:emi-fabric", version.ref = "emi" }
+emi_neoforge = { module = "dev.emi:emi-neoforge", version.ref = "emi" }
 midnightlib_forge = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_forge" }
 midnightlib_fabric = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_fabric" }
-midnightlib_quilt = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_quilt" }
-tablesaw = { module = "maven.modrinth:tablesaw", version.ref = "tablesaw" }
-templates = { module= "maven.modrinth:templates-2", version.ref = "templates" }
-# Default Resources
-defaultresources_common = { module = "dev.lukebemish.defaultresources:defaultresources-common-1.20", version.ref = "defaultresources" }
-defaultresources_forge = { module = "dev.lukebemish.defaultresources:defaultresources-forge-1.20", version.ref = "defaultresources" }
-defaultresources_quilt = { module = "dev.lukebemish.defaultresources:defaultresources-quilt-1.20", version.ref = "defaultresources" }
 
+# Default Resources
+defaultresources = { module = "dev.lukebemish:defaultresources", version.ref = "defaultresources" }
 # Dynamic Asset Generator
-dynamicassetgenerator_forge = { module = "dev.lukebemish.dynamicassetgenerator:dynamicassetgenerator-forge-1.20.1", version.ref = "dynamicassetgenerator" }
+dynamicassetgenerator = { module = "dev.lukebemish:dynamicassetgenerator", version.ref = "dynamicassetgenerator" }
+
+# Mixin
+fabric_mixin = { module = "net.fabricmc:sponge-mixin", version.ref = "fabric_mixin" }
+mixin_extras = { module = "io.github.llamalad7:mixinextras-common", version.ref = "mixin_extras" }
 
 [plugins]
 fabric_loom = { id = "fabric-loom", version.ref = "fabric_loom" }
 publishing = { id = "me.modmuss50.mod-publish-plugin", version.ref = "publishing" }
+neoforge_moddev = { id = "net.neoforged.moddev", version.ref = "neoforge_moddev" }
 #machete = { id = "io.github.p03w.machete", version.ref = "machete" }

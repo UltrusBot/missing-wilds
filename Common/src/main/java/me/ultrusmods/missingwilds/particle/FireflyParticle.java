@@ -78,7 +78,7 @@ public class FireflyParticle extends TextureSheetParticle {
 
         @Override
         public Particle createParticle(FireflyParticleOptions type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            var particle = new FireflyParticle(level, x, y, z, type.getRed(), type.getGreen(), type.getBlue(), type.getLifetime(), type.getSpeedMultiplier(), type.getScale());
+            var particle = new FireflyParticle(level, x, y, z, type.red(), type.green(), type.blue(), type.lifetime(), type.speedMultiplier(), type.scale());
             particle.pickSprite(this.sprite);
             return particle;
         }

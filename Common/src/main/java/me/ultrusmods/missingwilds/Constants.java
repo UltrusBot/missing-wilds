@@ -11,6 +11,6 @@ public class Constants {
 	public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
 	public static ResourceLocation id(String id) {
-		return new ResourceLocation(MOD_ID, id);
+		return ResourceLocation.fromNamespaceAndPath(MOD_ID, id);
 	}
 }

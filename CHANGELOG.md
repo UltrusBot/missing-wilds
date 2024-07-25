@@ -1,3 +1,5 @@
-- Added Botania compat, which includes fallen logs for livingwood and dreamwood, and jars for mana glass, and alf glass.
-- Optimize mod assets.
-- Added option to fallen log json to set the light level of the log.
+- Update to 1.21
+- Switched Forge module to NeoForge
+- Mod compat system is the same on Fabric & NeoForge through the use of [Dynamic Asset Generator](https://github.com/lukebemishprojects/DynamicAssetGenerator) & [Default Resources](https://github.com/lukebemishprojects/DefaultResources)
+- Add ru_ru translation (Thanks @hhbjuuigytyg)
+

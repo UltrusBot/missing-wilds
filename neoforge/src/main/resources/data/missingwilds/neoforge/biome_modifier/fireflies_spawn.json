@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#missingwilds:spawns_firefly_swarms",
+  "spawners": {
+    "type": "missingwilds:firefly_swarm",
+    "weight": 20,
+    "minCount": 1,
+    "maxCount": 2
+  }
+}

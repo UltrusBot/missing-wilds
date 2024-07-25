@@ -3,6 +3,7 @@ package me.ultrusmods.missingwilds.block;
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -16,9 +17,9 @@ import static me.ultrusmods.missingwilds.block.CombinedStackingFlowerBlock.*;
 
 public class StackingFlowerBlock extends FlowerBlock {
 	protected static final VoxelShape SMALLER_SHAPE = Block.box(5.5, 0.0, 5.5, 10.5, 4.0, 10.5);
-	private final CombinedStackingFlowerBlock.FlowerType flowerType;
+	private final FlowerType flowerType;
 
-	public StackingFlowerBlock(MobEffect statusEffect, int i, Properties settings, CombinedStackingFlowerBlock.FlowerType flowerType) {
+	public StackingFlowerBlock(Holder<MobEffect> statusEffect, int i, Properties settings, FlowerType flowerType) {
 		super(statusEffect, i, settings);
 		this.flowerType = flowerType;
 	}
@@ -28,7 +29,7 @@ public class StackingFlowerBlock extends FlowerBlock {
 		return SMALLER_SHAPE;
 	}
 
-	public CombinedStackingFlowerBlock.FlowerType getFlowerType() {
+	public FlowerType getFlowerType() {
 		return flowerType;
 	}
 
@@ -36,7 +37,7 @@ public class StackingFlowerBlock extends FlowerBlock {
 	public BlockState getStateForPlacement(BlockPlaceContext ctx) {
 		BlockState blockState = ctx.getLevel().getBlockState(ctx.getClickedPos());
 		if (blockState.getBlock() instanceof StackingFlowerBlock stackingFlowerBlock) {
-			return MissingWildsBlocks.FORGET_ME_NOT.get().defaultBlockState().setValue(FLOWER_1, stackingFlowerBlock.flowerType).setValue(FLOWER_2, this.flowerType);
+			return MissingWildsBlocks.FORGET_ME_NOT.defaultBlockState().setValue(FLOWER_1, stackingFlowerBlock.flowerType).setValue(FLOWER_2, this.flowerType);
 		}
 		if (blockState.getBlock() instanceof CombinedStackingFlowerBlock) {
 			if (blockState.getValue(FLOWER_3) == FlowerType.NONE) {

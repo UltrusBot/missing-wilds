@@ -1,3 +1,4 @@
 {
-  "config_path": "missingwilds_compat.json"
+  "resources_path": "defaultresources",
+  "zip": true
 }

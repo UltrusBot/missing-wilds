@@ -1,5 +1,6 @@
 package me.ultrusmods.missingwilds.client.render;
 
+import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -13,6 +14,6 @@ public class FireflySwarmRenderer extends EntityRenderer<FireflySwarm> {
 
     @Override
     public ResourceLocation getTextureLocation(FireflySwarm entity) {
-        return new ResourceLocation("missingwilds", "textures/particle/firefly.png");
+        return Constants.id("textures/particle/firefly.png");
     }
 }

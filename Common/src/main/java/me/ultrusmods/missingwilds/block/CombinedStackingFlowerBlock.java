@@ -7,6 +7,7 @@ package me.ultrusmods.missingwilds.block;
 
 import me.ultrusmods.missingwilds.tags.MissingWildsTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -26,7 +27,7 @@ public class CombinedStackingFlowerBlock extends FlowerBlock {
     protected static final VoxelShape SHAPE_2 = Block.box(4.0, 0.0, 4.0, 12.0, 4.0, 12.0);
     protected static final VoxelShape SHAPE_3 = Block.box(3.0, 0.0, 3.0, 13.0, 4.0, 13.0);
 
-    public CombinedStackingFlowerBlock(MobEffect $$0, int $$1, Properties $$2) {
+    public CombinedStackingFlowerBlock(Holder<MobEffect> $$0, int $$1, Properties $$2) {
         super($$0, $$1, $$2);
         this.registerDefaultState(this.defaultBlockState().setValue(FLOWER_1, FlowerType.BLUE).setValue(FLOWER_2, FlowerType.BLUE).setValue(FLOWER_3, FlowerType.NONE));
     }

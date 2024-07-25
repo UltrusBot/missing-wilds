@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "missingwilds:brown_polypore_mushroom"
+  },
+  "result": {
+    "id": "missingwilds:roasted_polypore_mushroom"
+  }
+}

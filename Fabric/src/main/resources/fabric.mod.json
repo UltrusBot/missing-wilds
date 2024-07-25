@@ -1,38 +1,43 @@
 {
-  "schemaVersion": 1,
-  "id": "missingwilds",
-  "version": "${version}",
-  "name": "Missing Wilds",
-  "description": "Adds the features scrapped in the Wild Update.",
-  "authors": [
-    "UltrusBot"
-  ],
-  "contact": {
-    "issues": "https://github.com/UltrusBot/missing-wilds/issues",
-    "sources": "https://github.com/UltrusBot/missing-wilds"
-  },
-  "license": "MIT",
-  "icon": "icon.png",
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "me.ultrusmods.missingwilds.MissingWildsFabric"
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${mod_version}+${minecraft_version}",
+    "name": "${mod_name}",
+    "description": "${mod_description}",
+    "authors": [
+        "${mod_author}"
     ],
-    "client": [
-      "me.ultrusmods.missingwilds.client.MissingWildsClientFabric"
+    "contributors": [
+        ${fabric_mod_contributors}
     ],
-    "fabric-datagen": [
-      "me.ultrusmods.missingwilds.data.MissingWildsDatagenFabric"
-    ]
-  },
-  "accessWidener": "missingwilds.accesswidener",
-  "mixins": [
-    "missingwilds.fabric.mixins.json",
-    "missingwilds.mixins.json"
-  ],
-  "depends": {
-    "fabricloader": ">=0.10.7",
-    "fabric": ">=0.37.2",
-    "minecraft": "1.20.x"
-  }
+    "contact": {
+        "homepage": "${homepage}",
+        "issues": "https://github.com/${sources}/issues",
+        "sources": "https://github.com/${sources}"
+    },
+    "license": "${mod_license}",
+    "icon": "${mod_id}.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "me.ultrusmods.missingwilds.MissingWildsFabric"
+        ],
+        "fabric-datagen": [
+            "me.ultrusmods.missingwilds.data.MissingWildsDatagenFabric"
+        ],
+        "client": [
+            "me.ultrusmods.missingwilds.client.MissingWildsClientFabric"
+        ]
+    },
+    "mixins": [
+        "${mod_id}.mixins.json",
+        "${mod_id}.fabric.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": "${fabric_loader_range}",
+        "fabric-api": "*",
+        "minecraft": "${fabric_minecraft_version_range}",
+        "java": ">=${java_version}",
+        "defaultresources": ">=3.6.0"
+    }
 }

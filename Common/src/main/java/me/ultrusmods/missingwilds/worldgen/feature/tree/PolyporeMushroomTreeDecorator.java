@@ -1,6 +1,7 @@
 package me.ultrusmods.missingwilds.worldgen.feature.tree;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import me.ultrusmods.missingwilds.block.PolyporeMushroomBlock;
 import me.ultrusmods.missingwilds.register.MissingWildsFeatures;
@@ -14,10 +15,10 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
 public class PolyporeMushroomTreeDecorator extends TreeDecorator {
-    public static final Codec<PolyporeMushroomTreeDecorator> CODEC = RecordCodecBuilder.create(
+    public static final MapCodec<PolyporeMushroomTreeDecorator> CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
-                            BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(polyporeMushroomTreeDecorator -> polyporeMushroomTreeDecorator.blockStateProvider),
-                            Codec.floatRange(0.0f, 1.0f).fieldOf("probability").forGetter(polyporeMushroomTreeDecorator -> polyporeMushroomTreeDecorator.probability)
+                            BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(PolyporeMushroomTreeDecorator::getBlockStateProvider),
+                            Codec.floatRange(0.0f, 1.0f).fieldOf("probability").forGetter(PolyporeMushroomTreeDecorator::getProbability)
                     )
                     .apply(instance, PolyporeMushroomTreeDecorator::new)
     );
@@ -28,10 +29,19 @@ public class PolyporeMushroomTreeDecorator extends TreeDecorator {
         this.probability = probability;
         this.blockStateProvider = blockStateProvider;
     }
-    
+
+
+    public BlockStateProvider getBlockStateProvider() {
+        return blockStateProvider;
+    }
+
+    public float getProbability() {
+        return probability;
+    }
+
     @Override
     protected TreeDecoratorType<?> type() {
-        return MissingWildsFeatures.POLYPORE_MUSHROOM.get();
+        return MissingWildsFeatures.POLYPORE_MUSHROOM_TREE_DECORATOR;
     }
 
     @Override

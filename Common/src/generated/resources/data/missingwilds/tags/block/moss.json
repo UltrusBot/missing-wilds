@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:moss_block",
+    "minecraft:moss_carpet",
+    {
+      "id": "ecologics:moss_layer",
+      "required": false
+    }
+  ]
+}

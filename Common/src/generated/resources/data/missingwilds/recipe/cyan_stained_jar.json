@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "missingwilds:glass_jars",
+  "key": {
+    "G": {
+      "item": "minecraft:cyan_stained_glass"
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "GPG",
+    "G G",
+    "GGG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "missingwilds:cyan_stained_jar"
+  }
+}

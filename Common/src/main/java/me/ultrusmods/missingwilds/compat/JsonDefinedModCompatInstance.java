@@ -5,10 +5,8 @@ import me.ultrusmods.missingwilds.JarMaps;
 import me.ultrusmods.missingwilds.data.JarData;
 import me.ultrusmods.missingwilds.data.LogData;
 import me.ultrusmods.missingwilds.data.ModCompatJsonData;
-import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
-import me.ultrusmods.missingwilds.register.RegistryObject;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
@@ -20,9 +18,9 @@ import java.util.Map;
 
 public class JsonDefinedModCompatInstance extends RegisteringModCompat {
     private final ModCompatJsonData modCompatJsonData;
-    Map<LogData, RegistryObject<Block>> fallenLogBlocks = new HashMap<>();
-    Map<JarData, RegistryObject<Block>> jarBlocks = new HashMap<>();
-    Map<JarData, RegistryObject<Block>> fireflyJarBlocks = new HashMap<>();
+    Map<LogData, Block> fallenLogBlocks = new HashMap<>();
+    Map<JarData, Block> jarBlocks = new HashMap<>();
+    Map<JarData, Block> fireflyJarBlocks = new HashMap<>();
 
     public JsonDefinedModCompatInstance(ModCompatJsonData modCompatJsonData) {
         super(modCompatJsonData.modid());
@@ -41,27 +39,27 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
 
     public void registerBlocks() {
         modCompatJsonData.logs().forEach(logData -> {
-            RegistryObject<Block> block = MissingWildsBlocks.registerFallenLogFromData(logData, modCompatJsonData.modid());
-            Services.PLATFORM.getModCompatHandler().addFallenLogBlock(block);
+            Block block = MissingWildsBlocks.registerFallenLogFromData(logData, modCompatJsonData.modid());
+            ModCompatHandler.addFallenLogBlock(Constants.id(modCompatJsonData.modid() + "_" + logData.name()), block);
             fallenLogBlocks.put(logData, block);
         });
         modCompatJsonData.jars().forEach(jarData -> {
-            RegistryObject<Block> block = MissingWildsBlocks.register(modCompatJsonData.modid() + "_" + jarData.name() + "_jar", MissingWildsBlocks::createJarBlock);
-            RegistryObject<Block> foodJar = MissingWildsBlocks.register(modCompatJsonData.modid() + "_" + jarData.name() + "_food_jar", MissingWildsBlocks::createFoodJarBlock);
-            RegistryObject<Block> fireflyJar = MissingWildsBlocks.register(modCompatJsonData.modid() + "_" + jarData.name() + "_firefly_jar", MissingWildsBlocks::createFireflyJarBlock);
-            Services.PLATFORM.getModCompatHandler().addJarBlock(jarData, block);
-            Services.PLATFORM.getModCompatHandler().addFoodJarBlock(jarData, foodJar);
-            Services.PLATFORM.getModCompatHandler().addFireflyJarBlock(jarData, fireflyJar);
-            JarMaps.JAR_TO_FIREFLY_JAR.put(block.get(), fireflyJar.get());
-            JarMaps.JAR_TO_FOOD_JAR.put(block.get(), foodJar.get());
+            Block block = MissingWildsBlocks.register(modCompatJsonData.modid() + "_" + jarData.name() + "_jar", MissingWildsBlocks::createJarBlock);
+            Block foodJar = MissingWildsBlocks.register(modCompatJsonData.modid() + "_" + jarData.name() + "_food_jar", MissingWildsBlocks::createFoodJarBlock);
+            Block fireflyJar = MissingWildsBlocks.register(modCompatJsonData.modid() + "_" + jarData.name() + "_firefly_jar", MissingWildsBlocks::createFireflyJarBlock);
+            ModCompatHandler.addJarBlock(jarData, block);
+            ModCompatHandler.addFoodJarBlock(jarData, foodJar);
+            ModCompatHandler.addFireflyJarBlock(jarData, fireflyJar);
+            JarMaps.JAR_TO_FIREFLY_JAR.put(block, fireflyJar);
+            JarMaps.JAR_TO_FOOD_JAR.put(block, foodJar);
             jarBlocks.put(jarData, block);
             fireflyJarBlocks.put(jarData, fireflyJar);
         });
     }
     public void registerItems() {
         fallenLogBlocks.forEach((logData, block) -> {
-            RegistryObject<Item> item = MissingWildsItems.register(modCompatJsonData.modid() + "_" + logData.name(), block);
-            Services.PLATFORM.getModCompatHandler().addFallenLogItem(item, logData);
+            Item item = MissingWildsItems.register(modCompatJsonData.modid() + "_" + logData.name(), block);
+            ModCompatHandler.addFallenLogItem(item, logData);
         });
         jarBlocks.forEach((jarData, block) -> MissingWildsItems.register(modCompatJsonData.modid() + "_" + jarData.name() + "_jar", block));
         fireflyJarBlocks.forEach((jarData, block) -> MissingWildsItems.registerFireflyJar(modCompatJsonData.modid() + "_" + jarData.name() + "_firefly_jar", block));
@@ -90,6 +88,19 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
                 createJarLootTables(resourceAdder, jarData);
         }
     }
+
+public void generateData(ResourceAdder resourceAdder) {
+    for (LogData logData : modCompatJsonData.logs()) {
+        createFallenLogRecipes(resourceAdder, logData);
+        createFallenLogAdvancement(resourceAdder, logData);
+        createFallenLogLootTable(resourceAdder, logData);
+    }
+    for (JarData jarData : modCompatJsonData.jars()) {
+        createJarRecipe(resourceAdder, jarData);
+        createJarAdvancement(resourceAdder, jarData);
+        createJarLootTables(resourceAdder, jarData);
+    }
+}
 
     public void createFallenLogBlockState(ResourceAdder resourceAdder, LogData logData) {
         resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("blockstates/" + modid + "_" + logData.name() + ".json"), String.format("""
@@ -145,6 +156,7 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
                 String.format("""
                 {
                   "type": "minecraft:crafting_shaped",
+                  "category": "building",
                   "group": "missingwilds:fallen_logs",
                   "key": {
                     "L": {
@@ -158,7 +170,7 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
                   ],
                   "result": {
                     "count": 8,
-                    "item": "missingwilds:%1$s_%3$s"
+                    "id": "missingwilds:%1$s_%3$s"
                   }
                 }
                 """, modid, logData.blockId(), logData.name())
@@ -204,7 +216,7 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
         ));
     }
     public void createFallenLogLootTable(ResourceAdder resourceAdder, LogData logData) {
-        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("loot_tables/blocks/" + modid + "_" + logData.name() + ".json"), String.format("""
+        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("loot_table/blocks/" + modid + "_" + logData.name() + ".json"), String.format("""
                 {
                   "type": "minecraft:block",
                   "pools": [
@@ -248,7 +260,7 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
     }
     public void createJarRecipe(ResourceAdder resourceAdder, JarData data) {
         var id = Constants.id(modid + "_" + data.name() + "_jar");
-        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("recipes/" + modid + "_" + data.name() + "_jar" + ".json"),
+        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("recipe/" + modid + "_" + data.name() + "_jar" + ".json"),
                 String.format("""
                 {
                   "type": "minecraft:crafting_shaped",
@@ -268,7 +280,7 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
                     "GGG"
                   ],
                   "result": {
-                    "item": "%s"
+                    "id": "%s"
                   },
                   "show_notification": true
                 }
@@ -276,7 +288,7 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
     }
     public void createJarAdvancement(ResourceAdder resourceAdder, JarData data) {
         var recipeId = Constants.id(modid + "_" + data.name() + "_jar");
-        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("advancements/recipes/items/" + modid + "_" + data.name() + ".json"),
+        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("advancement/recipes/items/" + modid + "_" + data.name() + ".json"),
                 String.format("""
                 {
                   "parent": "minecraft:recipes/root",
@@ -445,8 +457,8 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
      * Shouldn't be called in loop of all individual json defined mods, but at the end as this puts all the logs into the same tag
      */
     public static void generateFallenLogTags(ResourceAdder resourceAdder) {
-        var logList = Services.PLATFORM.getModCompatHandler().getFallenLogBlocks().stream().map(RegistryObject::getId).toList();
-        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("tags/blocks/fallen_logs.json"), String.format("""
+        var logList = ModCompatHandler.FALLEN_LOG_BLOCKS.keySet().stream().toList();
+        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("tags/block/fallen_logs.json"), String.format("""
                 {
                     "replace": false,
                     "values": [

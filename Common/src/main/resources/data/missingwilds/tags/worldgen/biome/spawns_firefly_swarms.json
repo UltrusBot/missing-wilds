@@ -1,13 +1,6 @@
 {
   "replace": false,
   "values": [
-    {
-      "id": "#c:swamp",
-      "required": false
-    },
-    {
-      "id": "#forge:is_swamp",
-      "required": false
-    }
+    "#c:is_swamp"
   ]
 }

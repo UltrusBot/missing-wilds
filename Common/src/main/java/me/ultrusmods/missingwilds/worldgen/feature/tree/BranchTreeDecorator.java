@@ -1,16 +1,15 @@
 package me.ultrusmods.missingwilds.worldgen.feature.tree;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import me.ultrusmods.missingwilds.register.MissingWildsFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.BeehiveBlock;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -19,11 +18,11 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
 public class BranchTreeDecorator extends TreeDecorator {
-    public static final Codec<BranchTreeDecorator> CODEC = RecordCodecBuilder.create(
+    public static final MapCodec<BranchTreeDecorator> CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
-                            BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(branchTreeDecorator -> branchTreeDecorator.branchProvider),
-                            Codec.floatRange(0.0f, 1.0f).fieldOf("bee_probability").forGetter(branchTreeDecorator -> branchTreeDecorator.beeProbability),
-                            Codec.floatRange(0.0f, 1.0f).fieldOf("branch_probability").forGetter(branchTreeDecorator -> branchTreeDecorator.branchProbability)
+                            BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(BranchTreeDecorator::getBranchProvider),
+                            Codec.floatRange(0.0f, 1.0f).fieldOf("bee_probability").forGetter(BranchTreeDecorator::getBeeProbability),
+                            Codec.floatRange(0.0f, 1.0f).fieldOf("branch_probability").forGetter(BranchTreeDecorator::getBranchProbability)
                     )
                     .apply(instance, BranchTreeDecorator::new)
     );
@@ -38,9 +37,21 @@ public class BranchTreeDecorator extends TreeDecorator {
         this.branchProbability = branchProbability;
     }
 
+    public BlockStateProvider getBranchProvider() {
+        return branchProvider;
+    }
+
+    public float getBeeProbability() {
+        return beeProbability;
+    }
+
+    public float getBranchProbability() {
+        return branchProbability;
+    }
+
     @Override
     protected TreeDecoratorType<?> type() {
-        return MissingWildsFeatures.BRANCH_TREE.get();
+        return MissingWildsFeatures.BRANCH_TREE_DECORATOR;
     }
 
 
@@ -73,9 +84,7 @@ public class BranchTreeDecorator extends TreeDecorator {
                 world.getBlockEntity(downPos, BlockEntityType.BEEHIVE).ifPresent(blockEntity -> {
                     int i = 2 + random.nextInt(2);
                     for (int j = 0; j < i; ++j) {
-                        CompoundTag nbtCompound = new CompoundTag();
-                        nbtCompound.putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.BEE).toString());
-                        blockEntity.storeBee(nbtCompound, random.nextInt(599), false);
+                        blockEntity.storeBee(BeehiveBlockEntity.Occupant.create(random.nextInt(599)));
                     }
                 });
             }
