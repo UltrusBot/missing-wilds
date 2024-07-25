@@ -109,8 +109,8 @@ publishMods {
         minecraftVersions.add(libs.minecraft.get().version!!)
     }
 
-    github {
-        accessToken = providers.gradleProperty("GH_TOKEN")
-        parent(project(":common").tasks.named("publishGithub"))
-    }
+//    github {
+//        accessToken = providers.gradleProperty("GH_TOKEN")
+//        parent(project(":common").tasks.named("publishGithub"))
+//    }
 }
