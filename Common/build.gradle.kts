@@ -68,7 +68,7 @@ publishMods {
     type = STABLE
 
     github {
-        accessToken = providers.environmentVariable("GITHUB_TOKEN")
+        accessToken = providers.gradleProperty("GH_TOKEN")
         repository = Properties.GITHUB_REPO
         tagName = "${Versions.MOD}+${libs.minecraft.get().version}"
         commitish = Properties.GITHUB_COMMITISH
