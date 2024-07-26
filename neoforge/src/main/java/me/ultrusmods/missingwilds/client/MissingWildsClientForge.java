@@ -3,6 +3,7 @@ package me.ultrusmods.missingwilds.client;
 
 import me.ultrusmods.missingwilds.Constants;
 import me.ultrusmods.missingwilds.client.render.FireflySwarmRenderer;
+import me.ultrusmods.missingwilds.compat.ModCompatHandler;
 import me.ultrusmods.missingwilds.particle.FireflyParticle;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.MissingWildsParticles;
@@ -33,8 +34,14 @@ public class MissingWildsClientForge {
         MissingWildsClientCommon.registerEntityRenderers(event::registerBlockEntityRenderer);
     }
 
+    public static void initModCompatAssets() {
+        if (ModCompatHandler.isJsonModCompatEnabled()) {
+            MissingWildsAssetResources.init();
+        }
+    }
+
     static {
-        MissingWildsAssetResources.init();
+        initModCompatAssets();
     }
 //    @SubscribeEvent
 //    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {

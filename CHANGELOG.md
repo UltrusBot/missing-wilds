@@ -1,1 +1,1 @@
-- Fixed conventional tags folder
+- Fixed bug causing crash on neoforge when Dynamic Asset Generator isn't installed.
