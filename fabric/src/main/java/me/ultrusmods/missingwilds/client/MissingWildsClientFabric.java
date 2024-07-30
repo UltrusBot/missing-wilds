@@ -1,6 +1,7 @@
 package me.ultrusmods.missingwilds.client;
 
 import me.ultrusmods.missingwilds.client.render.FireflySwarmRenderer;
+import me.ultrusmods.missingwilds.compat.ModCompatHandler;
 import me.ultrusmods.missingwilds.particle.FireflyParticle;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.MissingWildsParticles;
@@ -14,7 +15,9 @@ public class MissingWildsClientFabric implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        MissingWildsAssetResources.init();
+        if (ModCompatHandler.isJsonModCompatEnabled()) {
+            MissingWildsAssetResources.init();
+        }
         MissingWildsClientCommon.init();
         ParticleFactoryRegistry.getInstance().register(MissingWildsParticles.FIREFLY, FireflyParticle.Provider::new);
         EntityRendererRegistry.register(MissingWildsEntities.FIREFLY_SWARM, FireflySwarmRenderer::new);

@@ -1,1 +1,1 @@
-- Fixed bug causing crash on neoforge when Dynamic Asset Generator isn't installed.
+- Fixed bug causing crash on fabric when Dynamic Asset Generator isn't installed.
