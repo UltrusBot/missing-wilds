@@ -16,8 +16,8 @@ import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 
 public class MissingWildsModelProvider extends FabricModelProvider {
 

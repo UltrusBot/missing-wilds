@@ -1,15 +1,9 @@
-
 plugins {
-    id 'fabric-loom' version '0.11-SNAPSHOT'
-    id 'maven-publish'
-    id 'idea'
-    alias libs.plugins.publishing
+    id 'multiloader-loader'
+    id 'fabric-loom'
 }
 
-archivesBaseName = "${mod_name}-fabric"
-version = "${version}+${minecraft_version}"
 repositories {
-    maven{ url "https://jitpack.io"}
     maven{ url "https://ueaj.dev/maven"}
     maven {
         name = "TerraformersMC"
@@ -30,13 +24,16 @@ repositories {
         }
     }
 }
-
 dependencies {
-    minecraft(libs.minecraft)
-    mappings(loom.officialMojangMappings())
+    minecraft "com.mojang:minecraft:${libs.minecraft.get().version}"
+    mappings loom.layered {
+        officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
+    }
     modImplementation(libs.fabric.loader)
     modImplementation(libs.fabric.api)
-    implementation(project(":Common"))
+    implementation project(":common")
+
     modImplementation(libs.arrp)
     modImplementation(libs.templates)
 
@@ -44,9 +41,11 @@ dependencies {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/missingwilds.accesswidener")
+    if (project(":common").file("src/main/resources/${mod_id}.accesswidener").exists()) {
+        accessWidenerPath.set(project(":common").file("src/main/resources/${mod_id}.accesswidener"))
+    }
     mixin {
-        defaultRefmapName = "${mod_id}.refmap.json"
+        defaultRefmapName.set("${mod_id}.refmap.json")
     }
     runs {
         client {
@@ -66,85 +65,9 @@ loom {
             setConfigName("Fabric Datagen Common")
             vmArg("-Dmw.common=true")
             vmArg("-Dfabric-api.datagen")
-            vmArg("-Dfabric-api.datagen.output-dir=${file("../Common/src/generated/resources")}")
+            vmArg("-Dfabric-api.datagen.output-dir=${file("../common/src/generated/resources")}")
             vmArg("-Dfabric-api.datagen.modid=${mod_id}")
             runDir = "build/datagen"
-        }
-    }
-}
-
-publishMods {
-    displayName = "Missing Wilds Fabric ${project.version}"
-    file = remapJar.archiveFile
-    changelog = file("$rootDir/CHANGELOG.md").text
-    version = "v${project.version}-fabric"
-    type = STABLE
-    modLoaders.addAll("fabric")
-
-    curseforge {
-        projectId = "622590"
-        minecraftVersions.addAll("1.20.1")
-        accessToken = providers.environmentVariable("CF_API_KEY")
-        requires {
-            slug = "fabric-api"
-        }
-        optional {
-            slug = "arrp"
-        }
-    }
-    modrinth {
-        projectId = "Nw0MStSd"
-        minecraftVersions.addAll("1.20.1")
-        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
-        requires {
-            slug = "fabric-api"
-        }
-        optional {
-            slug = "arrp"
-        }
-    }
-    github {
-        repository = "UltrusBot/missing-wilds"
-        commitish = "1.20"
-        accessToken = providers.environmentVariable("GH_TOKEN")
-    }
-
-    dryRun = false
-}
-
-processResources {
-    from project(":Common").sourceSets.main.resources
-    inputs.property "version", project.version
-
-    filesMatching("fabric.mod.json") {
-        expand "version": project.version
-    }
-    exclude '.cache'
-}
-
-tasks.withType(JavaCompile) {
-    source(project(":Common").sourceSets.main.allSource)
-}
-
-jar {
-    from("LICENSE") {
-        rename { "${it}_${mod_name}" }
-    }
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-                    artifactId project.archivesBaseName
-                    version project.version
-                    from components.java
-        }
-    }
-
-    repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
         }
     }
 }

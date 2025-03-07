@@ -1,187 +1,65 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
-    }
-}
 plugins {
-    alias libs.plugins.publishing
+    id 'multiloader-loader'
+    id 'net.neoforged.moddev.legacyforge'
 }
-apply plugin: 'java'
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
-apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'maven-publish'
-
-jarJar.enable()
-
-archivesBaseName = "${mod_name}-forge"
-version = "${version}+${minecraft_version}"
 
 mixin {
-    add sourceSets.main, "${mod_id}.refmap.json"
-    config "${mod_id}.mixins.json"
-    config "${mod_id}.forge.mixins.json"
+    add(sourceSets.main, "${mod_id}.refmap.json")
+
+    config("${mod_id}.mixins.json")
+    config("${mod_id}.forge.mixins.json")
 }
 
-repositories {
-    maven {
-        name = 'jitpack'
-        url = "https://jitpack.io"
+legacyForge {
+    version = "${minecraft_version}-${forge_version}"
+
+    validateAccessTransformers = true
+
+//    def at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
+//    if (at.exists()) {
+//        setAccessTransformers(at);
+//    }
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
     }
-    maven {
-        url = "https://api.modrinth.com/maven"
-    }
-}
-
-
-minecraft {
-    mappings channel: 'official', version: minecraft_version
-
-    if (project.hasProperty('forge_ats_enabled') && project.findProperty('forge_ats_enabled').toBoolean()) {
-        // This location is hardcoded in Forge and can not be changed.
-        // https://github.com/MinecraftForge/MinecraftForge/blob/be1698bb1554f9c8fa2f58e32b9ab70bc4385e60/fmlloader/src/main/java/net/minecraftforge/fml/loading/moddiscovery/ModFile.java#L123
-        accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-        project.logger.debug('Forge Access Transformers are enabled for this project.')
-    }
-
     runs {
         client {
-            workingDirectory project.file('run')
-            ideaModule "${rootProject.name}.${project.name}.main"
-            taskName 'Client'
-            args "-mixin.config=${mod_id}.mixins.json", "-mixin.config=${mod_id}.forge.mixins.json"
-            mods {
-                modClientRun {
-                    source sourceSets.main
-                    source project(":Common").sourceSets.main
-                }
-            }
+            client()
         }
-
         server {
-            workingDirectory project.file('run')
-            ideaModule "${rootProject.name}.${project.name}.main"
-            taskName 'Server'
-            args "-mixin.config=${mod_id}.mixins.json", "-mixin.config=${mod_id}.forge.mixins.json"
-            mods {
-                modServerRun {
-                    source sourceSets.main
-                    source project(":Common").sourceSets.main
-                }
-            }
+            server()
         }
+    }
 
-        data {
-            workingDirectory project.file('run')
-            ideaModule "${rootProject.name}.${project.name}.main"
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-            taskName 'Data'
-            args "-mixin.config=${mod_id}.mixins.json", "-mixin.config=${mod_id}.forge.mixins.json"
-            mods {
-                modDataRun {
-                    source sourceSets.main
-                    source project(":Common").sourceSets.main
-                }
-            }
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
         }
     }
 }
-
-sourceSets.main.resources.srcDir 'src/generated/resources'
-
+repositories {
+    maven {
+        name = "lukebemish"
+        url = 'https://maven.lukebemish.dev/releases/'
+    }
+}
 dependencies {
-    minecraft libs.forge
-    compileOnly project(":Common")
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-//    implementation fg.deobf(libs.midnightlib.forge.get())
-    implementation fg.deobf(libs.defaultresources.forge.get())
-    jarJar(libs.defaultresources.forge.get()) {
-        jarJar.ranged(it, "[${libs.versions.defaultresources.get()},)")
-    }
-    implementation fg.deobf(libs.dynamicassetgenerator.forge.get())
-
-}
-tasks.build.dependsOn tasks.jarJar
-tasks.jarJar.archiveClassifier.set("");
-reobf {
-    jarJar {}
-}
-tasks.jarJar.finalizedBy("reobfJarJar")
-tasks.withType(JavaCompile) {
-    source(project(":Common").sourceSets.main.allSource)
-}
-tasks.withType(JavaCompile) {
-    source(project(":Common").sourceSets.main.allSource)
-}
-
-publishMods {
-    displayName = "Missing Wilds Forge ${project.version}"
-    file = jar.archiveFile
-    changelog = file("$rootDir/CHANGELOG.md").text
-    version = "v${project.version}-forge"
-    type = STABLE
-    modLoaders.addAll("forge")
-
-    curseforge {
-        projectId = "634277"
-        minecraftVersions.addAll("1.20.1")
-        accessToken = providers.environmentVariable("CF_API_KEY")
-        optional {
-            slug = "dynamic-asset-generator"
+    compileOnly project(":common")
+    annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
+    modImplementation(libs.defaultresources.forge)
+    jarJar(libs.defaultresources.forge) {
+        capabilities {
+            requireCapability("dev.lukebemish:defaultresources-forge")
         }
     }
-    modrinth {
-        projectId = "Nw0MStSd"
-        minecraftVersions.addAll("1.20.1")
-        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
-
-        optional {
-            slug = "dynamic_asset_generator"
-        }
-    }
-    github {
-        repository = "UltrusBot/missing-wilds"
-        commitish = "1.20"
-        accessToken = providers.environmentVariable("GH_TOKEN")
-    }
-
-    dryRun = false
+    modImplementation(libs.dynamicassetgenerator.forge)
+    
 }
 
-
-processResources {
-    from project(":Common").sourceSets.main.resources
-
-    filesMatching('*.mixins.json') {
-        expand "refmap_target": "${mod_id}."
-    }
-    from(rootProject.rootDir.absolutePath + "/ModCompat") {
-        into "defaultresources"
-    }
-    exclude '.cache'
-}
-
-
-jar.finalizedBy('reobfJar')
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
-        }
-    }
+jar {
+    finalizedBy('reobfJar')
+    manifest.attributes([
+            "MixinConfigs": "${mod_id}.mixins.json,${mod_id}.forge.mixins.json"
+    ])
 }

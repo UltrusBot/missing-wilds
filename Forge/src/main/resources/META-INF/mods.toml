@@ -5,7 +5,7 @@ issueTrackerURL="https://github.com/UltrusBot/missing-wilds/issues"
 
 [[mods]]
 modId="missingwilds"
-version="${file.jarVersion}"
+version="${version}"
 displayName="Missing Wilds"
 logoFile="icon.png"
 credits="Everyone that worked on the MultiLoader template!"
@@ -29,5 +29,11 @@ Adds the features scrapped in the Wild Update.
     modId="dynamic_asset_generator"
     mandatory=false
     versionRange="[4.2.1,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.missingwilds]]
+    modId="defaultresources"
+    mandatory=true
+    versionRange="[2.0.0,)"
     ordering="NONE"
     side="BOTH"
