@@ -67,6 +67,12 @@ public class JarBlock extends Block {
                 FoodJarBlock.insertItem(level, pos, stack);
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
+        } else if (stack.is(Items.POTION)) {
+            if (JarMaps.JAR_TO_POTION_JAR.get(this) instanceof PotionJarBlock jar) {
+                level.setBlockAndUpdate(pos, jar.defaultBlockState().setValue(COVERED, state.getValue(COVERED)));
+                PotionJarBlock.setPotion(level, pos, stack);
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            }
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }

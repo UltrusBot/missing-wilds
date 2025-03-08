@@ -110,7 +110,24 @@ public class MissingWildsBlocks {
 	public static final Block RED_STAINED_FOOD_JAR_BLOCK = register("red_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
 	public static final Block BLACK_STAINED_FOOD_JAR_BLOCK = register("black_stained_food_jar", MissingWildsBlocks::createFoodJarBlock);
 
-
+	public static final Block POTION_JAR_BLOCK = register("potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block TINTED_POTION_JAR_BLOCK = register("tinted_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block WHITE_STAINED_POTION_JAR_BLOCK = register("white_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block ORANGE_STAINED_POTION_JAR_BLOCK = register("orange_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block MAGENTA_STAINED_POTION_JAR_BLOCK = register("magenta_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block LIGHT_BLUE_STAINED_POTION_JAR_BLOCK = register("light_blue_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block YELLOW_STAINED_POTION_JAR_BLOCK = register("yellow_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block LIME_STAINED_POTION_JAR_BLOCK = register("lime_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block PINK_STAINED_POTION_JAR_BLOCK = register("pink_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block GRAY_STAINED_POTION_JAR_BLOCK = register("gray_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block LIGHT_GRAY_STAINED_POTION_JAR_BLOCK = register("light_gray_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block CYAN_STAINED_POTION_JAR_BLOCK = register("cyan_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block PURPLE_STAINED_POTION_JAR_BLOCK = register("purple_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block BLUE_STAINED_POTION_JAR_BLOCK = register("blue_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block BROWN_STAINED_POTION_JAR_BLOCK = register("brown_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block GREEN_STAINED_POTION_JAR_BLOCK = register("green_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block RED_STAINED_POTION_JAR_BLOCK = register("red_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
+	public static final Block BLACK_STAINED_POTION_JAR_BLOCK = register("black_stained_potion_jar", MissingWildsBlocks::createPotionJarBlock);
 
 //	public static final Block WATERLILY_BLOCK = register("waterlily", () -> Services.PLATFORM.getWaterlilyBlock(Properties.copy(Blocks.LILY_PAD)));
 
@@ -154,5 +171,8 @@ public class MissingWildsBlocks {
 	}
 	public static Block createFireflyJarBlock() {
 		return new FireflyJarBlock(Properties.of().strength(2.0F).sound(SoundType.GLASS).noOcclusion().lightLevel((state) -> state.getValue(FireflyJarBlock.LIGHT_LEVEL)));
+	}
+	public static Block createPotionJarBlock() {
+		return new PotionJarBlock(Properties.of().strength(2.0F).sound(SoundType.GLASS).noOcclusion());
 	}
 }

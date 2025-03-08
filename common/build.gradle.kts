@@ -20,7 +20,7 @@ val parchment_version: String by project
 neoForge {
     neoFormVersion = neoform_version
     parchment {
-        minecraftVersion = libs.minecraft.get().version
+        minecraftVersion = "1.21"
         mappingsVersion = parchment_version
     }
     addModdingDependenciesTo(sourceSets["test"])

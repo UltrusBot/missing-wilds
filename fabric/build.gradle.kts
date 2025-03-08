@@ -40,6 +40,7 @@ dependencies {
         }
     }
     modImplementation(libs.midnightlib.fabric)
+    modImplementation(libs.templates)
 
     include(libs.midnightlib.fabric)
     include(libs.defaultresources) {

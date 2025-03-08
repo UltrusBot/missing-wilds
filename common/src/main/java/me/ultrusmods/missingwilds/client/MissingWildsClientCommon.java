@@ -95,7 +95,26 @@ public class MissingWildsClientCommon {
                 MissingWildsBlocks.BROWN_STAINED_FOOD_JAR_BLOCK,
                 MissingWildsBlocks.GREEN_STAINED_FOOD_JAR_BLOCK,
                 MissingWildsBlocks.RED_STAINED_FOOD_JAR_BLOCK,
-                MissingWildsBlocks.BLACK_STAINED_FOOD_JAR_BLOCK
+                MissingWildsBlocks.BLACK_STAINED_FOOD_JAR_BLOCK,
+                // Potion Jars
+                MissingWildsBlocks.POTION_JAR_BLOCK,
+                MissingWildsBlocks.TINTED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.WHITE_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.ORANGE_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.MAGENTA_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.LIGHT_BLUE_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.YELLOW_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.LIME_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.PINK_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.GRAY_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.LIGHT_GRAY_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.CYAN_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.PURPLE_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.BLUE_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.BROWN_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.GREEN_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.RED_STAINED_POTION_JAR_BLOCK,
+                MissingWildsBlocks.BLACK_STAINED_POTION_JAR_BLOCK
         );
         ModCompatHandler.getJarBlocks().values().forEach(block -> Services.PLATFORM.setBlockRenderType(RenderType.translucent(), block));
         ModCompatHandler.getFireflyJarBlocks().values().forEach(block -> Services.PLATFORM.setBlockRenderType(RenderType.translucent(), block));

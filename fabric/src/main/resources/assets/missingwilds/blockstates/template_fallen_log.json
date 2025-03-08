@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "missingwilds:special_fallen_template_log",
+      "y": 90
+    },
+    "axis=y": {
+      "model": "missingwilds:special_fallen_template_log",
+      "x": 90
+    },
+    "axis=z": {
+      "model": "missingwilds:special_fallen_template_log"
+    }
+  }
+}

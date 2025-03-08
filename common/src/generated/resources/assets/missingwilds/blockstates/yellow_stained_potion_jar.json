@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "covered=false,level=1": {
+      "model": "missingwilds:block/yellow_stained_potion_jar_one_third_open"
+    },
+    "covered=false,level=2": {
+      "model": "missingwilds:block/yellow_stained_potion_jar_two_thirds_open"
+    },
+    "covered=false,level=3": {
+      "model": "missingwilds:block/yellow_stained_potion_jar_open"
+    },
+    "covered=true,level=1": {
+      "model": "missingwilds:block/yellow_stained_potion_jar_one_third"
+    },
+    "covered=true,level=2": {
+      "model": "missingwilds:block/yellow_stained_potion_jar_two_thirds"
+    },
+    "covered=true,level=3": {
+      "model": "missingwilds:block/yellow_stained_potion_jar"
+    }
+  }
+}

@@ -1,5 +1,7 @@
 package me.ultrusmods.missingwilds;
 
+import me.ultrusmods.missingwilds.compat.ModCompatHandler;
+import me.ultrusmods.missingwilds.compat.template.TemplateModCompat;
 import me.ultrusmods.missingwilds.entity.FireflySwarm;
 import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.*;
@@ -26,6 +28,9 @@ public class MissingWildsFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         MissingWildsModCommon.init();
+        if (Services.PLATFORM.isModLoaded("templates")) {
+            ModCompatHandler.addModCompat(new TemplateModCompat());
+        }
         MissingWildsBlocks.init((resourceLocation, block) -> Registry.register(BuiltInRegistries.BLOCK, resourceLocation, block));
         MissingWildsItems.init((resourceLocation, item) -> Registry.register(BuiltInRegistries.ITEM, resourceLocation, item));
         MissingWildsSounds.register((resourceLocation, soundEvent) -> Registry.register(BuiltInRegistries.SOUND_EVENT, resourceLocation, soundEvent));

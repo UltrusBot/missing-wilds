@@ -1,7 +1,9 @@
 package me.ultrusmods.missingwilds.data;
 
+import me.ultrusmods.missingwilds.JarMaps;
 import me.ultrusmods.missingwilds.block.FallenLogBlock;
 import me.ultrusmods.missingwilds.block.JarBlock;
+import me.ultrusmods.missingwilds.block.PotionJarBlock;
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -92,9 +94,24 @@ public class MissingWildsModelProvider extends FabricModelProvider {
         createJar(MissingWildsBlocks.RED_STAINED_FOOD_JAR_BLOCK, Blocks.RED_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.RED_STAINED_JAR_BLOCK);
         createJar(MissingWildsBlocks.BLACK_STAINED_FOOD_JAR_BLOCK, Blocks.BLACK_STAINED_GLASS, blockModelGenerators, MissingWildsBlocks.BLACK_STAINED_JAR_BLOCK);
 
-
-
-
+        createPotionJar(MissingWildsBlocks.POTION_JAR_BLOCK, Blocks.GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.TINTED_POTION_JAR_BLOCK, Blocks.TINTED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.WHITE_STAINED_POTION_JAR_BLOCK, Blocks.WHITE_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.ORANGE_STAINED_POTION_JAR_BLOCK, Blocks.ORANGE_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.MAGENTA_STAINED_POTION_JAR_BLOCK, Blocks.MAGENTA_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.LIGHT_BLUE_STAINED_POTION_JAR_BLOCK, Blocks.LIGHT_BLUE_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.YELLOW_STAINED_POTION_JAR_BLOCK, Blocks.YELLOW_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.LIME_STAINED_POTION_JAR_BLOCK, Blocks.LIME_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.PINK_STAINED_POTION_JAR_BLOCK, Blocks.PINK_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.GRAY_STAINED_POTION_JAR_BLOCK, Blocks.GRAY_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.LIGHT_GRAY_STAINED_POTION_JAR_BLOCK, Blocks.LIGHT_GRAY_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.CYAN_STAINED_POTION_JAR_BLOCK, Blocks.CYAN_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.PURPLE_STAINED_POTION_JAR_BLOCK, Blocks.PURPLE_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.BLUE_STAINED_POTION_JAR_BLOCK, Blocks.BLUE_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.BROWN_STAINED_POTION_JAR_BLOCK, Blocks.BROWN_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.GREEN_STAINED_POTION_JAR_BLOCK, Blocks.GREEN_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.RED_STAINED_POTION_JAR_BLOCK, Blocks.RED_STAINED_GLASS, blockModelGenerators);
+        createPotionJar(MissingWildsBlocks.BLACK_STAINED_POTION_JAR_BLOCK, Blocks.BLACK_STAINED_GLASS, blockModelGenerators);
 
 
     }
@@ -134,6 +151,27 @@ public class MissingWildsModelProvider extends FabricModelProvider {
                 PropertyDispatch.property(JarBlock.COVERED)
                         .select(false, Variant.variant().with(VariantProperties.MODEL, jarOpenModel))
                         .select(true, Variant.variant().with(VariantProperties.MODEL, jarModel)));
+        blockModelGenerators.blockStateOutput.accept(multiVariant);
+    }
+    public void createPotionJar(Block jar, Block glass, BlockModelGenerators blockModelGenerators) {
+        TextureMapping textureMapping = MissingWildsTextureMappings.createJar(JarMaps.JAR_TO_POTION_JAR.inverse().get(jar), glass);
+        var fullJarModel = MissingWildsModelTemplates.FULL_POTION_JAR.create(jar, textureMapping, blockModelGenerators.modelOutput);
+        var fullJarOpenModel = MissingWildsModelTemplates.FULL_POTION_JAR_OPEN.create(jar, textureMapping, blockModelGenerators.modelOutput);
+        var twoThirdsJarModel = MissingWildsModelTemplates.TWO_THIRDS_POTION_JAR.create(jar, textureMapping, blockModelGenerators.modelOutput);
+        var twoThirdsJarOpenModel = MissingWildsModelTemplates.TWO_THIRDS_POTION_JAR_OPEN.create(jar, textureMapping, blockModelGenerators.modelOutput);
+        var oneThirdJarModel = MissingWildsModelTemplates.ONE_THIRD_POTION_JAR.create(jar, textureMapping, blockModelGenerators.modelOutput);
+        var oneThirdJarOpenModel = MissingWildsModelTemplates.ONE_THIRD_POTION_JAR_OPEN.create(jar, textureMapping, blockModelGenerators.modelOutput);
+        
+        var multiVariant = MultiVariantGenerator.multiVariant(jar).with(
+                PropertyDispatch.properties(JarBlock.COVERED, PotionJarBlock.POTION_LEVEL)
+                        .select(false, 3, Variant.variant().with(VariantProperties.MODEL, fullJarOpenModel))
+                        .select(true, 3, Variant.variant().with(VariantProperties.MODEL, fullJarModel))
+                        .select(false, 2, Variant.variant().with(VariantProperties.MODEL, twoThirdsJarOpenModel))
+                        .select(true, 2, Variant.variant().with(VariantProperties.MODEL, twoThirdsJarModel))
+                        .select(false, 1, Variant.variant().with(VariantProperties.MODEL, oneThirdJarOpenModel))
+                        .select(true, 1, Variant.variant().with(VariantProperties.MODEL, oneThirdJarModel))
+        );
+                
         blockModelGenerators.blockStateOutput.accept(multiVariant);
     }
 

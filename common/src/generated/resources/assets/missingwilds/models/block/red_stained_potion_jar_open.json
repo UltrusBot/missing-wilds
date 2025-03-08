@@ -1,0 +1,7 @@
+{
+  "parent": "missingwilds:block/template/potion_jar_open_template",
+  "textures": {
+    "glass": "minecraft:block/red_stained_glass",
+    "jar": "missingwilds:block/red_stained_jar"
+  }
+}

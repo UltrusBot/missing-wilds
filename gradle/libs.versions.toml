@@ -1,9 +1,9 @@
 [versions]
-minecraft = "1.21"
-fabric_loader = "0.15.11"
-fabric_api = "0.100.7+1.21"
-neoforge = "21.0.111-beta"
-modmenu = "11.0.1"
+minecraft = "1.21.1"
+fabric_loader = "0.16.10"
+fabric_api = "0.115.1+1.21.1"
+neoforge = "21.1.132"
+modmenu = "11.0.3"
 
 # Mixin
 fabric_mixin = "0.15.0+mixin.0.8.7"
@@ -19,7 +19,8 @@ midnightlib_forge = "1.5.7-neoforge"
 midnightlib_fabric = "1.5.7-fabric"
 defaultresources = "3.6.0"
 dynamicassetgenerator = "6.1.1"
-emi = "1.1.10+1.21"
+emi = "1.1.20+1.21.1"
+templates = "2.4.0-fabric-1.21.1"
 
 
 [libraries]
@@ -34,7 +35,7 @@ emi_fabric = { module = "dev.emi:emi-fabric", version.ref = "emi" }
 emi_neoforge = { module = "dev.emi:emi-neoforge", version.ref = "emi" }
 midnightlib_forge = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_forge" }
 midnightlib_fabric = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_fabric" }
-
+templates = { module= "maven.modrinth:templates-2", version.ref = "templates" }
 # Default Resources
 defaultresources = { module = "dev.lukebemish:defaultresources", version.ref = "defaultresources" }
 # Dynamic Asset Generator

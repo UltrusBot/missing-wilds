@@ -15,7 +15,7 @@ val parchment_version: String by project
 neoForge {
     version = libs.neoforge.get().version
     parchment {
-        minecraftVersion = libs.minecraft.get().version
+        minecraftVersion = "1.21"
         mappingsVersion = parchment_version
     }
     addModdingDependenciesTo(sourceSets["test"])
