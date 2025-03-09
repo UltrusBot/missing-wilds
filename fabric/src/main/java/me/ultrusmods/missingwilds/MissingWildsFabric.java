@@ -34,7 +34,7 @@ public class MissingWildsFabric implements ModInitializer {
         MissingWildsBlocks.init((resourceLocation, block) -> Registry.register(BuiltInRegistries.BLOCK, resourceLocation, block));
         MissingWildsItems.init((resourceLocation, item) -> Registry.register(BuiltInRegistries.ITEM, resourceLocation, item));
         MissingWildsSounds.register((resourceLocation, soundEvent) -> Registry.register(BuiltInRegistries.SOUND_EVENT, resourceLocation, soundEvent));
-
+        MissingWildsDataComponents.register();
         MissingWildsFeatures.registerFeature((resourceLocation, feature) -> Registry.register(BuiltInRegistries.FEATURE, resourceLocation, feature));
         MissingWildsFeatures.registerTreeDecorator((resourceLocation, treeDecoratorType) -> Registry.register(BuiltInRegistries.TREE_DECORATOR_TYPE, resourceLocation, treeDecoratorType));
 

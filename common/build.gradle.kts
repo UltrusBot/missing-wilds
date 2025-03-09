@@ -38,6 +38,8 @@ dependencies {
 
     compileOnly(libs.dynamicassetgenerator)
     compileOnly(libs.defaultresources)
+    
+    compileOnly(libs.bovinesandbuttercups.common)
 }
 
 configurations {

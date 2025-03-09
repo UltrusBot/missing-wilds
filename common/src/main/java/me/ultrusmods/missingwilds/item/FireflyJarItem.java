@@ -16,9 +16,7 @@ public class FireflyJarItem extends BlockItem {
     public FireflyJarItem(Block block, Properties properties) {
         super(block, properties);
     }
-
-
-
+    
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);

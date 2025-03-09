@@ -7,6 +7,7 @@ import me.ultrusmods.missingwilds.compat.ModCompatHandler;
 import me.ultrusmods.missingwilds.compat.template.TemplateModCompatClient;
 import me.ultrusmods.missingwilds.particle.FireflyParticle;
 import me.ultrusmods.missingwilds.platform.Services;
+import me.ultrusmods.missingwilds.register.MissingWildsDataComponents;
 import me.ultrusmods.missingwilds.register.MissingWildsEntities;
 import me.ultrusmods.missingwilds.register.MissingWildsParticles;
 import me.ultrusmods.missingwilds.resource.MissingWildsAssetResources;
@@ -15,6 +16,7 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.block.Block;
 
 public class MissingWildsClientFabric implements ClientModInitializer {
@@ -40,6 +42,12 @@ public class MissingWildsClientFabric implements ClientModInitializer {
             }
             return 0xFFFFFF;
         }, JarMaps.JAR_TO_POTION_JAR.values().toArray(new Block[0]));
+        ColorProviderRegistry.ITEM.register(((itemStack, i) -> {
+            if (itemStack.has(MissingWildsDataComponents.POTION) && i == 0) {
+                return PotionContents.getColor(itemStack.get(MissingWildsDataComponents.POTION));
+            }
+            return 0xFFFFFF;
+        }), JarMaps.JAR_TO_POTION_JAR.values().toArray(new Block[0]));
 
 
         if (Services.PLATFORM.isModLoaded("templates")) {

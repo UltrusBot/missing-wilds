@@ -74,6 +74,7 @@ dependencies {
             requireCapability("dev.lukebemish:defaultresources-neoforge")
         }
     }
+    implementation(libs.bovinesandbuttercups.neoforge)
 }
 
 tasks {

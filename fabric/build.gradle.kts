@@ -48,6 +48,7 @@ dependencies {
             requireCapability("dev.lukebemish:defaultresources-fabric")
         }
     }
+    modImplementation(libs.bovinesandbuttercups.fabric)
 }
 loom {
     val aw = file("src/main/resources/${Properties.MOD_ID}.accesswidener");

@@ -21,6 +21,8 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
     Map<LogData, Block> fallenLogBlocks = new HashMap<>();
     Map<JarData, Block> jarBlocks = new HashMap<>();
     Map<JarData, Block> fireflyJarBlocks = new HashMap<>();
+    Map<JarData, Block> potionJarBlocks = new HashMap<>();
+    
 
     public JsonDefinedModCompatInstance(ModCompatJsonData modCompatJsonData) {
         super(modCompatJsonData.modid());
@@ -47,13 +49,17 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
             Block block = MissingWildsBlocks.register(modCompatJsonData.modid() + "_" + jarData.name() + "_jar", MissingWildsBlocks::createJarBlock);
             Block foodJar = MissingWildsBlocks.register(modCompatJsonData.modid() + "_" + jarData.name() + "_food_jar", MissingWildsBlocks::createFoodJarBlock);
             Block fireflyJar = MissingWildsBlocks.register(modCompatJsonData.modid() + "_" + jarData.name() + "_firefly_jar", MissingWildsBlocks::createFireflyJarBlock);
+            Block potionJar = MissingWildsBlocks.register(modCompatJsonData.modid() + "_" + jarData.name() + "_potion_jar", MissingWildsBlocks::createPotionJarBlock);
             ModCompatHandler.addJarBlock(jarData, block);
             ModCompatHandler.addFoodJarBlock(jarData, foodJar);
             ModCompatHandler.addFireflyJarBlock(jarData, fireflyJar);
+            ModCompatHandler.addPotionJarBlock(jarData, potionJar);
             JarMaps.JAR_TO_FIREFLY_JAR.put(block, fireflyJar);
             JarMaps.JAR_TO_FOOD_JAR.put(block, foodJar);
+            JarMaps.JAR_TO_POTION_JAR.put(block, potionJar);
             jarBlocks.put(jarData, block);
             fireflyJarBlocks.put(jarData, fireflyJar);
+            potionJarBlocks.put(jarData, potionJar);
         });
     }
     public void registerItems() {
@@ -63,6 +69,7 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
         });
         jarBlocks.forEach((jarData, block) -> MissingWildsItems.register(modCompatJsonData.modid() + "_" + jarData.name() + "_jar", block));
         fireflyJarBlocks.forEach((jarData, block) -> MissingWildsItems.registerFireflyJar(modCompatJsonData.modid() + "_" + jarData.name() + "_firefly_jar", block));
+        potionJarBlocks.forEach((jarData, block) -> MissingWildsItems.registerPotionJar(modCompatJsonData.modid() + "_" + jarData.name() + "_potion_jar", block));
     }
 
     @Override
@@ -244,9 +251,11 @@ public void generateData(ResourceAdder resourceAdder) {
         String regularJarName = jarData.name() + "_jar";
         String fireflyJarName = jarData.name() + "_firefly_jar";
         String foodJarName = jarData.name() + "_food_jar";
+        String potionJarName = jarData.name() + "_potion_jar";
         resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("blockstates/" + modid + "_" + regularJarName + ".json"), getJarBlockstateJson(regularJarName, modid));
         resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("blockstates/" + modid + "_" + fireflyJarName + ".json"), getJarBlockstateJson(fireflyJarName, modid));
         resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("blockstates/" + modid + "_" + foodJarName + ".json"), getJarBlockstateJson(foodJarName, modid));
+        resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("blockstates/" + modid + "_" + potionJarName + ".json"), getPotionJarBlockstateJson(potionJarName, modid));
 
         resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("models/block/" + modid + "_" + regularJarName + ".json"), getJarModelText(false, jarData));
         resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("models/block/" + modid + "_" + fireflyJarName + ".json"), getJarModelText(false, jarData));
@@ -256,7 +265,14 @@ public void generateData(ResourceAdder resourceAdder) {
         resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("models/block/" + modid + "_" + foodJarName + "_open.json"), getJarModelText(true, jarData));
         resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("models/item/" + modid + "_" + regularJarName + ".json"), getParentedModelText(modid + "_" + regularJarName));
         resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("models/item/" + modid + "_" + fireflyJarName + ".json"), getParentedModelText(modid + "_" + fireflyJarName));
-
+        
+        resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("models/block/" + modid + "_" + potionJarName + "_one_third.json"), getPotionJarModelText(false, jarData, 1));
+        resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("models/block/" + modid + "_" + potionJarName + "_two_thirds.json"), getPotionJarModelText(false, jarData, 2));
+        resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("models/block/" + modid + "_" + potionJarName + ".json"), getPotionJarModelText(false, jarData, 3));
+        resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("models/block/" + modid + "_" + potionJarName + "_one_third_open.json"), getPotionJarModelText(true, jarData, 1));
+        resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("models/block/" + modid + "_" + potionJarName + "_two_thirds_open.json"), getPotionJarModelText(true, jarData, 2));
+        resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("models/block/" + modid + "_" + potionJarName + "_open.json"), getPotionJarModelText(true, jarData, 3));
+        resourceAdder.addText(PackType.CLIENT_RESOURCES, Constants.id("models/item/" + modid + "_" + potionJarName + ".json"), getParentedModelText(modid + "_" + potionJarName));
     }
     public void createJarRecipe(ResourceAdder resourceAdder, JarData data) {
         var id = Constants.id(modid + "_" + data.name() + "_jar");
@@ -363,51 +379,51 @@ public void generateData(ResourceAdder resourceAdder) {
 
         resourceAdder.addText(PackType.SERVER_DATA, Constants.id("loot_tables/blocks/" + modid + "_" + fireflyJarName + ".json"),
                 String.format("""
+                    {
+                      "type": "minecraft:block",
+                      "pools": [
                         {
-                          "type": "minecraft:block",
-                          "pools": [
+                          "bonus_rolls": 0.0,
+                          "conditions": [
                             {
-                              "bonus_rolls": 0.0,
-                              "conditions": [
+                              "condition": "minecraft:survives_explosion"
+                            }
+                          ],
+                          "entries": [
+                            {
+                              "type": "minecraft:item",
+                              "functions": [
                                 {
-                                  "condition": "minecraft:survives_explosion"
-                                }
-                              ],
-                              "entries": [
+                                  "function": "minecraft:copy_name",
+                                  "source": "block_entity"
+                                },
                                 {
-                                  "type": "minecraft:item",
-                                  "functions": [
+                                  "block": "%1$s",
+                                  "function": "minecraft:copy_state",
+                                  "properties": [
+                                    "light_level"
+                                  ]
+                                },
+                                {
+                                  "function": "minecraft:copy_custom_data",
+                                  "ops": [
                                     {
-                                      "function": "minecraft:copy_name",
-                                      "source": "block_entity"
-                                    },
-                                    {
-                                      "block": "%1$s",
-                                      "function": "minecraft:copy_state",
-                                      "properties": [
-                                        "light_level"
-                                      ]
-                                    },
-                                    {
-                                      "function": "minecraft:copy_nbt",
-                                      "ops": [
-                                        {
-                                          "op": "replace",
-                                          "source": "color",
-                                          "target": "BlockEntityTag.color"
-                                        }
-                                      ],
-                                      "source": "block_entity"
+                                      "op": "replace",
+                                      "source": "color",
+                                      "target": "BlockEntityTag.color"
                                     }
                                   ],
-                                  "name": "%1$s"
+                                  "source": "block_entity"
                                 }
                               ],
-                              "rolls": 1.0
+                              "name": "%1$s"
                             }
-                          ]
+                          ],
+                          "rolls": 1.0
                         }
-                        """, Constants.id(modid + "_" + fireflyJarName))
+                      ]
+                    }
+                    """, Constants.id(modid + "_" + fireflyJarName))
         );    }
 
     public static String getJarModelText(boolean isOpen, JarData jarData) {
@@ -433,6 +449,24 @@ public void generateData(ResourceAdder resourceAdder) {
                     """, jarData.blockTexture(), jarData.jarTexture());
         }
     }
+    public static String getPotionJarModelText(boolean isOpen, JarData jarData, int level) {
+        var open = isOpen ? "jar_open" : "jar";
+        var parent = switch (level) {
+            case 1 -> "missingwilds:block/template/one_third_potion_" + open + "_template";
+            case 2 -> "missingwilds:block/template/two_thirds_potion_" + open + "_template";
+            case 3 -> "missingwilds:block/template/potion_" + open + "_template";
+            default -> throw new IllegalStateException("Unexpected level value: " + level);
+        };
+        return String.format("""
+                {
+                  "parent": "%s",
+                  "textures": {
+                    "glass": "%s",
+                    "jar": "%s"
+                  }
+                }
+                """, parent, jarData.blockTexture(), jarData.jarTexture());
+    } 
 
     public static String getFallenLogModelText(LogData data, String type) {
         return String.format("""
@@ -480,6 +514,32 @@ public void generateData(ResourceAdder resourceAdder) {
                     }
                   }
                 }
+                """, id, modId);
+    }
+    public static String getPotionJarBlockstateJson(String id, String modId) {
+        return String.format("""
+                            {
+                              "variants": {
+                                "covered=false,level=1": {
+                                  "model": "missingwilds:block/%2$s_%1$s_one_third_open"
+                                },
+                                "covered=false,level=2": {
+                                  "model": "missingwilds:block/%2$s_%1$s_two_thirds_open"
+                                },
+                                "covered=false,level=3": {
+                                  "model": "missingwilds:block/%2$s_%1$s_open"
+                                },
+                                "covered=true,level=1": {
+                                  "model": "missingwilds:block/%2$s_%1$s_one_third"
+                                },
+                                "covered=true,level=2": {
+                                  "model": "missingwilds:block/%2$s_%1$s_two_thirds"
+                                },
+                                "covered=true,level=3": {
+                                  "model": "missingwilds:block/%2$s_%1$s"
+                                }
+                              }
+                            }
                 """, id, modId);
     }
 

@@ -2,14 +2,18 @@ package me.ultrusmods.missingwilds.block;
 
 import me.ultrusmods.missingwilds.JarMaps;
 import me.ultrusmods.missingwilds.block.entity.PotionJarBlockEntity;
+import me.ultrusmods.missingwilds.register.MissingWildsDataComponents;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.component.BlockItemStateProperties;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -59,6 +63,19 @@ public class PotionJarBlock extends JarBlock implements EntityBlock {
             }
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
+        ItemStack jarStack = new ItemStack(this.asItem());
+        jarStack.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(POTION_LEVEL, state.getValue(POTION_LEVEL)));
+        if (level.getBlockEntity(pos) instanceof PotionJarBlockEntity potionJarBlockEntity) {
+            var potion = potionJarBlockEntity.getPotion();
+            if (potion != null) {
+                jarStack.set(MissingWildsDataComponents.POTION, potion);
+            }
+        }
+        return jarStack;
     }
 
     @Override

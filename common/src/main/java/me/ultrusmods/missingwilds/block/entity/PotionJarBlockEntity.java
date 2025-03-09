@@ -2,9 +2,11 @@ package me.ultrusmods.missingwilds.block.entity;
 
 import me.ultrusmods.missingwilds.block.PotionJarBlock;
 import me.ultrusmods.missingwilds.register.MissingWildsBlockEntities;
+import me.ultrusmods.missingwilds.register.MissingWildsDataComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -81,7 +83,7 @@ public class PotionJarBlockEntity extends BlockEntity {
         }
         return false;
     }
-
+    
     public Holder<Potion> getPotion() {
         return potion;
     }
@@ -93,6 +95,18 @@ public class PotionJarBlockEntity extends BlockEntity {
     public int removePotionLevel() {
         this.amount--;
         return this.amount;
+    }
+
+    @Override
+    protected void collectImplicitComponents(DataComponentMap.Builder components) {
+        super.collectImplicitComponents(components);
+        components.set(MissingWildsDataComponents.POTION, this.potion);
+    }
+
+    @Override
+    protected void applyImplicitComponents(DataComponentInput componentInput) {
+        super.applyImplicitComponents(componentInput);
+        this.potion = componentInput.getOrDefault(MissingWildsDataComponents.POTION, Potions.AWKWARD);
     }
 
     @Override

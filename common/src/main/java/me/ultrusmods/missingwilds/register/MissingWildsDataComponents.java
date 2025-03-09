@@ -1,19 +1,18 @@
 package me.ultrusmods.missingwilds.register;
 
 import me.ultrusmods.missingwilds.Constants;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.ExtraCodecs;
-
-import java.util.function.BiConsumer;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.alchemy.Potion;
 
 public class MissingWildsDataComponents {
-    public static final DataComponentType<Integer> LIGHT_LEVEL = DataComponentType.<Integer>builder()
-            .persistent(ExtraCodecs.intRange(1, 15))
-            .networkSynchronized(ByteBufCodecs.VAR_INT)
+    public static final DataComponentType<Holder<Potion>> POTION = DataComponentType.<Holder<Potion>>builder()
+            .persistent(Potion.CODEC)
+            .networkSynchronized(Potion.STREAM_CODEC)
             .build();
-    public static void register(BiConsumer<DataComponentType, ResourceLocation> registerFunction) {
-        registerFunction.accept(LIGHT_LEVEL, Constants.id("missingwilds:light_level"));
+    public static void register() {
+        Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, Constants.id("potion"), POTION);
     }
 }

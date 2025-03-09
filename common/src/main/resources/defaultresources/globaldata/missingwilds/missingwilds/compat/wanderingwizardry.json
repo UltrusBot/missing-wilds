@@ -3,5 +3,37 @@
   "logs": [
     "wwizardry:denia_log",
     "wwizardry:mycha_stem"
+  ],
+  "jars": [
+    {
+      "name": "amethyst_glass",
+      "block_id": "wwizardry:amethyst_glass",
+      "jar_texture": "missingwilds:block/wanderingwizardry/amethyst_glass_jar",
+      "block_texture": "wwizardry:block/amethyst_glass"
+    },
+    {
+      "name": "diamond_glass",
+      "block_id": "wwizardry:diamond_glass",
+      "jar_texture": "missingwilds:block/wanderingwizardry/diamond_glass_jar",
+      "block_texture": "wwizardry:block/diamond_glass"
+    },
+    {
+      "name": "quartz_glass",
+      "block_id": "wwizardry:quartz_glass",
+      "jar_texture": "missingwilds:block/wanderingwizardry/quartz_glass_jar",
+      "block_texture": "wwizardry:block/quartz_glass"
+    },
+    {
+      "name": "rose_quartz_glass",
+      "block_id": "wwizardry:rose_quartz_glass",
+      "jar_texture": "missingwilds:block/wanderingwizardry/rose_quartz_glass_jar",
+      "block_texture": "wwizardry:block/rose_quartz_glass"
+    },
+    {
+      "name": "reinforced_glass",
+      "block_id": "wwizardry:reinforced_glass",
+      "jar_texture": "missingwilds:block/wanderingwizardry/reinforced_glass_jar",
+      "block_texture": "wwizardry:block/reinforced_glass"
+    }
   ]
 }

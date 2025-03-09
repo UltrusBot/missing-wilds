@@ -5,6 +5,7 @@ import me.ultrusmods.missingwilds.compat.ModCompatHandler;
 import me.ultrusmods.missingwilds.compat.RegisteringModCompat;
 import me.ultrusmods.missingwilds.item.FireflyJarItem;
 import me.ultrusmods.missingwilds.item.MissingWildsFoodComponents;
+import me.ultrusmods.missingwilds.item.PotionJarItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
@@ -80,24 +81,24 @@ public class MissingWildsItems {
 	public static final Item FIREFLY_BOTTLE_ITEM = register("firefly_bottle", () -> new Item(new Properties()));
 //	public static final Item WATERLILY_ITEM = register("waterlily", () -> new PlaceOnWaterBlockItem(MissingWildsBlocks.WATERLILY_BLOCK, new Properties().tab(Services.PLATFORM.getCreativeTab())));
 	
-	public static final Item POTION_JAR_ITEM = register("potion_jar", () -> new BlockItem(MissingWildsBlocks.POTION_JAR_BLOCK, new Properties()));
-	public static final Item TINTED_POTION_JAR_ITEM = register("tinted_potion_jar", (MissingWildsBlocks.TINTED_POTION_JAR_BLOCK));
-	public static final Item WHITE_STAINED_POTION_JAR_ITEM = register("white_stained_potion_jar", MissingWildsBlocks.WHITE_STAINED_POTION_JAR_BLOCK);
-	public static final Item ORANGE_STAINED_POTION_JAR_ITEM = register("orange_stained_potion_jar", MissingWildsBlocks.ORANGE_STAINED_POTION_JAR_BLOCK);
-	public static final Item MAGENTA_STAINED_POTION_JAR_ITEM = register("magenta_stained_potion_jar", MissingWildsBlocks.MAGENTA_STAINED_POTION_JAR_BLOCK);
-	public static final Item LIGHT_BLUE_STAINED_POTION_JAR_ITEM = register("light_blue_stained_potion_jar", MissingWildsBlocks.LIGHT_BLUE_STAINED_POTION_JAR_BLOCK);
-	public static final Item YELLOW_STAINED_POTION_JAR_ITEM = register("yellow_stained_potion_jar", MissingWildsBlocks.YELLOW_STAINED_POTION_JAR_BLOCK);
-	public static final Item LIME_STAINED_POTION_JAR_ITEM = register("lime_stained_potion_jar", MissingWildsBlocks.LIME_STAINED_POTION_JAR_BLOCK);
-	public static final Item PINK_STAINED_POTION_JAR_ITEM = register("pink_stained_potion_jar", MissingWildsBlocks.PINK_STAINED_POTION_JAR_BLOCK);
-	public static final Item GRAY_STAINED_POTION_JAR_ITEM = register("gray_stained_potion_jar", MissingWildsBlocks.GRAY_STAINED_POTION_JAR_BLOCK);
-	public static final Item LIGHT_GRAY_STAINED_POTION_JAR_ITEM = register("light_gray_stained_potion_jar", MissingWildsBlocks.LIGHT_GRAY_STAINED_POTION_JAR_BLOCK);
-	public static final Item CYAN_STAINED_POTION_JAR_ITEM = register("cyan_stained_potion_jar", MissingWildsBlocks.CYAN_STAINED_POTION_JAR_BLOCK);
-	public static final Item PURPLE_STAINED_POTION_JAR_ITEM = register("purple_stained_potion_jar", MissingWildsBlocks.PURPLE_STAINED_POTION_JAR_BLOCK);
-	public static final Item BLUE_STAINED_POTION_JAR_ITEM = register("blue_stained_potion_jar", MissingWildsBlocks.BLUE_STAINED_POTION_JAR_BLOCK);
-	public static final Item BROWN_STAINED_POTION_JAR_ITEM = register("brown_stained_potion_jar", MissingWildsBlocks.BROWN_STAINED_POTION_JAR_BLOCK);
-	public static final Item GREEN_STAINED_POTION_JAR_ITEM = register("green_stained_potion_jar", MissingWildsBlocks.GREEN_STAINED_POTION_JAR_BLOCK);
-	public static final Item RED_STAINED_POTION_JAR_ITEM = register("red_stained_potion_jar", MissingWildsBlocks.RED_STAINED_POTION_JAR_BLOCK);
-	public static final Item BLACK_STAINED_POTION_JAR_ITEM = register("black_stained_potion_jar", MissingWildsBlocks.BLACK_STAINED_POTION_JAR_BLOCK);
+	public static final Item POTION_JAR_ITEM = registerPotionJar("potion_jar", MissingWildsBlocks.POTION_JAR_BLOCK);
+	public static final Item TINTED_POTION_JAR_ITEM = registerPotionJar("tinted_potion_jar", (MissingWildsBlocks.TINTED_POTION_JAR_BLOCK));
+	public static final Item WHITE_STAINED_POTION_JAR_ITEM = registerPotionJar("white_stained_potion_jar", MissingWildsBlocks.WHITE_STAINED_POTION_JAR_BLOCK);
+	public static final Item ORANGE_STAINED_POTION_JAR_ITEM = registerPotionJar("orange_stained_potion_jar", MissingWildsBlocks.ORANGE_STAINED_POTION_JAR_BLOCK);
+	public static final Item MAGENTA_STAINED_POTION_JAR_ITEM = registerPotionJar("magenta_stained_potion_jar", MissingWildsBlocks.MAGENTA_STAINED_POTION_JAR_BLOCK);
+	public static final Item LIGHT_BLUE_STAINED_POTION_JAR_ITEM = registerPotionJar("light_blue_stained_potion_jar", MissingWildsBlocks.LIGHT_BLUE_STAINED_POTION_JAR_BLOCK);
+	public static final Item YELLOW_STAINED_POTION_JAR_ITEM = registerPotionJar("yellow_stained_potion_jar", MissingWildsBlocks.YELLOW_STAINED_POTION_JAR_BLOCK);
+	public static final Item LIME_STAINED_POTION_JAR_ITEM = registerPotionJar("lime_stained_potion_jar", MissingWildsBlocks.LIME_STAINED_POTION_JAR_BLOCK);
+	public static final Item PINK_STAINED_POTION_JAR_ITEM = registerPotionJar("pink_stained_potion_jar", MissingWildsBlocks.PINK_STAINED_POTION_JAR_BLOCK);
+	public static final Item GRAY_STAINED_POTION_JAR_ITEM = registerPotionJar("gray_stained_potion_jar", MissingWildsBlocks.GRAY_STAINED_POTION_JAR_BLOCK);
+	public static final Item LIGHT_GRAY_STAINED_POTION_JAR_ITEM = registerPotionJar("light_gray_stained_potion_jar", MissingWildsBlocks.LIGHT_GRAY_STAINED_POTION_JAR_BLOCK);
+	public static final Item CYAN_STAINED_POTION_JAR_ITEM = registerPotionJar("cyan_stained_potion_jar", MissingWildsBlocks.CYAN_STAINED_POTION_JAR_BLOCK);
+	public static final Item PURPLE_STAINED_POTION_JAR_ITEM = registerPotionJar("purple_stained_potion_jar", MissingWildsBlocks.PURPLE_STAINED_POTION_JAR_BLOCK);
+	public static final Item BLUE_STAINED_POTION_JAR_ITEM = registerPotionJar("blue_stained_potion_jar", MissingWildsBlocks.BLUE_STAINED_POTION_JAR_BLOCK);
+	public static final Item BROWN_STAINED_POTION_JAR_ITEM = registerPotionJar("brown_stained_potion_jar", MissingWildsBlocks.BROWN_STAINED_POTION_JAR_BLOCK);
+	public static final Item GREEN_STAINED_POTION_JAR_ITEM = registerPotionJar("green_stained_potion_jar", MissingWildsBlocks.GREEN_STAINED_POTION_JAR_BLOCK);
+	public static final Item RED_STAINED_POTION_JAR_ITEM = registerPotionJar("red_stained_potion_jar", MissingWildsBlocks.RED_STAINED_POTION_JAR_BLOCK);
+	public static final Item BLACK_STAINED_POTION_JAR_ITEM = registerPotionJar("black_stained_potion_jar", MissingWildsBlocks.BLACK_STAINED_POTION_JAR_BLOCK);
 
 	public static void init(BiConsumer<ResourceLocation, Item> registerFunction) {
 		ModCompatHandler.getModCompats().forEach(modCompat -> {
@@ -118,5 +119,8 @@ public class MissingWildsItems {
 	}
 	public static Item registerFireflyJar(String id, Block block) {
 		return register(id, () -> new FireflyJarItem(block, new Properties()));
+	}
+	public static Item registerPotionJar(String id, Block block) {
+		return register(id, () -> new PotionJarItem(block, new Properties()));
 	}
 }

@@ -20,7 +20,10 @@ midnightlib_fabric = "1.5.7-fabric"
 defaultresources = "3.6.0"
 dynamicassetgenerator = "6.1.1"
 emi = "1.1.20+1.21.1"
-templates = "2.4.0-fabric-1.21.1"
+templates = "2.5.0-fabric-1.21.1"
+bovinesandbuttercups_fabric = "2.2.1+1.21.1-fabric"
+bovinesandbuttercups_neoforge = "2.2.1+1.21.1-neoforge"
+bovinesandbuttercups_common = "2.2.1+1.21.1-common"
 
 
 [libraries]
@@ -40,7 +43,10 @@ templates = { module= "maven.modrinth:templates-2", version.ref = "templates" }
 defaultresources = { module = "dev.lukebemish:defaultresources", version.ref = "defaultresources" }
 # Dynamic Asset Generator
 dynamicassetgenerator = { module = "dev.lukebemish:dynamicassetgenerator", version.ref = "dynamicassetgenerator" }
-
+# Bovines and Buttercups
+bovinesandbuttercups_fabric = { module = "house.greenhouse:bovinesandbuttercups", version.ref = "bovinesandbuttercups_fabric" }
+bovinesandbuttercups_neoforge = { module = "house.greenhouse:bovinesandbuttercups", version.ref = "bovinesandbuttercups_neoforge" }
+bovinesandbuttercups_common = { module = "house.greenhouse:bovinesandbuttercups", version.ref = "bovinesandbuttercups_common" }
 # Mixin
 fabric_mixin = { module = "net.fabricmc:sponge-mixin", version.ref = "fabric_mixin" }
 mixin_extras = { module = "io.github.llamalad7:mixinextras-common", version.ref = "mixin_extras" }

@@ -49,6 +49,7 @@ public abstract class ModCompatHandler {
     public static final Map<JarData, Block> JAR_BLOCKS = new HashMap<>();
     public static final Map<JarData, Block> FIREFLY_JAR_BLOCKS = new HashMap<>();
     public static final Map<JarData, Block> FOOD_JAR_BLOCKS = new HashMap<>();
+    public static final Map<JarData, Block> POTION_JAR_BLOCKS = new HashMap<>();
 
 
     /**
@@ -122,6 +123,9 @@ public abstract class ModCompatHandler {
     public static void addFireflyJarBlock(JarData jarData, Block block) {
         FIREFLY_JAR_BLOCKS.put(jarData, block);
     }
+    public static void addPotionJarBlock(JarData jarData, Block block) {
+        POTION_JAR_BLOCKS.put(jarData, block);
+    }
     public static Map<JarData, Block> getJarBlocks() {
         return JAR_BLOCKS;
     }
@@ -130,6 +134,9 @@ public abstract class ModCompatHandler {
     }
     public static Map<JarData, Block> getFireflyJarBlocks() {
         return FIREFLY_JAR_BLOCKS;
+    }
+    public static Map<JarData, Block> getPotionJarBlocks() {
+        return POTION_JAR_BLOCKS;
     }
 
     public static void addItemToItemGroup(Item item) {

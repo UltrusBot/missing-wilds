@@ -119,7 +119,7 @@ public class MissingWildsClientCommon {
         ModCompatHandler.getJarBlocks().values().forEach(block -> Services.PLATFORM.setBlockRenderType(RenderType.translucent(), block));
         ModCompatHandler.getFireflyJarBlocks().values().forEach(block -> Services.PLATFORM.setBlockRenderType(RenderType.translucent(), block));
         ModCompatHandler.getFoodJarBlocks().values().forEach(block -> Services.PLATFORM.setBlockRenderType(RenderType.translucent(), block));
-
+        ModCompatHandler.getPotionJarBlocks().values().forEach(block -> Services.PLATFORM.setBlockRenderType(RenderType.translucent(), block));
 
         ModCompatHandler.getModCompats().forEach(ModCompatInstance::clientInit);
     }

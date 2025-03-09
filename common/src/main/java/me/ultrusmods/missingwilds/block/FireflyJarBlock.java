@@ -107,19 +107,11 @@ public class FireflyJarBlock extends JarBlock implements EntityBlock {
     @Override
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
         ItemStack jarStack = new ItemStack(this.asItem());
-//        CompoundTag subTag = new CompoundTag();
-//        subTag.putString(LIGHT_LEVEL.getName(), String.valueOf(state.getValue(LIGHT_LEVEL)));
-//        jarStack.addTagElement("BlockStateTag", subTag);
-
         jarStack.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(LIGHT_LEVEL, state.getValue(LIGHT_LEVEL)));
-
-
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof FireflyJarBlockEntity fireflyJarBlockEntity) {
             fireflyJarBlockEntity.saveToItem(jarStack, level.registryAccess());
             jarStack.set(DataComponents.CUSTOM_NAME, fireflyJarBlockEntity.getCustomName());
-//            fireflyJarBlockEntity.saveToItem(jarStack);
-//            jarStack.setHoverName(fireflyJarBlockEntity.getCustomName());
         }
         return jarStack;
 

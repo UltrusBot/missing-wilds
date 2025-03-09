@@ -53,6 +53,9 @@ repositories {
         }
         filter { includeGroup("maven.modrinth") }
     }
+    maven("https://repo.greenhouse.house/releases/") {
+        name = "Greenhouse Maven"
+    }
 }
 
 

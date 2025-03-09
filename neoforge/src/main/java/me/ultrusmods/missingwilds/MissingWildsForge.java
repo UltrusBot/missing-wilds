@@ -50,6 +50,9 @@ public class MissingWildsForge {
         event.register(Registries.PARTICLE_TYPE, particleTypeRegisterHelper -> MissingWildsParticles.register(particleTypeRegisterHelper::register));
         event.register(Registries.BLOCK_ENTITY_TYPE, blockEntityTypeRegisterHelper -> MissingWildsBlockEntities.register(blockEntityTypeRegisterHelper::register));
         event.register(Registries.ENTITY_TYPE, entityTypeRegisterHelper -> MissingWildsEntities.register(entityTypeRegisterHelper::register));
+        if (event.getRegistryKey() == Registries.DATA_COMPONENT_TYPE) {
+            MissingWildsDataComponents.register();
+        }
     }
     private void spawnPlacementsEvent(RegisterSpawnPlacementsEvent event) {
         event.register(MissingWildsEntities.FIREFLY_SWARM, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FireflySwarm::checkFireflySpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
