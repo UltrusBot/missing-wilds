@@ -53,11 +53,13 @@ public class PotionJarBlock extends JarBlock implements EntityBlock {
                     player.drop(newPotion, false);
                 }
                 var potionLevel = potionJarBlockEntity.removePotionLevel();
-                level.setBlock(pos, state.setValue(POTION_LEVEL, potionLevel), 3);
+
                 if (potionLevel == 0) {
                     if (JarMaps.JAR_TO_POTION_JAR.inverse().get(this) instanceof JarBlock jar) {
                         level.setBlockAndUpdate(pos, jar.defaultBlockState().setValue(COVERED, state.getValue(COVERED)));
                     }
+                } else {
+                    level.setBlock(pos, state.setValue(POTION_LEVEL, potionLevel), 3);
                 }
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }

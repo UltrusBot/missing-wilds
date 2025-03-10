@@ -71,6 +71,8 @@ public class JarBlock extends Block {
             if (JarMaps.JAR_TO_POTION_JAR.get(this) instanceof PotionJarBlock jar) {
                 level.setBlockAndUpdate(pos, jar.defaultBlockState().setValue(COVERED, state.getValue(COVERED)));
                 PotionJarBlock.setPotion(level, pos, stack);
+                stack.consume(1, player);
+                player.addItem(new ItemStack(Items.GLASS_BOTTLE));
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
         }

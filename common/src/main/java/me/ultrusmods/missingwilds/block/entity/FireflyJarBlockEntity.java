@@ -3,8 +3,10 @@ package me.ultrusmods.missingwilds.block.entity;
 import me.ultrusmods.missingwilds.ColorSets;
 import me.ultrusmods.missingwilds.particle.FireflyParticleOptions;
 import me.ultrusmods.missingwilds.register.MissingWildsBlockEntities;
+import me.ultrusmods.missingwilds.register.MissingWildsDataComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -141,5 +143,17 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
     @Override
     public boolean hasCustomName() {
         return name != null;
+    }
+
+    @Override
+    protected void applyImplicitComponents(DataComponentInput componentInput) {
+        super.applyImplicitComponents(componentInput);
+        this.color = componentInput.getOrDefault(MissingWildsDataComponents.COLOR, 7601920);
+    }
+
+    @Override
+    protected void collectImplicitComponents(DataComponentMap.Builder components) {
+        super.collectImplicitComponents(components);
+        components.set(MissingWildsDataComponents.COLOR, this.color);
     }
 }

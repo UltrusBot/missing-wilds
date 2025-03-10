@@ -17,21 +17,21 @@
               "source": "block_entity"
             },
             {
-              "block": "missingwilds:purple_stained_firefly_jar",
+              "block": "missingwilds:lime_stained_potion_jar",
               "function": "minecraft:copy_state",
               "properties": [
-                "light_level"
+                "level"
               ]
             },
             {
               "function": "minecraft:copy_components",
               "include": [
-                "missingwilds:color"
+                "missingwilds:potion"
               ],
               "source": "block_entity"
             }
           ],
-          "name": "missingwilds:purple_stained_firefly_jar"
+          "name": "missingwilds:lime_stained_potion_jar"
         }
       ],
       "rolls": 1.0

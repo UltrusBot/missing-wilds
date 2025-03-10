@@ -1,7 +1,9 @@
 package me.ultrusmods.missingwilds.data;
 
 import me.ultrusmods.missingwilds.block.FireflyJarBlock;
+import me.ultrusmods.missingwilds.block.PotionJarBlock;
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
+import me.ultrusmods.missingwilds.register.MissingWildsDataComponents;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.core.HolderLookup;
@@ -12,9 +14,8 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.CopyBlockState;
-import net.minecraft.world.level.storage.loot.functions.CopyCustomDataFunction;
+import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
 import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
-import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
 import java.util.concurrent.CompletableFuture;
@@ -77,7 +78,25 @@ public class MissingWildsLootTableProvider extends FabricBlockLootTableProvider 
         dropFireflyJar(MissingWildsBlocks.GREEN_STAINED_FIREFLY_JAR_BLOCK);
         dropFireflyJar(MissingWildsBlocks.RED_STAINED_FIREFLY_JAR_BLOCK);
         dropFireflyJar(MissingWildsBlocks.BLACK_STAINED_FIREFLY_JAR_BLOCK);
-
+        
+        dropPotionJar(MissingWildsBlocks.POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.TINTED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.WHITE_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.ORANGE_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.MAGENTA_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.LIGHT_BLUE_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.YELLOW_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.LIME_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.PINK_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.GRAY_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.LIGHT_GRAY_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.CYAN_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.PURPLE_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.BLUE_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.BROWN_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.GREEN_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.RED_STAINED_POTION_JAR_BLOCK);
+        dropPotionJar(MissingWildsBlocks.BLACK_STAINED_POTION_JAR_BLOCK);
 
         dropOther(MissingWildsBlocks.FOOD_JAR_BLOCK, MissingWildsBlocks.JAR_BLOCK);
         dropOther(MissingWildsBlocks.TINTED_FOOD_JAR_BLOCK, MissingWildsBlocks.TINTED_JAR_BLOCK);
@@ -122,9 +141,22 @@ public class MissingWildsLootTableProvider extends FabricBlockLootTableProvider 
                                         .add(LootItem.lootTableItem(block)
                                                 .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
                                                 .apply(CopyBlockState.copyState(block).copy(FireflyJarBlock.LIGHT_LEVEL))
-                                                .apply(CopyCustomDataFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
-                                                        .copy("color", "BlockEntityTag.color")
+                                                .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
+                                                        .include(MissingWildsDataComponents.COLOR)
+                                                )))
+                        ));
+    }
+    public void dropPotionJar(Block block) {
+        this.add(block, LootTable.lootTable()
+                .withPool(applyExplosionCondition(block,
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(block)
+                                        .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
+                                        .apply(CopyBlockState.copyState(block).copy(PotionJarBlock.POTION_LEVEL))
+                                        .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
+                                                .include(MissingWildsDataComponents.POTION)
                                         )))
-        ));
+                ));
     }
 }

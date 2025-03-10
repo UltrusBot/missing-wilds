@@ -14,6 +14,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
@@ -65,6 +66,7 @@ public class PotionJarBlockEntity extends BlockEntity {
                 if (this.potion.value() == potion.value()) {
                     this.amount = Math.min(this.amount + 1, 3);
                     stack.consume(1, player);
+                    player.addItem(new ItemStack(Items.GLASS_BOTTLE));
                     return true;
                 }
             }
