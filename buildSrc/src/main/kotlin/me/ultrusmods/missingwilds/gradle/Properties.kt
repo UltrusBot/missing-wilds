@@ -1,6 +1,9 @@
 package me.ultrusmods.missingwilds.gradle
 
 object Properties {
+    const val MOD = "1.3.3"
+    const val JAVA = 21
+
     const val GROUP = "me.ultrusmods"
     const val MOD_NAME = "MissingWilds"
     const val MOD_ID = "missingwilds"

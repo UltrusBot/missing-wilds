@@ -1,1 +1,5 @@
-- Fixed bug causing crash on fabric when Dynamic Asset Generator isn't installed.
+- Add potion jar, which can store up to three potions of a single type.
+- Update & Re-add Templates mod compat
+- Update Wandering Wizardry mod compat, adding support for its glass to be used for jars.
+- Add litavis compat for its log.
+- Add Hibernal Herbs compat for its log.

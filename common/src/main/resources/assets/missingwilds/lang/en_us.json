@@ -277,6 +277,7 @@
   "block.missingwilds.botania_fallen_glimmering_dreamwood_log": "Fallen Glimmering Dreamwood Log",
   "block.missingwilds.potion_jar": "Potion Jar",
   "block.missingwilds.litavis_fallen_eucalyptus_log": "Fallen Eucalyptus Log",
+  "block.missingwilds.hibernalherbs_fallen_myqueste_log": "Fallen Myqueste Log",
   
   "text.missingwilds.tip.jar": "You can craft jars, which can be used to store food and fireflies. The more fireflies you store, the brighter the jar shines.",
   "text.missingwilds.tip.jar_name": "You can rename a firefly jar in an anvil, and sometimes the name will cause special firefly colors to appear.",

@@ -1,5 +1,4 @@
 import me.ultrusmods.missingwilds.gradle.Properties
-import me.ultrusmods.missingwilds.gradle.Versions
 import org.apache.tools.ant.filters.LineContains
 import org.gradle.jvm.tasks.Jar
 
@@ -89,8 +88,8 @@ publishMods {
     file.set(tasks.named<Jar>("jar").get().archiveFile)
     modLoaders.add("neoforge")
     changelog = rootProject.file("CHANGELOG.md").readText()
-    displayName = "Missing Wilds NeoForge ${Versions.MOD}+${libs.minecraft.get().version}"
-    version = "${Versions.MOD}+${libs.minecraft.get().version}-neoforge"
+    displayName = "Missing Wilds NeoForge ${Properties.MOD}+${libs.minecraft.get().version}"
+    version = "${Properties.MOD}+${libs.minecraft.get().version}-neoforge"
     type = STABLE
 
     curseforge {

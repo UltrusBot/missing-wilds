@@ -1,5 +1,4 @@
 import me.ultrusmods.missingwilds.gradle.Properties
-import me.ultrusmods.missingwilds.gradle.Versions
 
 plugins {
     base
@@ -12,10 +11,10 @@ fun libs(lib: String) =
 
 base.archivesName.set(Properties.MOD_NAME)
 group = Properties.GROUP
-version = "${Versions.MOD}+${libs("minecraft").get().version}"
+version = "${Properties.MOD}+${libs("minecraft").get().version}"
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(Versions.JAVA))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(Properties.JAVA))
     withSourcesJar()
     withJavadocJar()
 }
@@ -104,7 +103,7 @@ tasks {
     val fabric_loader_range: String by project
     val fabric_minecraft_range: String by project
     val expandProps = mapOf(
-        "mod_version" to Versions.MOD,
+        "mod_version" to Properties.MOD,
         "group" to project.group, //Else we target the task's group.
         "minecraft_version" to libs("minecraft").get().version,
         "fabric_api_version" to libs("fabric_api").get().version,
@@ -121,7 +120,7 @@ tasks {
         "neoforge_version" to libs("neoforge").get().version,
         "neoforge_minecraft_version_range" to neoforge_minecraft_range,
         "neoforge_loader_version_range" to neoforge_loader_range,
-        "java_version" to Versions.JAVA,
+        "java_version" to Properties.JAVA,
         "homepage" to Properties.HOMEPAGE,
         "sources" to Properties.GITHUB_REPO
     )

@@ -1,5 +1,4 @@
 import me.ultrusmods.missingwilds.gradle.Properties
-import me.ultrusmods.missingwilds.gradle.Versions
 import net.fabricmc.loom.task.RemapJarTask
 import org.gradle.jvm.tasks.Jar
 
@@ -101,8 +100,8 @@ publishMods {
     file.set(tasks.named<Jar>("remapJar").get().archiveFile)
     modLoaders.add("fabric")
     changelog = rootProject.file("CHANGELOG.md").readText()
-    displayName = "Missing Wilds Fabric ${Versions.MOD}+${libs.minecraft.get().version}"
-    version = "${Versions.MOD}+${libs.minecraft.get().version}-fabric"
+    displayName = "Missing Wilds Fabric ${Properties.MOD}+${libs.minecraft.get().version}"
+    version = "${Properties.MOD}+${libs.minecraft.get().version}-fabric"
     type = STABLE
 
     curseforge {

@@ -1,5 +1,4 @@
 import me.ultrusmods.missingwilds.gradle.Properties
-import me.ultrusmods.missingwilds.gradle.Versions
 import me.modmuss50.mpp.PublishModTask
 
 plugins {
@@ -66,15 +65,15 @@ artifacts {
 
 publishMods {
     changelog = rootProject.file("CHANGELOG.md").readText()
-    version = "${Versions.MOD}+${libs.minecraft.get().version}"
+    version = "${Properties.MOD}+${libs.minecraft.get().version}"
     type = STABLE
 
     github {
         accessToken = providers.gradleProperty("GH_TOKEN")
         repository = Properties.GITHUB_REPO
-        tagName = "${Versions.MOD}+${libs.minecraft.get().version}"
+        tagName = "${Properties.MOD}+${libs.minecraft.get().version}"
         commitish = Properties.GITHUB_COMMITISH
-        displayName = "Missing Wilds ${Versions.MOD}+${libs.minecraft.get().version}"
+        displayName = "Missing Wilds ${Properties.MOD}+${libs.minecraft.get().version}"
         allowEmptyFiles = true
     }
 }
