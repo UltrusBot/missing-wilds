@@ -7,6 +7,7 @@ import me.ultrusmods.missingwilds.data.LogData;
 import me.ultrusmods.missingwilds.data.ModCompatJsonData;
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
@@ -488,9 +489,9 @@ public void generateData(ResourceAdder resourceAdder) {
     }
 
     /**
-     * Shouldn't be called in loop of all individual json defined mods, but at the end as this puts all the logs into the same tag
+     * Shouldn't be called in loop of all individual json defined mods, but at the end as this puts all the entries into the same tag
      */
-    public static void generateFallenLogTags(ResourceAdder resourceAdder) {
+    public static void generateTags(ResourceAdder resourceAdder) {
         var logList = ModCompatHandler.FALLEN_LOG_BLOCKS.keySet().stream().toList();
         resourceAdder.addText(PackType.SERVER_DATA, Constants.id("tags/block/fallen_logs.json"), String.format("""
                 {
@@ -500,6 +501,43 @@ public void generateData(ResourceAdder resourceAdder) {
                     ]
                     }
                 """, String.join(", ", logList.stream().map(log -> "\"" + log + "\"").toList())));
+        
+        var jarList = ModCompatHandler.JAR_BLOCKS.values().stream().map(block -> BuiltInRegistries.BLOCK.getKey(block).toString()).toList();
+        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("tags/item/jars.json"), String.format("""
+                {
+                    "replace": false,
+                    "values": [
+                        %s
+                    ]
+                    }
+                """, String.join(", ", jarList.stream().map(jar -> "\"" + jar + "\"").toList())));
+        var fireflyJarList = ModCompatHandler.FIREFLY_JAR_BLOCKS.values().stream().map(block -> BuiltInRegistries.BLOCK.getKey(block).toString()).toList();
+        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("tags/item/firefly_jars.json"), String.format("""
+                {
+                    "replace": false,
+                    "values": [
+                        %s
+                    ]
+                    }
+                """, String.join(", ", fireflyJarList.stream().map(jar -> "\"" + jar + "\"").toList())));
+        var potionJarList = ModCompatHandler.POTION_JAR_BLOCKS.values().stream().map(block -> BuiltInRegistries.BLOCK.getKey(block).toString()).toList();
+        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("tags/item/potion_jars.json"), String.format("""
+                {
+                    "replace": false,
+                    "values": [
+                        %s
+                    ]
+                    }
+                """, String.join(", ", potionJarList.stream().map(jar -> "\"" + jar + "\"").toList())));
+        var foodJarList = ModCompatHandler.FOOD_JAR_BLOCKS.values().stream().map(block -> BuiltInRegistries.BLOCK.getKey(block).toString()).toList();
+        resourceAdder.addText(PackType.SERVER_DATA, Constants.id("tags/block/food_jars.json"), String.format("""
+                {
+                    "replace": false,
+                    "values": [
+                        %s
+                    ]
+                    }
+                """, String.join(", ", foodJarList.stream().map(jar -> "\"" + jar + "\"").toList())));
     }
 
     public static String getJarBlockstateJson(String id, String modId) {

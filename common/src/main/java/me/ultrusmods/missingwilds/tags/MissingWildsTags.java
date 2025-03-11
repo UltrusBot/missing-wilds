@@ -25,5 +25,9 @@ public class MissingWildsTags {
      */
     public static final TagKey<Item> FOOD_JAR_OVERRIDE = TagKey.create(Registries.ITEM, Constants.id("food_jar_override"));
 
+    public static final TagKey<Item> JARS = TagKey.create(Registries.ITEM, Constants.id("jars"));
     public static final TagKey<Item> FIREFLY_JARS = TagKey.create(Registries.ITEM, Constants.id("firefly_jars"));
+    public static final TagKey<Item> POTION_JARS = TagKey.create(Registries.ITEM, Constants.id("potion_jars"));
+    
+    public static final TagKey<Block> FOOD_JARS = TagKey.create(Registries.BLOCK, Constants.id("food_jars"));
 }

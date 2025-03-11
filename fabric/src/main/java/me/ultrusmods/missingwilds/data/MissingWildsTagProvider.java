@@ -27,6 +27,26 @@ public class MissingWildsTagProvider{
 
         @Override
         protected void addTags(HolderLookup.Provider arg) {
+            getOrCreateTagBuilder(MissingWildsTags.JARS)
+                    .add(MissingWildsItems.JAR)
+                    .add(MissingWildsItems.TINTED_JAR)
+                    .add(MissingWildsItems.WHITE_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.ORANGE_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.MAGENTA_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.LIGHT_BLUE_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.YELLOW_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.LIME_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.PINK_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.GRAY_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.LIGHT_GRAY_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.CYAN_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.PURPLE_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.BLUE_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.BROWN_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.GREEN_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.RED_STAINED_JAR_ITEM)
+                    .add(MissingWildsItems.BLACK_STAINED_JAR_ITEM);
+            
             getOrCreateTagBuilder(MissingWildsTags.FIREFLY_JARS)
                     .add(MissingWildsItems.FIREFLY_JAR)
                     .add(MissingWildsItems.TINTED_FIREFLY_JAR)
@@ -47,6 +67,26 @@ public class MissingWildsTagProvider{
                     .add(MissingWildsItems.RED_STAINED_FIREFLY_JAR_ITEM)
                     .add(MissingWildsItems.BLACK_STAINED_FIREFLY_JAR_ITEM);
 
+            getOrCreateTagBuilder(MissingWildsTags.POTION_JARS)
+                    .add(MissingWildsItems.POTION_JAR_ITEM)
+                    .add(MissingWildsItems.TINTED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.WHITE_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.ORANGE_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.MAGENTA_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.LIGHT_BLUE_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.YELLOW_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.LIME_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.PINK_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.GRAY_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.LIGHT_GRAY_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.CYAN_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.PURPLE_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.BLUE_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.BROWN_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.GREEN_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.RED_STAINED_POTION_JAR_ITEM)
+                    .add(MissingWildsItems.BLACK_STAINED_POTION_JAR_ITEM);
+            
             getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
                     .add(MissingWildsItems.BLUE_FORGET_ME_NOT)
                     .add(MissingWildsItems.PINK_FORGET_ME_NOT)
@@ -108,7 +148,26 @@ public class MissingWildsTagProvider{
                     .add(MissingWildsBlocks.WHITE_FORGET_ME_NOT);
             getOrCreateTagBuilder(BlockTags.TALL_FLOWERS)
                     .add(MissingWildsBlocks.SWEETSPIRE);
-
+            
+            getOrCreateTagBuilder(MissingWildsTags.FOOD_JARS)
+                    .add(MissingWildsBlocks.FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.TINTED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.WHITE_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.ORANGE_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.MAGENTA_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.LIGHT_BLUE_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.YELLOW_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.LIME_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.PINK_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.GRAY_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.LIGHT_GRAY_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.CYAN_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.PURPLE_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.BLUE_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.BROWN_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.GREEN_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.RED_STAINED_FOOD_JAR_BLOCK)
+                    .add(MissingWildsBlocks.BLACK_STAINED_FOOD_JAR_BLOCK);
         }
     }
 }

@@ -3,3 +3,4 @@
 - Update Wandering Wizardry mod compat, adding support for its glass to be used for jars.
 - Add litavis compat for its log.
 - Add Hibernal Herbs compat for its log.
+- Add compat to Item Descriptions mod, adding descriptions for items and blocks in the mod.

@@ -22,7 +22,7 @@ public class MissingWildsDataResources {
                 }
             });
         }
-        JsonDefinedModCompatInstance.generateFallenLogTags(((type, id, resource) -> {
+        JsonDefinedModCompatInstance.generateTags(((type, id, resource) -> {
             if (type == PackType.SERVER_DATA) {
                 DATA_CACHE.planSource(id, (outRl, context) -> () -> new ByteArrayInputStream(resource));
             }

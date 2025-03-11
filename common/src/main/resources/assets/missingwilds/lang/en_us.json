@@ -284,5 +284,16 @@
   "text.missingwilds.tip.crawl": "You can crawl through fallen logs, you can even view your distance crawled in the statistics menu.",
   "text.missingwilds.tip.forget_me_not_bonemeal": "You can use bonemeal in birch forests to grow forget me nots.",
   "text.missingwilds.tip.firefly_spawn": "Fireflies spawn in the swamp at night, and spawn most frequently during a new moon.",
-  "text.missingwilds.tip.firefly_capture": "Fireflies can be captured in jars and bottles."
+  "text.missingwilds.tip.firefly_capture": "Fireflies can be captured in jars and bottles.",
+  
+  "tag.missingwilds.jars.description": "A jar block that can be filled with various things, such as fireflies, foods, and potions.",
+  "tag.missingwilds.firefly_jars.description": "A jar block that is filled with fireflies. Each additional firefly bottle worth increases the light level of the jar. Can be recolored with dye.",
+  "tag.missingwilds.food_jars.description": "A jar block that is filled with food. Can store up to 16 food items.",
+  "tag.missingwilds.potion_jars.description": "A jar block that is filled with potions. Can store up to 3 potions.",
+  "lore.missingwilds.firefly_bottle": "An item containing fireflies that can be used to fill firefly jars, increasing their light level.",
+  "lore.missingwilds.brown_polypore_mushroom": "A mushroom block that grows on logs in birch forests. Can be cooked into food. Duplicates while grown on logs.",
+  "lore.missingwilds.roasted_polypore_mushroom": "A mushroom that can be eaten for a small amount of hunger.",
+  "tag.missingwilds.forget_me_nots.description": "A flower that can be found in birch forests in four colors. When placed as a block, 3 can take up the same space.",
+  "lore.missingwilds.sweetspire": "A tall flower that can be grown with bone meal, or be used to craft light gray dye.",
+  "tag.missingwilds.fallen_logs.description": "A block made of logs that is hollowed out inside, and can be crawled through or filled with water."
 }
