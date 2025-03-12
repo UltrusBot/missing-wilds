@@ -55,6 +55,10 @@ repositories {
     maven("https://repo.greenhouse.house/releases/") {
         name = "Greenhouse Maven"
     }
+    maven {
+        name = "TerraformersMC"
+        url = uri("https://maven.terraformersmc.com/")
+    }
 }
 
 

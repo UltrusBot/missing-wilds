@@ -55,7 +55,7 @@ public class PotionJarBlockEntity extends BlockEntity {
     }
 
     public boolean tryInsertPotion(ItemStack stack, Player player) {
-        if (this.amount >= 3) {
+        if (this.amount >= 3 || !stack.is(Items.POTION)) {
             return false;
         }
         PotionContents potionContents = stack.get(DataComponents.POTION_CONTENTS);

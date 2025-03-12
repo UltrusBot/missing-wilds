@@ -1,6 +1,9 @@
 package me.ultrusmods.missingwilds.block;
 
 import me.ultrusmods.missingwilds.JarMaps;
+import me.ultrusmods.missingwilds.compat.JarAddingCompat;
+import me.ultrusmods.missingwilds.compat.ModCompatHandler;
+import me.ultrusmods.missingwilds.compat.ModCompatInstance;
 import me.ultrusmods.missingwilds.register.MissingWildsItems;
 import me.ultrusmods.missingwilds.register.MissingWildsSounds;
 import net.minecraft.core.BlockPos;
@@ -73,6 +76,12 @@ public class JarBlock extends Block {
                 PotionJarBlock.setPotion(level, pos, stack);
                 stack.consume(1, player);
                 player.addItem(new ItemStack(Items.GLASS_BOTTLE));
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }
+        for (ModCompatInstance compat : ModCompatHandler.getModCompats()) {
+            if (!(compat instanceof JarAddingCompat jarAddingCompat)) continue;
+            if (jarAddingCompat.validJarInteraction(stack, state, level, pos, player, hand, hitResult)) {
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
         }

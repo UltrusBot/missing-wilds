@@ -1,5 +1,6 @@
 package me.ultrusmods.missingwilds;
 
+import me.ultrusmods.missingwilds.compat.bovines.BovinesAndButtercupsModCompat;
 import me.ultrusmods.missingwilds.compat.ModCompatHandler;
 import me.ultrusmods.missingwilds.compat.ModCompatInstance;
 import me.ultrusmods.missingwilds.mixin.FireBlockAccessor;
@@ -14,6 +15,9 @@ public class MissingWildsModCommon {
 
     public static void init() {
         ModCompatHandler.init();
+        if (Services.PLATFORM.isModLoaded("bovinesandbuttercups") && ModCompatHandler.isJsonModCompatEnabled()) {
+            ModCompatHandler.addModCompat(new BovinesAndButtercupsModCompat());
+        }
 
         Constants.LOG.info("Missing Wilds for {} is loading!", Services.PLATFORM.getPlatformName());
         ColorSets.addSpecialColors(); // Loads special firefly jar colors

@@ -138,8 +138,8 @@ public abstract class ModCompatHandler {
     public static Map<JarData, Block> getPotionJarBlocks() {
         return POTION_JAR_BLOCKS;
     }
-
-    public static void addItemToItemGroup(Item item) {
-        OTHER_ITEMS_TO_ITEM_GROUPS.add(item);
+    
+    public static List<JarAddingCompat> getJarAddingCompats() {
+        return enabledModCompats.stream().filter(modCompatInstance -> modCompatInstance instanceof JarAddingCompat).map(modCompatInstance -> (JarAddingCompat) modCompatInstance).toList();
     }
 }

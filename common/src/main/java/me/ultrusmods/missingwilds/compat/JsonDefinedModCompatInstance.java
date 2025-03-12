@@ -61,6 +61,12 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
             jarBlocks.put(jarData, block);
             fireflyJarBlocks.put(jarData, fireflyJar);
             potionJarBlocks.put(jarData, potionJar);
+            var jarCompats = ModCompatHandler.getJarAddingCompats();
+            jarCompats.forEach(jarCompat -> {
+                jarCompat.addToJarMap(block,
+                    MissingWildsBlocks.register(modCompatJsonData.modid() + "_" + jarData.name() + jarCompat.getJarSuffix(), jarCompat::getJarBlock)
+                );
+            });
         });
     }
     public void registerItems() {
@@ -71,6 +77,13 @@ public class JsonDefinedModCompatInstance extends RegisteringModCompat {
         jarBlocks.forEach((jarData, block) -> MissingWildsItems.register(modCompatJsonData.modid() + "_" + jarData.name() + "_jar", block));
         fireflyJarBlocks.forEach((jarData, block) -> MissingWildsItems.registerFireflyJar(modCompatJsonData.modid() + "_" + jarData.name() + "_firefly_jar", block));
         potionJarBlocks.forEach((jarData, block) -> MissingWildsItems.registerPotionJar(modCompatJsonData.modid() + "_" + jarData.name() + "_potion_jar", block));
+        var jarCompats = ModCompatHandler.getJarAddingCompats();
+        jarCompats.forEach(jarCompat -> {
+            jarBlocks.forEach((jarData, block) -> {
+                Item item = jarCompat.getJarItem(block);
+                MissingWildsItems.register(modCompatJsonData.modid() + "_" + jarData.name() + jarCompat.getJarSuffix(), () -> item);
+            });
+        });
     }
 
     @Override
@@ -480,7 +493,7 @@ public void generateData(ResourceAdder resourceAdder) {
                 }
                 """, type, data.logTexture(), data.strippedLogTexture());
     }
-    private static String getParentedModelText(String blockModel) {
+    public static String getParentedModelText(String blockModel) {
         return String.format("""
                 {
                   "parent": "missingwilds:block/%s"
@@ -585,7 +598,7 @@ public void generateData(ResourceAdder resourceAdder) {
         void add(PackType type, ResourceLocation id, byte[] resource);
 
         default void addText(PackType type, ResourceLocation id, String text) {
-            add(type, id, text.getBytes(StandardCharsets.UTF_8));
+            add(type, id, text.stripIndent().getBytes(StandardCharsets.UTF_8));
         }
     }
 

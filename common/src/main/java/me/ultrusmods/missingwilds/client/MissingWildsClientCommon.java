@@ -1,17 +1,31 @@
 package me.ultrusmods.missingwilds.client;
 
+import me.ultrusmods.missingwilds.JarMaps;
+import me.ultrusmods.missingwilds.block.entity.PotionJarBlockEntity;
 import me.ultrusmods.missingwilds.client.render.FoodJarRenderer;
+import me.ultrusmods.missingwilds.compat.ModCompatClient;
 import me.ultrusmods.missingwilds.compat.ModCompatHandler;
 import me.ultrusmods.missingwilds.compat.ModCompatInstance;
 import me.ultrusmods.missingwilds.platform.Services;
 import me.ultrusmods.missingwilds.register.MissingWildsBlockEntities;
 import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
+import me.ultrusmods.missingwilds.register.MissingWildsDataComponents;
+import net.minecraft.client.color.block.BlockColor;
+import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
+
 public class MissingWildsClientCommon {
+    public static final List<ModCompatClient> CLIENT_COMPATS = new ArrayList<>(); 
     public static void init() {
         Services.PLATFORM.setBlockRenderType(RenderType.cutoutMipped(),
                 MissingWildsBlocks.FALLEN_BIRCH_LOG,
@@ -122,6 +136,31 @@ public class MissingWildsClientCommon {
         ModCompatHandler.getPotionJarBlocks().values().forEach(block -> Services.PLATFORM.setBlockRenderType(RenderType.translucent(), block));
 
         ModCompatHandler.getModCompats().forEach(ModCompatInstance::clientInit);
+        CLIENT_COMPATS.forEach(ModCompatClient::init);
+    }
+
+    public static void registerItemColors(BiConsumer<ItemColor, ItemLike[]> registerItemColors) {
+        registerItemColors.accept(((itemStack, i) -> {
+            if (itemStack.has(MissingWildsDataComponents.POTION) && i == 0) {
+                return PotionContents.getColor(itemStack.get(MissingWildsDataComponents.POTION));
+            }
+            return 0xFFFFFF;
+        }), JarMaps.JAR_TO_POTION_JAR.values().toArray(new Block[0]));
+        CLIENT_COMPATS.forEach(modCompatClient -> modCompatClient.registerItemColors(registerItemColors));
+    }
+    
+    public static void registerBlockColors(BiConsumer<BlockColor, Block[]> registerBlockColors) {
+        registerBlockColors.accept((state, getter, pos, tintIndex) -> {
+            if (getter == null || pos == null) {
+                return 0xFFFFFF;
+            }
+            if (getter.getBlockEntity(pos) instanceof PotionJarBlockEntity potionJarBlockEntity) {
+                return potionJarBlockEntity.getColor();
+            }
+            return 0xFFFFFF;
+        }, JarMaps.JAR_TO_POTION_JAR.values().toArray(new Block[0]));
+        CLIENT_COMPATS.forEach(modCompatClient -> modCompatClient.registerBlockColors(registerBlockColors));
+
     }
 
     public interface BlockEntityRendererBiConsumer {
