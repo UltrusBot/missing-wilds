@@ -30,7 +30,6 @@ public class BovinesAndButtercupsCompatClient implements ModCompatClient {
     @Override
     public void init() {
         BovinesAndButtercupsModCompat.JAR_TO_NECTAR_JAR.values().forEach(block -> Services.PLATFORM.setBlockRenderType(RenderType.translucent(), block));
-
     }
     
     public int getNectarColor(Holder<Nectar> nectar) {
@@ -83,7 +82,8 @@ public class BovinesAndButtercupsCompatClient implements ModCompatClient {
         return 0xFFFFFF;
     }
 
-    public void clearNectarColors() {
+    @Override
+    public void onTagLoad() {
         nectarToColor.clear();
     }
 
