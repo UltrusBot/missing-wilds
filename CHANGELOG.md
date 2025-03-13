@@ -4,3 +4,5 @@
 - Add litavis compat for its log.
 - Add Hibernal Herbs compat for its log.
 - Add compat to Item Descriptions mod, adding descriptions for items and blocks in the mod.
+- Added compat for Bovines and Buttercups, in the form of a nectar jar that can hold up to three nectar bowls worth of nectar of a single type.
+- Added WTHIT compat, showing information for the firefly jar, food jar, potion jar, and nectar jars. 
