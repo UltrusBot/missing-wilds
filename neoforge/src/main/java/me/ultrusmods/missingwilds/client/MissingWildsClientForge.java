@@ -65,11 +65,4 @@ public class MissingWildsClientForge {
     public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
         MissingWildsClientCommon.registerItemColors(event::register);
     }
-    
-    @SubscribeEvent
-    public static void onTagsUpdated(TagsUpdatedEvent event) {
-        if (event.getUpdateCause() == TagsUpdatedEvent.UpdateCause.CLIENT_PACKET_RECEIVED) {
-            CLIENT_COMPATS.forEach(ModCompatClient::onTagLoad);
-        }
-    }
 }
