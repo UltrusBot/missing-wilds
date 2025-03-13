@@ -48,6 +48,11 @@ dependencies {
         }
     }
     modImplementation(libs.bovinesandbuttercups.fabric)
+    modRuntimeOnly(libs.wthit.fabric)
+    modCompileOnly(libs.wthit.api.fabric)
+    
+    modRuntimeOnly(libs.badpackets.fabric)
+
 }
 loom {
     val aw = file("src/main/resources/${Properties.MOD_ID}.accesswidener");

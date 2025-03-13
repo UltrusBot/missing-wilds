@@ -5,20 +5,26 @@ import house.greenhouse.bovinesandbuttercups.content.component.ItemNectar;
 import house.greenhouse.bovinesandbuttercups.content.data.nectar.Nectar;
 import house.greenhouse.bovinesandbuttercups.content.item.BovinesItems;
 import me.ultrusmods.missingwilds.Constants;
+import me.ultrusmods.missingwilds.block.entity.ToolTipProvidingBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class NectarJarBlockEntity extends BlockEntity {
+import java.util.function.Consumer;
+
+public class NectarJarBlockEntity extends BlockEntity implements ToolTipProvidingBlockEntity {
     ItemNectar nectar;
     int amount;
     public NectarJarBlockEntity(BlockPos pos, BlockState blockState) {
@@ -113,5 +119,14 @@ public class NectarJarBlockEntity extends BlockEntity {
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         return this.saveCustomOnly(registries);
+    }
+
+    @Override
+    public void getTooltip(Consumer<Component> adder) {
+        nectar.addToTooltip(
+                Item.TooltipContext.of(this.level),
+                adder,
+                TooltipFlag.NORMAL
+        );
     }
 }

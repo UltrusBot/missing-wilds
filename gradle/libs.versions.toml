@@ -24,6 +24,11 @@ templates = "2.5.0-fabric-1.21.1"
 bovinesandbuttercups_fabric = "2.2.1+1.21.1-fabric"
 bovinesandbuttercups_neoforge = "2.2.1+1.21.1-neoforge"
 bovinesandbuttercups_common = "2.2.1+1.21.1-common"
+wthit_fabric = "fabric-12.5.1"
+wthit_neoforge = "neo-12.5.1"
+wthit_common = "mojmap-12.5.1"
+badpackets_fabric = "fabric-0.8.2"
+badpackets_neoforge = "neo-0.8.2"
 
 
 [libraries]
@@ -47,6 +52,18 @@ dynamicassetgenerator = { module = "dev.lukebemish:dynamicassetgenerator", versi
 bovinesandbuttercups_fabric = { module = "house.greenhouse:bovinesandbuttercups", version.ref = "bovinesandbuttercups_fabric" }
 bovinesandbuttercups_neoforge = { module = "house.greenhouse:bovinesandbuttercups", version.ref = "bovinesandbuttercups_neoforge" }
 bovinesandbuttercups_common = { module = "house.greenhouse:bovinesandbuttercups", version.ref = "bovinesandbuttercups_common" }
+
+wthit_fabric = { module = "mcp.mobius.waila:wthit", version.ref = "wthit_fabric"}
+wthit_neoforge = { module = "mcp.mobius.waila:wthit", version.ref = "wthit_neoforge"}
+wthit_common = { module = "mcp.mobius.waila:wthit", version.ref = "wthit_common"}
+wthit_api_fabric = { module = "mcp.mobius.waila:wthit-api", version.ref = "wthit_fabric"}
+wthit_api_neoforge = { module = "mcp.mobius.waila:wthit-api", version.ref = "wthit_neoforge"}
+wthit_api_common = { module = "mcp.mobius.waila:wthit-api", version.ref = "wthit_common"}
+
+badpackets_fabric = { module = "lol.bai:badpackets", version.ref = "badpackets_fabric"}
+badpackets_neoforge = { module = "lol.bai:badpackets", version.ref = "badpackets_neoforge"}
+
+
 # Mixin
 fabric_mixin = { module = "net.fabricmc:sponge-mixin", version.ref = "fabric_mixin" }
 mixin_extras = { module = "io.github.llamalad7:mixinextras-common", version.ref = "mixin_extras" }

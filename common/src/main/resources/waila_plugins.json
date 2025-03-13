@@ -1,0 +1,8 @@
+{
+  "missingwilds:base_plugin": {
+    "entrypoints": {
+      "client": "me.ultrusmods.missingwilds.compat.wthit.MissingWildsWailaPlugin"
+    },
+    "side": "client"
+  }
+}

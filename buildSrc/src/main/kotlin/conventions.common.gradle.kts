@@ -59,6 +59,13 @@ repositories {
         name = "TerraformersMC"
         url = uri("https://maven.terraformersmc.com/")
     }
+    maven {
+        url = uri("https://maven2.bai.lol")
+        content {
+            includeGroup("lol.bai")
+            includeGroup("mcp.mobius.waila")
+        }
+    }
 }
 
 

@@ -5,13 +5,16 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class FoodJarBlockEntity extends BlockEntity {
+import java.util.function.Consumer;
+
+public class FoodJarBlockEntity extends BlockEntity implements ToolTipProvidingBlockEntity {
     NonNullList<ItemStack> items;
     public FoodJarBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(MissingWildsBlockEntities.FOOD_JAR, blockPos, blockState);
@@ -85,5 +88,17 @@ public class FoodJarBlockEntity extends BlockEntity {
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
         ContainerHelper.saveAllItems(tag, this.items, registries);
+    }
+    
+    public int getCount() {
+        return this.items.stream().filter(items -> !items.isEmpty()).toList().size();
+    }
+
+    @Override
+    public void getTooltip(Consumer<Component> adder) {
+        if (!this.items.isEmpty()) {
+            var item = this.items.getFirst().getHoverName().copy().append(Component.literal(" x" + getCount()));
+            adder.accept(item);
+        }
     }
 }

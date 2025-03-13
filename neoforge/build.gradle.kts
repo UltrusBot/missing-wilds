@@ -74,6 +74,11 @@ dependencies {
         }
     }
     implementation(libs.bovinesandbuttercups.neoforge)
+    
+    runtimeOnly(libs.wthit.neoforge)
+    compileOnly(libs.wthit.api.neoforge)
+
+    runtimeOnly(libs.badpackets.neoforge)
 }
 
 tasks {

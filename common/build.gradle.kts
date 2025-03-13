@@ -39,6 +39,7 @@ dependencies {
     compileOnly(libs.defaultresources)
     
     compileOnly(libs.bovinesandbuttercups.common)
+    compileOnly(libs.wthit.api.common)
 }
 
 configurations {

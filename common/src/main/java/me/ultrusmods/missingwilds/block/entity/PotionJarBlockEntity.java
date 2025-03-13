@@ -10,6 +10,7 @@ import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -22,8 +23,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Objects;
+import java.util.function.Consumer;
 
-public class PotionJarBlockEntity extends BlockEntity {
+public class PotionJarBlockEntity extends BlockEntity implements ToolTipProvidingBlockEntity{
     Holder<Potion> potion;
     int amount;
     public PotionJarBlockEntity(BlockPos pos, BlockState blockState) {
@@ -119,5 +121,10 @@ public class PotionJarBlockEntity extends BlockEntity {
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         return this.saveCustomOnly(registries);
+    }
+
+    @Override
+    public void getTooltip(Consumer<Component> adder) {
+        PotionContents.addPotionTooltip(this.potion.value().getEffects(), adder, 1.0F, this.level.tickRateManager().tickrate());
     }
 }

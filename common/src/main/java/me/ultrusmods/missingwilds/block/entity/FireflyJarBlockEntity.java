@@ -18,7 +18,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
+import java.util.function.Consumer;
+
+import static me.ultrusmods.missingwilds.block.FireflyJarBlock.LIGHT_LEVEL;
+
+public class FireflyJarBlockEntity extends BlockEntity implements Nameable, ToolTipProvidingBlockEntity {
     private int color = 7601920;
 
     private Component name = null;
@@ -155,5 +159,15 @@ public class FireflyJarBlockEntity extends BlockEntity implements Nameable {
     protected void collectImplicitComponents(DataComponentMap.Builder components) {
         super.collectImplicitComponents(components);
         components.set(MissingWildsDataComponents.COLOR, this.color);
+    }
+
+    @Override
+    public void getTooltip(Consumer<Component> adder) {
+        var blockState = this.level.getBlockState(this.getBlockPos());
+        if (blockState.hasProperty(LIGHT_LEVEL)) {
+            var lightLevel = blockState.getValue(LIGHT_LEVEL);
+            var component = Component.literal("■".repeat(lightLevel)).withColor(getColor());
+            adder.accept(component);
+        }
     }
 }
