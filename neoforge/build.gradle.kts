@@ -93,9 +93,9 @@ publishMods {
     file.set(tasks.named<Jar>("jar").get().archiveFile)
     modLoaders.add("neoforge")
     changelog = rootProject.file("CHANGELOG.md").readText()
-    displayName = "Missing Wilds NeoForge ${Properties.MOD}+${libs.minecraft.get().version}"
+    displayName = "Missing Wilds NeoForge${Properties.MOD}+${libs.minecraft.get().version}"
     version = "${Properties.MOD}+${libs.minecraft.get().version}-neoforge"
-    type = STABLE
+    type = BETA
 
     curseforge {
         projectId = Properties.CURSEFORGE_PROJECT_ID
@@ -106,6 +106,7 @@ publishMods {
 
         clientRequired = true
         serverRequired = true
+        optional("dynamic-asset-generator")
     }
 
     modrinth {
@@ -113,10 +114,11 @@ publishMods {
         accessToken = providers.gradleProperty("MODRINTH_TOKEN")
 
         minecraftVersions.add(libs.minecraft.get().version!!)
+        optional("dynamic_asset_generator")
     }
 
-//    github {
-//        accessToken = providers.gradleProperty("GH_TOKEN")
-//        parent(project(":common").tasks.named("publishGithub"))
-//    }
+    github {
+        accessToken = providers.gradleProperty("GH_TOKEN")
+        parent(project(":").tasks.named("publishGithub"))
+    }
 }

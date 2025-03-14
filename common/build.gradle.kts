@@ -1,10 +1,8 @@
 import me.ultrusmods.missingwilds.gradle.Properties
-import me.modmuss50.mpp.PublishModTask
 
 plugins {
     id("conventions.common")
     id("net.neoforged.moddev")
-    id("me.modmuss50.mod-publish-plugin")
 }
 
 sourceSets {
@@ -62,19 +60,4 @@ artifacts {
     add("commonResources", sourceSets["main"].resources.sourceDirectories.singleFile)
     add("commonResources", sourceSets["generated"].resources.sourceDirectories.singleFile)
     add("commonTestResources", sourceSets["test"].resources.sourceDirectories.singleFile)
-}
-
-publishMods {
-    changelog = rootProject.file("CHANGELOG.md").readText()
-    version = "${Properties.MOD}+${libs.minecraft.get().version}"
-    type = STABLE
-
-    github {
-        accessToken = providers.gradleProperty("GH_TOKEN")
-        repository = Properties.GITHUB_REPO
-        tagName = "${Properties.MOD}+${libs.minecraft.get().version}"
-        commitish = Properties.GITHUB_COMMITISH
-        displayName = "Missing Wilds ${Properties.MOD}+${libs.minecraft.get().version}"
-        allowEmptyFiles = true
-    }
 }

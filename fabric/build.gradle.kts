@@ -107,7 +107,7 @@ publishMods {
     changelog = rootProject.file("CHANGELOG.md").readText()
     displayName = "Missing Wilds Fabric ${Properties.MOD}+${libs.minecraft.get().version}"
     version = "${Properties.MOD}+${libs.minecraft.get().version}-fabric"
-    type = STABLE
+    type = BETA
 
     curseforge {
         projectId = Properties.CURSEFORGE_PROJECT_ID
@@ -118,6 +118,8 @@ publishMods {
 
         clientRequired = true
         serverRequired = true
+        requires("fabric-api")
+        optional("dynamic-asset-generator")
     }
 
     modrinth {
@@ -125,9 +127,11 @@ publishMods {
         accessToken = providers.gradleProperty("MODRINTH_TOKEN")
 
         minecraftVersions.add(libs.minecraft.get().version!!)
+        requires("fabric-api")
+        optional("dynamic_asset_generator")
     }
-//    github {
-//        accessToken = providers.gradleProperty("GH_TOKEN")
-//        parent(project(":common").tasks.named("publishGithub"))
-//    }
+    github {
+        accessToken = providers.gradleProperty("GH_TOKEN")
+        parent(project(":").tasks.named("publishGithub"))
+    }
 }

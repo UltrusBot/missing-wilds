@@ -1,7 +1,7 @@
 package me.ultrusmods.missingwilds.gradle
 
 object Properties {
-    const val MOD = "1.3.3"
+    const val MOD = "1.4.0+beta"
     const val JAVA = 21
 
     const val GROUP = "me.ultrusmods"
